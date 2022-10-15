@@ -1,4 +1,6 @@
 export { default as loginBackground } from './login/login_back.png'
+export { default as loginBackground1 } from './login/back1.png'
+export { default as loginBackground2 } from './login/back2.png'
 export {default as mail} from './login/mail.png'
 export {default as logo} from './login/logo.png'
 export {default as eye} from './login/eye.png'

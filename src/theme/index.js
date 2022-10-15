@@ -15,7 +15,11 @@ let theme = createTheme({
       shade2: "#fddc8b"
     },
     secondary: {
-      main: '#1657fa',
+      main: '#FDF21A',
+    },
+    button:{
+      main:"#FDF21A",
+      focus:"#b1a912"
     },
     general_black: {
       main: "#000"
@@ -24,9 +28,10 @@ let theme = createTheme({
       main:"#0008"
     },
     text: {
-      primary: '#000000',
+      primary: '#1D1D1D',
       secondary: '#000000',
-      white: "#fff"
+      white: "#fff",
+      yellow:"#FDF21A"
     },
     headear_background: {
       main: "#FFFFFF"
