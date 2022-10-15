@@ -1,0 +1,8 @@
+.background{
+width: 100vw;
+height: 100vh;
+/* UI Properties */
+background: url('../../assets/login/login_back.png');
+background-repeat: no-repeat;
+background-size: 100vw 100vh;
+}
