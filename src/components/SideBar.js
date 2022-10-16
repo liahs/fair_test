@@ -61,7 +61,7 @@ const SideBar = ({ }) => {
         )
     }
     return (
-        <Box sx={[{ width: { tablet: "0%", laptop: '20%', mobile: "0%" }, maxHeight: '100%', display: 'flex', flexDirection: 'column', overflow: 'auto', alignItems: 'flex-end', backgroundImage: `url(${drawerBackground})` }]}>
+        <Box sx={[{ width: { tablet: "0%", laptop: '18%', mobile: "0%" }, maxHeight: '100%', display: 'flex', flexDirection: 'column', overflow: 'auto', alignItems: 'flex-end', backgroundImage: `url(${drawerBackground})` }]}>
 
             {
                 data?.map((i) => {

@@ -20,9 +20,9 @@ let theme = createTheme({
     secondary: {
       main: '#FDF21A',
     },
-    button:{
-      main:"#FDF21A",
-      focus:"#b1a912"
+    button: {
+      main: "#FDF21A",
+      focus: "#b1a912"
     },
     general_black: {
       main: "#000"
@@ -34,7 +34,7 @@ let theme = createTheme({
       primary: '#1D1D1D',
       secondary: '#000000',
       white: "#fff",
-      yellow:"#FDF21A"
+      yellow: "#FDF21A"
     },
     headear_background: {
       main: "#FFFFFF"
@@ -67,7 +67,8 @@ let theme = createTheme({
       color: "white",
       fontSize: "1.2vw",
       fontWeight: "700",
-    }
+    },
+
   },
   breakpoints: {
     values: {

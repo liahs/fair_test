@@ -40,7 +40,7 @@ const EventListing = ({ }) => {
             <Box onClick={() => {
                 setSelected(data.title)
             }} sx={[{
-                width: '5.5vw', minHeight: { laptop: 50, mobile: 40 }, minWidth: { laptop: 50, mobile: 40 }, height: '5.5vw', marginX: '1vw', marginY: '1vh', borderRadius: '.6vh', display: 'flex', flexDirection: 'column',
+                width: '6.2vw', minHeight: { laptop: 70, tablet: 65, mobile: 50 }, minWidth: { laptop: 70, tablet: 65, mobile: 50 }, height: '6.2vw', marginX: '.7vw', marginY: '1vh', borderRadius: '.6vh', display: 'flex', flexDirection: 'column',
                 alignItems: 'center', justifyContent: { laptop: 'center', mobile: 'center' }, background: 'white'
             }, selected == data.title ? { border: "2px solid #F8C851" } : { border: '2px solid white' }]} >
                 <img src={data.image} style={{ width: '30px', height: '30px', alignSelf: 'center' }} />
@@ -49,7 +49,7 @@ const EventListing = ({ }) => {
         )
     }
     return (
-        <Box sx={[{ width: "100%", marginTop: '1vh', display: 'flex', flexWrap: 'wrap' }]}>
+        <Box sx={[{ width: { mobile: "80%", laptop: '100%', table: '80%' }, marginTop: '1vh', alignSelf: { mobile: 'center', laptop: 'flex-start', tablet: 'center' }, justifyContent: { mobile: 'center', table: "center", laptop: "flex-start" }, display: 'flex', flexWrap: 'wrap' }]}>
 
             {
                 data.map((i) => {

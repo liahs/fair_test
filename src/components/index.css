@@ -1,0 +1,14 @@
+.slanted {
+
+    background: "#f1c550";
+    position: relative;
+}
+
+.slanted:after {
+    content: "";
+    position: absolute;
+    align-self: 'center';
+    border-left: 40px solid #f1c550;
+    border-bottom: 40px solid #262626;
+    /* page background color */
+}

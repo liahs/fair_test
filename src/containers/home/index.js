@@ -1,8 +1,11 @@
 import { Box } from "@mui/system";
-import { CustomHeader, SideBar } from "../../components";
+import { useState } from "react";
+import { CustomHeader, MatchOdds, SideBar } from "../../components";
 import EventListing from "../../components/EventListing";
+import MatchComponent from "../../components/MathComponent";
 
 export default function Home() {
+  const [drawer, setDrawer] = useState(false)
   return (
     <div style={{ height: "100vh", display: 'flex', flexDirection: 'column' }} >
       <CustomHeader />
@@ -11,8 +14,10 @@ export default function Home() {
       })]} >
 
         <SideBar />
-        <Box sx={{ display: 'flex', flex: 1, justifyContent: 'flex-start', alignItems: 'flex-start' }}>
+        <Box sx={{ display: 'flex', flexDirection: 'column', flex: 1, justifyContent: 'flex-start', overflow: 'auto', alignItems: 'flex-start' }}>
           <EventListing />
+          <MatchComponent />
+          <MatchOdds />
         </Box>
       </Box>
 
