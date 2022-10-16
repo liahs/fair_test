@@ -1,10 +1,13 @@
 
 import { Card, Typography, Box, useTheme } from '@mui/material';
+import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { eye, logo, mail } from '../../assets';
 import { Input, CustomButton } from '../../components';
 import BackgroundCarousel from './BackgroundCarousel';
 export default function Login() {
   const theme = useTheme()
+  const navigate = useNavigate()
   return (
     <Box style={{ position: "relative" }}>
       <BackgroundCarousel />
@@ -20,10 +23,12 @@ export default function Login() {
           <Typography variant="subHeader" sx={{ fontSize: { laptop: "15px", mobile: "13px" }, lineHeight: "25px", marginTop: "1vh", textAlign: "center" }}>Please enter the email address & password <br />to login into your account</Typography>
           <Box sx={{ width: { laptop: "70%", mobile: "80%" } }}>
             <Input title={"Email"} img={mail} />
-            <Input title={"Password"} containerStyle={{ marginTop: "10px" }} img={eye} />
+            <Input inputProps={{ type: 'password' }} title={"Password"} containerStyle={{ marginTop: "10px" }} img={eye} />
             <Typography sx={{ color: theme.palette.button.main, fontSize: { laptop: "12px", mobile: "10px" }, textAlign: "right", marginTop: "1em" }}>Forgot Password?</Typography>
             <Box sx={{ display: "flex", justifyContent: "center", marginY: "1vh", marginTop: "4vh" }}>
-              <CustomButton buttonStyle={{ background: theme.palette.button.main }} title="Login" />
+              <CustomButton onClick={() => {
+                navigate('/home')
+              }} buttonStyle={{ background: theme.palette.button.main }} title="Login" />
             </Box>
             <Typography sx={{ color: theme.palette.text.white, fontSize: { laptop: "12px", mobile: "10px" }, textAlign: "center", marginTop: "1em" }}>Don't have an account? <Typography display={"inline"} sx={{ color: theme.palette.text.yellow, fontSize: { laptop: "12px", mobile: "10px" }, }}>Sign up</Typography></Typography>
           </Box>

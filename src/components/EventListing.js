@@ -40,7 +40,7 @@ const EventListing = ({ }) => {
             <Box onClick={() => {
                 setSelected(data.title)
             }} sx={[{
-                width: '6.2vw', minHeight: { laptop: 70, tablet: 65, mobile: 50 }, minWidth: { laptop: 70, tablet: 65, mobile: 50 }, height: '6.2vw', marginX: '.7vw', marginY: '1vh', borderRadius: '.6vh', display: 'flex', flexDirection: 'column',
+                width: '6.7vw', minHeight: { laptop: 70, tablet: 65, mobile: 50 }, minWidth: { laptop: 70, tablet: 65, mobile: 50 }, height: '6.7vw', marginX: '.7vw', marginY: '1vh', borderRadius: '.6vh', display: 'flex', flexDirection: 'column',
                 alignItems: 'center', justifyContent: { laptop: 'center', mobile: 'center' }, background: 'white'
             }, selected == data.title ? { border: "2px solid #F8C851" } : { border: '2px solid white' }]} >
                 <img src={data.image} style={{ width: '30px', height: '30px', alignSelf: 'center' }} />

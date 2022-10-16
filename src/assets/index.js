@@ -20,4 +20,10 @@ export { default as Header } from './homeScreen/header.png'
 export { default as Info } from './homeScreen/info.png'
 export { default as Lock } from './homeScreen/lock.png'
 
+export { default as Draw } from './header/draw.png'
+export { default as MoneyBag } from './header/money-bag.png'
+export { default as Money } from './header/money.png'
+export { default as Search } from './header/search.png'
+export { default as Logout } from './header/logout.png'
 
+export { default as MyBet } from './homeScreen/mybet.png'
