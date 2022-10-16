@@ -9,7 +9,6 @@ export default function Login() {
       (theme) => ({
         backgroundImage: `${theme.palette.primary.mainGradient}`
       })
-
       ]}>
         <img src={logo} alt="logo" style={{ height: "11%", marginTop: "1em", width: "37%" }} />
         <Typography variant="header" sx={{ fontSize: { laptop: "35px", mobile: "25px" }, marginTop: "1vh" }}>Welcome !</Typography>

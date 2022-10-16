@@ -1,4 +1,4 @@
-import { createTheme ,responsiveFontSizes} from '@mui/material/styles';
+import { createTheme, responsiveFontSizes } from '@mui/material/styles';
 
 
 let theme = createTheme({
@@ -10,9 +10,12 @@ let theme = createTheme({
       contrastText: '#ffffff',
       mainGradient: `linear-gradient(136deg,#004A25 20%, #000000 100%)`,
       cardGradient: `linear-gradient(360deg,#fde3a2 5%,#fde3a2 100% )`,
+      headerGradient: `linear-gradient(90deg,#004A25 5%,#FDCB52 100% )`,
+      homeBodyGradient: `linear-gradient(180deg,#004A25 5%,#1D1D1D 100% )`,
       font: "serif",
       shade1: "#fde3a2",
-      shade2: "#fddc8b"
+      shade2: "#fddc8b",
+      shade3: "#FDCB52"
     },
     secondary: {
       main: '#1657fa',
@@ -20,8 +23,8 @@ let theme = createTheme({
     general_black: {
       main: "#000"
     },
-    info:{
-      main:"#0008"
+    info: {
+      main: "#0008"
     },
     text: {
       primary: '#000000',
@@ -34,16 +37,31 @@ let theme = createTheme({
   },
   typography: {
     "fontFamily": `Poppins, sans-serif`,
-    header:{
-        color:"white",
-        fontWeight:"bold"
+    header: {
+      color: "white",
+      fontWeight: "bold"
     },
-    subHeader:{
-        color:"white",
+    subHeader: {
+      color: "white",
     },
-    inputHeader:{
-        color:"white",
-        fontSize:"12px"
+    inputHeader: {
+      color: "white",
+      fontSize: "12px"
+    },
+    menuListHeader: {
+      color: "white",
+      fontSize: "1.3vw",
+      fontWeight: "500"
+    },
+    menuListItem: {
+      color: "white",
+      fontSize: "1vw",
+
+    },
+    eventListTitle: {
+      color: "white",
+      fontSize: "1.2vw",
+      fontWeight: "700",
     }
   },
   breakpoints: {
