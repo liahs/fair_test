@@ -1,6 +1,8 @@
 import { Box } from "@mui/system";
 import { CustomHeader, SideBar } from "../../components";
 import EventListing from "../../components/EventListing";
+import LiveMatchHome from "../../components/LiveMatchHome";
+import MyBetHome from "../../components/MyBetHome";
 
 export default function Home() {
   return (
@@ -13,6 +15,11 @@ export default function Home() {
         <SideBar />
         <Box sx={{ display: 'flex', flex: 1, justifyContent: 'flex-start', alignItems: 'flex-start' }}>
           <EventListing />
+          <Box style={{width:"40%"}}>
+            <LiveMatchHome />
+            <br />
+            <MyBetHome />
+          </Box>
         </Box>
       </Box>
 
