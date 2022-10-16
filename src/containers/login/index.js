@@ -9,7 +9,7 @@ export default function Login() {
     <Box style={{ position: "relative" }}>
       <BackgroundCarousel />
       <Box style={{ height: "100vh", width: "100vw", display: "flex", alignItems: "center", position: "relative", justifyContent: "center" }}>
-        <Card sx={[{ height: '70%', borderRadius: "80px", display: "flex", flexDirection: "column", py: "10px", alignItems: "center", width: { laptop: '37%', tablet: "60%", mobile: '90%' } },
+        <Card sx={[{ borderRadius: "80px", display: "flex", flexDirection: "column", py: "10px", alignItems: "center", width: { laptop: '37%', tablet: "60%", mobile: '90%' } },
         (theme) => ({
           backgroundImage: `${theme.palette.primary.mainGradient}`
         })
