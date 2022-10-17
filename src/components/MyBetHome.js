@@ -4,7 +4,7 @@ import StyledImage from './StyledImage'
 
 const MyBetHome = () => {
     return (
-        <Box sx={{ minWidth: "10%", background: "#F1C550" ,marginBottom:"2vh"}}>
+        <Box sx={{ minWidth: "10%", background: "#F1C550", marginBottom: "1vh" }}>
             <Box sx={{ height: "35px", display: "flex", alignItems: "center", px: "10px" }}>
                 <Typography sx={{ fontWeight: "bold", fontSize: "12px" }}>My Bet</Typography>
             </Box>

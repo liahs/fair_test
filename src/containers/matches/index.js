@@ -8,10 +8,12 @@ import MyBetHome from "../../components/MyBetHome";
 import MatchesComponent from "../../components/Matches";
 
 import { useMediaQuery, useTheme } from "@mui/material";
+import { useNavigate } from "react-router-dom";
 
 export default function Matches() {
     const [drawer, setDrawer] = useState(false)
     const theme = useTheme()
+    const navigate = useNavigate()
     const matchesMobile = useMediaQuery(theme.breakpoints.down("laptop"))
     return (
         <div style={{ height: "100vh", display: 'flex', flexDirection: 'column' }} >
@@ -26,7 +28,7 @@ export default function Matches() {
 
 
                     <EventListing />
-                    <MatchesComponent />
+                    <MatchesComponent onClick={() => navigate('/home')} />
 
                 </Box>
             </Box>

@@ -21,12 +21,13 @@ const SeperateBox = ({ color, empty, value, value2, lock }) => {
 }
 const Divider = () => {
     return (
-        <Box sx={{ width: '100%', color: 'grey', height: '.5px' }} ></Box>
+        <Box sx={{ width: '100%', background: 'rgba(211,211,211)', height: '1px' }} ></Box>
+
     )
 }
-const Odds = ({ upcoming }) => {
+const Odds = ({ upcoming, onClick }) => {
     return (
-        <Box sx={{ display: 'flex', position: 'relative', flexDirection: 'column', marginY: '1.5vh', width: { table: "55%", mobile: "90%", laptop: '95%' }, marginX: '1vw', alignSelf: { mobile: 'center', tablet: 'center', laptop: 'flex-start', } }}>
+        <Box onClick={onClick} sx={{ display: 'flex', position: 'relative', flexDirection: 'column', marginY: '1.5vh', width: { table: "55%", mobile: "90%", laptop: '95%' }, marginX: '1vw', alignSelf: { mobile: 'center', tablet: 'center', laptop: 'flex-start', } }}>
 
 
 
@@ -132,14 +133,14 @@ const Odds = ({ upcoming }) => {
 }
 
 
-const MatchesComponent = ({ }) => {
+const MatchesComponent = ({ onClick }) => {
 
     return (
         < >
-            <Odds />
-            <Odds upcoming={true} />
+            <Odds onClick={onClick} />
+            <Odds onClick={onClick} upcoming={true} />
 
-            <Odds />
+            <Odds onClick={onClick} />
 
         </>
     )

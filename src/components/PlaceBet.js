@@ -12,13 +12,22 @@ const PlaceBet = ({ open, handleClose }) => {
                     <Typography sx={{ fontWeight: "bold", fontSize: "12px" }}>Place Bet</Typography>
                 </Box>
                 <RowComponent header={true} data={["Matched Bet", "Odds", "Stake", "Profit"]} />
+                < Divider />
+
                 <RowComponent header={false} data={["INDIA", "90.00", "100.00", "00.00"]} />
+                < Divider />
+
                 <div style={{ height: "1px", background: "#fafafa" }} />
                 <RowComponent header={false} data={["PAKISTAN", "90.00", "100.00", "00.00"]} />
             </Box>
         )
     }
+    const Divider = () => {
+        return (
+            <Box sx={{ width: '100%', background: 'rgba(211,211,211)', height: '1px' }} ></Box>
 
+        )
+    }
     const NumberInput = () => {
         const [value, setValue] = useState('90.00')
         return (
@@ -64,7 +73,9 @@ const PlaceBet = ({ open, handleClose }) => {
                         <NumberInput />
                     }
 
-                </Box>)
+                </Box>
+
+                )
                 }
             </Box >
         )

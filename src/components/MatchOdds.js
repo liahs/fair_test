@@ -21,7 +21,7 @@ const SeperateBox = ({ color, empty, value, value2, lock }) => {
 }
 const Divider = () => {
     return (
-        <Box sx={{ width: '100%', color: 'grey', height: '.5px' }} ></Box>
+        <Box sx={{ width: '100%', background: 'rgba(211,211,211)', height: '1px' }} ></Box>
     )
 }
 const Odds = ({ onClick }) => {
