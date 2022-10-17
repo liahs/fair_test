@@ -27,3 +27,14 @@ export { default as Search } from './header/search.png'
 export { default as Logout } from './header/logout.png'
 
 export { default as MyBet } from './homeScreen/mybet.png'
+export { default as SNOOKER } from './homeScreen/snooker.png'
+export { default as GOLF } from './homeScreen/golf.png'
+export { default as CHESS } from './homeScreen/chess.png'
+export { default as BASKETBALL } from './homeScreen/basketball.png'
+export { default as TEAMLOGO } from './homeScreen/teamlogo.png'
+export { default as TEAMLOGO1 } from './homeScreen/teamlogo2.png'
+export { default as CANCEL } from './homeScreen/cancel.png'
+
+
+
+

@@ -34,7 +34,7 @@ const CustomHeader = ({ }) => {
                 </Box>
             </Box>
             <Box sx={{ height: "32px", display: "flex", background: "#202020", alignItems: "center" }}>
-                <Typography sx={{ color: "text.white", fontSize: "10px", fontStyle: "italic", letterSpacing: "1px", overflow: "hidden", whiteSpace: "nowrap", "text-overflow:": "ellipsis" }}>This is a demo notification highlight. This is a demo notification highlight.This is a demo notification highlight. This is a demo notification highlight.This is a demo notification highlight. This is a demo notification highlight.This is a demo notification highlight.</Typography>
+                <marquee><Typography sx={{ color: "text.white", fontSize: "10px", fontStyle: "italic", letterSpacing: "1px", overflow: "hidden", whiteSpace: "nowrap", "text-overflow:": "ellipsis" }}>This is a demo notification highlight. This is a demo notification highlight.This is a demo notification highlight. This is a demo notification highlight.This is a demo notification highlight. This is a demo notification highlight.This is a demo notification highlight.</Typography></marquee>
             </Box>
             {/* <Box sx={{ minHeight: { laptop: 90, tablet: 80, mobile: 60 } }} /> */}
         </>
@@ -45,8 +45,8 @@ const CustomHeader = ({ }) => {
 
 const BoxMoney = ({ image, title, value }) => {
     return (
-        <Box sx={[{ backgroundColor: "white", minWidth: "120px", marginLeft: "1vw", display: "flex", alignItems: "center", boxShadow: "0px 3px 10px #B7B7B726", height: { laptop: "40px", mobile: "35px" }, overflow: "hidden", paddingX: "5px", borderRadius: "35px" }]}>
-            <Box sx={{ height: "35px", width: "35px", borderRadius: "20px", display: "flex", justifyContent: "center", alignItems: "center", backgroundColor: "#FEFEFE", boxShadow: "0px 0px 5px #00000026" }}>
+        <Box sx={[{ backgroundColor: "white", minWidth: "120px", marginLeft: "1vw", display: "flex", alignItems: "center", boxShadow: "0px 3px 10px #B7B7B726", height: { laptop: "35px", mobile: "35px" }, overflow: "hidden", paddingX: "3px", borderRadius: "40px" }]}>
+            <Box sx={{ height: "30px", width: "35px", borderRadius: "25px", display: "flex", justifyContent: "center", alignItems: "center", backgroundColor: "#FEFEFE", boxShadow: "0px 0px 5px #00000026" }}>
                 <StyledImage src={image} sx={{ height: "50%", width: "auto" }} />
             </Box>
             <Box style={{ marginLeft: "10px" }}>
@@ -70,10 +70,10 @@ const BoxProfile = ({ image, value }) => {
     };
     return (
         <>
-            <Box onClick={(event) => handleClick(event)} sx={[{ backgroundColor: "primary.main", minWidth: "120px", marginLeft: "1vw", display: "flex", alignItems: "center", boxShadow: "0px 3px 10px #B7B7B726", height: { laptop: "40px", mobile: "35px" }, overflow: "hidden", paddingX: "5px", borderRadius: "35px" }]}>
-                <StyledImage src={image} sx={{ height: { laptop: "35px", mobile: '30px' }, width: { laptop: "35px", mobile: '30px' }, borderRadius: "100px", backgroundColor: "red" }} />
+            <Box onClick={(event) => handleClick(event)} sx={[{ backgroundColor: "primary.main", minWidth: "120px", marginLeft: "1vw", display: "flex", alignItems: "center", boxShadow: "0px 3px 10px #B7B7B726", height: { laptop: "35px", mobile: "35px" }, overflow: "hidden", paddingX: "2px", borderRadius: "35px" }]}>
+                <StyledImage src={image} sx={{ height: { laptop: "30px", mobile: '30px' }, width: { laptop: "30px", mobile: '30px' }, borderRadius: "150px", backgroundColor: "red" }} />
                 <Box style={{ marginLeft: "10px" }}>
-                    <Typography sx={{ fontSize: "12px", color: "text.white", fontWeight: "600" }}>{value}</Typography>
+                    <Typography sx={{ fontSize: "11px", color: "text.white", fontWeight: "600" }}>{value}</Typography>
                 </Box>
                 <StyledImage src={ArrowDown} sx={{ height: "6px", width: "10px", marginLeft: "10px", marginRight: "5px" }} />
             </Box>

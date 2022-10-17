@@ -8,17 +8,17 @@ const Input = ({ title, containerStyle, titleStyle, inputContainerStyle, img, in
     const [showPass, setShowPass] = useState(true)
 
     return (
-        <Box sx={[{ width: "100%" }, containerStyle]}>
-            <Typography variant="inputHeader" sx={[{ marginLeft: "10px", fontSize: { laptop: "13px", mobile: "12px" } }, titleStyle]}>{title}</Typography>
-            <Box sx={[{ backgroundColor: "white", display: "flex", alignItems: "center", height: { laptop: "50px", mobile: "45px" }, overflow: "hidden", paddingX: "10px", marginTop: "5px", borderRadius: "35px" }, inputContainerStyle]}>
+        <Box sx={[{}, containerStyle]}>
+            <Typography variant="inputHeader" sx={[{ marginLeft: "10px", fontSize: { laptop: "10px", mobile: "8px" }, fontWeight: '500' }, titleStyle]}>{title}</Typography>
+            <Box sx={[{ backgroundColor: "white", display: "flex", alignItems: "center", height: { laptop: "45px", mobile: "40px" }, overflow: "hidden", paddingX: "10px", marginTop: "1px", borderRadius: "35px" }, inputContainerStyle]}>
                 <TextField variant="standard" InputProps={{
                     disableUnderline: true,
                     ...inputProps,
                     type: showPass && title == "Password" ? "password" : "text"
-                }} sx={{ borderColor: "white", display: "flex", flex: 1, fontSize: { laptop: "14px", mobile: "13px" } }} />
+                }} sx={{ borderColor: "white", display: "flex", flex: 1, fontSize: { laptop: "1px", mobile: "5px" } }} />
                 <img src={img} onClick={() => {
                     setShowPass(!showPass)
-                }} alt="side input" style={{ height: matches ? "0.6em" : "0.7rem", width: "auto", marginRight: "1em" }} />
+                }} alt="side input" style={{ height: matches ? "0.5em" : "0.6rem", width: "auto", marginRight: ".5em" }} />
             </Box>
         </Box>
     )

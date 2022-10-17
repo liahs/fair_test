@@ -8,9 +8,9 @@ function App() {
   return (
     <ThemeProvider theme={theme}>
 
-    <div className="App">
-     <Main />
-    </div>
+      <div className="App">
+        <Main />
+      </div>
     </ThemeProvider>
   );
 }

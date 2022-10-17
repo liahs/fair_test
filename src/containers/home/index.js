@@ -6,11 +6,13 @@ import MatchComponent from "../../components/MathComponent";
 import LiveMatchHome from "../../components/LiveMatchHome";
 import MyBetHome from "../../components/MyBetHome";
 import { useMediaQuery, useTheme } from "@mui/material";
+import PlaceBet from "../../components/PlaceBet";
 
 export default function Home() {
   const [drawer, setDrawer] = useState(false)
   const theme = useTheme()
   const matchesMobile = useMediaQuery(theme.breakpoints.down("laptop"))
+  const [open, handleClose] = useState(true)
   return (
     <div style={{ height: "100vh", display: 'flex', flexDirection: 'column' }} >
       <CustomHeader />
@@ -19,28 +21,41 @@ export default function Home() {
       })]} >
 
         <SideBar />
-        <Box sx={{ display: 'flex', flexDirection: 'column', flex: 1, justifyContent: 'flex-start', overflow: 'auto', alignItems: 'flex-start' }}>
+        <PlaceBet open={open} handleClose={() => {
+          handleClose(!open)
+        }} />
+        <Box sx={{ display: 'flex', overflowX: "hidden", flexDirection: 'column', flex: 1, justifyContent: 'flex-start', overflowY: "auto", alignItems: 'flex-start' }}>
+
 
           <EventListing />
+
           {matchesMobile && <>
-            <Box sx={{ display: 'block', width: '80%', alignSelf: 'center' }}>
+            <Box sx={{ display: 'block', width: '90%', alignSelf: 'center', }}>
               <LiveMatchHome />
-              <br />
+              <div style={{ height: '.002vh' }} ></div>
+
+              <MatchComponent />
+              <div style={{ height: '.7vh' }} ></div>
               <MyBetHome />
+              <div style={{ height: '2vh' }} ></div>
+
             </Box>
-            <MatchComponent />
 
             <MatchOdds /></>}
           {!matchesMobile && <Box sx={{ display: 'flex' }}>
 
-            <Box sx={{ display: 'flex', flexDirection: 'column', flex: 1 }}>
+            <Box sx={{ display: 'flex', flexDirection: 'column', width: '100%' }}>
 
-              <MatchComponent />
               <MatchOdds />
             </Box>
-            <Box sx={{ flex: .3, paddingRight: '20px' }}>
+            <Box sx={{ width: '50%', paddingRight: '8%', marginLeft: -1 }}>
               <LiveMatchHome />
-              <br />
+              <div style={{ height: '.0013vh' }} ></div>
+
+              {/* <br /> */}
+              <MatchComponent />
+              <div style={{ height: '1vh' }} ></div>
+
               <MyBetHome />
 
             </Box>
