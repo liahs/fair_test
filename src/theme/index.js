@@ -55,12 +55,12 @@ let theme = createTheme({
     },
     menuListHeader: {
       color: "white",
-      fontSize: "1.3vw",
+      // fontSize: "1.3vw",
       fontWeight: "500"
     },
     menuListItem: {
       color: "white",
-      fontSize: "1vw",
+      // fontSize: "1vw",
 
     },
     eventListTitle: {

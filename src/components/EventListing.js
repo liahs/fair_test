@@ -66,8 +66,7 @@ const EventListing = ({ }) => {
         )
     }
     return (
-        <Box sx={[{ width: { mobile: "90%", laptop: '100%', tablet: '80%' }, minHeight: { mobile: 80, laptop: 85 }, overflowY: "visible", overflowX: 'auto', marginTop: '1vh', alignSelf: { mobile: 'center', laptop: 'flex-start', tablet: 'center' }, justifyContent: { mobile: 'center', table: "center", laptop: "flex-start" }, display: 'flex' }]}>
-
+        <Box sx={[{ width: { mobile: "90%", laptop: '100%', tablet: '80%' },scrollbarWidth:"none",msOverflowStyle: "none", minHeight: { mobile: 80, laptop: 85 }, overflowY: "visible", overflowX: 'auto', marginTop: '1vh', alignSelf: { mobile: 'center', laptop: 'flex-start', tablet: 'center' }, display: 'flex' }]}>
             {
                 data.map((i) => {
                     return (

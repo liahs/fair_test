@@ -3,7 +3,8 @@ import { Box } from "@mui/system"
 import { useState } from "react";
 import { ArrowDown, drawerBackground } from "../assets";
 
-const SideBar = ({ }) => {
+const SideBar = ({mobileShow}) => {
+    
     const [selected, setSelected] = useState('All Sports')
     const data = [
         {
@@ -30,7 +31,7 @@ const SideBar = ({ }) => {
                 <Box sx={{ display: 'flex', height: '100%' }} >
                     <Box sx={{ display: 'flex', flex: .3 }} >
                     </Box><Box sx={{ display: 'flex', flex: 1, height: '100%', justifyContent: 'center', alignItems: 'center' }} >
-                        <Typography variant="menuListHeader" sx={{}}>{title}</Typography>
+                        <Typography variant="menuListHeader" sx={{fontSize:{laptop:"15px",mobile:"14px"}}}>{title}</Typography>
                     </Box><Box sx={{ display: 'flex', flex: .3, justifyContent: 'center', alignItems: 'center' }} >
                         <img style={{ width: '1.5vw', height: '.9vw', transform: selected == title ? 'rotate(0deg)' : 'rotate(180deg)' }} src={ArrowDown} />
                     </Box>
@@ -41,7 +42,7 @@ const SideBar = ({ }) => {
     const ListItem = ({ item }) => {
         return (
             <Box sx={{ display: 'flex', justifyContent: 'flex-start', alignItems: 'center', height: '5vh', width: '60%', }} >
-                <Typography variant="menuListItem" sx={{}} >{item}</Typography>
+                <Typography variant="menuListItem" sx={{fontSize:{laptop:"13px",mobile:"12px"}}} >{item}</Typography>
             </Box>
         )
     }
@@ -61,7 +62,7 @@ const SideBar = ({ }) => {
         )
     }
     return (
-        <Box sx={[{ width: { tablet: "0%", laptop: '18%', mobile: "0%" }, maxHeight: '100%', display: 'flex', flexDirection: 'column', overflow: 'auto', alignItems: 'flex-end', backgroundImage: `url(${drawerBackground})` }]}>
+        <Box sx={[{ width: {  laptop: '18%',mobile:mobileShow?"100%":"0%"}, height: '100%', display: 'flex', flexDirection: 'column', overflow: 'auto', alignItems: 'flex-end', backgroundImage: `url(${drawerBackground})` }]}>
 
             {
                 data?.map((i) => {

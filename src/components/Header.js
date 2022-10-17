@@ -1,16 +1,24 @@
-import { Typography, Box, useMediaQuery, useTheme, Menu, MenuItem } from "@mui/material";
+import { Typography, Box, useMediaQuery, useTheme, Menu, MenuItem, Drawer,AppBar ,Toolbar  } from "@mui/material";
 import { useEffect, useState } from "react";
 import { ArrowDown, Draw, logo, Logout, Money, MoneyBag } from "../assets";
 import SearchInput from "./SearchInput";
+import SideBar from "./SideBar";
 import StyledImage from "./StyledImage";
 
 const CustomHeader = ({ }) => {
     const theme = useTheme()
     const matchesMobile = useMediaQuery(theme.breakpoints.down("laptop"))
+    const [mobileOpen, setMobileOpen] = useState(false);
 
+    useEffect(() => {
+        if (!matchesMobile) {
+            setMobileOpen(false)
+        }
+    }, [matchesMobile])
 
     return (
         <>
+        <AppBar position="fixed" sx={{ zIndex: (theme) => theme.zIndex.drawer + 1 }}>
             <Box sx={[{
                 width: "100%", minHeight: { laptop: 90, tablet: 80, mobile: 60 },
                 display: "flex",
@@ -21,7 +29,12 @@ const CustomHeader = ({ }) => {
                 backgroundImage: `${theme.palette.primary.headerGradient}`
             })]}>
                 <Box sx={{ display: "flex", alignItems: "center" }}>
-                    <StyledImage src={Draw} sx={{ height: { laptop: "24px", mobile: "20px" }, width: "auto" }} />
+                    <StyledImage onClick={() => {
+                        if (matchesMobile) {
+                            setMobileOpen(!mobileOpen)
+                        }
+
+                    }} src={Draw} sx={{ height: { laptop: "24px", mobile: "20px" }, width: "auto" }} />
                     <StyledImage src={logo} sx={{ height: { laptop: "45px", mobile: "40px" }, width: "auto", marginLeft: "20px" }} />
                 </Box>
                 <Box sx={{ display: "flex", alignItems: "center", paddingLeft: "10px" }}>
@@ -36,7 +49,10 @@ const CustomHeader = ({ }) => {
             <Box sx={{ height: "32px", display: "flex", background: "#202020", alignItems: "center" }}>
                 <marquee><Typography sx={{ color: "text.white", fontSize: "10px", fontStyle: "italic", letterSpacing: "1px", overflow: "hidden", whiteSpace: "nowrap", "text-overflow:": "ellipsis" }}>This is a demo notification highlight. This is a demo notification highlight.This is a demo notification highlight. This is a demo notification highlight.This is a demo notification highlight. This is a demo notification highlight.This is a demo notification highlight.</Typography></marquee>
             </Box>
-            {/* <Box sx={{ minHeight: { laptop: 90, tablet: 80, mobile: 60 } }} /> */}
+            {matchesMobile && <MobileSideBar mobileOpen={mobileOpen} setMobileOpen={setMobileOpen} />}
+          
+        </AppBar>
+          <Box sx={{ minHeight: { laptop: 90+32, tablet: 80+32, mobile: 60+32 } }} />
         </>
     )
 }
@@ -117,6 +133,35 @@ const DropdownMenu = ({ anchorEl, open, handleClose }) => {
                 <StyledImage src={Logout} sx={{ width: "35%", height: "auto" }} />
             </Box>
         </Menu>
+    )
+}
+
+const MobileSideBar = ({ mobileOpen, setMobileOpen }) => {
+
+    const handleDrawerToggle = () => {
+        setMobileOpen(!mobileOpen);
+    };
+    const container = window !== undefined ? () => window.document.body : undefined;
+
+    return (
+        <Drawer
+            container={container}
+            variant="temporary"
+            open={mobileOpen}
+            onClose={handleDrawerToggle}
+            ModalProps={{
+                keepMounted: true, // Better open performance on mobile.
+            }}
+            sx={{
+                display: { xs: 'block', sm: 'none' },
+                '& .MuiDrawer-paper': { boxSizing: 'border-box', width: "260px" },
+            }}
+        >
+             <Box sx={{ minHeight: { laptop: 90+32, tablet: 80+32, mobile: 60+32 } }} />
+            <Box sx={{ height: "100vh", background: "red" }}>
+                <SideBar mobileShow={true} />
+            </Box>
+        </Drawer>
     )
 }
 
