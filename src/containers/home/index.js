@@ -5,14 +5,17 @@ import EventListing from "../../components/EventListing";
 import MatchComponent from "../../components/MathComponent";
 import LiveMatchHome from "../../components/LiveMatchHome";
 import MyBetHome from "../../components/MyBetHome";
-import { useMediaQuery, useTheme } from "@mui/material";
+import { Typography, useMediaQuery, useTheme } from "@mui/material";
 import PlaceBet from "../../components/PlaceBet";
+import { HourGlass } from "../../assets";
+import Lottie from "lottie-react";
 
 export default function Home() {
   const [drawer, setDrawer] = useState(false)
   const theme = useTheme()
   const matchesMobile = useMediaQuery(theme.breakpoints.down("laptop"))
   const [open, handleClose] = useState(false)
+  const [selected,setSelected]=useState("CRICKET")
   return (
     <div style={{ height: "100vh", display: 'flex', flexDirection: 'column' }} >
       <CustomHeader />
@@ -27,22 +30,17 @@ export default function Home() {
         <Box sx={{ display: 'flex', overflowX: "hidden", flexDirection: 'column', flex: 1, justifyContent: 'flex-start', overflowY: "auto", alignItems: 'flex-start' }}>
 
 
-          <EventListing />
+          <EventListing setSelected={setSelected} selected={selected} />
 
-          {matchesMobile && <>
+          {matchesMobile&&selected=="CRICKET" && <>
             <Box sx={{ display: 'block', width: '90%', alignSelf: 'center', }}>
               <LiveMatchHome />
-              {/* <div style={{ height: '.002vh' }} ></div> */}
-
               <MatchComponent />
-              {/* <div style={{ height: '.7vh' }} ></div> */}
               <MyBetHome />
-              {/* <div style={{ height: '2vh' }} ></div> */}
-
             </Box>
 
             <MatchOdds onClick={() => handleClose(true)} /></>}
-          {!matchesMobile && <Box sx={{ display: 'flex' }}>
+          {!matchesMobile&&selected=="CRICKET" && <Box sx={{ display: 'flex' }}>
 
             <Box sx={{ display: 'flex', flexDirection: 'column', width: '100%' }}>
 
@@ -50,18 +48,17 @@ export default function Home() {
             </Box>
             <Box sx={{ width: '50%', paddingRight: '8%', marginLeft: -1 }}>
               <LiveMatchHome />
-              {/* <div style={{ height: '.0013vh' }} ></div> */}
-
-              {/* <br /> */}
               <MatchComponent />
-              {/* <div style={{ height: '1vh' }} ></div> */}
-
               <MyBetHome />
-
             </Box>
           </Box>
           }
-
+          {selected!="CRICKET"&&
+          <Box style={{display:"flex",justifyContent:"center",width:"100%",flex:1,alignItems:"center",flexDirection:"column"}}>
+          <Lottie animationData={HourGlass} style={{display:"flex",alignSelf:"center",width:"200px",height:"200px"}} />
+          <Typography sx={{color:"text.white"}}>Coming Soon</Typography>
+          </Box>
+          }
         </Box>
       </Box>
 

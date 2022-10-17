@@ -3,8 +3,7 @@ import { Box } from "@mui/system"
 import { useState } from "react"
 import { BASKETBALL, Card, CHESS, Cricket, Football, GOLF, Hockey, Play, Slot, SNOOKER, Tennis } from "../assets"
 
-const EventListing = ({ }) => {
-    const [selected, setSelected] = useState('CRICKET')
+const EventListing = ({ selected,setSelected}) => {
     const data = [
         {
             title: "INPLAY",

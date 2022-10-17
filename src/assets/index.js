@@ -35,6 +35,7 @@ export { default as TEAMLOGO } from './homeScreen/teamlogo.png'
 export { default as TEAMLOGO1 } from './homeScreen/teamlogo2.png'
 export { default as CANCEL } from './homeScreen/cancel.png'
 
+export {default as HourGlass} from './hourglass.json'
 
 
 
