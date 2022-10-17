@@ -6,7 +6,7 @@ import { Box } from "@mui/system"
 const MatchComponent = ({ }) => {
 
     return (
-        <Box sx={[{ width: { table: "55%", mobile: "100%", laptop: '100%' }, display: 'flex', flexDirection: 'column', marginX: { laptop: '0vw', mobile: '0px', tablet: '0px' }, marginY: '1vh', height: '18%', minHeight: '100px', background: 'white', alignSelf: { mobile: 'center', tablet: 'center', laptop: "flex-start" } }]}>
+        <Box sx={[{ width: { table: "55%", mobile: "100%", laptop: '100%' }, display: 'flex', flexDirection: 'column', marginX: { laptop: '0vw', mobile: '0px', tablet: '0px' }, marginY:"2vh", height: '18%', minHeight: '100px', background: 'white', alignSelf: { mobile: 'center', tablet: 'center', laptop: "flex-start" } }]}>
             <Typography sx={{ fontSize: { mobile: '10px', table: '12px', laptop: '15px' }, marginLeft: '1vw', flexDirection: 'row' }} >World T20 <span style={{ color: 'grey' }} >Sunday 23 OCT, 1:30 pm</span></Typography>
             <Box sx={{ display: 'flex', paddingBottom: '1vh', flexDirection: 'row', flex: 1, justifyContent: 'flex-end' }} >
                 <Box sx={{ display: 'flex', flex: 1, alignItems: 'center', justifyContent: 'flex-end', flexDirection: 'column' }} >
