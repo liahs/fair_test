@@ -32,12 +32,12 @@ export default function Home() {
           {matchesMobile && <>
             <Box sx={{ display: 'block', width: '90%', alignSelf: 'center', }}>
               <LiveMatchHome />
-              <div style={{ height: '.002vh' }} ></div>
+              {/* <div style={{ height: '.002vh' }} ></div> */}
 
               <MatchComponent />
-              <div style={{ height: '.7vh' }} ></div>
+              {/* <div style={{ height: '.7vh' }} ></div> */}
               <MyBetHome />
-              <div style={{ height: '2vh' }} ></div>
+              {/* <div style={{ height: '2vh' }} ></div> */}
 
             </Box>
 
@@ -50,11 +50,11 @@ export default function Home() {
             </Box>
             <Box sx={{ width: '50%', paddingRight: '8%', marginLeft: -1 }}>
               <LiveMatchHome />
-              <div style={{ height: '.0013vh' }} ></div>
+              {/* <div style={{ height: '.0013vh' }} ></div> */}
 
               {/* <br /> */}
               <MatchComponent />
-              <div style={{ height: '1vh' }} ></div>
+              {/* <div style={{ height: '1vh' }} ></div> */}
 
               <MyBetHome />
 
