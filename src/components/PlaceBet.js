@@ -25,7 +25,20 @@ const PlaceBet = ({ open, handleClose }) => {
                     {!header && i == 0 && <img style={{ width: '15px', height: '15px', marginRight: '5px' }} src={CANCEL} />}
                     {(i !== 1 || header) && < Typography sx={{ fontSize: { laptop: header ? "10px" : "12px", mobile: header ? "8px" : "10px" }, fontWeight: header ? "normal" : "600", color: header ? "text.white" : "text" }}>{x}</Typography>}
                     {(i == 1 && !header) &&
-                        <TextField type={'number'} defaultValue={x} variant="standard" sx={{ height: '30px', fontSize: '1px' }} />
+                        <TextField
+
+                            inputProps={{
+                                disableUnderline: true,
+                                style: {
+                                    fontSize: '10px',
+                                    fontWeight: "600",
+                                    height: '100%',
+
+                                },
+
+                            }}
+                            fo
+                            type={'number'} defaultValue={x} variant="standard" sx={{ height: '30px', fontSize: '1px' }} />
                     }
 
                 </Box>)
@@ -33,9 +46,9 @@ const PlaceBet = ({ open, handleClose }) => {
             </Box >
         )
     }
-    const CustomButton = ({ color, title }) => {
+    const CustomButton = ({ color, title, onClick }) => {
         return (
-            <Box sx={{ width: '130px', height: "35px", borderRadius: '15px', alignItems: 'center', justifyContent: 'center', background: color, display: 'flex' }}>
+            <Box onClick={onClick} sx={{ width: '130px', height: "35px", borderRadius: '15px', alignItems: 'center', justifyContent: 'center', background: color, display: 'flex' }}>
                 <Typography sx={{ color: 'white', fontWeight: '500', fontSize: '13px' }} >{title}</Typography>
             </Box>
         )
@@ -48,8 +61,8 @@ const PlaceBet = ({ open, handleClose }) => {
                 <Box sx={{ width: '300px', background: 'white', }} >
                     <SetBet />
                     <Box sx={{ display: 'flex', flex: 1, paddingY: '2vh', justifyContent: 'space-evenly' }}>
-                        <CustomButton title={'Reset'} color={'red'} />
-                        <CustomButton title={'Submit'} color={'green'} />
+                        <CustomButton onClick={handleClose} title={'Reset'} color={'red'} />
+                        <CustomButton onClick={handleClose} title={'Submit'} color={'green'} />
 
                     </Box>
                 </Box>

@@ -12,7 +12,7 @@ export default function Home() {
   const [drawer, setDrawer] = useState(false)
   const theme = useTheme()
   const matchesMobile = useMediaQuery(theme.breakpoints.down("laptop"))
-  const [open, handleClose] = useState(true)
+  const [open, handleClose] = useState(false)
   return (
     <div style={{ height: "100vh", display: 'flex', flexDirection: 'column' }} >
       <CustomHeader />
@@ -41,12 +41,12 @@ export default function Home() {
 
             </Box>
 
-            <MatchOdds /></>}
+            <MatchOdds onClick={() => handleClose(true)} /></>}
           {!matchesMobile && <Box sx={{ display: 'flex' }}>
 
             <Box sx={{ display: 'flex', flexDirection: 'column', width: '100%' }}>
 
-              <MatchOdds />
+              <MatchOdds onClick={() => handleClose(true)} />
             </Box>
             <Box sx={{ width: '50%', paddingRight: '8%', marginLeft: -1 }}>
               <LiveMatchHome />

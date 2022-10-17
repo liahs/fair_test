@@ -24,9 +24,9 @@ const Divider = () => {
         <Box sx={{ width: '100%', color: 'grey', height: '.5px' }} ></Box>
     )
 }
-const Odds = () => {
+const Odds = ({ onClick }) => {
     return (
-        <Box sx={{ display: 'flex', flexDirection: 'column', marginY: '1vh', width: { table: "55%", mobile: "90%", laptop: '95%' }, marginX: '1vw', alignSelf: { mobile: 'center', tablet: 'center', laptop: 'flex-start', } }}>
+        <Box onClick={onClick} sx={{ display: 'flex', flexDirection: 'column', marginY: '1vh', width: { table: "55%", mobile: "90%", laptop: '95%' }, marginX: '1vw', alignSelf: { mobile: 'center', tablet: 'center', laptop: 'flex-start', } }}>
 
 
 
@@ -144,9 +144,9 @@ const Odds = () => {
 
     )
 }
-const SeasonMarket = () => {
+const SeasonMarket = ({ onClick }) => {
     return (
-        <Box sx={{ display: 'flex', flexDirection: 'column', marginY: '1vh', width: { table: "55%", mobile: "90%", laptop: '95%' }, marginX: '1vw', alignSelf: { mobile: 'center', tablet: 'center', laptop: 'flex-start', } }}>
+        <Box onClick={onClick} sx={{ display: 'flex', flexDirection: 'column', marginY: '1vh', width: { table: "55%", mobile: "90%", laptop: '95%' }, marginX: '1vw', alignSelf: { mobile: 'center', tablet: 'center', laptop: 'flex-start', } }}>
 
 
 
@@ -334,9 +334,9 @@ const SeasonMarket = () => {
 
     )
 }
-const BookMarketer = () => {
+const BookMarketer = ({ onClick }) => {
     return (
-        <Box sx={{ display: 'flex', flexDirection: 'column', marginY: '1vh', width: { table: "55%", mobile: "90%", laptop: '95%' }, marginX: '1vw', alignSelf: { mobile: 'center', tablet: 'center', laptop: 'flex-start', } }}>
+        <Box onClick={onClick} sx={{ display: 'flex', flexDirection: 'column', marginY: '1vh', width: { table: "55%", mobile: "90%", laptop: '95%' }, marginX: '1vw', alignSelf: { mobile: 'center', tablet: 'center', laptop: 'flex-start', } }}>
 
             <Box sx={{ display: 'flex', height: 40, flexDirection: 'row', width: '100%' }}>
                 <Box sx={{ flex: 1.2, background: '#f1c550', alignItems: 'center', display: 'flex' }}>
@@ -426,13 +426,13 @@ const BookMarketer = () => {
         </Box>
     )
 }
-const MatchOdds = ({ }) => {
+const MatchOdds = ({ onClick }) => {
 
     return (
         < >
-            <Odds />
-            <BookMarketer />
-            <SeasonMarket />
+            <Odds onClick={onClick} />
+            <BookMarketer onClick={onClick} />
+            <SeasonMarket onClick={onClick} />
         </>
     )
 }
