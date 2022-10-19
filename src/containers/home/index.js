@@ -32,7 +32,7 @@ export default function Home() {
 
           <EventListing setSelected={setSelected} selected={selected} />
 
-          {matchesMobile && selected == "CRICKET" && <>
+          {matchesMobile && (selected == "CRICKET" || selected == "INPLAY") && <>
             <MatchOdds onClick={() => handleClose(true)} />
 
             <Box sx={{ display: 'block', width: '100%', alignSelf: 'center', }}>
