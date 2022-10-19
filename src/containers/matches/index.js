@@ -1,4 +1,4 @@
-import { Box ,Typography} from "@mui/material";
+import { Box, Typography } from "@mui/material";
 import { useState } from "react";
 import { CustomHeader, MatchOdds, SideBar } from "../../components";
 import EventListing from "../../components/EventListing";
@@ -29,9 +29,9 @@ export default function Matches() {
 
 
                     <EventListing selected={selected} setSelected={setSelected} />
-                    <div style={{height:"1vh"}} />
-                    {selected == "CRICKET" && <MatchesComponent onClick={() => navigate('/home')} />}
-                    {selected != "CRICKET" &&
+                    <div style={{ height: "1vh" }} />
+                    {(selected == "CRICKET" || selected == "INPLAY") && <MatchesComponent onClick={() => navigate('/home')} />}
+                    {(selected != "CRICKET" && selected != "INPLAY") &&
                         <Box style={{ display: "flex", justifyContent: "center", width: "100%", flex: 1, alignItems: "center", flexDirection: "column" }}>
                             <Lottie animationData={HourGlass} style={{ display: "flex", alignSelf: "center", width: "200px", height: "200px" }} />
                             <Typography sx={{ color: "text.white" }}>Coming Soon</Typography>

@@ -10,12 +10,12 @@ function BackgroundCarousel() {
                 <Carousel.Item >
                     <Box style={{ height: "100vh", width: "100vw", backgroundImage: `url(${loginBackground})`, backgroundRepeat: "no-repeat", backgroundSize: "100vw 100vh" }} />
                 </Carousel.Item>
-                <Carousel.Item >
+                {/* <Carousel.Item >
                     <Box style={{ height: "100vh", width: "100vw", backgroundImage: `url(${loginBackground1})`, backgroundRepeat: "no-repeat", backgroundSize: "100vw 100vh" }} />
                 </Carousel.Item>
                 <Carousel.Item>
                     <Box style={{ height: "100vh", width: "100vw", backgroundImage: `url(${loginBackground2})`, backgroundRepeat: "no-repeat", backgroundSize: "100vw 100vh" }} />
-                </Carousel.Item>
+                </Carousel.Item> */}
             </Carousel>
         </Box>
     );

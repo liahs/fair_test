@@ -15,7 +15,7 @@ export default function Home() {
   const theme = useTheme()
   const matchesMobile = useMediaQuery(theme.breakpoints.down("laptop"))
   const [open, handleClose] = useState(false)
-  const [selected,setSelected]=useState("CRICKET")
+  const [selected, setSelected] = useState("CRICKET")
   return (
     <div style={{ height: "100vh", display: 'flex', flexDirection: 'column' }} >
       <CustomHeader />
@@ -32,15 +32,16 @@ export default function Home() {
 
           <EventListing setSelected={setSelected} selected={selected} />
 
-          {matchesMobile&&selected=="CRICKET" && <>
-            <Box sx={{ display: 'block', width: '90%', alignSelf: 'center', }}>
+          {matchesMobile && selected == "CRICKET" && <>
+            <MatchOdds onClick={() => handleClose(true)} />
+
+            <Box sx={{ display: 'block', width: '100%', alignSelf: 'center', }}>
               <LiveMatchHome />
               <MatchComponent />
               <MyBetHome />
             </Box>
-
-            <MatchOdds onClick={() => handleClose(true)} /></>}
-          {!matchesMobile&&selected=="CRICKET" && <Box sx={{ display: 'flex' }}>
+          </>}
+          {!matchesMobile && (selected == "CRICKET" || selected == "INPLAY") && <Box sx={{ display: 'flex' }}>
 
             <Box sx={{ display: 'flex', flexDirection: 'column', width: '100%' }}>
 
@@ -53,11 +54,11 @@ export default function Home() {
             </Box>
           </Box>
           }
-          {selected!="CRICKET"&&
-          <Box style={{display:"flex",justifyContent:"center",width:"100%",flex:1,alignItems:"center",flexDirection:"column"}}>
-          <Lottie animationData={HourGlass} style={{display:"flex",alignSelf:"center",width:"200px",height:"200px"}} />
-          <Typography sx={{color:"text.white"}}>Coming Soon</Typography>
-          </Box>
+          {selected != "CRICKET" && selected != "INPLAY" &&
+            <Box style={{ display: "flex", justifyContent: "center", width: "100%", flex: 1, alignItems: "center", flexDirection: "column" }}>
+              <Lottie animationData={HourGlass} style={{ display: "flex", alignSelf: "center", width: "200px", height: "200px" }} />
+              <Typography sx={{ color: "text.white" }}>Coming Soon</Typography>
+            </Box>
           }
         </Box>
       </Box>

@@ -3,7 +3,7 @@ import { Box } from "@mui/system"
 import { useState } from "react"
 import { BASKETBALL, Card, CHESS, Cricket, Football, GOLF, Hockey, Play, Slot, SNOOKER, Tennis } from "../assets"
 
-const EventListing = ({ selected,setSelected}) => {
+const EventListing = ({ selected, setSelected }) => {
     const data = [
         {
             title: "INPLAY",
@@ -56,16 +56,16 @@ const EventListing = ({ selected,setSelected}) => {
             <Box onClick={() => {
                 setSelected(data.title)
             }} sx={[{
-                width: '55px', minHeight: { laptop: 70, tablet: 65, mobile: 50 }, minWidth: { laptop: 70, tablet: 65, mobile: 50 }, height: '55px', marginX: '1vw', marginY: '1vh', borderRadius: '.6vh', display: 'flex', flexDirection: 'column',
+                width: '55px', minHeight: { laptop: 70, tablet: 70, mobile: 80 }, minWidth: { laptop: 70, tablet: 70, mobile: 80 }, height: '55px', marginX: '.5vw', marginBottom: '1vh', borderRadius: '.6vh', display: 'flex', flexDirection: 'column',
                 alignItems: 'center', justifyContent: { laptop: 'center', mobile: 'center' }, background: 'white'
             }, selected == data.title ? { border: "2px solid #F8C851" } : { border: '2px solid white' }]} >
                 <img src={data.image} style={{ width: '30px', height: '30px', alignSelf: 'center' }} />
-                <Typography noWrap sx={{ fontSize: { laptop: '.7vw', tablet: "0px", mobile: '0px' }, marginTop: { mobile: '0px', tablet: '0px', laptop: '1vh' } }} >{data.title}</Typography>
+                <Typography noWrap sx={{ fontSize: { laptop: '10px', tablet: "8px", mobile: '10px' }, fontWeight: { mobile: "500", tablet: '500' }, marginTop: { mobile: '10px', tablet: '1.1vh', laptop: '1vh' } }} >{data.title}</Typography>
             </Box>
         )
     }
     return (
-        <Box sx={[{ width: { mobile: "90%", laptop: '100%', tablet: '80%' },scrollbarWidth:"none",msOverflowStyle: "none", minHeight: { mobile: 80, laptop: 85 }, overflowY: "visible", overflowX: 'auto', marginTop: '1vh', alignSelf: { mobile: 'center', laptop: 'flex-start', tablet: 'center' }, display: 'flex' }]}>
+        <Box sx={[{ width: { mobile: "100%", laptop: '100%', tablet: '100%' }, scrollbarWidth: "none", msOverflowStyle: "none", minHeight: { mobile: 90, laptop: 85 }, overflowY: "visible", overflowX: 'auto', marginTop: '1vh', alignSelf: { mobile: 'center', laptop: 'flex-start', tablet: 'center' }, display: 'flex' }]}>
             {
                 data.map((i) => {
                     return (
