@@ -24,9 +24,9 @@ export default function Home() {
       })]} >
 
         <SideBar />
-        <PlaceBet open={open} handleClose={() => {
+        {/* <PlaceBet open={open} handleClose={() => {
           handleClose(!open)
-        }} />
+        }} /> */}
         <Box sx={{ display: 'flex', overflowX: "hidden", flexDirection: 'column', flex: 1, justifyContent: 'flex-start', overflowY: "auto", alignItems: 'flex-start' }}>
 
 
@@ -34,7 +34,7 @@ export default function Home() {
 
           {matchesMobile && (selected == "CRICKET" || selected == "INPLAY") && <>
             <MatchOdds onClick={() => handleClose(true)} />
-
+            
             <Box sx={{ display: 'block', width: '100%', alignSelf: 'center', }}>
               <LiveMatchHome />
               <MatchComponent />

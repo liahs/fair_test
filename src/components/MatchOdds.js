@@ -1,8 +1,10 @@
+import React from "react"
 import { useTheme } from "@emotion/react"
 import { Box, Typography, useMediaQuery } from "@mui/material"
-import { display, width } from "@mui/system"
 import { Header, Info, Lock } from "../assets"
 import './index.css'
+import PlaceBet from "./PlaceBet"
+
 const SeperateBox = ({ color, empty, value, value2, lock }) => {
     const theme = useTheme()
     const matchesMobile = useMediaQuery(theme.breakpoints.down("laptop"))
@@ -151,23 +153,16 @@ const Odds = ({ onClick }) => {
 }
 const SeasonMarket = ({ onClick }) => {
     return (
-        <Box onClick={onClick} sx={{ display: 'flex', flexDirection: 'column', marginY: '1vh', width: { tablet: "55%", mobile: "100%", laptop: '95%' }, marginX: '1vw', alignSelf: { mobile: 'center', tablet: 'center', laptop: 'flex-start', } }}>
-
-
-
-
-
+        <Box onClick={onClick} sx={{ display: 'flex', flexDirection: 'column', marginY: '1vh', width: {  mobile: "100%", laptop: '95%' }, marginX: '1vw', alignSelf: { mobile: 'center', tablet: 'center', laptop: 'flex-start', } }}>
             <Box sx={{ display: 'flex', height: 38, flexDirection: 'row', width: '100%' }}>
                 <Box sx={{ flex: 1.2, background: '#f1c550', alignItems: 'center', display: 'flex' }}>
                     <Typography sx={{ fontSize: { laptop: '13px', tablet: '12px', mobile: "12px" }, fontWeight: 'bold', marginLeft: '7px' }} >Session Market</Typography>
                 </Box>
-
                 <Box sx={{
                     flex: .3, background: '#262626'
                     // '#262626' 
                 }}>
                     <div class="slanted"></div>
-
                 </Box>
                 <Box sx={{
                     flex: 1, background: '#262626',
@@ -180,6 +175,7 @@ const SeasonMarket = ({ onClick }) => {
                     <img src={Info} style={{ width: '15px', height: '15px', marginRight: '5px', marginLeft: '5px' }} />
                 </Box>
             </Box >
+            <Box sx={{width:"100%",height:"200px",overflowY:"auto"}}>
             <Box sx={{ display: 'flex', background: '#319E5B', height: '20px', width: '100%' }} >
                 <Box sx={{ display: 'flex', background: '#319E5B', height: '20px', width: '40%', alignItems: 'center' }} >
                     <Typography sx={{ color: 'white', fontSize: { laptop: '11px', tablet: '10px', mobile: "8px" }, marginLeft: '7px' }} >MIN: 4000 MAX:4500</Typography>
@@ -196,145 +192,146 @@ const SeasonMarket = ({ onClick }) => {
 
                 </Box>
             </Box>
-            <Box sx={{ display: 'flex', background: 'white', height: '38px', width: '100%' }} >
-                <Box sx={{ display: 'flex', background: 'white', height: '38px', width: '40%', alignItems: 'center' }} >
-                    <Typography sx={{ color: 'black', fontSize: { laptop: '11px', tablet: '10px', mobile: "8px" }, marginLeft: '7px', fontWeight: '600' }} >6 Over runs INDIA W (INDIA vs PAKISTAN) Adv 0</Typography>
+           
+                <Box sx={{ display: 'flex', background: 'white', height: '38px', width: '100%' }} >
+                    <Box sx={{ display: 'flex', background: 'white', height: '38px', width: '40%', alignItems: 'center' }} >
+                        <Typography sx={{ color: 'black', fontSize: { laptop: '11px', tablet: '10px', mobile: "8px" }, marginLeft: '7px', fontWeight: '600' }} >6 Over runs INDIA W (INDIA vs PAKISTAN) Adv 0</Typography>
+                    </Box>
+                    <Box sx={{ display: 'flex', background: 'white', height: '38px', width: { laptop: '60%', mobile: '80%' }, justifyContent: 'center', alignItems: 'center' }} >
+                        <SeperateBox color={"white"} />
+
+                        <Box sx={{ width: '.45%', display: 'flex', background: 'pink' }} ></Box>
+                        <SeperateBox color={"white"} />
+                        <Box sx={{ width: '.45%', display: 'flex', background: 'pink' }} ></Box>
+
+                        <SeperateBox value={"39"} value2={"100"} color={"#B3E0FF"} />
+                        <Box sx={{ width: '.45%', display: 'flex', background: 'pink' }} ></Box>
+                        <SeperateBox value={"37"} value2={"100"} color={"#F6D0CB"} />
+                        <Box sx={{ width: '.45%', display: 'flex', background: 'pink' }} ></Box>
+                        <SeperateBox color={"white"} />
+                        <Box sx={{ width: '.45%', display: 'flex', background: 'pink' }} ></Box>
+                        <SeperateBox color={"white"} />
+                        <Box sx={{ width: '.45%', display: 'flex', background: 'pink' }} ></Box>
+
+                    </Box>
                 </Box>
-                <Box sx={{ display: 'flex', background: 'white', height: '38px', width: { laptop: '60%', mobile: '80%' }, justifyContent: 'center', alignItems: 'center' }} >
-                    <SeperateBox color={"white"} />
+                <Divider />
+                <Box sx={{ display: 'flex', background: 'white', height: '38px', width: '100%' }} >
+                    <Box sx={{ display: 'flex', background: 'white', height: '38px', width: '40%', alignItems: 'center' }} >
+                        <Typography sx={{ color: 'black', fontSize: { laptop: '11px', tablet: '10px', mobile: "8px" }, marginLeft: '7px', fontWeight: '600' }} >6 Over runs INDIA W (INDIA vs PAKISTAN) Adv 0</Typography>
+                    </Box>
+                    <Box sx={{ display: 'flex', background: 'white', height: '38px', width: { laptop: '60%', mobile: '80%' }, justifyContent: 'center', alignItems: 'center' }} >
+                        <SeperateBox color={"white"} />
 
-                    <Box sx={{ width: '.45%', display: 'flex', background: 'pink' }} ></Box>
-                    <SeperateBox color={"white"} />
-                    <Box sx={{ width: '.45%', display: 'flex', background: 'pink' }} ></Box>
+                        <Box sx={{ width: '.45%', display: 'flex', background: 'pink' }} ></Box>
+                        <SeperateBox color={"white"} />
+                        <Box sx={{ width: '.45%', display: 'flex', background: 'pink' }} ></Box>
 
-                    <SeperateBox value={"39"} value2={"100"} color={"#B3E0FF"} />
-                    <Box sx={{ width: '.45%', display: 'flex', background: 'pink' }} ></Box>
-                    <SeperateBox value={"37"} value2={"100"} color={"#F6D0CB"} />
-                    <Box sx={{ width: '.45%', display: 'flex', background: 'pink' }} ></Box>
-                    <SeperateBox color={"white"} />
-                    <Box sx={{ width: '.45%', display: 'flex', background: 'pink' }} ></Box>
-                    <SeperateBox color={"white"} />
-                    <Box sx={{ width: '.45%', display: 'flex', background: 'pink' }} ></Box>
+                        <SeperateBox value={"39"} value2={"100"} color={"#B3E0FF"} />
+                        <Box sx={{ width: '.45%', display: 'flex', background: 'pink' }} ></Box>
+                        <SeperateBox value={"37"} value2={"100"} color={"#F6D0CB"} />
+                        <Box sx={{ width: '.45%', display: 'flex', background: 'pink' }} ></Box>
+                        <SeperateBox color={"white"} />
+                        <Box sx={{ width: '.45%', display: 'flex', background: 'pink' }} ></Box>
+                        <SeperateBox color={"white"} />
+                        <Box sx={{ width: '.45%', display: 'flex', background: 'pink' }} ></Box>
 
+                    </Box>
                 </Box>
+                <Divider />
+                <Box sx={{ display: 'flex', background: 'white', height: '38px', width: '100%' }} >
+                    <Box sx={{ display: 'flex', background: 'white', height: '38px', width: '40%', alignItems: 'center' }} >
+                        <Typography sx={{ color: 'black', fontSize: { laptop: '11px', tablet: '10px', mobile: "8px" }, marginLeft: '7px', fontWeight: '600' }} >6 Over runs Pakistan W (INDIA vs PAKISTAN) Adv 0</Typography>
+                    </Box>
+                    <Box sx={{ display: 'flex', background: 'white', height: '38px', width: { laptop: '60%', mobile: '80%' }, justifyContent: 'center', alignItems: 'center' }} >
+                        <SeperateBox color={"white"} />
+
+                        <Box sx={{ width: '.45%', display: 'flex', background: 'pink' }} ></Box>
+                        <SeperateBox color={"white"} />
+                        <Box sx={{ width: '.45%', display: 'flex', background: 'pink' }} ></Box>
+
+                        <SeperateBox value={"39"} value2={"100"} color={"#B3E0FF"} />
+                        <Box sx={{ width: '.45%', display: 'flex', background: 'pink' }} ></Box>
+                        <SeperateBox value={"37"} value2={"100"} color={"#F6D0CB"} />
+                        <Box sx={{ width: '.45%', display: 'flex', background: 'pink' }} ></Box>
+                        <SeperateBox color={"white"} />
+                        <Box sx={{ width: '.45%', display: 'flex', background: 'pink' }} ></Box>
+                        <SeperateBox color={"white"} />
+                        <Box sx={{ width: '.45%', display: 'flex', background: 'pink' }} ></Box>
+
+                    </Box>
+                </Box>
+                <Divider />
+                <Box sx={{ display: 'flex', background: 'white', height: '38px', width: '100%' }} >
+                    <Box sx={{ display: 'flex', background: 'white', height: '38px', width: '40%', alignItems: 'center' }} >
+                        <Typography sx={{ color: 'black', fontSize: { laptop: '11px', tablet: '10px', mobile: "8px" }, marginLeft: '7px', fontWeight: '600' }} >15 Over runs INDIA W (INDIA vs PAKISTAN) Adv 0</Typography>
+                    </Box>
+                    <Box sx={{ display: 'flex', background: 'white', height: '38px', width: { laptop: '60%', mobile: '80%' }, justifyContent: 'center', alignItems: 'center' }} >
+                        <SeperateBox color={"white"} />
+
+                        <Box sx={{ width: '.45%', display: 'flex', background: 'pink' }} ></Box>
+                        <SeperateBox color={"white"} />
+                        <Box sx={{ width: '.45%', display: 'flex', background: 'pink' }} ></Box>
+
+                        <SeperateBox value={"39"} value2={"100"} color={"#B3E0FF"} />
+                        <Box sx={{ width: '.45%', display: 'flex', background: 'pink' }} ></Box>
+                        <SeperateBox value={"37"} value2={"100"} color={"#F6D0CB"} />
+                        <Box sx={{ width: '.45%', display: 'flex', background: 'pink' }} ></Box>
+                        <SeperateBox color={"white"} />
+                        <Box sx={{ width: '.45%', display: 'flex', background: 'pink' }} ></Box>
+                        <SeperateBox color={"white"} />
+                        <Box sx={{ width: '.45%', display: 'flex', background: 'pink' }} ></Box>
+
+                    </Box>
+                </Box>
+                <Divider />
+                <Box sx={{ display: 'flex', background: 'white', height: '38px', width: '100%' }} >
+                    <Box sx={{ display: 'flex', background: 'white', height: '38px', width: '40%', alignItems: 'center' }} >
+                        <Typography sx={{ color: 'black', fontSize: { laptop: '11px', tablet: '10px', mobile: "8px" }, marginLeft: '7px', fontWeight: '600' }} >20 Over runs INDIA W (INDIA vs PAKISTAN) Adv 0</Typography>
+                    </Box>
+                    <Box sx={{ display: 'flex', background: 'white', height: '38px', width: { laptop: '60%', mobile: '80%' }, justifyContent: 'center', alignItems: 'center' }} >
+                        <SeperateBox color={"white"} />
+
+                        <Box sx={{ width: '.45%', display: 'flex', background: 'pink' }} ></Box>
+                        <SeperateBox color={"white"} />
+                        <Box sx={{ width: '.45%', display: 'flex', background: 'pink' }} ></Box>
+
+                        <SeperateBox value={"39"} value2={"100"} color={"#B3E0FF"} />
+                        <Box sx={{ width: '.45%', display: 'flex', background: 'pink' }} ></Box>
+                        <SeperateBox value={"37"} value2={"100"} color={"#F6D0CB"} />
+                        <Box sx={{ width: '.45%', display: 'flex', background: 'pink' }} ></Box>
+                        <SeperateBox color={"white"} />
+                        <Box sx={{ width: '.45%', display: 'flex', background: 'pink' }} ></Box>
+                        <SeperateBox color={"white"} />
+                        <Box sx={{ width: '.45%', display: 'flex', background: 'pink' }} ></Box>
+
+                    </Box>
+                </Box>
+                <Divider />
+                <Box sx={{ display: 'flex', background: 'white', height: '38px', width: '100%' }} >
+                    <Box sx={{ display: 'flex', background: 'white', height: '38px', width: '40%', alignItems: 'center' }} >
+                        <Typography sx={{ color: 'black', fontSize: { laptop: '11px', tablet: '10px', mobile: "8px" }, marginLeft: '7px', fontWeight: '600' }} >6 Over runs INDIA W (INDIA vs PAKISTAN) Adv 0</Typography>
+                    </Box>
+                    <Box sx={{ display: 'flex', background: 'white', height: '38px', width: { laptop: '60%', mobile: '80%' }, justifyContent: 'center', alignItems: 'center' }} >
+                        <SeperateBox color={"white"} />
+
+                        <Box sx={{ width: '.45%', display: 'flex', background: 'pink' }} ></Box>
+                        <SeperateBox color={"white"} />
+                        <Box sx={{ width: '.45%', display: 'flex', background: 'pink' }} ></Box>
+
+                        <SeperateBox value={"39"} value2={"100"} color={"#B3E0FF"} />
+                        <Box sx={{ width: '.45%', display: 'flex', background: 'pink' }} ></Box>
+                        <SeperateBox value={"37"} value2={"100"} color={"#F6D0CB"} />
+                        <Box sx={{ width: '.45%', display: 'flex', background: 'pink' }} ></Box>
+                        <SeperateBox color={"white"} />
+                        <Box sx={{ width: '.45%', display: 'flex', background: 'pink' }} ></Box>
+                        <SeperateBox color={"white"} />
+                        <Box sx={{ width: '.45%', display: 'flex', background: 'pink' }} ></Box>
+
+                    </Box>
+                </Box>
+                <Divider />
             </Box>
-            <Divider />
-            <Box sx={{ display: 'flex', background: 'white', height: '38px', width: '100%' }} >
-                <Box sx={{ display: 'flex', background: 'white', height: '38px', width: '40%', alignItems: 'center' }} >
-                    <Typography sx={{ color: 'black', fontSize: { laptop: '11px', tablet: '10px', mobile: "8px" }, marginLeft: '7px', fontWeight: '600' }} >6 Over runs INDIA W (INDIA vs PAKISTAN) Adv 0</Typography>
-                </Box>
-                <Box sx={{ display: 'flex', background: 'white', height: '38px', width: { laptop: '60%', mobile: '80%' }, justifyContent: 'center', alignItems: 'center' }} >
-                    <SeperateBox color={"white"} />
-
-                    <Box sx={{ width: '.45%', display: 'flex', background: 'pink' }} ></Box>
-                    <SeperateBox color={"white"} />
-                    <Box sx={{ width: '.45%', display: 'flex', background: 'pink' }} ></Box>
-
-                    <SeperateBox value={"39"} value2={"100"} color={"#B3E0FF"} />
-                    <Box sx={{ width: '.45%', display: 'flex', background: 'pink' }} ></Box>
-                    <SeperateBox value={"37"} value2={"100"} color={"#F6D0CB"} />
-                    <Box sx={{ width: '.45%', display: 'flex', background: 'pink' }} ></Box>
-                    <SeperateBox color={"white"} />
-                    <Box sx={{ width: '.45%', display: 'flex', background: 'pink' }} ></Box>
-                    <SeperateBox color={"white"} />
-                    <Box sx={{ width: '.45%', display: 'flex', background: 'pink' }} ></Box>
-
-                </Box>
-            </Box>
-            <Divider />
-            <Box sx={{ display: 'flex', background: 'white', height: '38px', width: '100%' }} >
-                <Box sx={{ display: 'flex', background: 'white', height: '38px', width: '40%', alignItems: 'center' }} >
-                    <Typography sx={{ color: 'black', fontSize: { laptop: '11px', tablet: '10px', mobile: "8px" }, marginLeft: '7px', fontWeight: '600' }} >6 Over runs Pakistan W (INDIA vs PAKISTAN) Adv 0</Typography>
-                </Box>
-                <Box sx={{ display: 'flex', background: 'white', height: '38px', width: { laptop: '60%', mobile: '80%' }, justifyContent: 'center', alignItems: 'center' }} >
-                    <SeperateBox color={"white"} />
-
-                    <Box sx={{ width: '.45%', display: 'flex', background: 'pink' }} ></Box>
-                    <SeperateBox color={"white"} />
-                    <Box sx={{ width: '.45%', display: 'flex', background: 'pink' }} ></Box>
-
-                    <SeperateBox value={"39"} value2={"100"} color={"#B3E0FF"} />
-                    <Box sx={{ width: '.45%', display: 'flex', background: 'pink' }} ></Box>
-                    <SeperateBox value={"37"} value2={"100"} color={"#F6D0CB"} />
-                    <Box sx={{ width: '.45%', display: 'flex', background: 'pink' }} ></Box>
-                    <SeperateBox color={"white"} />
-                    <Box sx={{ width: '.45%', display: 'flex', background: 'pink' }} ></Box>
-                    <SeperateBox color={"white"} />
-                    <Box sx={{ width: '.45%', display: 'flex', background: 'pink' }} ></Box>
-
-                </Box>
-            </Box>
-            <Divider />
-            <Box sx={{ display: 'flex', background: 'white', height: '38px', width: '100%' }} >
-                <Box sx={{ display: 'flex', background: 'white', height: '38px', width: '40%', alignItems: 'center' }} >
-                    <Typography sx={{ color: 'black', fontSize: { laptop: '11px', tablet: '10px', mobile: "8px" }, marginLeft: '7px', fontWeight: '600' }} >15 Over runs INDIA W (INDIA vs PAKISTAN) Adv 0</Typography>
-                </Box>
-                <Box sx={{ display: 'flex', background: 'white', height: '38px', width: { laptop: '60%', mobile: '80%' }, justifyContent: 'center', alignItems: 'center' }} >
-                    <SeperateBox color={"white"} />
-
-                    <Box sx={{ width: '.45%', display: 'flex', background: 'pink' }} ></Box>
-                    <SeperateBox color={"white"} />
-                    <Box sx={{ width: '.45%', display: 'flex', background: 'pink' }} ></Box>
-
-                    <SeperateBox value={"39"} value2={"100"} color={"#B3E0FF"} />
-                    <Box sx={{ width: '.45%', display: 'flex', background: 'pink' }} ></Box>
-                    <SeperateBox value={"37"} value2={"100"} color={"#F6D0CB"} />
-                    <Box sx={{ width: '.45%', display: 'flex', background: 'pink' }} ></Box>
-                    <SeperateBox color={"white"} />
-                    <Box sx={{ width: '.45%', display: 'flex', background: 'pink' }} ></Box>
-                    <SeperateBox color={"white"} />
-                    <Box sx={{ width: '.45%', display: 'flex', background: 'pink' }} ></Box>
-
-                </Box>
-            </Box>
-            <Divider />
-            <Box sx={{ display: 'flex', background: 'white', height: '38px', width: '100%' }} >
-                <Box sx={{ display: 'flex', background: 'white', height: '38px', width: '40%', alignItems: 'center' }} >
-                    <Typography sx={{ color: 'black', fontSize: { laptop: '11px', tablet: '10px', mobile: "8px" }, marginLeft: '7px', fontWeight: '600' }} >20 Over runs INDIA W (INDIA vs PAKISTAN) Adv 0</Typography>
-                </Box>
-                <Box sx={{ display: 'flex', background: 'white', height: '38px', width: { laptop: '60%', mobile: '80%' }, justifyContent: 'center', alignItems: 'center' }} >
-                    <SeperateBox color={"white"} />
-
-                    <Box sx={{ width: '.45%', display: 'flex', background: 'pink' }} ></Box>
-                    <SeperateBox color={"white"} />
-                    <Box sx={{ width: '.45%', display: 'flex', background: 'pink' }} ></Box>
-
-                    <SeperateBox value={"39"} value2={"100"} color={"#B3E0FF"} />
-                    <Box sx={{ width: '.45%', display: 'flex', background: 'pink' }} ></Box>
-                    <SeperateBox value={"37"} value2={"100"} color={"#F6D0CB"} />
-                    <Box sx={{ width: '.45%', display: 'flex', background: 'pink' }} ></Box>
-                    <SeperateBox color={"white"} />
-                    <Box sx={{ width: '.45%', display: 'flex', background: 'pink' }} ></Box>
-                    <SeperateBox color={"white"} />
-                    <Box sx={{ width: '.45%', display: 'flex', background: 'pink' }} ></Box>
-
-                </Box>
-            </Box>
-            <Divider />
-            <Box sx={{ display: 'flex', background: 'white', height: '38px', width: '100%' }} >
-                <Box sx={{ display: 'flex', background: 'white', height: '38px', width: '40%', alignItems: 'center' }} >
-                    <Typography sx={{ color: 'black', fontSize: { laptop: '11px', tablet: '10px', mobile: "8px" }, marginLeft: '7px', fontWeight: '600' }} >6 Over runs INDIA W (INDIA vs PAKISTAN) Adv 0</Typography>
-                </Box>
-                <Box sx={{ display: 'flex', background: 'white', height: '38px', width: { laptop: '60%', mobile: '80%' }, justifyContent: 'center', alignItems: 'center' }} >
-                    <SeperateBox color={"white"} />
-
-                    <Box sx={{ width: '.45%', display: 'flex', background: 'pink' }} ></Box>
-                    <SeperateBox color={"white"} />
-                    <Box sx={{ width: '.45%', display: 'flex', background: 'pink' }} ></Box>
-
-                    <SeperateBox value={"39"} value2={"100"} color={"#B3E0FF"} />
-                    <Box sx={{ width: '.45%', display: 'flex', background: 'pink' }} ></Box>
-                    <SeperateBox value={"37"} value2={"100"} color={"#F6D0CB"} />
-                    <Box sx={{ width: '.45%', display: 'flex', background: 'pink' }} ></Box>
-                    <SeperateBox color={"white"} />
-                    <Box sx={{ width: '.45%', display: 'flex', background: 'pink' }} ></Box>
-                    <SeperateBox color={"white"} />
-                    <Box sx={{ width: '.45%', display: 'flex', background: 'pink' }} ></Box>
-
-                </Box>
-            </Box>
-            <Divider />
-
         </Box>
 
     )
@@ -347,7 +344,7 @@ const BookMarketer = ({ onClick }) => {
             display: 'flex', flexDirection: 'column', marginY: {
                 mobile: '.7vh', laptop: '1vh'
             }
-            , width: { tablet: "55%", mobile: "100%", laptop: '95%' }, marginX: '1vw', alignSelf: { mobile: 'center', tablet: 'center', laptop: 'flex-start', }
+            , width: {  mobile: "100%", laptop: '95%' }, marginX: '1vw', alignSelf: { mobile: 'center', tablet: 'center', laptop: 'flex-start', }
         }}>
 
             <Box sx={{ display: 'flex', height: 38, flexDirection: 'row', width: '100%' }}>
@@ -438,12 +435,35 @@ const BookMarketer = ({ onClick }) => {
     )
 }
 const MatchOdds = ({ onClick }) => {
-
+    const [currentSelected, setCurrentSelected] = React.useState(0)
     return (
         < >
-            <Odds onClick={onClick} />
-            <BookMarketer onClick={onClick} />
-            <SeasonMarket onClick={onClick} />
+            <Odds onClick={() => {
+                if (currentSelected == 1) {
+                    setCurrentSelected(0)
+                } else {
+                    setCurrentSelected(1)
+                }
+
+
+            }} />
+            {currentSelected == 1 && <PlaceBet />}
+            <BookMarketer onClick={onClick = () => {
+                if (currentSelected == 2) {
+                    setCurrentSelected(0)
+                } else {
+                    setCurrentSelected(2)
+                }
+            }} />
+            {currentSelected == 2 && <PlaceBet />}
+            <SeasonMarket onClick={onClick = () => {
+                if (currentSelected == 3) {
+                    setCurrentSelected(0)
+                } else {
+                    setCurrentSelected(3)
+                }
+            }} />
+            {currentSelected == 3 && <PlaceBet />}
         </>
     )
 }

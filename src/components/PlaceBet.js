@@ -88,11 +88,8 @@ const PlaceBet = ({ open, handleClose }) => {
         )
     }
     return (
-        <Modal open={open}
-            onClose={handleClose}
-        >
-            <Box sx={{ width: '100vw', height: '100vh', display: 'flex', justifyContent: 'center', alignItems: 'center', background: 'rgba(0,0,0,.1)', alignSelf: 'center' }} >
-                <Box sx={{ width: '350px', background: 'white', }} >
+        <Box sx={{ display: 'flex', flexDirection: 'column',position:"relative", marginY: { mobile: '.7vh', laptop: '1vh' }, width: { tablet: "100%", mobile: "100%", laptop: '95%' }, marginLeft: '1vw', alignSelf: { mobile: 'center', tablet: 'center', laptop: 'flex-start', } }} >
+                <Box sx={{ background: 'white',width:"100%" }} >
                     <SetBet />
                     <Box sx={{ display: 'flex', flex: 1, paddingY: '2vh', justifyContent: 'space-evenly' }}>
                         <CustomButton onClick={handleClose} title={'Reset'} color={'red'} />
@@ -101,7 +98,6 @@ const PlaceBet = ({ open, handleClose }) => {
                     </Box>
                 </Box>
             </Box>
-        </Modal>
     )
 }
 export default PlaceBet;
