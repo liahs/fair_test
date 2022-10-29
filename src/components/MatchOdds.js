@@ -1,7 +1,7 @@
 import React from "react"
 import { useTheme } from "@emotion/react"
 import { Typography, useMediaQuery, Box } from "@mui/material"
-import { Header, Info, Lock } from "../assets"
+import { Header, Info, Lock, TIME } from "../assets"
 import './index.css'
 import PlaceBet from "./PlaceBet"
 import Matches from "../containers/matches"
@@ -70,8 +70,9 @@ const SmallBox = () => {
 }
 const Time = () => {
     return (
-        <Box sx={{ width: '70px', position: 'absolute', display: 'flex', left: { mobile: '56.5%', laptop: '48%' }, justifyContent: 'center', alignItems: 'center', height: '30px', background: 'white', borderRadius: '7px' }}>
-            <Typography sx={{ fontSize: '12px', fontWeight: 'bold', color: '#46e080' }} >+Book.60</Typography>
+        <Box sx={{ display: 'flex', }}>
+            <Typography sx={{ fontSize: '10px', fontWeight: 'bold', color: '#black', width: '50px' }} >5 sec Delay</Typography>
+            <img src={TIME} />
         </Box>
     )
 }
@@ -86,8 +87,9 @@ const Odds = ({ onClick }) => {
 
 
             <Box sx={{ display: 'flex', height: 38, flexDirection: 'row', width: '99.7%', alignSelf: 'center' }}>
-                <Box sx={{ flex: 1, background: '#f1c550', alignItems: 'center', display: 'flex' }}>
+                <Box sx={{ flex: 1, background: '#f1c550', alignItems: 'center', display: 'flex', justifyContent: 'space-between' }}>
                     <Typography sx={{ fontSize: { laptop: '13px', tablet: '12px', mobile: "12px" }, fontWeight: 'bold', marginLeft: '7px' }} >Match Odds</Typography>
+                    <Time />
                 </Box>
 
                 <Box sx={{
