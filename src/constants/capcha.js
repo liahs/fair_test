@@ -1,0 +1,2 @@
+export const REACT_APP_SECRET_KEY = "6Lc7BsAiAAAAAA6gDOpiBsb8fybpUYfS8_qLY9NS"
+export const REACT_APP_SITE_KEY = "6Lc7BsAiAAAAAEymVuF8kjJeoqPFSSgkxI3Euhve"
