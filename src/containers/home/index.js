@@ -19,7 +19,7 @@ export default function Home() {
   return (
     <div style={{ height: "100vh", display: 'flex', flexDirection: 'column' }} >
       <CustomHeader />
-      <Box flex={1} sx={[{ flex: 1, display: 'flex', height: '80%', }, (theme) => ({
+      <Box flex={1} sx={[{ flex: 1, display: 'flex', }, (theme) => ({
         backgroundImage: `${theme.palette.primary.homeBodyGradient}`
       })]} >
 
@@ -27,27 +27,28 @@ export default function Home() {
         {/* <PlaceBet open={open} handleClose={() => {
           handleClose(!open)
         }} /> */}
-        <Box sx={{ display: 'flex', overflowX: "hidden", flexDirection: 'column', flex: 1, justifyContent: 'flex-start', overflowY: "auto", alignItems: 'flex-start' }}>
 
+        <Box sx={{ display: 'flex', overflowX: "hidden", flexDirection: 'column', flex: 1, justifyContent: 'flex-start', overflowY: "auto", alignItems: 'flex-start' }}>
 
           <EventListing setSelected={setSelected} selected={selected} />
 
-          {matchesMobile && (selected == "CRICKET" || selected == "INPLAY") && <>
+
+          {matchesMobile && (selected == "CRICKET" || selected == "INPLAY") && < div style={{ width: '100%' }}>
             <MatchOdds onClick={() => handleClose(true)} />
-            
+
             <Box sx={{ display: 'block', width: '100%', alignSelf: 'center', }}>
               <LiveMatchHome />
               <MatchComponent />
               <MyBetHome />
             </Box>
-          </>}
-          {!matchesMobile && (selected == "CRICKET" || selected == "INPLAY") && <Box sx={{ display: 'flex' }}>
+          </div>}
+          {!matchesMobile && (selected == "CRICKET" || selected == "INPLAY") && <Box sx={{ display: 'flex', width: '100%' }}>
 
-            <Box sx={{ display: 'flex', flexDirection: 'column', width: '100%' }}>
+            <Box sx={{ display: 'flex', flexDirection: 'column', width: '70%' }}>
 
               <MatchOdds onClick={() => handleClose(true)} />
             </Box>
-            <Box sx={{ width: '50%', paddingRight: '8%', marginLeft: -1 }}>
+            <Box sx={{ width: '30%', paddingRight: '1%' }}>
               <LiveMatchHome />
               <MatchComponent />
               <MyBetHome />

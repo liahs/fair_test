@@ -71,3 +71,17 @@ input[type=number]::-webkit-outer-spin-button {
     border-width: 0 2px;
     text-align: center;
 }
+
+/* Hide scrollbar for IE, Edge and Firefox */
+.scroll {
+    display: 'flex';
+    -ms-overflow-style: none;
+    /* IE and Edge */
+    scrollbar-width: none;
+    flex-direction: 'row';
+    /* Firefox */
+}
+
+.scroll::-webkit-scrollbar {
+    display: none;
+}
