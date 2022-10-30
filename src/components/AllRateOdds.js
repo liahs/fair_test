@@ -3,7 +3,7 @@ import { MyBet } from "../assets"
 import StyledImage from './StyledImage'
 const data = [
     {
-        title: "BOOKMAKER",
+        title: "Book maker",
         time: "03:23 AM",
         type: "Back",
         odds: "90.00",
@@ -86,7 +86,7 @@ const SingleBox = ({ data, header, color, up, first }) => {
 
     return !header ? first ? (
         <Box sx={{ width: '100%', height: '40px', background: "#F1C550", marginX: { mobile: '1px', laptop: '0.4px' }, display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-            <Typography sx={{ fontWeight: '700', fontSize: '10px', color: 'black' }} >{data}</Typography>
+            <Typography sx={{ fontWeight: '700', fontSize: '12px', color: 'black', textAlign: 'center' }} >{data}</Typography>
         </Box>
     ) : up ? (
         <Box sx={{ width: '100%', height: '40px', flexDirection: 'column', background: color, marginX: { mobile: '1px', laptop: '0.4px' }, display: 'flex', justifyContent: 'center' }}>
@@ -102,7 +102,7 @@ const SingleBox = ({ data, header, color, up, first }) => {
     ) : header &&
     (
         <Box sx={{ width: '100%', height: '20px', background: 'black', marginX: { mobile: '1px', laptop: '0.4px' }, display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-            <Typography sx={{ fontWeight: '400', fontSize: '12px', color: 'white' }} >{data}</Typography>
+            <Typography sx={{ fontWeight: '400', fontSize: '10px', color: 'white' }} >{data}</Typography>
         </Box>
     )
 }
