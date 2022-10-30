@@ -10,7 +10,7 @@ const BetPlaced = ({ visible, setVisible, not }) => {
             <Box sx={{ width: '250px', borderRadius: "4px", height: "200px", flexDirection: 'column', justifyContent: 'center', alignItems: 'center', background: 'white', alignSelf: 'center', display: 'flex' }}>
                 {not ? <img src={NOT} style={{ width: '50px', height: '50px' }} /> : <img src={BETPLACED} style={{ width: '50px', height: '50px' }} />}
                 {
-                    not ? <Typography sx={{ fontSize: '20px', fontWeight: '500', marginY: '.7vh', width: '70%', alignSelf: 'center', textAlign: 'center' }}>Bet Placed Successfully</Typography> :
+                    !not ? <Typography sx={{ fontSize: '20px', fontWeight: '500', marginY: '.7vh', width: '70%', alignSelf: 'center', textAlign: 'center' }}>Bet Placed Successfully</Typography> :
                         <Typography sx={{ fontSize: '20px', fontWeight: '500', marginY: '.7vh', width: '70%', alignSelf: 'center', textAlign: 'center' }}>Bet Not Placed Successfully</Typography>
 
                 }
