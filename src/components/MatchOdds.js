@@ -65,7 +65,16 @@ const BoxComponent = ({ name, color }) => {
 const SmallBox = ({ color }) => {
     return (
         <Box sx={{ width: '70px', position: 'absolute', display: 'flex', left: { mobile: '56.5%', laptop: '48%' }, justifyContent: 'center', alignItems: 'center', height: '30px', background: 'white', borderRadius: '7px' }}>
-            <Typography sx={{ fontSize: '12px', fontWeight: 'bold', color: color ? color : '#46e080' }} >+Book.60</Typography>
+            <Typography sx={{ fontSize: { laptop: '12px', mobile: '10px' }, fontWeight: 'bold', color: color ? color : '#46e080' }} >+Book.60</Typography>
+        </Box>
+    )
+}
+const SmallBoxSeason = ({ color }) => {
+    return (
+        <Box sx={{ width: '70px', flexDirection: 'column', position: 'absolute', display: 'flex', left: { mobile: '56.5%', laptop: '48%' }, justifyContent: 'center', alignItems: 'center', height: '30px', background: 'white', borderRadius: '3px' }}>
+            <Typography sx={{ fontSize: '10px', fontWeight: 'bold', color: '#FF4D4D' }} >+Book.60</Typography>
+            <Typography sx={{ fontSize: '10px', fontWeight: 'bold', color: '#46e080' }} >999</Typography>
+
         </Box>
     )
 }
@@ -153,16 +162,18 @@ const Odds = ({ onClick }) => {
 }
 const SeasonMarket = ({ onClick }) => {
     return (
-        <Box onClick={onClick} sx={{ display: 'flex', flexDirection: 'column', marginY: '1vh', width: { mobile: "100%", laptop: '95%' }, marginX: '1vw', alignSelf: { mobile: 'center', tablet: 'center', laptop: 'flex-start', } }}>
-            <Box sx={{ display: 'flex', height: 38, flexDirection: 'row', width: '100%' }}>
-                <Box sx={{ flex: 1.2, background: '#f1c550', alignItems: 'center', display: 'flex' }}>
+        <Box onClick={onClick} sx={{ display: 'flex', flexDirection: 'column', marginY: '1vh', width: { mobile: "96%", laptop: '97%' }, marginX: "1vw", alignSelf: { mobile: 'center', tablet: 'center', laptop: 'flex-start', } }}>
+            <Box sx={{ display: 'flex', height: 38, flexDirection: 'row', width: '99.7%', alignSelf: 'center' }}>
+                <Box sx={{ flex: 1, background: '#f1c550', alignItems: 'center', display: 'flex', justifyContent: 'space-between' }}>
                     <Typography sx={{ fontSize: { laptop: '13px', tablet: '12px', mobile: "12px" }, fontWeight: 'bold', marginLeft: '7px' }} >Session Market</Typography>
                 </Box>
+
                 <Box sx={{
-                    flex: .3, background: '#262626'
+                    flex: .1, background: '#262626'
                     // '#262626' 
                 }}>
                     <div class="slanted"></div>
+
                 </Box>
                 <Box sx={{
                     flex: 1, background: '#262626',
@@ -171,7 +182,8 @@ const SeasonMarket = ({ onClick }) => {
                     alignItems: 'center',
                     justifyContent: 'flex-end'
                 }}>
-                    <Typography sx={{ color: 'white', fontSize: { laptop: '13px', tablet: '12px', mobile: "10px" }, fontWeight: '500' }} >Maximum Bet 100000</Typography>
+                    <SmallBoxSeason />
+                    <Typography sx={{ color: 'white', width: '70px', fontSize: { laptop: '9px', tablet: '9px', mobile: "9px" }, fontWeight: '500', flexWrap: "wrap" }} >Maximum Bet 100000</Typography>
                     <img src={Info} style={{ width: '15px', height: '15px', marginRight: '5px', marginLeft: '5px' }} />
                 </Box>
             </Box >
