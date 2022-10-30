@@ -24,7 +24,7 @@ export default function Verification() {
           <Typography variant="header" sx={{ fontSize: { laptop: "20px", mobile: "22px" }, marginTop: matchesMobile?"100px":"1vh" }}>Verification</Typography>
           <Typography variant="subHeader" sx={{ fontSize: { laptop: "11px", mobile: "13px" }, lineHeight: "18px", marginTop: "1vh", textAlign: "center", fontFamily: '200' }}>Please enter the 4-digit verification code<br/> sent to your email address.</Typography>
           <Box sx={{ width: { laptop: "55%", mobile: "75%", marginTop: "20px" }, opacity: 1,display:"flex",flexDirection:"column",alignItems:"center" }}>
-            <OTPInput placeholder={["*","*","*","*"]} inputStyles={{height:"50px",width:"50px",background:"white",borderRadius:"10px",verticalAlign:"bottom",fontSize:"14px"}} value={OTP} onChange={setOTP}  OTPLength={4}  disabled={false} secure  />
+            <OTPInput placeholder={["*","*","*","*"]} inputStyles={{height:"50px",width:"50px",background:"white",borderRadius:"10px",verticalAlign:"bottom",fontSize:"16px"}} value={OTP} onChange={setOTP}  OTPLength={4}  disabled={false} secure  />
           <Box sx={{ display: "flex", justifyContent: "center", marginY: "1vh", marginTop: "4vh" }}>
               <CustomButton onClick={() => {
                 navigate("/new_password")
