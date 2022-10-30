@@ -26,7 +26,7 @@ export default function NewPassword() {
           <Typography variant="subHeader" sx={{ fontSize: { laptop: "11px", mobile: "13px" }, lineHeight: "18px", marginTop: "1vh", textAlign: "center", fontFamily: '200' }}>Please enter new password.</Typography>
           <Box sx={{ width: { laptop: "55%", mobile: "75%", marginTop: "20px" }, opacity: 1 }}>
             <Input placeholder={"Enter Password"} inputProps={{ type: 'password' }} title={"New Password"} containerStyle={{  }} img={eye} />
-            <Input placeholder={"Enter Password"} inputProps={{ type: 'password' }} title={"Confirm NewPassword"} containerStyle={{ marginTop: "10px" }} img={eye} />
+            <Input placeholder={"Enter Password"} inputProps={{ type: 'password' }} title={"Confirm New Password"} containerStyle={{ marginTop: "10px" }} img={eye} />
             <Box sx={{ display: "flex", justifyContent: "center", marginY: "1vh", marginTop: "50px" }}>
               <CustomButton onClick={() => {
                 navigate('/')
