@@ -9,6 +9,8 @@ import { Typography, useMediaQuery, useTheme } from "@mui/material";
 import PlaceBet from "../../components/PlaceBet";
 import { HourGlass } from "../../assets";
 import Lottie from "lottie-react";
+import AllRateOdds from "../../components/AllRateOdds";
+import SessionBet from "../../components/SessionBet";
 
 export default function Home() {
   const [drawer, setDrawer] = useState(false)
@@ -37,6 +39,8 @@ export default function Home() {
             <MatchOdds onClick={() => handleClose(true)} />
 
             <Box sx={{ display: 'flex', flexDirection: 'column', width: '100%', alignSelf: 'center', alignItems: 'center' }}>
+              <AllRateOdds />
+              <SessionBet />
               <MatchComponent />
               <LiveMatchHome />
 
@@ -50,8 +54,12 @@ export default function Home() {
               <MatchOdds onClick={() => handleClose(true)} />
             </Box>
             <Box sx={{ width: '30%', paddingRight: '1%' }}>
-              <LiveMatchHome />
               <MatchComponent />
+
+              <LiveMatchHome />
+              <AllRateOdds />
+              <SessionBet />
+
               <MyBetHome />
             </Box>
           </Box>
