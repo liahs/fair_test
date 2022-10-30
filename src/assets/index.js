@@ -45,6 +45,6 @@ export { default as BETPLACED } from './homeScreen/betplaced.png'
 
 
 export { default as HourGlass } from './hourglass.json'
-
+export {default as CancelDark} from './drawer/cancel.png'
 
 
