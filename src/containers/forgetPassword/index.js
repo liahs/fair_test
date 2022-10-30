@@ -12,7 +12,7 @@ export default function ForgetPassword() {
     <Box style={{ position: "relative" }}>
       <AuthBackground />
       <Box style={{ height: "100vh", width: "100vw", display: "flex", alignItems: "flex-end", position: "relative", justifyContent: "flex-end" }}>
-        <Card sx={[{ display: "flex", height: "100%", flexDirection: "column", py: "10px", alignItems: "center", justifyContent: matchesMobile?"flex-start":"center", width: { laptop: '28%', tablet: "43%", mobile: '100%' } },
+        <Card sx={[{ display: "flex", height: "100%", flexDirection: "column", py: "10px", alignItems: "center", justifyContent: matchesMobile?"flex-start":"center", width: { laptop: "380px", tablet: "43%", mobile: '100%' } },
         (theme) => ({
           background: `${theme.palette.primary.mainGradient}`
         })
