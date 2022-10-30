@@ -269,7 +269,7 @@ const DropdownMenu = ({ anchorEl, open, handleClose }) => {
                 {
                     sx: {
                         borderRadius: "5px",
-                        border: "2px solid #306A47",
+                        border: "1px solid #306A47",
                       
                     }
                 }
