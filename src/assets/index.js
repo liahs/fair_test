@@ -43,6 +43,6 @@ export { default as UD } from './homeScreen/UD.png'
 
 
 export { default as HourGlass } from './hourglass.json'
-
+export {default as CancelDark} from './drawer/cancel.png'
 
 

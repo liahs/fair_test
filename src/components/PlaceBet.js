@@ -1,103 +1,77 @@
 import { Input, Modal, TextField, Typography } from "@mui/material";
 import { Box } from "@mui/system";
 import { useState } from "react";
-import { ArrowDown, CANCEL } from "../assets";
+import { ArrowDown, CANCEL, CancelDark } from "../assets";
 import '../components/index.css'
+import StyledImage from "./StyledImage";
 const PlaceBet = ({ open, handleClose }) => {
 
-    const SetBet = () => {
-        return (
-            <Box sx={{ minWidth: "10%", background: "#F1C550" }}>
-                <Box sx={{ height: "35px", display: "flex", alignItems: "center", px: "10px" }}>
-                    <Typography sx={{ fontWeight: "bold", fontSize: "12px" }}>Place Bet</Typography>
-                </Box>
-                <RowComponent header={true} data={["Matched Bet", "Odds", "Stake", "Profit"]} />
-                < Divider />
 
-                <RowComponent header={false} data={["INDIA", "90.00", "100.00", "00.00"]} />
-                < Divider />
-
-                <div style={{ height: "1px", background: "#fafafa" }} />
-                <RowComponent header={false} data={["PAKISTAN", "90.00", "100.00", "00.00"]} />
-            </Box>
-        )
-    }
-    const Divider = () => {
-        return (
-            <Box sx={{ width: '100%', background: 'rgba(211,211,211)', height: '1px' }} ></Box>
-
-        )
-    }
-    const NumberInput = () => {
-        const [value, setValue] = useState('90.00')
-        return (
-            <Box sx={{ postion: 'relative' }}>
-
-                <TextField variant="standard"
-                    value={value}
-                    InputProps={{
-                        disableUnderline: true,
-                        style: { fontSize: "11px", fontWeight: "600", textAlign: 'center', marginLeft: 5 },
-                        sx: {
-                            fontSize: { laptop: "10px", mobile: "7px", textAlign: 'center' }
-                        }
-                    }}
-                    onChange={(i) => {
-                        setValue(i.target.value)
-                    }}
-                    sx={{ borderColor: "white", display: "flex", flex: 1, marginLeft: "5px", fontSize: { laptop: "10px", mobile: "8px" } }} />
-                <Box sx={{ position: 'absolute', marginTop: -3.5, marginLeft: 7.5, height: '30px', justifyContent: 'space-evenly', display: 'flex', flexDirection: 'column' }}>
-                    <Box
-                        onClick={() => {
-                            setValue((i) => (parseInt(i) + 1).toFixed(2))
-                        }}
-                        sx={{ width: '14px', height: '14px', background: '#004A25', justifyContent: 'center', alignItems: 'center', display: 'flex' }} ><img src={ArrowDown} style={{ width: '7px', height: '4px', transform: 'rotate(180deg)' }} ></img></Box>
-                    <Box
-                        onClick={() => {
-                            setValue((i) => (parseInt(i) - 1).toFixed(2))
-                        }}
-                        sx={{ width: '14px', height: '14px', background: '#004A25', justifyContent: 'center', alignItems: 'center', display: 'flex' }} ><img src={ArrowDown} style={{ width: '7px', height: '4px' }} ></img></Box>
-
-                </Box>
-            </Box >
-
-        )
-    }
-    const RowComponent = ({ data, containerStyle, header }) => {
-        return (
-            <Box sx={[{ height: "20px", backgroundColor: header ? "#319E5B" : "#FFFFFF", height: header ? "20px" : "30px", flexDirection: "row", display: "flex" }, containerStyle]}>
-                {data?.map((x, i) => <Box sx={{ flex: i == 0 ? 6 : (i == 1 || !header) ? 4.5 : header ? 4.5 : 3, px: i == 0 ? "10px" : "0px", marginLeft: i != 0 ? "2px" : 0, display: "flex", alignItems: "center", background: i != 0 ? (header ? "black" : "#F1F1F1") : "transparent", justifyContent: i != 0 ? "center" : "flex-start" }}>
-                    {!header && i == 0 && <img style={{ width: '15px', height: '15px', marginRight: '5px' }} src={CANCEL} />}
-                    {(i !== 1 || header) && < Typography sx={{ fontSize: { laptop: header ? "10px" : "11px", mobile: header ? "8px" : "10px" }, fontWeight: header ? "normal" : "600", color: header ? "text.white" : "text" }}>{x}</Typography>}
-                    {(i == 1 && !header) &&
-                        <NumberInput />
-                    }
-
-                </Box>
-
-                )
-                }
-            </Box >
-        )
-    }
     const CustomButton = ({ color, title, onClick }) => {
         return (
-            <Box onClick={onClick} sx={{ width: '130px', height: "35px", borderRadius: '15px', alignItems: 'center', justifyContent: 'center', background: color, display: 'flex' }}>
+            <Box onClick={onClick} sx={{ width: '130px', height: "35px", borderRadius: '10px', border: "2px solid white", alignItems: 'center', justifyContent: 'center', background: color, display: 'flex' }}>
                 <Typography sx={{ color: 'white', fontWeight: '500', fontSize: '13px' }} >{title}</Typography>
             </Box>
         )
     }
     return (
-        <Box sx={{ display: 'flex', flexDirection: 'column',position:"relative", marginY: { mobile: '.7vh', laptop: '1vh' }, width: { tablet: "100%", mobile: "100%", laptop: '95%' }, marginLeft: '1vw', alignSelf: { mobile: 'center', tablet: 'center', laptop: 'flex-start', } }} >
-                <Box sx={{ background: 'white',width:"100%" }} >
-                    <SetBet />
-                    <Box sx={{ display: 'flex', flex: 1, paddingY: '2vh', justifyContent: 'space-evenly' }}>
-                        <CustomButton onClick={handleClose} title={'Reset'} color={'red'} />
-                        <CustomButton onClick={handleClose} title={'Submit'} color={'green'} />
-
-                    </Box>
+        <Box sx={{ display: 'flex', flexDirection: 'column', border: "2px solid white", borderRadius: "10px", overflow: "hidden", marginY: { mobile: '.7vh', laptop: '1vh' }, width: { tablet: "100%", mobile: "100%", laptop: '97%' }, marginLeft: '1vw', alignSelf: { mobile: 'center', tablet: 'center', laptop: 'flex-start', } }} >
+            <Box sx={{ background: 'yellow', width: "100%", 'overflow': "hidden" }} >
+                <Box sx={[{ height: "40px", display: "flex", justifyContent: "space-between", alignItems: "center", px: "10px" }, (theme) => ({
+                    backgroundImage: `${theme.palette.primary.headerGradient}`
+                })]}>
+                    <Typography sx={{ fontWeight: "bold", fontSize: "14px", color: "text.white" }}>Place Bet</Typography>
+                    <StyledImage src={CancelDark} sx={{ height: "20px", width: "20px" }} />
+                </Box>
+                <Box sx={{ display: "flex", marginTop: "2px", marginX: "2px" }}>
+                    <TeamsOdssData title={"Team"} value={"INDIA"} containerStyle={{ flex:1 }} />
+                    <TeamsOdssData title={"Odds"} value={"INDIA"} containerStyle={{ marginLeft: "2px", flex:1}} />
+                    <TeamsOdssData title={"Stake"} value={"INDIA"} containerStyle={{ marginLeft: "2px",flex:1 }} />
+                    <TeamsOdssData title={"Profit"} value={"INDIA"} containerStyle={{ marginLeft: "2px",flex:1 }} />
+                    <TeamsOdssData title={"Loss"} value={"INDIA"} containerStyle={{ marginLeft: "2px", flex:1}} />
+                </Box>
+                <Box sx={{ display: "flex", marginTop: "15px", marginX: "2px" }}>
+                    <NumberData containerStyle={{flex:1}}  value={"1000"}/>
+                    <NumberData containerStyle={{marginLeft: "2px",flex:1}}  value={"2000"}/>
+                    <NumberData containerStyle={{marginLeft: "2px",flex:1}}   value={"3000"}/>
+                    <NumberData containerStyle={{marginLeft: "2px",flex:1}}  value={"5000"}/>
+                    <NumberData containerStyle={{marginLeft: "2px",flex:1}}  value={"10,000"}/>
+                </Box>
+                <Box sx={{ display: "flex", marginTop: "2px", marginX: "2px" }}>
+                    <NumberData containerStyle={{flex:1}}  value={"20,000"}/>
+                    <NumberData containerStyle={{marginLeft: "2px",flex:1}}  value={"50,000"}/>
+                    <NumberData containerStyle={{marginLeft: "2px",flex:1}}   value={"1,00,000"}/>
+                    <NumberData containerStyle={{marginLeft: "2px",flex:1}}  value={"2,00,000"}/>
+                    <NumberData containerStyle={{marginLeft: "2px",flex:1}}  value={"5,00,000"}/>
+                </Box>
+                <Box sx={{ display: 'flex', flex: 1, paddingY: '2vh', justifyContent: 'space-evenly' }}>
+                    <CustomButton onClick={handleClose} title={'Reset'} color={'#FF4949'} />
+                    <CustomButton onClick={handleClose} title={'Submit'} color={'#262626'} />
                 </Box>
             </Box>
+        </Box>
     )
 }
+
+const TeamsOdssData = ({ title, value, containerStyle }) => {
+    return (
+        <Box sx={[{ display: "flex", flexDirection: "column", minWidth: "18%" ,}, containerStyle]}>
+            <Box sx={{ background: "#262626", border: "2px solid #C7B6B6", display: "flex", justifyContent: "center", alignItems: "center", height: "30px" }}>
+                <Typography style={{ color: "white", fontSize: "11px", fontWeight: "600" }}>{title}</Typography>
+            </Box>
+            <Box sx={{ background: "white", border: "2px solid #C7B6B6", display: "flex", justifyContent: "center", alignItems: "center", height: "40px", marginTop: "2px" }}>
+                <Typography style={{ color: "#262626", fontSize: "13px", fontWeight: "600" }}>{value}</Typography>
+            </Box>
+        </Box>
+    )
+}
+
+const NumberData = ({ value ,containerStyle}) => {
+    return (
+        <Box sx={[{ border: "4px solid #4F9378", display: "flex",borderRadius:"5px", justifyContent: "center", alignItems: "center", height: "40px", minWidth: "18%", background: "#319E5B" },containerStyle]}>
+            <Typography sx={{ color: "white", fontSize: "13px", fontWeight: "500" }}>{value}</Typography>
+        </Box>
+    )
+}
+
 export default PlaceBet;
