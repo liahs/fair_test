@@ -5,7 +5,7 @@ import { ArrowDown, CANCEL, CancelDark } from "../assets";
 import '../components/index.css'
 import StyledImage from "./StyledImage";
 import {useSelector} from 'react-redux'
-const PlaceBet = ({ open, handleClose,season }) => {
+const PlaceBet = ({ open, handleClose,season,onSubmit }) => {
     const theme=useTheme()
     const selectedColorBox=useSelector(state=>state.selectedColorBox)?.value
     const matchesMobile=useMediaQuery(theme.breakpoints.down("laptop"))
@@ -75,7 +75,7 @@ const PlaceBet = ({ open, handleClose,season }) => {
                 </>}
                 <Box sx={{ display: 'flex', flex: 1, paddingY: '2vh', justifyContent: 'space-evenly' }}>
                     <CustomButton onClick={handleClose} title={'Reset'} color={'#FF4949'} />
-                    <CustomButton onClick={handleClose} title={'Submit'} color={'#262626'} />
+                    <CustomButton onClick={()=>{handleClose();onSubmit();}} title={'Submit'} color={'#262626'} />
                 </Box>
             </Box>
         </Box>

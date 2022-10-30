@@ -14,7 +14,6 @@ const BetPlaced = ({ visible, setVisible }) => {
                     setVisible(false)
                 }} sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', width: '70%', height: '40px', background: 'black', borderRadius: '5px' }}>
                     <Typography sx={{ fontSize: '20px', fontWeight: '500', color: 'white', alignSelf: 'center', textAlign: 'center' }}>OK</Typography>
-
                 </Box>
             </Box>
         </Modal>
