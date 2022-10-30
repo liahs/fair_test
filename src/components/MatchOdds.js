@@ -468,6 +468,7 @@ const BookMarketer = ({ onClick }) => {
 const MatchOdds = ({ onClick }) => {
     const [currentSelected, setCurrentSelected] = React.useState(0)
     const [visible,setVisible]=React.useState(false)
+    const [canceled,setCanceled]=React.useState(false)
     return (
         <Box sx={{ display: 'flex', flexDirection: 'column' }}>
             <Odds onClick={() => {
@@ -479,7 +480,12 @@ const MatchOdds = ({ onClick }) => {
 
 
             }} />
-            {currentSelected == 1 && <PlaceBet onSubmit={()=>{
+            {currentSelected == 1 && <PlaceBet 
+            onCancel={()=>{
+                setCanceled(true)
+                setVisible(true)
+            }}
+            onSubmit={()=>{
                 setVisible(true)
             }} handleClose={() => {
                 setCurrentSelected(0)
@@ -493,7 +499,13 @@ const MatchOdds = ({ onClick }) => {
             }} />
             {currentSelected == 2 && <PlaceBet onSubmit={()=>{
                 setVisible(true)
-            }} handleClose={() => {
+            }} 
+            onCancel={()=>{
+                setCanceled(true)
+                setVisible(true)
+            }}
+            handleClose={() => {
+                setCanceled(false)
                 setCurrentSelected(0)
             }} />}
             <SeasonMarket onClick={onClick = () => {
@@ -503,12 +515,17 @@ const MatchOdds = ({ onClick }) => {
                     setCurrentSelected(3)
                 }
             }} />
-            {currentSelected == 3 && <PlaceBet onSubmit={()=>{
+            {currentSelected == 3 && <PlaceBet
+            onCancel={()=>{
+                setCanceled(true)
+                setVisible(true)
+            }}
+            onSubmit={()=>{
                 setVisible(true)
             }} season={true} handleClose={() => {
                 setCurrentSelected(0)
             }} />}
-            <BetPlaced visible={visible} setVisible={setVisible} />
+            <BetPlaced not={canceled} visible={visible} setVisible={setVisible} />
         </Box>
     )
 }

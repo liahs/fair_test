@@ -6,7 +6,9 @@ const BetPlaced = ({ visible, setVisible, not }) => {
         <Modal
             onClose={() => setVisible(false)}
             sx={{ alignItems: 'center', justifyContent: 'center', display: 'flex', outline: 'none' }}
-            open={visible}  >
+            open={visible} 
+            disableAutoFocus={true}
+            >
             <Box sx={{ width: '250px', borderRadius: "4px", height: "200px", flexDirection: 'column', justifyContent: 'center', alignItems: 'center', background: 'white', alignSelf: 'center', display: 'flex' }}>
                 {not ? <img src={NOT} style={{ width: '50px', height: '50px' }} /> : <img src={BETPLACED} style={{ width: '50px', height: '50px' }} />}
                 {

@@ -1,5 +1,6 @@
 import { Typography, Box, useMediaQuery, useTheme, Menu, MenuItem, Drawer, AppBar, Toolbar } from "@mui/material";
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { ArrowDown, Draw, logo, Logout, Money, MoneyBag } from "../assets";
 import theme from "../theme";
 import SearchInput from "./SearchInput";
@@ -112,6 +113,7 @@ const BoxProfile = ({ image, value,containerStyle }) => {
 
 const menutItems = [{ title: "Account Statement" }, { title: "Profile Loss Report" }, { title: "Bet History" }, { title: "Unsetteled Bet" }, { title: "Casino Report History" }, { title: "Set Button Values" }, { title: "Security Auth Verfication" }, { title: "Change Password" }]
 const DropdownMenu = ({ anchorEl, open, handleClose }) => {
+    const navigate=useNavigate()
     return (
         <Menu
             id="basic-menu"
@@ -140,7 +142,10 @@ const DropdownMenu = ({ anchorEl, open, handleClose }) => {
                     transform: "scale(1.02)"
                 }
             }} onClick={handleClose}>{x.title}</MenuItem>)}
-            <Box sx={{ borderRadius: "5px", height: { laptop: "38px", mobile: "34px" }, width: "200px", marginLeft: "5px", marginTop: "10px", backgroundColor: "#F1C550", display: "flex", justifyContent: "center", alignItems: "center" }}>
+            <Box onClick={()=>{
+                navigate("/")
+                handleClose()
+            }}  sx={{ borderRadius: "5px", height: { laptop: "38px", mobile: "34px" }, width: "200px", marginLeft: "5px", marginTop: "10px", backgroundColor: "#F1C550", display: "flex", justifyContent: "center", alignItems: "center" }}>
                 <StyledImage src={Logout} sx={{ width: "35%", height: "auto" }} />
             </Box>
         </Menu>
