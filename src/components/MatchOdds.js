@@ -32,14 +32,15 @@ const Divider = () => {
         <Box sx={{ width: '100%', background: 'rgba(211,211,211)', height: '1px' }} ></Box>
     )
 }
-const BoxComponent = ({ name }) => {
+const BoxComponent = ({ name, color }) => {
     const theme = useTheme()
     const matchesMobile = useMediaQuery(theme.breakpoints.down("laptop"))
     return (
         <Box sx={{ display: 'flex', background: 'white', height: '40px', width: '100%', alignItems: 'center' }} >
-            <Box sx={{ display: 'flex', background: 'white', height: '40px', width: '40%', alignItems: 'center' }} >
+            <Box sx={{ display: 'flex', background: 'white', position: 'relative', height: '40px', width: '40%', alignItems: 'center', justifyContent: 'space-between', }} >
 
-                <Typography sx={{ color: 'black', fontSize: { laptop: '14px', mobile: "13px" }, marginLeft: '7px', fontWeight: '600' }} >{name}</Typography>
+                <Typography sx={{ color: 'black', fontSize: { laptop: '14px', mobile: "13px" }, fontWeight: '600', marginLeft: '7px' }} >{name}</Typography>
+                <MoneyBox color={color} />
             </Box>
             <Box sx={{ display: 'flex', background: 'white', height: '40px', width: { laptop: '60%', mobile: '80%' }, justifyContent: { mobile: 'flex-end', laptop: 'center' }, alignItems: 'center' }} >
                 {!matchesMobile && <SeperateBox value={"1.71"} value2={" 1cr+"} color={matchesMobile ? "white" : "#B3E0FF"} />
@@ -61,18 +62,30 @@ const BoxComponent = ({ name }) => {
         </Box>
     )
 }
-const SmallBox = () => {
+const SmallBox = ({ color }) => {
     return (
         <Box sx={{ width: '70px', position: 'absolute', display: 'flex', left: { mobile: '56.5%', laptop: '48%' }, justifyContent: 'center', alignItems: 'center', height: '30px', background: 'white', borderRadius: '7px' }}>
-            <Typography sx={{ fontSize: '12px', fontWeight: 'bold', color: '#46e080' }} >+Book.60</Typography>
+            <Typography sx={{ fontSize: '12px', fontWeight: 'bold', color: color ? color : '#46e080' }} >+Book.60</Typography>
+        </Box>
+    )
+}
+const MoneyBox = ({ color }) => {
+    const theme = useTheme()
+    const matchesMobile = useMediaQuery(theme.breakpoints.down("laptop"))
+    return (
+        <Box sx={{
+            width: '80px', border: "1px solid #2626264D",
+            borderRadius: "5px", justifyContent: 'center', position: matchesMobile ? 'absolute' : 'relative', right: matchesMobile ? '-90%' : '7px', alignItems: 'center', display: 'flex', height: '25px', background: '#F6F6F6', borderRadius: '7px'
+        }}>
+            <Typography sx={{ fontSize: '9px', fontWeight: 'bold', color: color }} >-10,00,000</Typography>
         </Box>
     )
 }
 const Time = () => {
     return (
-        <Box sx={{ display: 'flex', }}>
-            <Typography sx={{ fontSize: '10px', fontWeight: 'bold', color: '#black', width: '50px' }} >5 sec Delay</Typography>
-            <img src={TIME} />
+        <Box sx={{ display: 'flex', alignItems: 'center' }}>
+            <Typography sx={{ fontSize: { mobile: '10px', laptop: "12px" }, fontWeight: 'bold', color: '#black', width: { mobile: '40px', laptop: '80px' } }} >5 sec Delay</Typography>
+            <img style={{ width: '20px', height: '20px' }} src={TIME} />
         </Box>
     )
 }
@@ -129,11 +142,11 @@ const Odds = ({ onClick }) => {
                     </Box>
                 </Box>
             }
-            <BoxComponent name={'INDIA'} />
+            <BoxComponent color={'#46e080'} name={'INDIA'} />
             <Divider />
-            <BoxComponent name={'PAKISTAN'} />
+            <BoxComponent color={'#FF4D4D'} name={'PAKISTAN'} />
             <Divider />
-            <BoxComponent name={"DRAW"} />
+            <BoxComponent color={'#F8C851'} name={"DRAW"} />
         </Box >
 
     )
@@ -327,20 +340,20 @@ const BookMarketer = ({ onClick }) => {
     const theme = useTheme()
     const matchesMobile = useMediaQuery(theme.breakpoints.down("laptop"))
     return (
-        <Box onClick={onClick} sx={{
-            display: 'flex', flexDirection: 'column', marginY: {
-                mobile: '.7vh', laptop: '1vh'
-            }
-            , width: { mobile: "100%", laptop: '95%' }, marginX: '1vw', alignSelf: { mobile: 'center', tablet: 'center', laptop: 'flex-start', }
-        }}>
+        <Box onClick={onClick} sx={{ display: 'flex', backgroundColor: 'white', padding: .2, flexDirection: 'column', marginY: { mobile: '.7vh', laptop: '1vh' }, width: { mobile: "96%", laptop: '97%' }, marginX: '1vw', alignSelf: { mobile: 'center', tablet: 'center', laptop: 'flex-start', } }}>
 
-            <Box sx={{ display: 'flex', height: 38, flexDirection: 'row', width: '100%' }}>
-                <Box sx={{ flex: 1.2, background: '#f1c550', alignItems: 'center', display: 'flex' }}>
+
+
+
+
+            <Box sx={{ display: 'flex', height: 38, flexDirection: 'row', width: '99.7%', alignSelf: 'center' }}>
+                <Box sx={{ flex: 1, background: '#f1c550', alignItems: 'center', display: 'flex', justifyContent: 'space-between' }}>
                     <Typography sx={{ fontSize: { laptop: '13px', tablet: '12px', mobile: "12px" }, fontWeight: 'bold', marginLeft: '7px' }} >Bookmaker Market</Typography>
+
                 </Box>
 
                 <Box sx={{
-                    flex: .3, background: '#262626'
+                    flex: .1, background: '#262626'
                     // '#262626' 
                 }}>
                     <div class="slanted"></div>
@@ -353,72 +366,34 @@ const BookMarketer = ({ onClick }) => {
                     alignItems: 'center',
                     justifyContent: 'flex-end'
                 }}>
-                    <Typography sx={{ color: 'white', fontSize: { laptop: '13px', tablet: '12px', mobile: "10px" }, fontWeight: '500' }} >Maximum Bet 100000</Typography>
+                    <SmallBox color={"#FF4D4D"} />
+                    <Typography sx={{ color: 'white', width: '70px', fontSize: { laptop: '9px', tablet: '9px', mobile: "9px" }, fontWeight: '500', flexWrap: "wrap" }} >Maximum Bet 100000</Typography>
                     <img src={Info} style={{ width: '15px', height: '15px', marginRight: '5px', marginLeft: '5px' }} />
                 </Box>
             </Box >
-            <Box sx={{ display: 'flex', background: '#319E5B', height: '20px', width: '100%' }} >
-                <Box sx={{ display: 'flex', background: '#319E5B', height: '20px', width: '40%', alignItems: 'center' }} >
-                    <Typography sx={{ color: 'white', fontSize: { laptop: '11px', tablet: '10px', mobile: "8px" }, marginLeft: '7px' }} >MIN: 4000 MAX:4500</Typography>
-                </Box>
-                <Box sx={{ display: 'flex', background: '#319E5B', height: '20px', width: { laptop: '60%', mobile: '80%' }, justifyContent: { laptop: 'center', mobile: 'flex-end' } }} >
-                    <Box sx={{ background: "#00C0F9", width: { laptop: '16.5%', mobile: "24.7%" }, borderRight: '0px solid #319E5B', height: '100%', display: 'flex', justifyContent: 'center', alignItems: 'center' }} >
-                        <Typography sx={{ fontSize: '10px', color: 'white' }} >Back</Typography>
+            {
+                <Box sx={{ display: 'flex', background: '#319E5B', height: '25px', width: '99.7%', alignSelf: 'center' }} >
+                    <Box sx={{ display: 'flex', background: "'#319E5B'", height: '25px', width: '40%', alignItems: 'center' }} >
+                        <Typography sx={{ color: 'white', fontSize: { laptop: '11px', mobile: "9px" }, marginLeft: '7px' }} >MIN: 4000 MAX:4500</Typography>
                     </Box>
-                    <Box sx={{ width: '.45%', display: 'flex', background: 'pink' }} ></Box>
+                    <Box sx={{ display: 'flex', background: '#319E5B', height: '25px', width: { laptop: '60%', mobile: '80%' }, justifyContent: { laptop: 'center', mobile: 'flex-end' } }} >
+                        <Box sx={{ background: "#00C0F9", width: { laptop: '16.5%', mobile: "25%" }, height: '100%', display: 'flex', justifyContent: 'center', alignItems: 'center' }} >
+                            <Typography sx={{ fontSize: '12px', color: 'black', fontWeight: '600' }} >Back</Typography>
+                        </Box>
+                        <Box sx={{ width: '.35%', display: 'flex' }} ></Box>
 
-                    <Box sx={{ background: "#FF9292", width: { laptop: '16.5%', mobile: "24.7%" }, height: '100%', display: 'flex', justifyContent: 'center', alignItems: 'center' }} >
-                        <Typography sx={{ fontSize: '10px', color: 'white' }} >Lay</Typography>
+                        <Box sx={{ background: "#FF9292", width: { laptop: '16.5%', mobile: "25%" }, height: '100%', display: 'flex', justifyContent: 'center', alignItems: 'center' }} >
+                            <Typography sx={{ fontSize: '12px', color: 'black', fontWeight: '600' }} >Lay</Typography>
+                        </Box>
+
                     </Box>
-
                 </Box>
-            </Box>
-            <Box sx={{ display: 'flex', background: 'white', height: '38px', width: '100%' }} >
-                <Box sx={{ display: 'flex', background: 'white', height: '38px', width: '40%', alignItems: 'center' }} >
-                    <Typography sx={{ color: 'black', fontSize: { laptop: '11px', tablet: '10px', mobile: "10px" }, marginLeft: '7px', fontWeight: '600' }} >INDIA</Typography>
-                </Box>
-                <Box sx={{ display: 'flex', background: 'white', height: '38px', width: { laptop: '60%', mobile: '80%' }, justifyContent: 'center', alignItems: 'center' }} >
-                    {!matchesMobile && <SeperateBox color={"#CEEBFF"} empty={true} />}
-
-                    <Box sx={{ width: '.45%', display: 'flex', background: 'pink' }} ></Box>
-                    {!matchesMobile && <SeperateBox color={"#CEEBFF"} empty={true} />}
-                    <Box sx={{ width: '.45%', display: 'flex', background: 'pink' }} ></Box>
-
-                    <SeperateBox value={"2.38"} value2={"1cr+"} color={matchesMobile ? "white" : "#B3E0FF"} />
-                    <Box sx={{ width: '.45%', display: 'flex', background: 'pink' }} ></Box>
-                    <SeperateBox value={"2.38"} value2={"1cr+"} color={matchesMobile ? "white" : "#F6D0CB"} />
-                    <Box sx={{ width: '.45%', display: 'flex', background: 'pink' }} ></Box>
-                    <SeperateBox value={"2.38"} value2={"1cr+"} color={"#B3E0FF"} />
-                    <Box sx={{ width: '.45%', display: 'flex', background: 'pink' }} ></Box>
-                    <SeperateBox value={"2.38"} value2={"1cr+"} color={"#F9E3E0"} />
-                    <Box sx={{ width: '.45%', display: 'flex', background: 'pink' }} ></Box>
-                </Box>
-            </Box>
+            }
+            <BoxComponent color={'#46e080'} name={'INDIA'} />
             <Divider />
-            <Box sx={{ display: 'flex', background: 'white', height: '38px', width: '100%' }} >
-                <Box sx={{ display: 'flex', background: 'white', height: '38px', width: '40%', alignItems: 'center' }} >
-                    <Typography sx={{ color: 'black', fontSize: { laptop: '11px', tablet: '10px', mobile: "10px" }, marginLeft: '7px', fontWeight: '600' }} >PAKISTAN</Typography>
-                </Box>
-                <Box sx={{ display: 'flex', background: 'white', height: '38px', width: { laptop: '60%', mobile: '80%' }, justifyContent: 'center', alignItems: 'center' }} >
-                    {!matchesMobile && <SeperateBox color={"#CEEBFF"} empty={true} />}
-
-                    <Box sx={{ width: '.45%', display: 'flex', background: 'pink' }} ></Box>
-                    {!matchesMobile && <SeperateBox color={"#CEEBFF"} empty={true} />}
-                    <Box sx={{ width: '.45%', display: 'flex', background: 'pink' }} ></Box>
-
-                    <SeperateBox value={"2.38"} value2={"1cr+"} color={matchesMobile ? "white" : "#B3E0FF"} />
-                    <Box sx={{ width: '.45%', display: 'flex', background: 'pink' }} ></Box>
-                    <SeperateBox value={"2.38"} value2={"1cr+"} color={matchesMobile ? "white" : "#F6D0CB"} />
-                    <Box sx={{ width: '.45%', display: 'flex', background: 'pink' }} ></Box>
-                    <SeperateBox value={"2.38"} value2={"1cr+"} color={"#B3E0FF"} />
-                    <Box sx={{ width: '.45%', display: 'flex', background: 'pink' }} ></Box>
-                    <SeperateBox value={"2.38"} value2={"1cr+"} color={"#F9E3E0"} />
-                    <Box sx={{ width: '.45%', display: 'flex', background: 'pink' }} ></Box>
-
-                </Box>
-            </Box>
-
+            <BoxComponent color={'#FF4D4D'} name={'PAKISTAN'} />
         </Box >
+
     )
 }
 const MatchOdds = ({ onClick }) => {
