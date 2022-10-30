@@ -8,6 +8,7 @@ import { useDispatch } from 'react-redux'
 import { setColorValue } from "../store/selectedColorBox"
 import { useState } from "react"
 import StyledImage from "./StyledImage"
+import BetPlaced from "./BetPlaced"
 
 const SeperateBox = ({ color, empty, value, value2, lock, onClick }) => {
     const theme = useTheme()
@@ -466,6 +467,7 @@ const BookMarketer = ({ onClick }) => {
 }
 const MatchOdds = ({ onClick }) => {
     const [currentSelected, setCurrentSelected] = React.useState(0)
+    const [visible,setVisible]=React.useState(false)
     return (
         <Box sx={{ display: 'flex', flexDirection: 'column' }}>
             <Odds onClick={() => {
@@ -477,7 +479,9 @@ const MatchOdds = ({ onClick }) => {
 
 
             }} />
-            {currentSelected == 1 && <PlaceBet handleClose={() => {
+            {currentSelected == 1 && <PlaceBet onSubmit={()=>{
+                setVisible(true)
+            }} handleClose={() => {
                 setCurrentSelected(0)
             }} />}
             <BookMarketer onClick={onClick = () => {
@@ -487,7 +491,9 @@ const MatchOdds = ({ onClick }) => {
                     setCurrentSelected(2)
                 }
             }} />
-            {currentSelected == 2 && <PlaceBet handleClose={() => {
+            {currentSelected == 2 && <PlaceBet onSubmit={()=>{
+                setVisible(true)
+            }} handleClose={() => {
                 setCurrentSelected(0)
             }} />}
             <SeasonMarket onClick={onClick = () => {
@@ -497,9 +503,12 @@ const MatchOdds = ({ onClick }) => {
                     setCurrentSelected(3)
                 }
             }} />
-            {currentSelected == 3 && <PlaceBet season={true} handleClose={() => {
+            {currentSelected == 3 && <PlaceBet onSubmit={()=>{
+                setVisible(true)
+            }} season={true} handleClose={() => {
                 setCurrentSelected(0)
             }} />}
+            <BetPlaced visible={visible} setVisible={setVisible} />
         </Box>
     )
 }
