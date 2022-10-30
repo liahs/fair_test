@@ -11,6 +11,7 @@ import { HourGlass } from "../../assets";
 import Lottie from "lottie-react";
 import AllRateOdds from "../../components/AllRateOdds";
 import SessionBet from "../../components/SessionBet";
+import BetPlaced from "../../components/BetPlaced";
 
 export default function Home() {
   const [drawer, setDrawer] = useState(false)
@@ -18,6 +19,7 @@ export default function Home() {
   const matchesMobile = useMediaQuery(theme.breakpoints.down("laptop"))
   const [open, handleClose] = useState(false)
   const [selected, setSelected] = useState("CRICKET")
+  const [visible, setVisible] = useState(false)
   return (
     <div style={{ height: "100vh", display: 'flex', flexDirection: 'column' }} >
       <CustomHeader />
@@ -33,7 +35,7 @@ export default function Home() {
         <Box sx={{ display: 'flex', overflowX: "hidden", flexDirection: 'column', flex: 1, justifyContent: 'flex-start', overflowY: "auto", alignItems: 'flex-start' }}>
 
           <EventListing setSelected={setSelected} selected={selected} />
-
+          <BetPlaced visible={visible} setVisible={setVisible} />
 
           {matchesMobile && (selected == "CRICKET" || selected == "INPLAY") && < div style={{ width: '100%' }}>
             <MatchOdds onClick={() => handleClose(true)} />
