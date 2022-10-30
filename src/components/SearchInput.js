@@ -6,7 +6,7 @@ import StyledImage from "./StyledImage";
 const SearchInput = ({ placeholder, inputContainerStyle }) => {
     const theme = useTheme();
     return (
-        <Box sx={[{ backgroundColor: "white", minWidth: "20vw", display: "flex", alignItems: "center", boxShadow: "0px 3px 10px #B7B7B726", height: { laptop: "35px", mobile: "30px" }, overflow: "hidden", paddingX: "5px", borderRadius: "35px" }, inputContainerStyle]}>
+        <Box sx={[{ backgroundColor: "white", minWidth: "20vw", display: "flex", alignItems: "center", boxShadow: "0px 3px 10px #B7B7B726", height: { laptop: "35px", mobile: "35px" }, overflow: "hidden", paddingX: "5px", borderRadius: "35px" }, inputContainerStyle]}>
             <TextField variant="standard"
                 placeholder={placeholder}
                 InputProps={{

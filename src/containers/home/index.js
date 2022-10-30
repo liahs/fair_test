@@ -36,9 +36,10 @@ export default function Home() {
           {matchesMobile && (selected == "CRICKET" || selected == "INPLAY") && < div style={{ width: '100%' }}>
             <MatchOdds onClick={() => handleClose(true)} />
 
-            <Box sx={{ display: 'block', width: '100%', alignSelf: 'center', }}>
-              <LiveMatchHome />
+            <Box sx={{ display: 'flex', flexDirection: 'column', width: '100%', alignSelf: 'center', alignItems: 'center' }}>
               <MatchComponent />
+              <LiveMatchHome />
+
               <MyBetHome />
             </Box>
           </div>}
