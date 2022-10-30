@@ -4,6 +4,7 @@ import { BETPLACED, NOT } from "../assets";
 const BetPlaced = ({ visible, setVisible, not }) => {
     return (
         <Modal
+            disableAutoFocus={true}
             onClose={() => setVisible(false)}
             sx={{ alignItems: 'center', justifyContent: 'center', display: 'flex', outline: 'none' }}
             open={visible}  >
