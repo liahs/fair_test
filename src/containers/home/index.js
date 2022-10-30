@@ -46,7 +46,7 @@ export default function Home() {
               <MatchComponent />
               <LiveMatchHome />
 
-              <MyBetHome />
+              {/* <MyBetHome /> */}
             </Box>
           </div>}
           {!matchesMobile && (selected == "CRICKET" || selected == "INPLAY") && <Box sx={{ display: 'flex', width: '100%' }}>
@@ -62,7 +62,7 @@ export default function Home() {
               <AllRateOdds />
               <SessionBet />
 
-              <MyBetHome />
+              {/* <MyBetHome /> */}
             </Box>
           </Box>
           }
