@@ -29,7 +29,8 @@ const CustomHeader = ({ }) => {
                     alignItems: !matchesMobile ? "center" : "flex-start",
                     justifyContent: "space-between",
                     paddingX: { laptop: "10%", mobile: "2%" },
-                    paddingY:matchesMobile?"15px":"0px"
+                    paddingY:matchesMobile?"15px":"0px",
+                    paddingBottom:matchesMobile?"10px":"0px"
                 }, (theme) => ({
                     backgroundImage: `${theme.palette.primary.headerGradient}`
                 })]}>
@@ -56,7 +57,7 @@ const CustomHeader = ({ }) => {
                 {matchesMobile && <MobileSideBar mobileOpen={mobileOpen} setMobileOpen={setMobileOpen} />}
 
             </AppBar>
-            <Box sx={{ minHeight: { laptop: 90 + 32,  mobile: 60 + 32+60 } }} />
+            <Box sx={{ minHeight: { laptop: 90 + 32,  mobile: 60 + 32+55 } }} />
         </>
     )
 }
@@ -167,7 +168,7 @@ const MobileSideBar = ({ mobileOpen, setMobileOpen }) => {
                 '& .MuiDrawer-paper': { boxSizing: 'border-box', width: "260px" },
             }}
         >
-            <Box sx={{ minHeight: { laptop: 90 + 32, tablet: 80 + 32, mobile: 60 + 32+60 } }} />
+            <Box sx={{ minHeight: { laptop: 90 + 32, mobile: 60 + 32+55 } }} />
             <Box sx={{ height: "100vh", background: "red" }}>
                 <SideBar mobileShow={true} />
             </Box>
