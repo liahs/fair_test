@@ -40,11 +40,13 @@ export { default as CANCEL } from './homeScreen/cancel.png'
 export { default as TIME } from './homeScreen/time.png'
 export { default as UD } from './homeScreen/UD.png'
 export { default as BETPLACED } from './homeScreen/betplaced.png'
+export { default as NOT } from './homeScreen/not.png'
+
 
 
 
 
 export { default as HourGlass } from './hourglass.json'
-export {default as CancelDark} from './drawer/cancel.png'
+export { default as CancelDark } from './drawer/cancel.png'
 
 
