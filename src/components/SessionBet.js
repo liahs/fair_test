@@ -22,7 +22,7 @@ const data = [
 ]
 const SessionBet = () => {
     return (
-        <Box sx={{ width: { mobile: "96%", laptop: '100%' }, marginY: { mobile: '.7vh', laptop: '2vh' }, padding: .2, background: 'white' }}>
+        <Box sx={{ width: { mobile: "98%", laptop: '100%' }, marginY: { mobile: '.7vh', laptop: '2vh' }, padding: .2, background: 'white' }}>
             <Box sx={[{ width: '100%', height: "42px", justifyContent: 'space-between', alignItems: 'center', paddingLeft: '10px', paddingRight: '4px', marginBottom: '.1vh', display: 'flex', }, (theme) => ({
                 backgroundImage: `${theme.palette.primary.headerGradient}`
             })]} >

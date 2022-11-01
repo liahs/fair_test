@@ -60,12 +60,12 @@ const EventListing = ({ selected, setSelected }) => {
                 alignItems: 'center', justifyContent: { laptop: 'center', mobile: 'center' }, background: 'white',
             }, selected == data.title ? { background: '#F8C851' } : { background: 'white' }, selected == data.title ? { border: "2px solid white" } : { border: '2px solid white' }]} >
                 <img src={data.image} style={{ width: '35px', height: '35px', alignSelf: 'center' }} />
-                <Typography noWrap sx={{ fontSize: { laptop: '12px', mobile: '12px' }, fontWeight: { mobile: "500", tablet: '500' }, marginTop: { mobile: '10px', tablet: '1.1vh', laptop: '1vh' } }} >{data.title}</Typography>
+                <Typography noWrap sx={{ fontSize: { laptop: '12px', mobile: '12px' }, fontWeight: { mobile: "500", tablet: '500' }, marginTop: { mobile: '5px', laptop: '.8vh' } }} >{data.title}</Typography>
             </Box>
         )
     }
     return (
-        <Box sx={[{ width: { mobile: "96%", laptop: '100%' }, msOverflowStyle: "none", overflowY: 'hidden', minHeight: { mobile: 80, laptop: 80 }, marginLeft: { mobile: '0', laptop: ".5vw" }, overflowX: 'auto', marginTop: '1vh', alignSelf: { mobile: 'center', laptop: 'flex-start' }, display: 'flex' }]}
+        <Box sx={[{ width: { mobile: "98%", laptop: '100%' }, msOverflowStyle: "none", overflowY: 'hidden', minHeight: { mobile: 80, laptop: 80 }, marginLeft: { mobile: '0', laptop: ".5vw" }, overflowX: 'auto', marginTop: '1vh', alignSelf: { mobile: 'center', laptop: 'flex-start' }, display: 'flex' }]}
 
         >
             {

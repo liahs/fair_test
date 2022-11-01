@@ -25,15 +25,21 @@ const SideBar = ({ mobileShow }) => {
                 else {
                     setSelected(title)
                 }
-            }} sx={[{ width: '100%', height: '6vh', marginBottom: '.5vh', borderBottomRightRadius: '.5vh', borderTopRightRadius: '.5vh' }, (theme) => ({
+            }} sx={[{
+                width: '100%', height: '6vh', marginBottom: '.5vh',
+                borderBottomRightRadius: '.5vh',
+                borderTopRightRadius: '.5vh'
+            }, (theme) => ({
                 backgroundImage: `${theme.palette.primary.headerGradient}`
             })]} >
                 <Box sx={{ display: 'flex', height: '100%' }} >
                     <Box sx={{ display: 'flex', flex: .3 }} >
-                    </Box><Box sx={{ display: 'flex', flex: 1, height: '100%', justifyContent: 'center', alignItems: 'center' }} >
-                        <Typography variant="menuListHeader" sx={{ fontSize: { laptop: "15px", mobile: "14px" } }}>{title}</Typography>
-                    </Box><Box sx={{ display: 'flex', flex: .3, justifyContent: 'center', alignItems: 'center' }} >
-                        <img style={{ width: '1.5vw', height: '.9vw', transform: selected == title ? 'rotate(0deg)' : 'rotate(180deg)' }} src={ArrowDown} />
+                    </Box>
+                    <Box sx={{ display: 'flex', flex: 1, height: '100%', justifyContent: { mobile: "flex-start", laptop: 'center' }, alignItems: 'center' }} >
+                        <Typography variant="menuListHeader" sx={{ fontSize: { laptop: "15px", mobile: "20px" } }}>{title}</Typography>
+                    </Box>
+                    <Box sx={{ display: 'flex', flex: .3, justifyContent: 'center', alignItems: 'center' }} >
+                        <img style={{ width: '15px', height: '8px', transform: selected == title ? 'rotate(0deg)' : 'rotate(180deg)' }} src={ArrowDown} />
                     </Box>
                 </Box>
             </Box>
@@ -41,8 +47,8 @@ const SideBar = ({ mobileShow }) => {
     }
     const ListItem = ({ item }) => {
         return (
-            <Box sx={{ display: 'flex', justifyContent: 'flex-start', alignItems: 'center', height: '5vh', minHeight: '20px', width: '60%', }} >
-                <Typography variant="menuListItem" sx={{ fontSize: { laptop: "13px", mobile: "12px" } }} >{item}</Typography>
+            <Box sx={{ display: 'flex', justifyContent: 'flex-start', alignItems: 'center', height: '5vh', minHeight: '20px', width: { mobile: '100%', laptop: "60%" } }} >
+                <Typography variant="menuListItem" sx={{ fontSize: { laptop: "13px", mobile: "20px" }, marginLeft: { mobile: "35px", laptop: '0px' } }} >{item}</Typography>
             </Box>
         )
     }
@@ -62,7 +68,7 @@ const SideBar = ({ mobileShow }) => {
         )
     }
     return (
-        <Box sx={[{ width: { laptop: '18%', mobile: mobileShow ? "100%" : "0%" }, minHeight: '500px', height: '100%', display: 'flex', flexDirection: 'column', overflow: 'auto', alignItems: 'flex-end', backgroundImage: `url(${drawerBackground})` }]}>
+        <Box sx={[{ width: { laptop: '18%', mobile: mobileShow ? "100%" : "0%" }, minHeight: '500px', height: '100%', display: 'flex', flexDirection: 'column', overflow: 'auto', alignItems: { mobile: 'flex-start', laptop: "flex-end" }, backgroundImage: `url(${drawerBackground})` }]}>
 
             {
                 data?.map((i) => {

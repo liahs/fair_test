@@ -1,7 +1,7 @@
 import React from "react"
 import { useTheme } from "@emotion/react"
 import { Typography, useMediaQuery, Box, Menu, MenuItem } from "@mui/material"
-import { Header, Info, Lock, Logout, TIME, UD } from "../assets"
+import { Header, INDIA, Info, Lock, Logout, PAKISTAN, TIME, UD } from "../assets"
 import './index.css'
 import PlaceBet from "./PlaceBet"
 import { useDispatch } from 'react-redux'
@@ -15,7 +15,6 @@ const SeperateBox = ({ color, empty, value, value2, lock, onClick }) => {
     const matchesMobile = useMediaQuery(theme.breakpoints.down("laptop"))
     const dispatch = useDispatch()
     return (
-
         <Box onClick={e => {
             onClick()
             dispatch(setColorValue(color))
@@ -43,9 +42,17 @@ const BoxComponent = ({ name, color, onClick }) => {
     const theme = useTheme()
     const matchesMobile = useMediaQuery(theme.breakpoints.down("laptop"))
     return (
-        <Box sx={{ display: 'flex', background: 'white', height: '40px', width: '100%', alignItems: 'center' }} >
-            <Box sx={{ display: 'flex', background: 'white', position: 'relative', height: '40px', width: '40%', alignItems: 'center', justifyContent: 'space-between', }} >
-                <Typography sx={{ color: 'black', fontSize: { laptop: '14px', mobile: "13px" }, fontWeight: '600', marginLeft: '7px' }} >{name}</Typography>
+        <Box sx={{ display: 'flex', background: 'white', height: '40px', width: '100%', alignItems: 'center', justifyContent: 'space-between' }} >
+            <Box sx={{ display: 'flex', background: 'white', position: 'relative', height: '40px', width: '40%', alignItems: 'center', }} >
+                <Box sx={{ flexDirection: 'row', display: 'flex', width: '100%', alignItems: 'center' }}>
+                    {
+                        name != "DRAW" ? <img src={name == "INDIA" ? INDIA : PAKISTAN} style={{ width: "22px", height: '25px', marginLeft: '10px', backgroundSize: "contains" }} />
+                            :
+                            <Box sx={{ width: '22px', height: '25px', marginLeft: '10px', }}>
+                            </Box>
+                    }
+                    <Typography sx={{ color: 'black', fontSize: { laptop: '14px', mobile: "13px" }, fontWeight: '600', marginLeft: '10px' }} >{name}</Typography>
+                </Box>
                 <MoneyBox color={color} />
             </Box>
             <Box sx={{ display: 'flex', background: 'white', height: '40px', width: { laptop: '60%', mobile: '80%' }, justifyContent: { mobile: 'flex-end', laptop: 'center' }, alignItems: 'center' }} >
@@ -90,6 +97,7 @@ const MoneyBox = ({ color }) => {
             borderRadius: "5px", justifyContent: 'center', position: matchesMobile ? 'absolute' : 'relative', right: matchesMobile ? '-90%' : '7px', alignItems: 'center', display: 'flex', height: '25px', background: '#F6F6F6', borderRadius: '7px'
         }}>
             <Typography sx={{ fontSize: '9px', fontWeight: 'bold', color: color }} >-10,00,000</Typography>
+
         </Box>
     )
 }
@@ -105,7 +113,7 @@ const Odds = ({ onClick }) => {
     const theme = useTheme()
     const matchesMobile = useMediaQuery(theme.breakpoints.down("laptop"))
     return (
-        <Box sx={{ display: 'flex', backgroundColor: 'white', padding: .2, flexDirection: 'column', marginY: { mobile: '.7vh', laptop: '1vh' }, width: { mobile: "96%", laptop: '97%' }, marginX: '1vw', alignSelf: { mobile: 'center', tablet: 'center', laptop: 'flex-start', } }}>
+        <Box sx={{ display: 'flex', backgroundColor: 'white', padding: .2, flexDirection: 'column', marginY: { mobile: '.7vh', laptop: '1vh' }, width: { mobile: "98%", laptop: '97%' }, marginX: '1vw', alignSelf: { mobile: 'center', tablet: 'center', laptop: 'flex-start', } }}>
 
 
 
@@ -262,8 +270,8 @@ const DropdownMenu = ({ anchorEl, open, handleClose }) => {
             onClose={handleClose}
             MenuListProps={{
                 'aria-labelledby': 'basic-button',
-                sx:{
-                    paddingY:"0px"
+                sx: {
+                    paddingY: "0px"
                 }
             }}
             PaperProps={
@@ -271,63 +279,63 @@ const DropdownMenu = ({ anchorEl, open, handleClose }) => {
                     sx: {
                         borderRadius: "5px",
                         border: "1px solid #306A47",
-                      
+
                     }
                 }
             }
         >
-            <Box sx={{  minHeight: "100px",flexDirection:"column", backgroundColor: "white", display: "flex"}}>
-                <Box sx={{display:"flex",height:"25px"}}>
-                    <Box sx={{width:"60px",display:"flex",justifyContent:"center",alignItems:"center"}}>
-                        <Typography sx={{color:"#306A47",fontWeight:"bold",fontSize:"12px"}}>Runs</Typography>
+            <Box sx={{ minHeight: "100px", flexDirection: "column", backgroundColor: "white", display: "flex" }}>
+                <Box sx={{ display: "flex", height: "25px" }}>
+                    <Box sx={{ width: "60px", display: "flex", justifyContent: "center", alignItems: "center" }}>
+                        <Typography sx={{ color: "#306A47", fontWeight: "bold", fontSize: "12px" }}>Runs</Typography>
                     </Box>
-                    <Box sx={{width:"90px",display:"flex",borderLeft:"1px solid #306A47",justifyContent:"center",alignItems:"center"}}>
-                        <Typography sx={{color:"#306A47",fontWeight:"bold",fontSize:"12px"}}>Amount</Typography>
-                    </Box>
-                </Box>
-                <Box sx={{display:"flex",height:"25px",borderTop:"1px solid #306A47"}}>
-                    <Box sx={{width:"60px",display:"flex",justifyContent:"center",alignItems:"center"}}>
-                        <Typography sx={{color:"#306A47",fontWeight:"bold",fontSize:"12px"}}>40</Typography>
-                    </Box>
-                    <Box sx={{width:"90px",display:"flex",borderLeft:"1px solid #306A47",background:"#10DC61",justifyContent:"center",alignItems:"center"}}>
-                        <Typography sx={{color:"#306A47",fontWeight:"500",fontSize:"12px",color:"white"}}>4,02,350</Typography>
-                        <StyledImage src="https://fontawesomeicons.com/images/svg/trending-up-sharp.svg" sx={{height:"15px",marginLeft:"5px",filter:"invert(.9) sepia(1) saturate(5) hue-rotate(175deg);",width:"15px"}} />
+                    <Box sx={{ width: "90px", display: "flex", borderLeft: "1px solid #306A47", justifyContent: "center", alignItems: "center" }}>
+                        <Typography sx={{ color: "#306A47", fontWeight: "bold", fontSize: "12px" }}>Amount</Typography>
                     </Box>
                 </Box>
-                <Box sx={{display:"flex",height:"25px",borderTop:"1px solid #306A47"}}>
-                    <Box sx={{width:"60px",display:"flex",justifyContent:"center",alignItems:"center"}}>
-                        <Typography sx={{color:"#306A47",fontWeight:"bold",fontSize:"12px"}}>41</Typography>
+                <Box sx={{ display: "flex", height: "25px", borderTop: "1px solid #306A47" }}>
+                    <Box sx={{ width: "60px", display: "flex", justifyContent: "center", alignItems: "center" }}>
+                        <Typography sx={{ color: "#306A47", fontWeight: "bold", fontSize: "12px" }}>40</Typography>
                     </Box>
-                    <Box sx={{width:"90px",display:"flex",borderLeft:"1px solid #306A47",background:"#10DC61",justifyContent:"center",alignItems:"center"}}>
-                        <Typography sx={{color:"#306A47",fontWeight:"500",fontSize:"12px",color:"white"}}>4,02,350</Typography>
-                        <StyledImage src="https://fontawesomeicons.com/images/svg/trending-up-sharp.svg" sx={{height:"15px",marginLeft:"5px",filter:"invert(.9) sepia(1) saturate(5) hue-rotate(175deg);",width:"15px"}} />
-                    </Box>
-                </Box>
-                <Box sx={{display:"flex",height:"25px",borderTop:"1px solid #306A47"}}>
-                    <Box sx={{width:"60px",display:"flex",justifyContent:"center",alignItems:"center"}}>
-                        <Typography sx={{color:"#306A47",fontWeight:"bold",fontSize:"12px"}}>42</Typography>
-                    </Box>
-                    <Box sx={{width:"90px",display:"flex",borderLeft:"1px solid #306A47",background:"#F8C851",justifyContent:"center",alignItems:"center"}}>
-                        <Typography sx={{color:"#306A47",fontWeight:"500",fontSize:"12px",color:"white"}}>4,02,350</Typography>
-                        <StyledImage src="https://fontawesomeicons.com/images/svg/trending-up-sharp.svg" sx={{height:"15px",marginLeft:"5px",filter:"invert(.9) sepia(1) saturate(5) hue-rotate(175deg);",width:"15px"}} />
+                    <Box sx={{ width: "90px", display: "flex", borderLeft: "1px solid #306A47", background: "#10DC61", justifyContent: "center", alignItems: "center" }}>
+                        <Typography sx={{ color: "#306A47", fontWeight: "500", fontSize: "12px", color: "white" }}>4,02,350</Typography>
+                        <StyledImage src="https://fontawesomeicons.com/images/svg/trending-up-sharp.svg" sx={{ height: "15px", marginLeft: "5px", filter: "invert(.9) sepia(1) saturate(5) hue-rotate(175deg);", width: "15px" }} />
                     </Box>
                 </Box>
-                <Box sx={{display:"flex",height:"25px",borderTop:"1px solid #306A47"}}>
-                    <Box sx={{width:"60px",display:"flex",justifyContent:"center",alignItems:"center"}}>
-                        <Typography sx={{color:"#306A47",fontWeight:"bold",fontSize:"12px"}}>43</Typography>
+                <Box sx={{ display: "flex", height: "25px", borderTop: "1px solid #306A47" }}>
+                    <Box sx={{ width: "60px", display: "flex", justifyContent: "center", alignItems: "center" }}>
+                        <Typography sx={{ color: "#306A47", fontWeight: "bold", fontSize: "12px" }}>41</Typography>
                     </Box>
-                    <Box sx={{width:"90px",display:"flex",borderLeft:"1px solid #306A47",background:"#F8C851",justifyContent:"center",alignItems:"center"}}>
-                        <Typography sx={{color:"#306A47",fontWeight:"500",fontSize:"12px",color:"white"}}>4,02,350</Typography>
-                        <StyledImage src="https://fontawesomeicons.com/images/svg/trending-up-sharp.svg" sx={{height:"15px",marginLeft:"5px",filter:"invert(.9) sepia(1) saturate(5) hue-rotate(175deg);",width:"15px"}} />
+                    <Box sx={{ width: "90px", display: "flex", borderLeft: "1px solid #306A47", background: "#10DC61", justifyContent: "center", alignItems: "center" }}>
+                        <Typography sx={{ color: "#306A47", fontWeight: "500", fontSize: "12px", color: "white" }}>4,02,350</Typography>
+                        <StyledImage src="https://fontawesomeicons.com/images/svg/trending-up-sharp.svg" sx={{ height: "15px", marginLeft: "5px", filter: "invert(.9) sepia(1) saturate(5) hue-rotate(175deg);", width: "15px" }} />
                     </Box>
                 </Box>
-                <Box sx={{display:"flex",height:"25px",borderTop:"1px solid #306A47"}}>
-                    <Box sx={{width:"60px",display:"flex",justifyContent:"center",alignItems:"center"}}>
-                        <Typography sx={{color:"#306A47",fontWeight:"bold",fontSize:"12px"}}>44</Typography>
+                <Box sx={{ display: "flex", height: "25px", borderTop: "1px solid #306A47" }}>
+                    <Box sx={{ width: "60px", display: "flex", justifyContent: "center", alignItems: "center" }}>
+                        <Typography sx={{ color: "#306A47", fontWeight: "bold", fontSize: "12px" }}>42</Typography>
                     </Box>
-                    <Box sx={{width:"90px",display:"flex",borderLeft:"1px solid #306A47",background:"#DC3545",justifyContent:"center",alignItems:"center"}}>
-                        <Typography sx={{color:"#306A47",fontWeight:"500",fontSize:"12px",color:"white"}}>4,02,350</Typography>
-                        <StyledImage src="https://fontawesomeicons.com/images/svg/trending-down-sharp.svg" sx={{height:"15px",marginLeft:"5px",filter:"invert(.9) sepia(1) saturate(5) hue-rotate(175deg);",width:"15px"}} />
+                    <Box sx={{ width: "90px", display: "flex", borderLeft: "1px solid #306A47", background: "#F8C851", justifyContent: "center", alignItems: "center" }}>
+                        <Typography sx={{ color: "#306A47", fontWeight: "500", fontSize: "12px", color: "white" }}>4,02,350</Typography>
+                        <StyledImage src="https://fontawesomeicons.com/images/svg/trending-up-sharp.svg" sx={{ height: "15px", marginLeft: "5px", filter: "invert(.9) sepia(1) saturate(5) hue-rotate(175deg);", width: "15px" }} />
+                    </Box>
+                </Box>
+                <Box sx={{ display: "flex", height: "25px", borderTop: "1px solid #306A47" }}>
+                    <Box sx={{ width: "60px", display: "flex", justifyContent: "center", alignItems: "center" }}>
+                        <Typography sx={{ color: "#306A47", fontWeight: "bold", fontSize: "12px" }}>43</Typography>
+                    </Box>
+                    <Box sx={{ width: "90px", display: "flex", borderLeft: "1px solid #306A47", background: "#F8C851", justifyContent: "center", alignItems: "center" }}>
+                        <Typography sx={{ color: "#306A47", fontWeight: "500", fontSize: "12px", color: "white" }}>4,02,350</Typography>
+                        <StyledImage src="https://fontawesomeicons.com/images/svg/trending-up-sharp.svg" sx={{ height: "15px", marginLeft: "5px", filter: "invert(.9) sepia(1) saturate(5) hue-rotate(175deg);", width: "15px" }} />
+                    </Box>
+                </Box>
+                <Box sx={{ display: "flex", height: "25px", borderTop: "1px solid #306A47" }}>
+                    <Box sx={{ width: "60px", display: "flex", justifyContent: "center", alignItems: "center" }}>
+                        <Typography sx={{ color: "#306A47", fontWeight: "bold", fontSize: "12px" }}>44</Typography>
+                    </Box>
+                    <Box sx={{ width: "90px", display: "flex", borderLeft: "1px solid #306A47", background: "#DC3545", justifyContent: "center", alignItems: "center" }}>
+                        <Typography sx={{ color: "#306A47", fontWeight: "500", fontSize: "12px", color: "white" }}>4,02,350</Typography>
+                        <StyledImage src="https://fontawesomeicons.com/images/svg/trending-down-sharp.svg" sx={{ height: "15px", marginLeft: "5px", filter: "invert(.9) sepia(1) saturate(5) hue-rotate(175deg);", width: "15px" }} />
                     </Box>
                 </Box>
             </Box>
@@ -346,7 +354,7 @@ const SeasonMarket = ({ onClick }) => {
     const theme = useTheme()
     const matchesMobile = useMediaQuery(theme.breakpoints.down("laptop"))
     return (
-        <Box sx={{ display: 'flex', background: 'white', padding: .3, flexDirection: 'column', marginY: { mobile: '.7vh', laptop: '1vh' }, width: { mobile: "96%", laptop: '97%' }, marginX: "1vw", alignSelf: { mobile: 'center', tablet: 'center', laptop: 'flex-start', } }}>
+        <Box sx={{ display: 'flex', background: 'white', padding: .3, flexDirection: 'column', marginY: { mobile: '.7vh', laptop: '1vh' }, width: { mobile: "98%", laptop: '97%' }, marginX: "1vw", alignSelf: { mobile: 'center', tablet: 'center', laptop: 'flex-start', } }}>
             <Box sx={{ display: 'flex', height: 38, flexDirection: 'row', width: '99.7%', alignSelf: 'center' }}>
                 <Box sx={{ flex: 1, background: '#f1c550', alignItems: 'center', display: 'flex', justifyContent: 'space-between' }}>
                     <Typography sx={{ fontSize: { laptop: '13px', tablet: '12px', mobile: "12px" }, fontWeight: 'bold', marginLeft: '7px' }} >Session Market</Typography>
@@ -370,7 +378,7 @@ const SeasonMarket = ({ onClick }) => {
                     <img src={Info} style={{ width: '15px', height: '15px', marginRight: '5px', marginLeft: '5px' }} />
                 </Box>
             </Box >
-            <Box sx={{ width: "100%", height: "200px", overflowY: "auto" }}>
+            <Box sx={{ width: "100%" }}>
                 {<Box sx={{ display: 'flex', background: '#319E5B', height: '25px', width: '99.7%', alignSelf: 'center' }} >
                     <Box sx={{ display: 'flex', background: "'#319E5B'", height: '25px', width: '40%', alignItems: 'center' }} >
                         <Typography sx={{ color: 'white', fontSize: { laptop: '11px', mobile: "9px" }, marginLeft: '7px' }} >MIN: 4000 MAX:4500</Typography>
@@ -384,6 +392,8 @@ const SeasonMarket = ({ onClick }) => {
                         <Box sx={{ background: "#FF9292", width: { laptop: '16.5%', mobile: "25%" }, height: '100%', display: 'flex', justifyContent: 'center', alignItems: 'center' }} >
                             <Typography sx={{ fontSize: '12px', color: 'black', fontWeight: '600' }} >Lay</Typography>
                         </Box>
+                        {/* <Box sx={{background:'#FF9292',width:{laptop:"16.5%",mobile:"25%"},height:'100%',display:'flex',justifyContent:"center",alignItems:"center"}}>
+                            </Box> */}
 
                     </Box>
                 </Box>}
@@ -409,7 +419,7 @@ const BookMarketer = ({ onClick }) => {
     const theme = useTheme()
     const matchesMobile = useMediaQuery(theme.breakpoints.down("laptop"))
     return (
-        <Box sx={{ display: 'flex', backgroundColor: 'white', padding: .2, flexDirection: 'column', marginY: { mobile: '.7vh', laptop: '1vh' }, width: { mobile: "96%", laptop: '97%' }, marginX: '1vw', alignSelf: { mobile: 'center', tablet: 'center', laptop: 'flex-start', } }}>
+        <Box sx={{ display: 'flex', backgroundColor: 'white', padding: .2, flexDirection: 'column', marginY: { mobile: '.7vh', laptop: '1vh' }, width: { mobile: "98%", laptop: '97%' }, marginX: '1vw', alignSelf: { mobile: 'center', tablet: 'center', laptop: 'flex-start', } }}>
 
 
 
@@ -467,8 +477,8 @@ const BookMarketer = ({ onClick }) => {
 }
 const MatchOdds = ({ onClick }) => {
     const [currentSelected, setCurrentSelected] = React.useState(0)
-    const [visible,setVisible]=React.useState(false)
-    const [canceled,setCanceled]=React.useState(false)
+    const [visible, setVisible] = React.useState(false)
+    const [canceled, setCanceled] = React.useState(false)
     return (
         <Box sx={{ display: 'flex', flexDirection: 'column' }}>
             <Odds onClick={() => {
@@ -480,16 +490,16 @@ const MatchOdds = ({ onClick }) => {
 
 
             }} />
-            {currentSelected == 1 && <PlaceBet 
-            onCancel={()=>{
-                setCanceled(true)
-                setVisible(true)
-            }}
-            onSubmit={()=>{
-                setVisible(true)
-            }} handleClose={() => {
-                setCurrentSelected(0)
-            }} />}
+            {currentSelected == 1 && <PlaceBet
+                onCancel={() => {
+                    setCanceled(true)
+                    setVisible(true)
+                }}
+                onSubmit={() => {
+                    setVisible(true)
+                }} handleClose={() => {
+                    setCurrentSelected(0)
+                }} />}
             <BookMarketer onClick={onClick = () => {
                 if (currentSelected == 2) {
                     setCurrentSelected(0)
@@ -497,17 +507,17 @@ const MatchOdds = ({ onClick }) => {
                     setCurrentSelected(2)
                 }
             }} />
-            {currentSelected == 2 && <PlaceBet onSubmit={()=>{
-                setVisible(true)
-            }} 
-            onCancel={()=>{
-                setCanceled(true)
+            {currentSelected == 2 && <PlaceBet onSubmit={() => {
                 setVisible(true)
             }}
-            handleClose={() => {
-                setCanceled(false)
-                setCurrentSelected(0)
-            }} />}
+                onCancel={() => {
+                    setCanceled(true)
+                    setVisible(true)
+                }}
+                handleClose={() => {
+                    setCanceled(false)
+                    setCurrentSelected(0)
+                }} />}
             <SeasonMarket onClick={onClick = () => {
                 if (currentSelected == 3) {
                     setCurrentSelected(0)
@@ -516,15 +526,15 @@ const MatchOdds = ({ onClick }) => {
                 }
             }} />
             {currentSelected == 3 && <PlaceBet
-            onCancel={()=>{
-                setCanceled(true)
-                setVisible(true)
-            }}
-            onSubmit={()=>{
-                setVisible(true)
-            }} season={true} handleClose={() => {
-                setCurrentSelected(0)
-            }} />}
+                onCancel={() => {
+                    setCanceled(true)
+                    setVisible(true)
+                }}
+                onSubmit={() => {
+                    setVisible(true)
+                }} season={true} handleClose={() => {
+                    setCurrentSelected(0)
+                }} />}
             <BetPlaced not={canceled} visible={visible} setVisible={setVisible} />
         </Box>
     )

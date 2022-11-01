@@ -3,7 +3,7 @@ import { MyBet } from "../assets"
 import StyledImage from './StyledImage'
 const data = [
     {
-        title: "Book maker",
+        title: "Bookmaker",
         time: "03:23 AM",
         type: "Back",
         odds: "90.00",
@@ -22,7 +22,7 @@ const data = [
 ]
 const AllRateOdds = () => {
     return (
-        <Box sx={{ width: { mobile: "96%", laptop: '100%' }, marginY: { mobile: '.7vh', laptop: '1vh' }, padding: .2, background: 'white' }}>
+        <Box sx={{ width: { mobile: "98%", laptop: '100%' }, marginY: { mobile: '.7vh', laptop: '1vh' }, padding: .2, background: 'white' }}>
             <Box sx={[{ width: '100%', height: "42px", justifyContent: 'space-between', alignItems: 'center', paddingLeft: '10px', paddingRight: '4px', marginBottom: '.1vh', display: 'flex', }, (theme) => ({
                 backgroundImage: `${theme.palette.primary.headerGradient}`
             })]} >
@@ -86,7 +86,10 @@ const SingleBox = ({ data, header, color, up, first }) => {
 
     return !header ? first ? (
         <Box sx={{ width: '100%', height: '40px', background: "#F1C550", marginX: { mobile: '1px', laptop: '0.4px' }, display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-            <Typography sx={{ fontWeight: '700', fontSize: '12px', color: 'black', textAlign: 'center' }} >{data}</Typography>
+            {data == "Bookmaker" ? <Typography sx={{ fontWeight: '700', fontSize: { mobile: '9px', laptop: '9px' }, color: 'black', textAlign: 'center' }} >{data}</Typography> :
+
+                <Typography sx={{ fontWeight: '700', fontSize: { mobile: '10px', laptop: '10px' }, color: 'black', textAlign: 'center' }} >{"MATCH"}<span style={{ fontSize: '8px' }} ><br />odds</span></Typography>
+            }
         </Box>
     ) : up ? (
         <Box sx={{ width: '100%', height: '40px', flexDirection: 'column', background: color, marginX: { mobile: '1px', laptop: '0.4px' }, display: 'flex', justifyContent: 'center' }}>

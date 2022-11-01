@@ -46,11 +46,17 @@ const CustomHeader = ({ }) => {
                         </Box>
                         <SearchInput inputContainerStyle={{ marginLeft: "10px", minWidth: matchesMobile ? "10vw" : "20vw", width: "38%" }} placeholder={"Search Events..."} />
                     </Box>
-                    <Box sx={{ display: "flex", justifyContent: "space-between", minWidth: matchesMobile ? "100%" : "0px", alignItems: "center", marginTop: matchesMobile ? "15px" : "0px" }}>
+                    {!matchesMobile && <Box sx={{ display: "flex", justifyContent: "space-between", minWidth: matchesMobile ? "100%" : "0px", alignItems: "center", marginTop: matchesMobile ? "15px" : "0px" }}>
                         <BoxMoney containerStyle={matchesMobile ? { marginLeft: "0px", width: "32%" } : {}} title="Exposure" value="$100" image={MoneyBag} />
                         <BoxMoney title="Balance" value="$25.0" image={Money} containerStyle={matchesMobile ? { width: "32%" } : {}} />
                         <BoxProfile containerStyle={matchesMobile ? { width: "32%" } : {}} image={"https://picsum.photos/200/300"} value={"John Doe"} />
-                    </Box>
+                    </Box>}
+                    {matchesMobile && <Box sx={{ display: "flex", justifyContent: "flex-end", minWidth: matchesMobile ? "100%" : "0px", alignItems: "center", marginTop: matchesMobile ? "15px" : "0px" }}>
+                        <BoxMobile value={"Exposure"} />
+                        <Box sx={{ width: '5px' }}></Box>
+                        <BoxMobile value={'Balance'} />
+
+                    </Box>}
                 </Box>
                 <Box sx={{ height: "32px", display: "flex", background: "#202020", alignItems: "center" }}>
                     <marquee loop={true}><Typography sx={{ color: "text.white", fontSize: "10px", fontStyle: "italic", letterSpacing: "1px", overflow: "hidden", whiteSpace: "nowrap", "text-overflow:": "ellipsis" }}>This is a demo notification highlight. This is a demo notification highlight.This is a demo notification highlight. This is a demo notification highlight.This is a demo notification highlight. This is a demo notification highlight.This is a demo notification highlight.</Typography></marquee>
@@ -63,7 +69,25 @@ const CustomHeader = ({ }) => {
     )
 }
 
+const BoxMobile = ({ value }) => {
 
+    return (
+        <Box
+            sx={{
+                width: '130px',
+                height: '23px',
+                background: 'red',
+                borderRadius: '12px',
+                // justifyContent: 'center',
+                alignItems: 'center',
+                backgroundColor: 'white',
+                display: 'flex'
+            }}
+        >
+            <Typography sx={{ fontSize: '11px', color: 'black', fontWeight: '500', marginLeft: '5px' }}>{value}:<span style={{ color: '#27AC1E', fontWeight: '700' }} >10,000,00</span></Typography>
+        </Box>
+    )
+}
 
 const BoxMoney = ({ image, title, value, containerStyle }) => {
     const theme = useTheme()
@@ -113,7 +137,7 @@ const BoxProfile = ({ image, value, containerStyle }) => {
 
 const menutItems = [{ title: "Account Statement" }, { title: "Profile Loss Report" }, { title: "Bet History" }, { title: "Unsetteled Bet" }, { title: "Casino Report History" }, { title: "Set Button Values" }, { title: "Security Auth Verfication" }, { title: "Change Password" }]
 const DropdownMenu = ({ anchorEl, open, handleClose }) => {
-    const navigate=useNavigate()
+    const navigate = useNavigate()
     return (
         <Menu
             id="basic-menu"
@@ -142,10 +166,10 @@ const DropdownMenu = ({ anchorEl, open, handleClose }) => {
                     transform: "scale(1.02)"
                 }
             }} onClick={handleClose}>{x.title}</MenuItem>)}
-            <Box onClick={()=>{
+            <Box onClick={() => {
                 navigate("/")
                 handleClose()
-            }}  sx={{ borderRadius: "5px", height: { laptop: "38px", mobile: "34px" }, width: "200px", marginLeft: "5px", marginTop: "10px", backgroundColor: "#F1C550", display: "flex", justifyContent: "center", alignItems: "center" }}>
+            }} sx={{ borderRadius: "5px", height: { laptop: "38px", mobile: "34px" }, width: "200px", marginLeft: "5px", marginTop: "10px", backgroundColor: "#F1C550", display: "flex", justifyContent: "center", alignItems: "center" }}>
                 <StyledImage src={Logout} sx={{ width: "35%", height: "auto" }} />
             </Box>
         </Menu>
@@ -168,13 +192,17 @@ const MobileSideBar = ({ mobileOpen, setMobileOpen }) => {
             ModalProps={{
                 keepMounted: true, // Better open performance on mobile.
             }}
+            BackdropProps={{
+                // style: { filter: 'blur(100px)', width: '100%', background: 'rgba(0,0,0,.8)' }
+            }}
             sx={{
                 display: { xs: 'block', sm: 'none' },
-                '& .MuiDrawer-paper': { boxSizing: 'border-box', width: "260px" },
+                '& .MuiDrawer-paper': { boxSizing: 'border-box', width: "190px" },
+
             }}
         >
             <Box sx={{ minHeight: { laptop: 90 + 32, mobile: 60 + 32 + 55 } }} />
-            <Box sx={{ height: "100vh", background: "red" }}>
+            <Box sx={{ height: "100vh" }}>
                 <SideBar mobileShow={true} />
             </Box>
         </Drawer>

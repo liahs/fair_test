@@ -9,6 +9,7 @@ export { default as logo } from './login/logo.png'
 export { default as eye } from './login/eye.png'
 export { default as drawerBackground } from './drawer/drawer_bg.png'
 export { default as ArrowDown } from './drawer/arrow_down.png'
+export { default as DownArrow } from './homeScreen/downarrow.png'
 
 export { default as Slot } from './homeScreen/slot.png'
 export { default as Cricket } from './homeScreen/cricket.png'
@@ -41,6 +42,10 @@ export { default as TIME } from './homeScreen/time.png'
 export { default as UD } from './homeScreen/UD.png'
 export { default as BETPLACED } from './homeScreen/betplaced.png'
 export { default as NOT } from './homeScreen/not.png'
+export { default as INDIA } from './homeScreen/india.png'
+export { default as PAKISTAN } from './homeScreen/pakistan.png'
+export { default as ARROWUP } from './homeScreen/arrowup.png'
+
 
 
 

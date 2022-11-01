@@ -26,12 +26,10 @@ export default function Home() {
       <Box flex={1} sx={[{ flex: 1, display: 'flex', }, (theme) => ({
         backgroundImage: `${theme.palette.primary.homeBodyGradient}`
       })]} >
-
         <SideBar />
         {/* <PlaceBet open={open} handleClose={() => {
           handleClose(!open)
         }} /> */}
-
         <Box sx={{ display: 'flex', overflowX: "hidden", flexDirection: 'column', flex: 1, justifyContent: 'flex-start', overflowY: "auto", alignItems: 'flex-start' }}>
 
           <EventListing setSelected={setSelected} selected={selected} />
@@ -74,7 +72,6 @@ export default function Home() {
           }
         </Box>
       </Box>
-
     </div>
   );
 }
