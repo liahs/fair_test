@@ -63,8 +63,6 @@ const RowComponent = ({ header, data }) => {
     }
     return (
         <Box sx={{ width: '100%', height: header ? '20px' : '42px', background: 'white', justifyContent: 'space-between', alignItems: 'center', display: 'flex' }}>
-
-
             {!header && <>
                 <SingleBox color={getColor} data={data.title} first={true} header={header} />
                 <SingleBox color={getColor()} data={data} up={true} header={header} />

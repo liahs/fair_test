@@ -3,15 +3,15 @@ import './App.css';
 import Main from './routes/main';
 import { ThemeProvider } from '@mui/system';
 import theme from './theme';
-import {Provider} from 'react-redux'
+import { Provider } from 'react-redux'
 import store from './store';
 function App() {
   return (
     <ThemeProvider theme={theme}>
-<Provider store={store}>
-      <div className="App">
-        <Main />
-      </div>
+      <Provider store={store}>
+        <div className="App">
+          <Main />
+        </div>
       </Provider>
     </ThemeProvider>
   );

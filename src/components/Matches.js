@@ -25,7 +25,6 @@ const SeperateBox = ({ color, empty, value, value2, lock }) => {
 const Divider = () => {
     return (
         <Box sx={{ width: '99%', background: 'rgba(211,211,211)', height: '1px' }} ></Box>
-
     )
 }
 const Odds = ({ upcoming, onClick, top, blur }) => {
@@ -37,14 +36,9 @@ const Odds = ({ upcoming, onClick, top, blur }) => {
                 <Typography sx={{ fontStyle: 'italic', fontSize: { laptop: '10px', mobile: "10px" }, fontWeight: '600', color: 'white' }} >UPCOMING</Typography>
             </Box>}
             <Box onClick={onClick} sx={{ zIndex: 0, filter: blur ? "blur(3px)" : null, display: 'flex', position: 'relative', flexDirection: 'column', alignSelf: { mobile: 'center', tablet: 'center', laptop: 'flex-start', }, background: 'white' }}>
-
-
-
                 {!upcoming && <Box sx={{ width: '50px', border: '1px solid white', height: { mobile: '20px', laptop: '13px' }, justifyContent: 'center', display: 'flex', alignItems: 'center', background: '#46CF4D', position: 'absolute', marginTop: -1, borderRadius: '3px', marginLeft: 1 }} >
                     <Typography sx={{ fontStyle: 'italic', fontSize: { laptop: '10px', mobile: "10px" }, fontWeight: '600', color: 'white' }} >LIVE</Typography>
                 </Box>}
-
-
                 <Box sx={{ display: 'flex', height: '38px', flexDirection: 'row', width: '99.7%', alignSelf: 'center' }}>
                     <Box sx={{ flex: 1.2, background: '#f1c550', alignItems: { laptop: 'center', mobile: 'flex-end' }, display: 'flex', }}>
                         <Typography noWrap={true} sx={{ marginBottom: '2px', fontSize: { laptop: '14px', mobile: "10px" }, fontWeight: 'bold', marginLeft: '7px' }} >Team A vs Team B <span style={{ fontWeight: '500' }} >Today at 9:30 PM</span></Typography>
@@ -134,7 +128,6 @@ const Odds = ({ upcoming, onClick, top, blur }) => {
 
                     </Box>
                 </Box>
-
                 <Divider />
                 <Box sx={{ display: 'flex', background: 'white', height: '40px', width: '100%', alignItems: 'center' }} >
                     <Box sx={{ display: 'flex', background: 'white', height: '40px', width: '40%', alignItems: 'center' }} >
@@ -163,18 +156,13 @@ const Odds = ({ upcoming, onClick, top, blur }) => {
         </Box>
     )
 }
-
-
 const MatchesComponent = ({ onClick }) => {
-
     return (
-        < >
+        <>
             <Odds onClick={onClick} top={true} />
             <Odds onClick={onClick} top={false} />
             <Odds onClick={onClick} top={false} blur={true} upcoming={true} />
             <Odds onClick={onClick} top={false} blur={true} upcoming={true} />
-
-
         </>
     )
 }

@@ -44,7 +44,11 @@ const CustomHeader = ({ }) => {
                             }} src={Draw} sx={{ height: { laptop: "24px", mobile: "20px" }, width: "auto" }} />
                             <StyledImage src={logo} sx={{ height: { laptop: "45px", mobile: "40px" }, width: "auto", marginLeft: { laptop: "20px", mobile: "10px" } }} />
                         </Box>
-                        <SearchInput inputContainerStyle={{ marginLeft: "10px", minWidth: matchesMobile ? "10vw" : "20vw", width: "38%" }} placeholder={"Search Events..."} />
+                        <SearchInput inputContainerStyle={{ marginLeft: "20px", minWidth: matchesMobile ? "0vw" : "20vw", width: { mobile: "70px", laptop: '38%' } }} placeholder={"Search Events..."} />
+                        {
+                            matchesMobile && <BoxProfile containerStyle={matchesMobile ? { width: "50%" } : {}} image={"https://picsum.photos/200/300"} value={"John Doe"} />
+
+                        }
                     </Box>
                     {!matchesMobile && <Box sx={{ display: "flex", justifyContent: "space-between", minWidth: matchesMobile ? "100%" : "0px", alignItems: "center", marginTop: matchesMobile ? "15px" : "0px" }}>
                         <BoxMoney containerStyle={matchesMobile ? { marginLeft: "0px", width: "32%" } : {}} title="Exposure" value="$100" image={MoneyBag} />
@@ -121,17 +125,17 @@ const BoxProfile = ({ image, value, containerStyle }) => {
         setAnchorEl(0);
     };
     return (
-        <>
+        <Box sx={{ display: 'flex', justifyContent: 'space-between', minWidth: { laptop: "120px" } }}>
             <Box onClick={(event) => handleClick(event)} sx={[{ backgroundColor: "primary.main", minWidth: { laptop: "120px" }, marginLeft: "1vw", display: "flex", alignItems: "center", boxShadow: "0px 3px 10px #B7B7B726", justifyContent: "space-between", height: { laptop: "35px", mobile: "35px" }, overflow: "hidden", paddingX: "2px", borderRadius: "35px" }, containerStyle]}>
                 <StyledImage src={image} sx={{ height: { laptop: "30px", mobile: '30px' }, width: { laptop: "30px", mobile: '30px' }, borderRadius: "150px", backgroundColor: "red" }} />
-                <Box style={{ marginLeft: "10px" }}>
-                    <Typography sx={{ fontSize: { laptop: '11px', mobile: "11px" }, color: "text.white", fontWeight: "600" }}>{value}</Typography>
+                <Box style={{}}>
+                    <Typography sx={{ fontSize: { laptop: '11px', mobile: "8px" }, color: "text.white", fontWeight: "600" }}>{value}</Typography>
                 </Box>
-                <StyledImage src={ArrowDown} sx={{ height: "6px", width: "10px", marginLeft: "10px", marginRight: "8px" }} />
+                <StyledImage src={ArrowDown} sx={{ height: "6px", width: "6px" }} />
             </Box>
             <DropdownMenu open={Boolean(anchorEl)} anchorEl={anchorEl} handleClose={handleClose} />
 
-        </>
+        </Box>
     )
 }
 
