@@ -36,7 +36,7 @@ const SideBar = ({ mobileShow }) => {
                     <Box sx={{ display: 'flex', flex: .3 }} >
                     </Box>
                     <Box sx={{ display: 'flex', flex: 1, height: '100%', justifyContent: { mobile: "flex-start", laptop: 'center' }, alignItems: 'center' }} >
-                        <Typography variant="menuListHeader" sx={{ fontSize: { laptop: "15px", mobile: "20px" } }}>{title}</Typography>
+                        <Typography variant="menuListHeader" sx={{ fontSize: { laptop: "16px", mobile: "20px" }, fontWeight: { mobile: "500", laptop: "600" } }}>{title}</Typography>
                     </Box>
                     <Box sx={{ display: 'flex', flex: .3, justifyContent: 'center', alignItems: 'center' }} >
                         <img style={{ width: '15px', height: '8px', transform: selected == title ? 'rotate(0deg)' : 'rotate(180deg)' }} src={ArrowDown} />

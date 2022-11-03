@@ -26,7 +26,7 @@ const AllRateOdds = () => {
             <Box sx={[{ width: '100%', height: "42px", justifyContent: 'space-between', alignItems: 'center', paddingLeft: '10px', paddingRight: '4px', marginBottom: '.1vh', display: 'flex', }, (theme) => ({
                 backgroundImage: `${theme.palette.primary.headerGradient}`
             })]} >
-                <Typography sx={{ fontWeight: '12px', color: 'white', fontWeight: '700' }} >All Rate Odds</Typography>
+                <Typography sx={{ fontWeight: '12px', color: 'white', fontWeight: '700' }} >All Rate Bets</Typography>
 
                 <Box sx={{ width: '100px', height: '90%', background: 'white', justifyContent: 'center', borderRadius: '3px', alignItems: 'center', display: 'flex', flexDirection: 'column' }}>
                     <Typography sx={{ fontSize: '12px', fontWeight: '700', color: '#FF1111' }} >Total Bet</Typography>

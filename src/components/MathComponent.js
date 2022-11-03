@@ -9,7 +9,7 @@ import { useState } from "react"
 const MatchComponent = ({ }) => {
     const [visible, setVisible] = useState(true)
     return (
-        <Box sx={[{ width: { tablet: "55%", mobile: "98%", laptop: '100%' }, display: 'flex', flexDirection: 'column', marginX: { laptop: '0vw', mobile: '0px', tablet: '0px' }, marginY: { laptop: "1vh", mobile: '.7vh' }, borderRadius: '2px', background: 'white', alignSelf: { mobile: 'center', tablet: 'center', laptop: "flex-start" } }]}>
+        <Box sx={[{ width: { tablet: "55%", mobile: "98%", laptop: '100%' }, display: 'flex', flexDirection: 'column', alignSelf: 'center', marginX: { laptop: '0vw', mobile: '0px', tablet: '0px' }, marginY: { laptop: "1vh", mobile: '.7vh' }, borderRadius: '2px', background: 'white', alignSelf: { mobile: 'center', tablet: 'center', laptop: "flex-start" } }]}>
             <Box sx={{ display: 'flex', height: 38, flexDirection: 'row', width: '100%', alignSelf: 'center' }}>
                 <Box sx={{ flex: 1, background: '#f1c550', alignItems: 'center', display: 'flex', justifyContent: 'space-between' }}>
                     <Typography sx={{ fontSize: { laptop: '13px', tablet: '12px', mobile: "12px" }, fontWeight: 'bold', marginLeft: '7px' }} >Live Scoreboard</Typography>
@@ -37,14 +37,14 @@ const MatchComponent = ({ }) => {
             {visible && <Box sx={{ display: 'flex', padding: '1vh', flexDirection: 'column', flex: 1, justifyContent: 'flex-end', borderBottom: '0px solid', borderColor: 'gray' }} >
                 <Box sx={{ display: 'flex' }} >
                     <Box sx={{ display: 'flex', flex: 1, alignItems: 'center', justifyContent: 'flex-end', flexDirection: 'column' }} >
-                        <img style={{ width: '50px', height: '35px', "boxShadow": "0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)" }} src="https://www.sciencekids.co.nz/images/pictures/flags680/India.jpg" />
+                        <img style={{ width: '45px', height: '35px', "boxShadow": "0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)" }} src="https://www.sciencekids.co.nz/images/pictures/flags680/India.jpg" />
                         <Typography sx={{ fontSize: { mobile: '8px', table: '10px', laptop: '12px' }, marginTop: '1vh', fontWeight: '600' }}  >India</Typography>
                     </Box>
                     <Box sx={{ display: 'flex', flex: .2, alignItems: 'center', flexDirection: 'column', display: 'flex', marginTop: '1vh' }} >
                         <Typography sx={{ fontSize: { mobile: '8px', tablet: '8px', laptop: '10px' }, marginTop: '5vh', color: 'gray', fontWeight: '600' }}  >V/S</Typography>
                     </Box>
                     <Box sx={{ display: 'flex', flex: 1, alignItems: 'center', justifyContent: 'flex-end', flexDirection: 'column' }} >
-                        <img style={{ width: '50px', height: '35px', "boxShadow": "0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)" }} src="https://www.sciencekids.co.nz/images/pictures/flags680/Pakistan.jpg" />
+                        <img style={{ width: '45px', height: '35px', "boxShadow": "0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)" }} src="https://www.sciencekids.co.nz/images/pictures/flags680/Pakistan.jpg" />
                         <Typography sx={{ fontSize: { mobile: '8px', table: '10px', laptop: '12px' }, marginTop: '1vh', fontWeight: '600' }}  >Pakistan</Typography>
                     </Box>
 

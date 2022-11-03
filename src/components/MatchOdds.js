@@ -1,7 +1,7 @@
 import React from "react"
 import { useTheme } from "@emotion/react"
 import { Typography, useMediaQuery, Box, Menu, MenuItem } from "@mui/material"
-import { Header, INDIA, Info, Lock, Logout, PAKISTAN, TIME, UD } from "../assets"
+import { BallStart, Header, INDIA, Info, Lock, Logout, PAKISTAN, TIME, UD } from "../assets"
 import './index.css'
 import PlaceBet from "./PlaceBet"
 import { useDispatch } from 'react-redux'
@@ -18,7 +18,7 @@ const SeperateBox = ({ color, empty, value, value2, lock, onClick }) => {
         <Box onClick={e => {
             onClick()
             dispatch(setColorValue(color))
-        }} sx={{ background: color, border: color != 'white' ? '1px solid #2626264D' : '0px solid white', width: { mobile: '30%', laptop: '20%' }, height: '94%', display: 'flex', justifyContent: 'center', alignItems: 'center', flexDirection: 'column' }} >
+        }} sx={{ background: lock ? "#FDF21A" : color, border: color != 'white' ? '1px solid #2626264D' : '0px solid white', width: { mobile: '30%', laptop: '20%' }, height: '94%', display: 'flex', justifyContent: 'center', alignItems: 'center', flexDirection: 'column' }} >
             {!empty && !lock && <Box sx={{ alignItems: 'center', justifyContent: 'space-around' }} >
                 <Typography sx={{ fontSize: '13px', color: color == 'white' ? 'white' : 'black', fontWeight: '700', textAlign: 'center' }} >{value}</Typography>
                 <Typography sx={{ fontSize: '12px', marginTop: -.4, color: color == 'white' ? 'white' : 'black', textAlign: 'center' }} >{value2}</Typography>
@@ -26,7 +26,7 @@ const SeperateBox = ({ color, empty, value, value2, lock, onClick }) => {
             {lock &&
                 <img
                     src={Lock}
-                    style={{ width: '10px', height: '15px' }}
+                    style={{ width: '10px', height: '15px', color: 'red' }}
                 />
 
             }
@@ -82,8 +82,8 @@ const SmallBox = ({ color }) => {
 const SmallBoxSeason = ({ color }) => {
     return (
         <Box sx={{ width: { laptop: '70px', mobile: '17vw' }, flexDirection: 'column', position: 'absolute', display: 'flex', left: { mobile: '56.5%', laptop: '49vw', tablet: '49%' }, justifyContent: 'center', alignItems: 'center', height: '30px', background: 'white', borderRadius: '3px' }}>
-            <Typography sx={{ fontSize: '10px', fontWeight: 'bold', color: '#FF4D4D' }} >+Book.60</Typography>
-            <Typography sx={{ fontSize: '10px', fontWeight: 'bold', color: '#46e080' }} >999</Typography>
+            <Typography sx={{ fontSize: '8px', fontWeight: 'bold', color: '#FF4D4D' }} >Session Bet</Typography>
+            <Typography sx={{ fontSize: '8px', fontWeight: 'bold', color: '#46e080' }} >999</Typography>
 
         </Box>
     )
@@ -171,7 +171,7 @@ const Odds = ({ onClick }) => {
 
     )
 }
-const SeasonMarketBox = ({ onClick }) => {
+const SeasonMarketBox = ({ onClick, index }) => {
     const theme = useTheme()
     const matchesMobile = useMediaQuery(theme.breakpoints.down("laptop"))
     return (
@@ -190,9 +190,15 @@ const SeasonMarketBox = ({ onClick }) => {
                     <SeperateBox color={"white"} /></>}
                 <Box sx={{ width: '.45%', display: 'flex', background: 'pink' }} ></Box>
                 <SeperateBox color={"white"} />
-                <SeperateBox onClick={onClick} value={"39"} value2={"100"} color={"#B3E0FF"} />
+                {/* <Box sx={{ display: 'flex', flexDirection: 'column', position: 'relative', width: '100%' }}> */}
+                <SeperateBox onClick={onClick} value={"37"} lock={index == 2} value2={"100"} color={"#F6D0CB"} />
+
                 <Box sx={{ width: '.45%', display: 'flex', background: 'pink' }} ></Box>
-                <SeperateBox onClick={onClick} value={"37"} value2={"100"} color={"#F6D0CB"} />
+                <SeperateBox onClick={onClick} value={"39"} lock={index == 2} value2={"100"} color={"#B3E0FF"} />
+
+
+                {/* </Box> */}
+
                 <Box sx={{ width: '.45%', display: 'flex', background: 'pink' }} ></Box>
                 {!matchesMobile && <>
                     <Box sx={{ width: '.45%', display: 'flex', background: 'pink' }} ></Box>
@@ -201,6 +207,9 @@ const SeasonMarketBox = ({ onClick }) => {
                     <SeperateBox color={"white"} />
                 </>}
                 {!matchesMobile && <PlaceBetComponentWeb />}
+                {!matchesMobile && index == 1 && <Box sx={{ background: 'rgba(0,0,0,.9)', width: '33.5%', marginLeft: -'3%', height: '40px', position: 'absolute', top: '.1px', alignItems: 'center', justifyContent: 'center', display: 'flex' }} >
+                    <img src={BallStart} style={{ width: '55px', height: "15px" }} />
+                </Box>}
             </Box>
         </Box>
     )
@@ -357,7 +366,7 @@ const SeasonMarket = ({ onClick }) => {
         <Box sx={{ display: 'flex', background: 'white', padding: .3, flexDirection: 'column', marginY: { mobile: '.7vh', laptop: '1vh' }, width: { mobile: "98%", laptop: '97%' }, marginX: "1vw", alignSelf: { mobile: 'center', tablet: 'center', laptop: 'flex-start', } }}>
             <Box sx={{ display: 'flex', height: 38, flexDirection: 'row', width: '99.7%', alignSelf: 'center' }}>
                 <Box sx={{ flex: 1, background: '#f1c550', alignItems: 'center', display: 'flex', justifyContent: 'space-between' }}>
-                    <Typography sx={{ fontSize: { laptop: '13px', tablet: '12px', mobile: "12px" }, fontWeight: 'bold', marginLeft: '7px' }} >Session Market</Typography>
+                    <Typography sx={{ fontSize: { laptop: '13px', tablet: '12px', mobile: "12px" }, fontWeight: 'bold', marginLeft: '7px' }} >Session Odds</Typography>
                 </Box>
                 <Box sx={{
                     flex: .1, background: '#262626'
@@ -384,25 +393,26 @@ const SeasonMarket = ({ onClick }) => {
                         <Typography sx={{ color: 'white', fontSize: { laptop: '11px', mobile: "9px" }, marginLeft: '7px' }} >MIN: 4000 MAX:4500</Typography>
                     </Box>
                     <Box sx={{ display: 'flex', background: '#319E5B', height: '25px', width: { laptop: '60%', mobile: '80%' }, justifyContent: { laptop: 'center', mobile: 'flex-end' } }} >
-                        <Box sx={{ background: "#00C0F9", width: { laptop: '16.5%', mobile: "25%" }, height: '100%', display: 'flex', justifyContent: 'center', alignItems: 'center' }} >
-                            <Typography sx={{ fontSize: '12px', color: 'black', fontWeight: '600' }} >Back</Typography>
-                        </Box>
-                        <Box sx={{ width: '.35%', display: 'flex' }} ></Box>
 
                         <Box sx={{ background: "#FF9292", width: { laptop: '16.5%', mobile: "25%" }, height: '100%', display: 'flex', justifyContent: 'center', alignItems: 'center' }} >
-                            <Typography sx={{ fontSize: '12px', color: 'black', fontWeight: '600' }} >Lay</Typography>
+                            <Typography sx={{ fontSize: '12px', color: 'black', fontWeight: '600' }} >NO</Typography>
                         </Box>
+                        <Box sx={{ width: '.35%', display: 'flex' }} ></Box>
+                        <Box sx={{ background: "#00C0F9", width: { laptop: '16.5%', mobile: "25%" }, height: '100%', display: 'flex', justifyContent: 'center', alignItems: 'center' }} >
+                            <Typography sx={{ fontSize: '12px', color: 'black', fontWeight: '600' }} >YES</Typography>
+                        </Box>
+
                         {/* <Box sx={{background:'#FF9292',width:{laptop:"16.5%",mobile:"25%"},height:'100%',display:'flex',justifyContent:"center",alignItems:"center"}}>
                             </Box> */}
 
                     </Box>
                 </Box>}
 
-                <SeasonMarketBox onClick={onClick} />
+                <SeasonMarketBox index={1} onClick={onClick} />
                 <Divider />
                 <SeasonMarketBox onClick={onClick} />
                 <Divider />
-                <SeasonMarketBox onClick={onClick} />
+                <SeasonMarketBox index={2} onClick={onClick} />
                 <Divider />
                 <SeasonMarketBox onClick={onClick} />
                 <Divider />
@@ -468,9 +478,15 @@ const BookMarketer = ({ onClick }) => {
                     </Box>
                 </Box>
             }
-            <BoxComponent onClick={onClick} color={'#46e080'} name={'INDIA'} />
-            <Divider />
-            <BoxComponent onClick={onClick} color={'#FF4D4D'} name={'PAKISTAN'} />
+            <Box sx={{ position: 'relative' }}>
+                <BoxComponent onClick={onClick} color={'#46e080'} name={'INDIA'} />
+                <Divider />
+                <BoxComponent onClick={onClick} color={'#FF4D4D'} name={'PAKISTAN'} />
+                {!matchesMobile && <Box sx={{ background: 'rgba(0,0,0,.9)', width: '60%', marginLeft: '40%', height: '82px', position: 'absolute', top: '.1px', alignItems: 'center', justifyContent: 'center', display: 'flex' }} >
+                    <img src={BallStart} style={{ width: '113px', height: "32px" }} />
+                </Box>}
+            </Box>
+
         </Box >
 
     )

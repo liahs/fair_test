@@ -44,16 +44,18 @@ const CustomHeader = ({ }) => {
                             }} src={Draw} sx={{ height: { laptop: "24px", mobile: "20px" }, width: "auto" }} />
                             <StyledImage src={logo} sx={{ height: { laptop: "45px", mobile: "40px" }, width: "auto", marginLeft: { laptop: "20px", mobile: "10px" } }} />
                         </Box>
-                        <SearchInput inputContainerStyle={{ marginLeft: "20px", minWidth: matchesMobile ? "0vw" : "20vw", width: { mobile: "70px", laptop: '38%' } }} placeholder={"Search Events..."} />
-                        {
-                            matchesMobile && <BoxProfile containerStyle={matchesMobile ? { width: "50%" } : {}} image={"https://picsum.photos/200/300"} value={"John Doe"} />
+                        <Box sx={{ display: 'flex', alignItems: 'center' }}>
+                            <SearchInput inputContainerStyle={{ minWidth: matchesMobile ? "0vw" : "20vw", width: { laptop: '38%' } }} placeholder={"Search Events..."} />
+                            {
+                                matchesMobile && <BoxProfile containerStyle={matchesMobile ? {} : {}} image={"https://picsum.photos/200/300"} value={"John Doe"} />
 
-                        }
+                            }
+                        </Box>
                     </Box>
                     {!matchesMobile && <Box sx={{ display: "flex", justifyContent: "space-between", minWidth: matchesMobile ? "100%" : "0px", alignItems: "center", marginTop: matchesMobile ? "15px" : "0px" }}>
                         <BoxMoney containerStyle={matchesMobile ? { marginLeft: "0px", width: "32%" } : {}} title="Exposure" value="$100" image={MoneyBag} />
                         <BoxMoney title="Balance" value="$25.0" image={Money} containerStyle={matchesMobile ? { width: "32%" } : {}} />
-                        <BoxProfile containerStyle={matchesMobile ? { width: "32%" } : {}} image={"https://picsum.photos/200/300"} value={"John Doe"} />
+                        <BoxProfile containerStyle={matchesMobile ? { width: "52%" } : {}} image={"https://picsum.photos/200/300"} value={"John Doe"} />
                     </Box>}
                     {matchesMobile && <Box sx={{ display: "flex", justifyContent: "flex-end", minWidth: matchesMobile ? "100%" : "0px", alignItems: "center", marginTop: matchesMobile ? "15px" : "0px" }}>
                         <BoxMobile value={"Exposure"} />
@@ -68,7 +70,7 @@ const CustomHeader = ({ }) => {
                 {matchesMobile && <MobileSideBar mobileOpen={mobileOpen} setMobileOpen={setMobileOpen} />}
 
             </AppBar>
-            <Box sx={{ minHeight: { laptop: 90 + 32, mobile: 60 + 32 + 55 } }} />
+            <Box sx={{ minHeight: { laptop: 90 + 32, mobile: 60 + 32 + 42 } }} />
         </>
     )
 }
@@ -125,13 +127,13 @@ const BoxProfile = ({ image, value, containerStyle }) => {
         setAnchorEl(0);
     };
     return (
-        <Box sx={{ display: 'flex', justifyContent: 'space-between', minWidth: { laptop: "120px" } }}>
-            <Box onClick={(event) => handleClick(event)} sx={[{ backgroundColor: "primary.main", minWidth: { laptop: "120px" }, marginLeft: "1vw", display: "flex", alignItems: "center", boxShadow: "0px 3px 10px #B7B7B726", justifyContent: "space-between", height: { laptop: "35px", mobile: "35px" }, overflow: "hidden", paddingX: "2px", borderRadius: "35px" }, containerStyle]}>
-                <StyledImage src={image} sx={{ height: { laptop: "30px", mobile: '30px' }, width: { laptop: "30px", mobile: '30px' }, borderRadius: "150px", backgroundColor: "red" }} />
+        <Box sx={{ display: 'flex', justifyContent: 'space-between', minWidth: { laptop: "120px", } }}>
+            <Box onClick={(event) => handleClick(event)} sx={[{ backgroundColor: "primary.main", minWidth: { laptop: "120px", mobile: "90px" }, marginLeft: "1vw", display: "flex", alignItems: "center", boxShadow: "0px 3px 10px #B7B7B726", justifyContent: "space-between", height: { laptop: "35px", mobile: "30px" }, overflow: "hidden", paddingX: "2px", borderRadius: "35px" }, containerStyle]}>
+                <StyledImage src={image} sx={{ height: { laptop: "30px", mobile: '27px' }, width: { laptop: "30px", mobile: '27px' }, borderRadius: "150px" }} />
                 <Box style={{}}>
                     <Typography sx={{ fontSize: { laptop: '11px', mobile: "8px" }, color: "text.white", fontWeight: "600" }}>{value}</Typography>
                 </Box>
-                <StyledImage src={ArrowDown} sx={{ height: "6px", width: "6px" }} />
+                <StyledImage src={ArrowDown} sx={{ height: "6px", width: "10px", marginRight: '5px' }} />
             </Box>
             <DropdownMenu open={Boolean(anchorEl)} anchorEl={anchorEl} handleClose={handleClose} />
 
@@ -196,16 +198,14 @@ const MobileSideBar = ({ mobileOpen, setMobileOpen }) => {
             ModalProps={{
                 keepMounted: true, // Better open performance on mobile.
             }}
-            BackdropProps={{
-                // style: { filter: 'blur(100px)', width: '100%', background: 'rgba(0,0,0,.8)' }
-            }}
+
             sx={{
                 display: { xs: 'block', sm: 'none' },
                 '& .MuiDrawer-paper': { boxSizing: 'border-box', width: "190px" },
 
             }}
         >
-            <Box sx={{ minHeight: { laptop: 90 + 32, mobile: 60 + 32 + 55 } }} />
+            <Box sx={{ minHeight: { laptop: 90 + 32 + 40, mobile: 60 + 32 + 40 } }} />
             <Box sx={{ height: "100vh" }}>
                 <SideBar mobileShow={true} />
             </Box>

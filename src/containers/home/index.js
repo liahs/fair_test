@@ -4,15 +4,13 @@ import { CustomHeader, MatchOdds, SideBar } from "../../components";
 import EventListing from "../../components/EventListing";
 import MatchComponent from "../../components/MathComponent";
 import LiveMatchHome from "../../components/LiveMatchHome";
-import MyBetHome from "../../components/MyBetHome";
 import { Typography, useMediaQuery, useTheme } from "@mui/material";
-import PlaceBet from "../../components/PlaceBet";
 import { HourGlass } from "../../assets";
 import Lottie from "lottie-react";
 import AllRateOdds from "../../components/AllRateOdds";
 import SessionBet from "../../components/SessionBet";
 import BetPlaced from "../../components/BetPlaced";
-
+import CountDownTimer from '../../components/CountDownTimer'
 export default function Home() {
   const [drawer, setDrawer] = useState(false)
   const theme = useTheme()
@@ -20,6 +18,7 @@ export default function Home() {
   const [open, handleClose] = useState(false)
   const [selected, setSelected] = useState("CRICKET")
   const [visible, setVisible] = useState(false)
+  const [timer, settimer] = useState(true)
   return (
     <div style={{ height: "100vh", display: 'flex', flexDirection: 'column' }} >
       <CustomHeader />
@@ -27,21 +26,22 @@ export default function Home() {
         backgroundImage: `${theme.palette.primary.homeBodyGradient}`
       })]} >
         <SideBar />
-        {/* <PlaceBet open={open} handleClose={() => {
-          handleClose(!open)
-        }} /> */}
-        <Box sx={{ display: 'flex', overflowX: "hidden", flexDirection: 'column', flex: 1, justifyContent: 'flex-start', overflowY: "auto", alignItems: 'flex-start' }}>
 
+        <CountDownTimer visible={timer} setVisible={settimer} />
+        <Box sx={{ display: 'flex', overflowX: "hidden", flexDirection: 'column', flex: 1, justifyContent: 'flex-start', overflowY: "auto", alignItems: 'flex-start' }}>
           <EventListing setSelected={setSelected} selected={selected} />
           <BetPlaced visible={visible} setVisible={setVisible} />
+          {matchesMobile && (selected == "CRICKET" || selected == "INPLAY") && < div style={{ width: '100%', alignItems: 'center', justifyContent: 'center', display: 'flex', flexDirection: 'column' }}>
+            <MatchComponent />
+            <div style={{ width: '100%' }}>
+              <MatchOdds onClick={() => handleClose(true)} />
 
-          {matchesMobile && (selected == "CRICKET" || selected == "INPLAY") && < div style={{ width: '100%' }}>
-            <MatchOdds onClick={() => handleClose(true)} />
+            </div>
 
             <Box sx={{ display: 'flex', flexDirection: 'column', width: '100%', alignSelf: 'center', alignItems: 'center' }}>
-              <AllRateOdds />
               <SessionBet />
-              <MatchComponent />
+              <AllRateOdds />
+
               <LiveMatchHome />
               {/* <MyBetHome /> */}
             </Box>

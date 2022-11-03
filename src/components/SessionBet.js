@@ -5,7 +5,7 @@ const data = [
     {
         title: "BOOKMAKER",
         time: "03:23 AM",
-        type: "Back",
+        type: "Yes",
         odds: "90.00",
         stake: "1000.00",
         country: 'INDIA'
@@ -13,7 +13,7 @@ const data = [
     {
         title: "Match odds",
         time: "03:23 AM",
-        type: "Lay",
+        type: "No",
         odds: "90.00",
         stake: "1000.00",
         country: 'INDIA'
@@ -53,7 +53,7 @@ const RowComponent = ({ header, data }) => {
         if (header) {
             return "black"
         }
-        else if (data?.type == "Back") {
+        else if (data?.type == "Yes") {
             return "#B3E0FF"
         }
         else {
