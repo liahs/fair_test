@@ -1,11 +1,11 @@
-import { Input, Modal, TextField, Typography, useMediaQuery, useTheme } from "@mui/material";
+import { Input, Menu, Popover, TextField, Typography, useMediaQuery, useTheme } from "@mui/material";
 import { Box } from "@mui/system";
 import { useState } from "react";
 import { ArrowDown, CANCEL, CancelDark } from "../assets";
 import '../components/index.css'
 import StyledImage from "./StyledImage";
 import { useSelector } from 'react-redux'
-const PlaceBet = ({ open, handleClose, season, onSubmit, onCancel }) => {
+const PlaceBet = ({ open, handleClose, season, onSubmit, onCancel, anchorEl }) => {
     const [defaultValue, setDefaultValue] = useState("")
     const theme = useTheme()
     const selectedColorBox = useSelector(state => state.selectedColorBox)?.value
@@ -45,6 +45,7 @@ const PlaceBet = ({ open, handleClose, season, onSubmit, onCancel }) => {
     }
     const TeamsOdssData = ({ input, title, value, containerStyle, valueContainerStyle, valueTextStyle, trendingUp, trendingDown }) => {
         const selectedColorBox = useSelector(state => state.selectedColorBox)?.value
+        console.log(selectedColorBox)
         const [oddValue, setOddValue] = useState("18")
         return (
             <Box sx={[{ display: "flex", flexDirection: "column", }, containerStyle]}>
@@ -100,7 +101,8 @@ const PlaceBet = ({ open, handleClose, season, onSubmit, onCancel }) => {
         )
     }
     return (
-        <Box sx={{ display: 'flex', flexDirection: 'column', border: "1px solid white", borderRadius: "5px", overflow: "hidden", marginY: { mobile: '.7vh', laptop: '1vh' }, width: { mobile: "90%", laptop: '55%' }, marginLeft: { laptop: '1vw', mobile: "0px" }, alignSelf: { mobile: 'center', tablet: 'center', laptop: 'flex-start', } }} >
+
+        <Box sx={{ display: 'flex', flexDirection: 'column', border: "1px solid white", borderRadius: "5px",marginLeft:season?"40px":0, overflow: "hidden", width: { mobile: season?"82vw":"85vw", laptop: '30vw' } }} >
             <Box sx={{ background: "white", width: "100%", 'overflow': "hidden" }} >
                 <Box sx={[{ height: "38px", display: "flex", justifyContent: "space-between", alignItems: "center", px: "10px" }, (theme) => ({
                     backgroundImage: `${theme.palette.primary.headerGradient}`
@@ -118,22 +120,11 @@ const PlaceBet = ({ open, handleClose, season, onSubmit, onCancel }) => {
                 <Box sx={{ display: "flex", marginTop: "2px", marginX: "2px" }}>
                     <TeamsOdssData title={season ? "Session" : "Team"} value={season ? "6 OVER RUNS INDIA" : "INDIA"} valueContainerStyle={{ background: "#F8C851" }} containerStyle={{ flex: season ? { mobile: 2.5, laptop: 2 } : 1 }} />
                     <TeamsOdssData input={true} title={"Odds"} value={"60.00"} containerStyle={{ marginLeft: "2px", flex: 1 }} />
-                    <TeamsOdssData title={season ? "Yes/No" : "Back/Lay"} value={season ? "Yes" : "Back"} valueContainerStyle={{ background: selectedColorBox }} containerStyle={{ marginLeft: "2px", flex: 1 }} />
+                    <TeamsOdssData title={season ? "Yes/No" : "Back/Lay"} value={season ? "Yes" : "Back"} valueContainerStyle={{ background: (selectedColorBox == "#FFB5B5" || selectedColorBox == "#F6D0CB") ? "#FF7D7D" : "#00C0F9" }} containerStyle={{ marginLeft: "2px", flex: 1 }} />
                     {!matchesMobile && <Box sx={{ width: '20px' }} ></Box>}
                     <BoxInput containerStyle={{ marginLeft: "2px", flex: 1.3 }} title={"Stake"} />
-                    {/* {!matchesMobile && <>
-                        <TeamsOdssData title={"Stake"} value={"10,00,000"} containerStyle={{ marginLeft: "2px", flex: 1 }} />
-                        <TeamsOdssData title={"Profit"} trendingUp={true} valueTextStyle={{ color: "white" }} value={"6,00,000"} valueContainerStyle={{ background: "#10DC61" }} containerStyle={{ marginLeft: "2px", flex: 1 }} />
-                        <TeamsOdssData title={"Loss"} trendingDown={true} valueTextStyle={{ color: "white" }} value={"10,00,000"} valueContainerStyle={{ background: "#FF4949" }} containerStyle={{ marginLeft: "2px", flex: 1 }} />
-                    </>
-                    } */}
-
                 </Box>
                 {matchesMobile && <Box sx={{ display: "flex", marginTop: "2px", marginX: "2px" }}>
-                    {/* <TeamsOdssData title={"Stake"} value={"10,00,000"} containerStyle={{ marginLeft: "2px", flex: 1 }} /> */}
-                    {/* <TeamsOdssData title={"Profit"} trendingUp={true} valueTextStyle={{ color: "white" }} value={"6,00,000"} valueContainerStyle={{ background: "#10DC61" }} containerStyle={{ marginLeft: "2px", flex: 1 }} /> */}
-                    {/* <TeamsOdssData title={"Loss"} trendingDown={true} valueTextStyle={{ color: "white" }} value={"10,00,000"} valueContainerStyle={{ background: "#FF4949" }} containerStyle={{ marginLeft: "2px", flex: 1 }} /> */}
-
                 </Box>}
                 {<><Box sx={{ display: "flex", marginTop: "15px", marginX: "2px" }}>
                     <NumberData containerStyle={{ flex: 1 }} value={"2000"} />
@@ -147,23 +138,7 @@ const PlaceBet = ({ open, handleClose, season, onSubmit, onCancel }) => {
                         <NumberData containerStyle={{ marginLeft: "2px", flex: 1 }} value={"2,00,000"} />
                         <NumberData containerStyle={{ marginLeft: "2px", flex: 1 }} value={"5,00,000"} />
                     </Box></>}
-                {/* {matchesMobile && <><Box sx={{ display: "flex", marginTop: "15px", marginX: "2px" }}>
-                    <NumberData containerStyle={{ flex: 1 }} value={"1000"} />
-                    <NumberData containerStyle={{ marginLeft: "2px", flex: 1 }} value={"2000"} />
-                    <NumberData containerStyle={{ marginLeft: "2px", flex: 1 }} value={"3000"} />
-                </Box>
-                    <Box sx={{ display: "flex", marginTop: "2px", marginX: "2px" }}>
 
-                        <NumberData containerStyle={{ flex: 1 }} value={"5000"} />
-                        <NumberData containerStyle={{ marginLeft: "2px", flex: 1 }} value={"10,000"} />
-                        <NumberData containerStyle={{ flex: 1, marginLeft: "2px", }} value={"20,000"} />
-                    </Box>
-                    <Box sx={{ display: "flex", marginTop: "2px", marginX: "2px" }}>
-                        <NumberData containerStyle={{ flex: 1 }} value={"50,000"} />
-                        <NumberData containerStyle={{ marginLeft: "2px", flex: 1 }} value={"1,00,000"} />
-                        <NumberData containerStyle={{ marginLeft: "2px", flex: 1 }} value={"5,00,000"} />
-                    </Box>
-                </>} */}
                 <Box sx={{ display: 'flex', flex: 1, paddingY: '2vh', justifyContent: 'space-evenly' }}>
                     <CustomButton onClick={() => { handleClose(); onCancel(); }} title={'Reset'} color={'#FF4949'} />
                     <CustomButton onClick={() => { handleClose(); onSubmit(); }} title={'Submit'} color={'#262626'} />

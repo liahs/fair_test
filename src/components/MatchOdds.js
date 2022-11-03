@@ -4,33 +4,64 @@ import { Typography, useMediaQuery, Box, Menu, MenuItem } from "@mui/material"
 import { Header, INDIA, Info, Lock, Logout, PAKISTAN, TIME, UD } from "../assets"
 import './index.css'
 import PlaceBet from "./PlaceBet"
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { setColorValue } from "../store/selectedColorBox"
 import { useState } from "react"
 import StyledImage from "./StyledImage"
 import BetPlaced from "./BetPlaced"
+import { setAnchor } from "../store/betplace"
+import { Popover } from 'react-tiny-popover'
 
-const SeperateBox = ({ color, empty, value, value2, lock, onClick }) => {
+const SeperateBox = ({ color, empty, value, value2, lock, session ,align}) => {
     const theme = useTheme()
     const matchesMobile = useMediaQuery(theme.breakpoints.down("laptop"))
     const dispatch = useDispatch()
+    // const anchor=useSelector(state=>state.betplace)?.anchor
+    const [anchor, setAnchor] = React.useState(null)
+    const [isPopoverOpen, setIsPopoverOpen] = React.useState(false)
+    const [visible, setVisible] = React.useState(false)
+    const [canceled, setCanceled] = React.useState(false)
     return (
-        <Box onClick={e => {
-            onClick()
-            dispatch(setColorValue(color))
-        }} sx={{ background: color, border: color != 'white' ? '1px solid #2626264D' : '0px solid white', width: { mobile: '30%', laptop: '20%' }, height: '94%', display: 'flex', justifyContent: 'center', alignItems: 'center', flexDirection: 'column' }} >
-            {!empty && !lock && <Box sx={{ alignItems: 'center', justifyContent: 'space-around' }} >
-                <Typography sx={{ fontSize: '13px', color: color == 'white' ? 'white' : 'black', fontWeight: '700', textAlign: 'center' }} >{value}</Typography>
-                <Typography sx={{ fontSize: '12px', marginTop: -.4, color: color == 'white' ? 'white' : 'black', textAlign: 'center' }} >{value2}</Typography>
-            </Box>}
-            {lock &&
-                <img
-                    src={Lock}
-                    style={{ width: '10px', height: '15px' }}
-                />
+        <>
+            <Popover
+                isOpen={isPopoverOpen}
+                align={matchesMobile?"end":"center"}
+                positions={['bottom']} // preferred positions by priority
+                onClickOutside={() => setIsPopoverOpen(false)}
+                content={<PlaceBet onSubmit={()=>{
+                    setVisible(true)
+                    setCanceled(false)
+                }}
+                onCancel={()=>{
+                    setVisible(true)
+                    setCanceled(true)
+                }}
+                
+                handleClose={() => {
+                    setIsPopoverOpen(false)
+                }}
+                    season={session}
+                />}
+            >
+                <Box onClick={e => {
+                    setIsPopoverOpen(!isPopoverOpen)
+                    dispatch(setColorValue(color))
+                }} sx={{ background: color, border: color != 'white' ? '1px solid #2626264D' : '0px solid white', width: { mobile: '30%', laptop: '20%' }, height: '94%', display: 'flex', justifyContent: 'center', alignItems: 'center', flexDirection: 'column' }} >
+                    {!empty && !lock && <Box sx={{ alignItems: 'center', justifyContent: 'space-around' }} >
+                        <Typography sx={{ fontSize: '13px', color: color == 'white' ? 'white' : 'black', fontWeight: '700', textAlign: 'center' }} >{value}</Typography>
+                        <Typography sx={{ fontSize: '12px', marginTop: -.4, color: color == 'white' ? 'white' : 'black', textAlign: 'center' }} >{value2}</Typography>
+                    </Box>}
+                    {lock &&
+                        <img
+                            src={Lock}
+                            style={{ width: '10px', height: '15px' }}
+                        />
 
-            }
-        </Box>
+                    }
+                </Box>
+            </Popover>
+            <BetPlaced not={canceled} visible={visible} setVisible={setVisible} />
+        </>
     )
 }
 const Divider = () => {
@@ -38,7 +69,7 @@ const Divider = () => {
         <Box sx={{ width: '100%', background: 'rgba(211,211,211)', height: '1px' }} ></Box>
     )
 }
-const BoxComponent = ({ name, color, onClick }) => {
+const BoxComponent = ({ name, color ,align}) => {
     const theme = useTheme()
     const matchesMobile = useMediaQuery(theme.breakpoints.down("laptop"))
     return (
@@ -56,17 +87,17 @@ const BoxComponent = ({ name, color, onClick }) => {
                 <MoneyBox color={color} />
             </Box>
             <Box sx={{ display: 'flex', background: 'white', height: '40px', width: { laptop: '60%', mobile: '80%' }, justifyContent: { mobile: 'flex-end', laptop: 'center' }, alignItems: 'center' }} >
-                {!matchesMobile && <SeperateBox onClick={onClick} value={"1.71"} value2={" 1cr+"} color={matchesMobile ? "white" : "#B3E0FF"} />}
+                {!matchesMobile && <SeperateBox align={align} value={"1.71"} value2={" 1cr+"} color={matchesMobile ? "white" : "#B3E0FF"} />}
                 <Box sx={{ width: '.45%', display: 'flex', background: 'pink' }} ></Box>
-                {!matchesMobile && <SeperateBox onClick={onClick} value={"1.71"} value2={" 1cr+"} color={matchesMobile ? "white" : "#FFB5B5"} />}
+                {!matchesMobile && <SeperateBox align={align} value={"1.71"} value2={" 1cr+"} color={matchesMobile ? "white" : "#FFB5B5"} />}
                 <Box sx={{ width: '.45%', display: 'flex', background: 'pink' }} ></Box>
-                <SeperateBox onClick={onClick} value={"1.71"} value2={" 1cr+"} color={matchesMobile ? "white" : "#B3E0FF"} />
+                <SeperateBox align={align} value={"1.71"} value2={" 1cr+"} color={matchesMobile ? "white" : "#B3E0FF"} />
                 <Box sx={{ width: '.45%', display: 'flex', background: 'pink' }} ></Box>
-                <SeperateBox onClick={onClick} value={"1.72"} value2={" 1cr+"} color={matchesMobile ? "white" : "#FFB5B5"} />
+                <SeperateBox align={align} value={"1.72"} value2={" 1cr+"} color={matchesMobile ? "white" : "#FFB5B5"} />
                 <Box sx={{ width: '.45%', display: 'flex', background: 'pink' }} ></Box>
-                <SeperateBox onClick={onClick} value={"1.72"} value2={" 1cr+"} color={"#B3E0FF"} />
+                <SeperateBox align={align} value={"1.72"} value2={" 1cr+"} color={"#B3E0FF"} />
                 <Box sx={{ width: '.45%', display: 'flex', background: 'pink' }} ></Box>
-                <SeperateBox onClick={onClick} value={"1.72"} value2={" 1cr+"} color={"#FFB5B5"} />
+                <SeperateBox align={align} value={"1.72"} value2={" 1cr+"} color={"#FFB5B5"} />
                 <Box sx={{ width: '.45%', display: 'flex', background: 'pink' }} ></Box>
             </Box>
         </Box>
@@ -109,11 +140,11 @@ const Time = () => {
         </Box>
     )
 }
-const Odds = ({ onClick }) => {
+const Odds = ({ }) => {
     const theme = useTheme()
     const matchesMobile = useMediaQuery(theme.breakpoints.down("laptop"))
     return (
-        <Box sx={{ display: 'flex', backgroundColor: 'white', padding: .2, flexDirection: 'column', marginY: { mobile: '.7vh', laptop: '1vh' }, width: { mobile: "98%", laptop: '97%' }, marginX: '1vw', alignSelf: { mobile: 'center', tablet: 'center', laptop: 'flex-start', } }}>
+        <Box key="odds" sx={{ display: 'flex', backgroundColor: 'white', padding: .2, flexDirection: 'column', marginY: { mobile: '.7vh', laptop: '1vh' }, width: { mobile: "98%", laptop: '97%' }, marginX: '1vw', alignSelf: { mobile: 'center', tablet: 'center', laptop: 'flex-start', } }}>
 
 
 
@@ -162,16 +193,17 @@ const Odds = ({ onClick }) => {
                     </Box>
                 </Box>
             }
-            <BoxComponent onClick={onClick} color={'#46e080'} name={'INDIA'} />
+            <BoxComponent color={'#46e080'} name={'INDIA'} />
             <Divider />
-            <BoxComponent onClick={onClick} color={'#FF4D4D'} name={'PAKISTAN'} />
+            <BoxComponent color={'#FF4D4D'} name={'PAKISTAN'} />
             <Divider />
-            <BoxComponent onClick={onClick} color={'#F8C851'} name={"DRAW"} />
+            <BoxComponent color={'#F8C851'} name={"DRAW"} />
+
         </Box >
 
     )
 }
-const SeasonMarketBox = ({ onClick }) => {
+const SeasonMarketBox = ({ }) => {
     const theme = useTheme()
     const matchesMobile = useMediaQuery(theme.breakpoints.down("laptop"))
     return (
@@ -190,9 +222,9 @@ const SeasonMarketBox = ({ onClick }) => {
                     <SeperateBox color={"white"} /></>}
                 <Box sx={{ width: '.45%', display: 'flex', background: 'pink' }} ></Box>
                 <SeperateBox color={"white"} />
-                <SeperateBox onClick={onClick} value={"39"} value2={"100"} color={"#B3E0FF"} />
+                <SeperateBox session={true} value={"39"} value2={"100"} color={"#B3E0FF"} />
                 <Box sx={{ width: '.45%', display: 'flex', background: 'pink' }} ></Box>
-                <SeperateBox onClick={onClick} value={"37"} value2={"100"} color={"#F6D0CB"} />
+                <SeperateBox session={true} value={"37"} value2={"100"} color={"#F6D0CB"} />
                 <Box sx={{ width: '.45%', display: 'flex', background: 'pink' }} ></Box>
                 {!matchesMobile && <>
                     <Box sx={{ width: '.45%', display: 'flex', background: 'pink' }} ></Box>
@@ -350,7 +382,7 @@ const CustomMenuItem = ({ }) => {
     )
 }
 
-const SeasonMarket = ({ onClick }) => {
+const SessionMarket = ({ }) => {
     const theme = useTheme()
     const matchesMobile = useMediaQuery(theme.breakpoints.down("laptop"))
     return (
@@ -398,45 +430,37 @@ const SeasonMarket = ({ onClick }) => {
                     </Box>
                 </Box>}
 
-                <SeasonMarketBox onClick={onClick} />
+                <SeasonMarketBox />
                 <Divider />
-                <SeasonMarketBox onClick={onClick} />
+                <SeasonMarketBox />
                 <Divider />
-                <SeasonMarketBox onClick={onClick} />
+                <SeasonMarketBox />
                 <Divider />
-                <SeasonMarketBox onClick={onClick} />
+                <SeasonMarketBox />
                 <Divider />
-                <SeasonMarketBox onClick={onClick} />
+                <SeasonMarketBox />
                 <Divider />
-                <SeasonMarketBox onClick={onClick} />
+                <SeasonMarketBox />
                 <Divider />
             </Box>
         </Box>
 
     )
 }
-const BookMarketer = ({ onClick }) => {
+const BookMarketer = ({ }) => {
     const theme = useTheme()
     const matchesMobile = useMediaQuery(theme.breakpoints.down("laptop"))
     return (
         <Box sx={{ display: 'flex', backgroundColor: 'white', padding: .2, flexDirection: 'column', marginY: { mobile: '.7vh', laptop: '1vh' }, width: { mobile: "98%", laptop: '97%' }, marginX: '1vw', alignSelf: { mobile: 'center', tablet: 'center', laptop: 'flex-start', } }}>
-
-
-
-
-
             <Box sx={{ display: 'flex', height: 38, flexDirection: 'row', width: '99.7%', alignSelf: 'center' }}>
                 <Box sx={{ flex: 1, background: '#f1c550', alignItems: 'center', display: 'flex', justifyContent: 'space-between' }}>
                     <Typography sx={{ fontSize: { laptop: '13px', tablet: '12px', mobile: "12px" }, fontWeight: 'bold', marginLeft: '7px' }} >Bookmaker Market</Typography>
-
                 </Box>
-
                 <Box sx={{
                     flex: .1, background: '#262626'
                     // '#262626' 
                 }}>
                     <div class="slanted"></div>
-
                 </Box>
                 <Box sx={{
                     flex: 1, background: '#262626',
@@ -460,82 +484,25 @@ const BookMarketer = ({ onClick }) => {
                             <Typography sx={{ fontSize: '12px', color: 'black', fontWeight: '600' }} >Back</Typography>
                         </Box>
                         <Box sx={{ width: '.35%', display: 'flex' }} ></Box>
-
                         <Box sx={{ background: "#FF9292", width: { laptop: '16.5%', mobile: "25%" }, height: '100%', display: 'flex', justifyContent: 'center', alignItems: 'center' }} >
                             <Typography sx={{ fontSize: '12px', color: 'black', fontWeight: '600' }} >Lay</Typography>
                         </Box>
-
                     </Box>
                 </Box>
             }
-            <BoxComponent onClick={onClick} color={'#46e080'} name={'INDIA'} />
+            <BoxComponent color={'#46e080'} name={'INDIA'} />
             <Divider />
-            <BoxComponent onClick={onClick} color={'#FF4D4D'} name={'PAKISTAN'} />
+            <BoxComponent color={'#FF4D4D'} name={'PAKISTAN'} align="end" />
         </Box >
 
     )
 }
-const MatchOdds = ({ onClick }) => {
-    const [currentSelected, setCurrentSelected] = React.useState(0)
-    const [visible, setVisible] = React.useState(false)
-    const [canceled, setCanceled] = React.useState(false)
+const MatchOdds = ({ }) => {
     return (
         <Box sx={{ display: 'flex', flexDirection: 'column' }}>
-            <Odds onClick={() => {
-                if (currentSelected == 1) {
-                    setCurrentSelected(0)
-                } else {
-                    setCurrentSelected(1)
-                }
-
-
-            }} />
-            {currentSelected == 1 && <PlaceBet
-                onCancel={() => {
-                    setCanceled(true)
-                    setVisible(true)
-                }}
-                onSubmit={() => {
-                    setVisible(true)
-                }} handleClose={() => {
-                    setCurrentSelected(0)
-                }} />}
-            <BookMarketer onClick={onClick = () => {
-                if (currentSelected == 2) {
-                    setCurrentSelected(0)
-                } else {
-                    setCurrentSelected(2)
-                }
-            }} />
-            {currentSelected == 2 && <PlaceBet onSubmit={() => {
-                setVisible(true)
-            }}
-                onCancel={() => {
-                    setCanceled(true)
-                    setVisible(true)
-                }}
-                handleClose={() => {
-                    setCanceled(false)
-                    setCurrentSelected(0)
-                }} />}
-            <SeasonMarket onClick={onClick = () => {
-                if (currentSelected == 3) {
-                    setCurrentSelected(0)
-                } else {
-                    setCurrentSelected(3)
-                }
-            }} />
-            {currentSelected == 3 && <PlaceBet
-                onCancel={() => {
-                    setCanceled(true)
-                    setVisible(true)
-                }}
-                onSubmit={() => {
-                    setVisible(true)
-                }} season={true} handleClose={() => {
-                    setCurrentSelected(0)
-                }} />}
-            <BetPlaced not={canceled} visible={visible} setVisible={setVisible} />
+            <Odds />
+            <BookMarketer />
+            <SessionMarket />
         </Box>
     )
 }
