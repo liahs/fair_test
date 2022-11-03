@@ -12,7 +12,7 @@ import BetPlaced from "./BetPlaced"
 import { setAnchor } from "../store/betplace"
 import { Popover } from 'react-tiny-popover'
 
-const SeperateBox = ({ color, empty, value, value2, lock, session ,align}) => {
+const SeperateBox = ({ color, empty, value, value2, lock, session ,back}) => {
     const theme = useTheme()
     const matchesMobile = useMediaQuery(theme.breakpoints.down("laptop"))
     const dispatch = useDispatch()
@@ -41,6 +41,7 @@ const SeperateBox = ({ color, empty, value, value2, lock, session ,align}) => {
                     setIsPopoverOpen(false)
                 }}
                     season={session}
+                    back={back}
                 />}
             >
                 <Box onClick={e => {
@@ -95,7 +96,7 @@ const BoxComponent = ({ name, color ,align}) => {
                 <Box sx={{ width: '.45%', display: 'flex', background: 'pink' }} ></Box>
                 <SeperateBox align={align} value={"1.72"} value2={" 1cr+"} color={matchesMobile ? "white" : "#FFB5B5"} />
                 <Box sx={{ width: '.45%', display: 'flex', background: 'pink' }} ></Box>
-                <SeperateBox align={align} value={"1.72"} value2={" 1cr+"} color={"#B3E0FF"} />
+                <SeperateBox back={true} align={align} value={"1.72"} value2={" 1cr+"} color={"#B3E0FF"} />
                 <Box sx={{ width: '.45%', display: 'flex', background: 'pink' }} ></Box>
                 <SeperateBox align={align} value={"1.72"} value2={" 1cr+"} color={"#FFB5B5"} />
                 <Box sx={{ width: '.45%', display: 'flex', background: 'pink' }} ></Box>
@@ -222,7 +223,7 @@ const SeasonMarketBox = ({ }) => {
                     <SeperateBox color={"white"} /></>}
                 <Box sx={{ width: '.45%', display: 'flex', background: 'pink' }} ></Box>
                 <SeperateBox color={"white"} />
-                <SeperateBox session={true} value={"39"} value2={"100"} color={"#B3E0FF"} />
+                <SeperateBox back={true} session={true} value={"39"} value2={"100"} color={"#B3E0FF"} />
                 <Box sx={{ width: '.45%', display: 'flex', background: 'pink' }} ></Box>
                 <SeperateBox session={true} value={"37"} value2={"100"} color={"#F6D0CB"} />
                 <Box sx={{ width: '.45%', display: 'flex', background: 'pink' }} ></Box>

@@ -5,7 +5,7 @@ import { ArrowDown, CANCEL, CancelDark } from "../assets";
 import '../components/index.css'
 import StyledImage from "./StyledImage";
 import { useSelector } from 'react-redux'
-const PlaceBet = ({ open, handleClose, season, onSubmit, onCancel, anchorEl }) => {
+const PlaceBet = ({ open, handleClose, season, onSubmit, onCancel, back }) => {
     const [defaultValue, setDefaultValue] = useState("")
     const theme = useTheme()
     const selectedColorBox = useSelector(state => state.selectedColorBox)?.value
@@ -102,7 +102,7 @@ const PlaceBet = ({ open, handleClose, season, onSubmit, onCancel, anchorEl }) =
     }
     return (
 
-        <Box sx={{ display: 'flex', flexDirection: 'column', border: "1px solid white", borderRadius: "5px",marginLeft:season?"40px":0, overflow: "hidden", width: { mobile: season?"82vw":"85vw", laptop: '30vw' } }} >
+        <Box sx={[{ display: 'flex', flexDirection: 'column', border: "1px solid white", borderRadius: "5px",marginLeft:season?"40px":0, overflow: "hidden", width: { mobile: "90vw", laptop: '30vw' }},matchesMobile?{position:"absolute" ,right:back?"-16.5vw":"0vw"}:{}]} >
             <Box sx={{ background: "white", width: "100%", 'overflow': "hidden" }} >
                 <Box sx={[{ height: "38px", display: "flex", justifyContent: "space-between", alignItems: "center", px: "10px" }, (theme) => ({
                     backgroundImage: `${theme.palette.primary.headerGradient}`
@@ -120,7 +120,7 @@ const PlaceBet = ({ open, handleClose, season, onSubmit, onCancel, anchorEl }) =
                 <Box sx={{ display: "flex", marginTop: "2px", marginX: "2px" }}>
                     <TeamsOdssData title={season ? "Session" : "Team"} value={season ? "6 OVER RUNS INDIA" : "INDIA"} valueContainerStyle={{ background: "#F8C851" }} containerStyle={{ flex: season ? { mobile: 2.5, laptop: 2 } : 1 }} />
                     <TeamsOdssData input={true} title={"Odds"} value={"60.00"} containerStyle={{ marginLeft: "2px", flex: 1 }} />
-                    <TeamsOdssData title={season ? "Yes/No" : "Back/Lay"} value={season ? "Yes" : "Back"} valueContainerStyle={{ background: (selectedColorBox == "#FFB5B5" || selectedColorBox == "#F6D0CB") ? "#FF7D7D" : "#00C0F9" }} containerStyle={{ marginLeft: "2px", flex: 1 }} />
+                    <TeamsOdssData title={season ? "Yes/No" : "Back/Lay"} value={season ? ((selectedColorBox == "#FFB5B5" || selectedColorBox == "#F6D0CB") ? "No" : "Yes") : ((selectedColorBox == "#FFB5B5" || selectedColorBox == "#F6D0CB") ? "Lay" : "Back")} valueContainerStyle={{ background: (selectedColorBox == "#FFB5B5" || selectedColorBox == "#F6D0CB") ? "#FF7D7D" : "#00C0F9" }} containerStyle={{ marginLeft: "2px", flex: 1 }} />
                     {!matchesMobile && <Box sx={{ width: '20px' }} ></Box>}
                     <BoxInput containerStyle={{ marginLeft: "2px", flex: 1.3 }} title={"Stake"} />
                 </Box>
