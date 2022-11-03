@@ -1,7 +1,26 @@
 import { Box, Modal, Typography } from "@mui/material"
+import { useEffect, useState } from "react";
 import { BETPLACED, NOT } from "../assets";
+import CountDownTimer from "./CountDownTimer";
 
 const BetPlaced = ({ visible, setVisible, not }) => {
+    const [flag, setFlag] = useState(false)
+    const [timer, settimer] = useState(true)
+
+    useEffect(() => {
+        if (visible) {
+            setTimeout(() => {
+                setFlag(true)
+            }, 5000);
+        }
+        else {
+            setFlag(false)
+        }
+    }, [visible])
+    if (!flag && visible) {
+        return <CountDownTimer visible={true} setVisible={setFlag} />
+
+    }
     return (
         <Modal
             disableAutoFocus={true}

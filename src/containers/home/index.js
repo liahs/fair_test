@@ -18,7 +18,6 @@ export default function Home() {
   const [open, handleClose] = useState(false)
   const [selected, setSelected] = useState("CRICKET")
   const [visible, setVisible] = useState(false)
-  const [timer, settimer] = useState(true)
   return (
     <div style={{ height: "100vh", display: 'flex', flexDirection: 'column' }} >
       <CustomHeader />
@@ -27,7 +26,7 @@ export default function Home() {
       })]} >
         <SideBar />
 
-        <CountDownTimer visible={timer} setVisible={settimer} />
+
         <Box sx={{ display: 'flex', overflowX: "hidden", flexDirection: 'column', flex: 1, justifyContent: 'flex-start', overflowY: "auto", alignItems: 'flex-start' }}>
           <EventListing setSelected={setSelected} selected={selected} />
           <BetPlaced visible={visible} setVisible={setVisible} />
