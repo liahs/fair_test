@@ -1,4 +1,5 @@
 import { Routes, Route } from "react-router-dom"
+import AdminRoutes from "../admin/routes/main"
 import ForgetPassword from "../containers/forgetPassword"
 import Home from "../containers/home"
 import Login from "../containers/login"
@@ -16,7 +17,7 @@ const Main = () => {
 
             <Route path="/home" element={<Home />} />
             <Route path="/matches" element={<Matches />} />
-
+            <Route path="/admin" element={<AdminRoutes />} />
         </Routes>
     )
 }

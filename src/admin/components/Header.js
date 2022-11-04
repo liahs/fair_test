@@ -1,15 +1,14 @@
 import { Typography, Box, useMediaQuery, useTheme, Menu, MenuItem, Drawer, AppBar, Toolbar } from "@mui/material";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { ArrowDown, Draw, logo, Logout, Money, MoneyBag } from "../assets";
-import SearchInput from "./SearchInput";
-import SideBar from "./SideBar";
-import StyledImage from "./StyledImage";
+import { ArrowDown, Draw, logo, Logout, Money, MoneyBag } from "../../assets";
+import SearchInput from "../../components/SearchInput";
+import SideBar from "../../components/SideBar";
+import StyledImage from "../../components/StyledImage";
 
 const CustomHeader = ({ }) => {
     const theme = useTheme()
     const matchesMobile = useMediaQuery(theme.breakpoints.down("laptop"))
-    const matchesMobilePerfect = useMediaQuery(theme.breakpoints.down("tablet"))
 
     const [mobileOpen, setMobileOpen] = useState(false);
 
@@ -34,7 +33,7 @@ const CustomHeader = ({ }) => {
                 }, (theme) => ({
                     backgroundImage: `${theme.palette.primary.headerGradient}`
                 })]}>
-                    <Box sx={{ display: "flex", alignItems: "center", justifyContent: "space-between", width: "100%", flex: 1, }}>
+                    <Box sx={{ display: "flex", alignItems: "center", width: "100%", flex: 1, }}>
                         <Box sx={{ display: "flex", alignItems: "center" }}>
                             <StyledImage onClick={() => {
                                 if (matchesMobile) {
@@ -43,69 +42,28 @@ const CustomHeader = ({ }) => {
                             }} src={Draw} sx={{ height: { laptop: "24px", mobile: "20px" }, width: "auto" }} />
                             <StyledImage src={logo} sx={{ height: { laptop: "45px", mobile: "40px" }, width: "auto", marginLeft: { laptop: "20px", mobile: "10px" } }} />
                         </Box>
-                        <Box sx={{ display: 'flex', alignItems: 'center' }}>
-                            <SearchInput inputContainerStyle={{ minWidth: matchesMobile ? "0vw" : "20vw", width: { laptop: '38%' } }} placeholder={"Search Events..."} />
-                            {
-                                matchesMobile && <BoxProfile containerStyle={matchesMobile ? {} : {}} image={"https://picsum.photos/200/300"} value={"John Doe"} />
-
-                            }
-                        </Box>
+                        <ButtonHead title={"LIST OF CLIENTS"} boxStyle={{}} />
+                        <ButtonHead title={"LIVE MARKET"} boxStyle={{}} />
+                        <ButtonHead title={"REPORTS"} boxStyle={{}} />
                     </Box>
-                    {!matchesMobile && <Box sx={{ display: "flex", justifyContent: "space-between", minWidth: matchesMobile ? "100%" : "0px", alignItems: "center", marginTop: matchesMobile ? "15px" : "0px" }}>
-                        <BoxMoney containerStyle={matchesMobile ? { marginLeft: "0px", width: "32%" } : {}} title="Exposure" value="$100" image={MoneyBag} />
-                        <BoxMoney title="Balance" value="$25.0" image={Money} containerStyle={matchesMobile ? { width: "32%" } : {}} />
-                        <BoxProfile containerStyle={matchesMobile ? { width: "52%" } : {}} image={"https://picsum.photos/200/300"} value={"John Doe"} />
-                    </Box>}
-                    {matchesMobile && <Box sx={{ display: "flex", justifyContent: "flex-end", minWidth: matchesMobile ? "100%" : "0px", alignItems: "center", marginTop: matchesMobile ? "15px" : "0px" }}>
-                        <BoxMobile value={"Exposure"} />
-                        <Box sx={{ width: '5px' }}></Box>
-                        <BoxMobile value={'Balance'} />
-
-                    </Box>}
-                </Box>
-                <Box sx={{ height: "32px", display: "flex", background: "#202020", alignItems: "center" }}>
-                    <marquee loop={true}><Typography sx={{ color: "text.white", fontSize: "10px", fontStyle: "italic", letterSpacing: "1px", overflow: "hidden", whiteSpace: "nowrap", "text-overflow:": "ellipsis" }}>This is a demo notification highlight. This is a demo notification highlight.This is a demo notification highlight. This is a demo notification highlight.This is a demo notification highlight. This is a demo notification highlight.This is a demo notification highlight.</Typography></marquee>
+                     <Box sx={{ display: "flex", justifyContent: "space-between", minWidth: matchesMobile ? "100%" : "0px", alignItems: "center", marginTop: matchesMobile ? "15px" : "0px" }}>
+                      <SearchInput placeholder={"Search Clients..."} inputContainerStyle={{height:"30px",minWidth:"4vw",width:"4vw"}} />
+                      <BoxProfile containerStyle={matchesMobile ? { width: "52%" } : {}} image={"https://picsum.photos/200/300"} value={"Admin"} />
+                    </Box>
                 </Box>
                 {matchesMobile && <MobileSideBar mobileOpen={mobileOpen} setMobileOpen={setMobileOpen} />}
-
             </AppBar>
             <Box sx={{ minHeight: { laptop: 90 + 32, mobile: 60 + 32 + 42 } }} />
         </>
     )
 }
 
-const BoxMobile = ({ value }) => {
 
-    return (
-        <Box
-            sx={{
-                width: '130px',
-                height: '23px',
-                background: 'red',
-                borderRadius: '12px',
-                // justifyContent: 'center',
-                alignItems: 'center',
-                backgroundColor: 'white',
-                display: 'flex'
-            }}
-        >
-            <Typography sx={{ fontSize: '11px', color: 'black', fontWeight: '500', marginLeft: '5px' }}>{value}:<span style={{ color: '#27AC1E', fontWeight: '700' }} >10,000,00</span></Typography>
-        </Box>
-    )
-}
 
-const BoxMoney = ({ image, title, value, containerStyle }) => {
-    const theme = useTheme()
-    const matchesMobile = useMediaQuery(theme.breakpoints.down("laptop"))
-    return (
-        <Box sx={[{ backgroundColor: "white", minWidth: { laptop: "120px", mobile: '120px' }, marginLeft: "1vw", display: "flex", alignItems: "center", boxShadow: "0px 3px 10px #B7B7B726", height: { laptop: "35px", mobile: "35px" }, overflow: "hidden", paddingX: "3px", borderRadius: "40px" }, containerStyle]}>
-            <Box sx={{ height: { mobile: "30px", laptop: '30px' }, width: { laptop: "30px", mobile: '28px' }, borderRadius: "25px", display: "flex", justifyContent: "center", alignItems: "center", backgroundColor: "#FEFEFE", boxShadow: "0px 0px 5px #00000026" }}>
-                <StyledImage src={image} sx={{ height: "50%", width: "auto" }} />
-            </Box>
-            <Box sx={{ marginLeft: { laptop: "5px", mobile: '5px' }, justifyContent: { mobile: 'center' }, display: 'flex', flexDirection: 'column' }}>
-                <Typography sx={{ fontSize: { laptop: "8px", mobile: "8px" }, fontWeight: { mobile: "bold", laptop: '500px' }, marginLeft: .5, color: 'black' }}>{title}</Typography>
-                <Typography sx={{ fontWeight: "bold", color: "#27AC1E", fontSize: { mobile: '12px', laptop: '12px' }, marginLeft: .5 }}>{value}</Typography>
-            </Box>
+const ButtonHead=({title,boxStyle,titleStyle,})=>{
+    return(
+        <Box sx={[{},boxStyle]}>
+            <Typography sx={[{fontSize:"12px",fontStyle:"bold",fontFamily:"Montserrat"},titleStyle]}>{title}</Typography>
         </Box>
     )
 }
