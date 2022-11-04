@@ -242,7 +242,7 @@ const Odds = ({ }) => {
 //                 }
 //                 {!matchesMobile && <PlaceBetComponentWeb />}
 //                 {
-//                     !matchesMobile && index == 1 && <Box sx={{ background: 'rgba(0,0,0,.9)', width: '33.5%', marginLeft: -'3%', height: '40px', position: 'absolute', top: '.1px', alignItems: 'center', justifyContent: 'center', display: 'flex' }} >
+//                     !matchesMobile && index == 1 && <Box sx={{ background: 'rgba(0,0,0,1)', width: '33.5%', marginLeft: -'3%', height: '40px', position: 'absolute', top: '.1px', alignItems: 'center', justifyContent: 'center', display: 'flex' }} >
 //                         <img src={BallStart} style={{ width: '55px', height: "15px" }} />
 //                     </Box>
 //                 }
@@ -545,7 +545,7 @@ const BookMarketer = ({ }) => {
                 <BoxComponent color={'#46e080'} name={'INDIA'} />
                 <Divider />
                 <BoxComponent color={'#FF4D4D'} name={'PAKISTAN'} align="end" />
-                {!matchesMobile && <Box sx={{ background: 'rgba(0,0,0,.9)', width: '60%', marginLeft: '40%', height: '82px', position: 'absolute', top: '.1px', alignItems: 'center', justifyContent: 'center', display: 'flex' }} >
+                {!matchesMobile && <Box sx={{ background: 'rgba(0,0,0,1)', width: '60%', marginLeft: '40%', height: '82px', position: 'absolute', top: '.1px', alignItems: 'center', justifyContent: 'center', display: 'flex' }} >
                     <img src={BallStart} style={{ width: '113px', height: "32px" }} />
                 </Box>}
             </Box>
