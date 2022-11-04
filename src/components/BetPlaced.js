@@ -6,9 +6,8 @@ import CountDownTimer from "./CountDownTimer";
 const BetPlaced = ({ visible, setVisible, not }) => {
     const [flag, setFlag] = useState(false)
     const [timer, settimer] = useState(true)
-
     useEffect(() => {
-        if (visible) {
+        if (visible && !not) {
             setTimeout(() => {
                 setFlag(true)
             }, 5000);
@@ -16,10 +15,14 @@ const BetPlaced = ({ visible, setVisible, not }) => {
         else {
             setFlag(false)
         }
+        if (visible && !flag) {
+            setTimeout(() => {
+                setVisible(false)
+            }, not ? 2000 : 7000);
+        }
     }, [visible])
-    if (!flag && visible) {
+    if (!flag && visible && !not) {
         return <CountDownTimer visible={true} setVisible={setFlag} />
-
     }
     return (
         <Modal
@@ -29,7 +32,6 @@ const BetPlaced = ({ visible, setVisible, not }) => {
             open={visible}
             disableAutoFocus={true}
         >
-
             <Box sx={{ width: '190px', borderRadius: "6px", paddingY: "10px", flexDirection: 'column', justifyContent: 'center', alignItems: 'center', background: 'white', alignSelf: 'center', display: 'flex', position: 'absolute', top: '45%', zIndex: 999 }}>
                 {not ? <img src={NOT} style={{ width: '60px', height: '60px', marginTop: '3px' }} /> : <img src={BETPLACED} style={{ width: '65px', height: '60px', marginTop: '3px' }} />}
                 {

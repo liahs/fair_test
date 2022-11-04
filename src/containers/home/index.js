@@ -25,8 +25,6 @@ export default function Home() {
         backgroundImage: `${theme.palette.primary.homeBodyGradient}`
       })]} >
         <SideBar />
-
-
         <Box sx={{ display: 'flex', overflowX: "hidden", flexDirection: 'column', flex: 1, justifyContent: 'flex-start', overflowY: "auto", alignItems: 'flex-start' }}>
           <EventListing setSelected={setSelected} selected={selected} />
           <BetPlaced visible={visible} setVisible={setVisible} />
@@ -34,13 +32,10 @@ export default function Home() {
             <MatchComponent />
             <div style={{ width: '100%' }}>
               <MatchOdds onClick={() => handleClose(true)} />
-
             </div>
-
             <Box sx={{ display: 'flex', flexDirection: 'column', width: '100%', alignSelf: 'center', alignItems: 'center' }}>
               <SessionBet />
               <AllRateOdds />
-
               <LiveMatchHome />
               {/* <MyBetHome /> */}
             </Box>
