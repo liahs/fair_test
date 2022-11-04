@@ -45,7 +45,7 @@ const SeperateBox = ({ color, empty, value, value2, lock, session, back }) => {
                 />}
             >
                 <Box onClick={e => {
-                    if (lock) {
+                    if (lock || color == "white") {
                         return null
                     }
                     setIsPopoverOpen(!isPopoverOpen)
