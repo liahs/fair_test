@@ -1,11 +1,11 @@
 import { Box, Typography } from "@mui/material"
 import SearchInput from "../../components/SearchInput"
 import StyledImage from "../../components/StyledImage"
-import { Excel, LockIcon, Pdf, UnLockIcon } from "../assets"
+import { DownGIcon, DownIcon, Excel, LockIcon, Pdf, UnLockIcon } from "../assets"
 
 const AccountList = () => {
     return (
-        <Box sx={[{ marginX: "0.5%", minHeight: "200px", borderRadius: "10px", border: "2px solid white" }, (theme) => ({
+        <Box sx={[{ marginX: "0.5%", minHeight: "200px", borderRadius: "10px",overflow:"hidden", border: "2px solid white" }, (theme) => ({
             backgroundImage: `${theme.palette.primary.headerGradient}`
         })]}>
             <ListH />
@@ -18,8 +18,7 @@ const AccountList = () => {
             <Row containerStyle={{background:"#FFE094"}} profit={true} fContainerStyle={{background:"#0B4F26"}} fTextStyle={{color:"white"}} />
             <Row containerStyle={{background:"#FFE094"}} profit={false} fContainerStyle={{background:"#F8C851"}} fTextStyle={{color:"#0B4F26"}} />
             <Row containerStyle={{background:"#FFE094"}} profit={true} fContainerStyle={{background:"#0B4F26"}} fTextStyle={{color:"white"}} />
-            <Row containerStyle={{background:"#FFE094"}} profit={false} fContainerStyle={{background:"#F8C851"}} fTextStyle={{color:"#0B4F26"}} />
-          
+            <Row containerStyle={{background:"#FFE094",borderBottom:"0px"}} profit={false} fContainerStyle={{background:"#F8C851"}} fTextStyle={{color:"#0B4F26"}} />
         </Box>
     )
 }
@@ -118,8 +117,9 @@ const ListSubHeaderT=()=>{
 const Row=({containerStyle,fContainerStyle,fTextStyle,profit})=>{
     return(
         <Box sx={[{ display: "flex", height: "45px", background: "#0B4F26",alignItems:"center",overflow:"hidden",borderBottom:"2px solid white" },containerStyle]}>
-                <Box sx={[{width:"11%",display:"flex",paddingLeft:"10px",alignItems:"center",height:"45px",borderRight:"2px solid white"},fContainerStyle]}>
+                <Box sx={[{width:"11%",display:"flex",paddingX:"10px",justifyContent:"space-between",alignItems:"center",height:"45px",borderRight:"2px solid white"},fContainerStyle]}>
                     <Typography sx={[{fontSize:"12px",fontWeight:"600"},fTextStyle]}>CHD9101012301</Typography>
+                    <StyledImage src={profit?DownIcon:DownGIcon} style={{height:"10px",width:"15px"}} />
                 </Box>
                 <Box sx={{width:"10%",display:"flex",paddingLeft:"10px",alignItems:"center",height:"45px",borderRight:"2px solid white"}}>
                     <Typography sx={{fontSize:"12px",fontWeight:"600"}}>1,00,000,000,0</Typography>

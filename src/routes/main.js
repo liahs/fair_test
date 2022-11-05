@@ -14,10 +14,9 @@ const Main = () => {
             <Route path="/forget_password" element={<ForgetPassword />} />
             <Route path="/verification" element={<Verification />} />
             <Route path="/new_password" element={<NewPassword />} />
-
             <Route path="/home" element={<Home />} />
             <Route path="/matches" element={<Matches />} />
-            <Route path="/admin*" element={<AdminRoutes />} />
+            <Route path="/admin/*" element={<AdminRoutes />} />
         </Routes>
     )
 }

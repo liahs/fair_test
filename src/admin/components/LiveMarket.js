@@ -41,9 +41,7 @@ const LiveMarket = () => {
             <Typography sx={{ fontSize: '20px', color: 'white', marginLeft: '10px', fontWeight: '600', marginY: '10px' }} >MARKET ANALYSIS</Typography>
             <LiveMarketComponent team_2={'Pakistan'} team={"India"} />
             <LiveMarketComponent team_2={'Pakistan'} team={"India"} />
-
             <LiveMarketComponent team_2={'Pakistan'} team={"India"} />
-
         </Box>
     )
 }
