@@ -17,7 +17,7 @@ const Main = () => {
 
             <Route path="/home" element={<Home />} />
             <Route path="/matches" element={<Matches />} />
-            <Route path="/admin" element={<AdminRoutes />} />
+            <Route path="/admin*" element={<AdminRoutes />} />
         </Routes>
     )
 }
