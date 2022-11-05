@@ -207,49 +207,6 @@ const Odds = ({ }) => {
 
     )
 }
-// const SeasonMarketBox = ({ index }) => {
-//     const theme = useTheme()
-//     const matchesMobile = useMediaQuery(theme.breakpoints.down("laptop"))
-//     return (
-//         <Box sx={{ display: 'flex', background: 'white', height: '38px', width: '100%' }} >
-//             <Box sx={{ display: 'flex', background: 'white', height: '38px', width: '40%', alignItems: 'center' }} >
-//                 <Typography sx={{ color: 'black', fontSize: { laptop: '11px', tablet: '10px', mobile: "8px" }, marginLeft: '7px', fontWeight: '600' }} >6 Over runs INDIA W (INDIA vs PAKISTAN) Adv 0</Typography>
-//             </Box>
-//             <Box sx={{ display: 'flex', position: 'relative', background: 'white', height: '38px', width: { laptop: '60%', mobile: '80%' }, justifyContent: 'center', alignItems: 'center' }} >
-//                 <SeperateBox color={"white"} />
-//                 {matchesMobile && <PlaceBetComponent />}
-//                 {false && <>
-//                     <Box sx={{ width: '.45%', display: 'flex', background: 'pink' }} ></Box>
-//                     <SeperateBox color={"white"} />
-//                     <Box sx={{ width: '.45%', display: 'flex', background: 'pink' }} ></Box>
-//                     <Box sx={{ width: '.45%', display: 'flex', background: 'pink' }} ></Box>
-//                     <SeperateBox color={"white"} /></>}
-//                 <Box sx={{ width: '.45%', display: 'flex', background: 'pink' }} ></Box>
-//                 <SeperateBox color={"white"} />
-//                 <SeperateBox session={true} value={"37"} lock={index == 2} value2={"100"} color={"#F6D0CB"} />
-
-//                 <Box sx={{ width: '.45%', display: 'flex', background: 'pink' }} ></Box>
-//                 <SeperateBox back={true} session={true} value={"39"} lock={index == 2} value2={"100"} color={"#B3E0FF"} />
-
-//                 <Box sx={{ width: '.45%', display: 'flex', background: 'pink' }} ></Box>
-//                 {
-//                     !matchesMobile && <>
-//                         <Box sx={{ width: '.45%', display: 'flex', background: 'pink' }} ></Box>
-//                         <SeperateBox color={"white"} />
-//                         <Box sx={{ width: '.45%', display: 'flex', background: 'pink' }} ></Box>
-//                         <SeperateBox color={"white"} />
-//                     </>
-//                 }
-//                 {!matchesMobile && <PlaceBetComponentWeb />}
-//                 {
-//                     !matchesMobile && index == 1 && <Box sx={{ background: 'rgba(0,0,0,1)', width: '33.5%', marginLeft: -'3%', height: '40px', position: 'absolute', top: '.1px', alignItems: 'center', justifyContent: 'center', display: 'flex' }} >
-//                         <img src={BallStart} style={{ width: '55px', height: "15px" }} />
-//                     </Box>
-//                 }
-//             </Box >
-//         </Box >
-//     )
-// }
 const SeasonMarketBox = ({ index }) => {
     const theme = useTheme()
     const matchesMobile = useMediaQuery(theme.breakpoints.down("laptop"))
@@ -423,13 +380,7 @@ const DropdownMenu = ({ anchorEl, open, handleClose }) => {
         </Menu>
     )
 }
-const CustomMenuItem = ({ }) => {
-    return (
-        <Box sx={{ width: '200px', background: 'white', height: '100px', borderRadius: '5px', border: '1px solid black', position: 'absolute' }}>
 
-        </Box>
-    )
-}
 
 const SessionMarket = ({ }) => {
     const theme = useTheme()
