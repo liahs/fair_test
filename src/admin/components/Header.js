@@ -9,7 +9,7 @@ import StyledImage from "../../components/StyledImage";
 const CustomHeader = ({ }) => {
     const theme = useTheme()
     const matchesMobile = useMediaQuery(theme.breakpoints.down("laptop"))
-
+    const [currentSelected,setCurrentSelected]=useState(0)
     const [mobileOpen, setMobileOpen] = useState(false);
 
     useEffect(() => {
@@ -27,14 +27,14 @@ const CustomHeader = ({ }) => {
                     flexDirection: matchesMobile ? "column" : "row",
                     alignItems: !matchesMobile ? "center" : "flex-start",
                     justifyContent: "space-between",
-                    paddingX: { laptop: "10%", mobile: "2%" },
+                    paddingX: { laptop: "0.5%", mobile: "1%" },
                     paddingY: matchesMobile ? "15px" : "0px",
                     paddingBottom: matchesMobile ? "10px" : "0px"
                 }, (theme) => ({
                     backgroundImage: `${theme.palette.primary.headerGradient}`
                 })]}>
                     <Box sx={{ display: "flex", alignItems: "center", width: "100%", flex: 1, }}>
-                        <Box sx={{ display: "flex", alignItems: "center" }}>
+                        <Box sx={{ display: "flex", alignItems: "center",marginRight:"12px" }}>
                             <StyledImage onClick={() => {
                                 if (matchesMobile) {
                                     setMobileOpen(!mobileOpen)
@@ -42,9 +42,19 @@ const CustomHeader = ({ }) => {
                             }} src={Draw} sx={{ height: { laptop: "24px", mobile: "20px" }, width: "auto" }} />
                             <StyledImage src={logo} sx={{ height: { laptop: "45px", mobile: "40px" }, width: "auto", marginLeft: { laptop: "20px", mobile: "10px" } }} />
                         </Box>
-                        <ButtonHead title={"LIST OF CLIENTS"} boxStyle={{}} />
-                        <ButtonHead title={"LIVE MARKET"} boxStyle={{}} />
-                        <ButtonHead title={"REPORTS"} boxStyle={{}} />
+                        <ButtonHead  onClick={()=>{
+                            setCurrentSelected(0)
+                        }} title={"LIST OF CLIENTS"} boxStyle={{backgroundColor:currentSelected==0?"white":"transparent",py:"5px",borderRadius:"5px",marginLeft:"15px"}} titleStyle={{color:currentSelected==0?"green":"white"}} />
+                        <LiveMarket onClick={()=>{
+                            setCurrentSelected(1)
+                        }} title={"LIVE MARKET"} boxStyle={{backgroundColor:currentSelected==1?"white":"transparent",py:"5px",borderRadius:"5px",marginLeft:"15px"}}  />
+                        <ButtonHead onClick={()=>{
+                            setCurrentSelected(2)
+                        }} title={"REPORTS"}boxStyle={{backgroundColor:currentSelected==2?"white":"transparent",py:"5px",borderRadius:"5px",marginLeft:"15px"}} titleStyle={{color:currentSelected==2?"green":"white"}} />
+                        <ButtonHead onClick={()=>{
+                            setCurrentSelected(3)
+                        }} title={"MARKET ANALYSIS"} boxStyle={{backgroundColor:currentSelected==3?"white":"transparent",py:"5px",borderRadius:"5px",marginLeft:"15px"}} titleStyle={{color:currentSelected==3?"green":"white"}} />
+
                     </Box>
                      <Box sx={{ display: "flex", justifyContent: "space-between", minWidth: matchesMobile ? "100%" : "0px", alignItems: "center", marginTop: matchesMobile ? "15px" : "0px" }}>
                       <SearchInput placeholder={"Search Clients..."} inputContainerStyle={{height:"30px",minWidth:"4vw",width:"4vw"}} />
@@ -53,17 +63,44 @@ const CustomHeader = ({ }) => {
                 </Box>
                 {matchesMobile && <MobileSideBar mobileOpen={mobileOpen} setMobileOpen={setMobileOpen} />}
             </AppBar>
-            <Box sx={{ minHeight: { laptop: 90 + 32, mobile: 60 + 32 + 42 } }} />
+            <Box sx={{ minHeight: { laptop: 90 , mobile: 60 + 32 + 42 } }} />
         </>
     )
 }
 
 
 
-const ButtonHead=({title,boxStyle,titleStyle,})=>{
+const ButtonHead=({title,boxStyle,titleStyle,onClick})=>{
     return(
-        <Box sx={[{},boxStyle]}>
-            <Typography sx={[{fontSize:"12px",fontStyle:"bold",fontFamily:"Montserrat"},titleStyle]}>{title}</Typography>
+        <Box onClick={()=>onClick()} sx={[{paddingX:"12.5px"},boxStyle]}>
+            <Typography sx={[{fontSize:"11px",fontWeight:"bold",fontFamily:"Montserrat"},titleStyle]}>{title}</Typography>
+        </Box>
+    )
+}
+
+const LiveMarket=({title,boxStyle,titleStyle,onClick})=>{
+    const [currentIndex,setCurrentIndex]=useState(0)
+    const colors=["#ff0000","#ffa500","#ffff00","orange","#0000ff","#4b0082","#ee82ee"]
+    useEffect(()=>{
+        let i=setInterval(()=>{
+            setCurrentIndex(state=>{
+                if(state<6){
+                    return state+1
+                }else{
+                    return 0
+                }
+                })
+         
+        },1000)
+        return ()=>{
+            clearInterval(i)
+        }
+    },[])
+    return(
+        <Box onClick={e=>{
+            onClick()
+        }} sx={[{paddingX:"12.5px"},boxStyle]}>
+            <Typography sx={[{fontSize:"11px",fontWeight:"bold",color:colors[currentIndex],fontFamily:"Montserrat"},titleStyle]}>{title}</Typography>
         </Box>
     )
 }
@@ -85,7 +122,7 @@ const BoxProfile = ({ image, value, containerStyle }) => {
     };
     return (
         <Box sx={{ display: 'flex', justifyContent: 'space-between', minWidth: { laptop: "120px", } }}>
-            <Box onClick={(event) => handleClick(event)} sx={[{ backgroundColor: "primary.main", minWidth: { laptop: "120px", mobile: "90px" }, marginLeft: "1vw", display: "flex", alignItems: "center", boxShadow: "0px 3px 10px #B7B7B726", justifyContent: "space-between", height: { laptop: "35px", mobile: "30px" }, overflow: "hidden", paddingX: "2px", borderRadius: "35px" }, containerStyle]}>
+            <Box onClick={(event) => handleClick(event)} sx={[{ backgroundColor: "primary.main", minWidth: { laptop: "120px", mobile: "90px" }, marginLeft: "1vw", display: "flex", alignItems: "center", boxShadow: "0px 3px 10px #B7B7B726", justifyContent: "space-between", height: { laptop: "40px", mobile: "35px" }, overflow: "hidden", paddingX: "2px", borderRadius: "35px" }, containerStyle]}>
                 <StyledImage src={image} sx={{ height: { laptop: "30px", mobile: '27px' }, width: { laptop: "30px", mobile: '27px' }, borderRadius: "150px" }} />
                 <Box style={{}}>
                     <Typography sx={{ fontSize: { laptop: '11px', mobile: "8px" }, color: "text.white", fontWeight: "600" }}>{value}</Typography>

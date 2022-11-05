@@ -1,9 +1,10 @@
-import { Header, LiveMarket } from "../../components";
+import { Header, Background, HomeSlide } from "../../components";
 
 export default function Home() {
     return (
-        <div style={{ height: "100vh", background: 'red', display: 'flex', flexDirection: 'column' }} >
+        <Background>
             <Header />
-        </div>
+            <HomeSlide />
+        </Background>
     )
 }
