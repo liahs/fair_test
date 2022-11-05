@@ -7,8 +7,8 @@ import MatchScreen from "../containers/matchScreen"
 const AdminRoutes = () => {
     return (
         <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/live" element={<LiveMarketContainer />} />
+            <Route path="/"  element={<Home />} />
+            <Route path="/live"  element={<LiveMarketContainer />} />
 
         </Routes>
     )
