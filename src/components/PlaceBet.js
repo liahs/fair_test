@@ -91,15 +91,7 @@ const PlaceBet = ({ open, handleClose, season, onSubmit, onCancel, back }) => {
             </Box>
         )
     }
-    const NumberData = ({ value, containerStyle }) => {
-        return (
-            <Box onClick={() => {
-                setDefaultValue(value)
-            }} sx={[{ display: "flex", borderRadius: "3px", justifyContent: "center", alignItems: "center", height: "35px", minWidth: "18%", background: "#0B4F26" }, containerStyle]}>
-                <Typography sx={{ color: "white", fontSize: "13px", fontWeight: "500", fontWeight: '600' }}>{value}</Typography>
-            </Box>
-        )
-    }
+ 
     return (
 
         <Box sx={[{ display: 'flex', flexDirection: 'column', border: "1px solid white", borderRadius: "5px",marginLeft:season?"40px":0, overflow: "hidden", width: { mobile: "90vw", laptop: '30vw' }},matchesMobile?{position:"absolute" ,right:back?"-16.5vw":"0vw"}:{}]} >
@@ -127,21 +119,25 @@ const PlaceBet = ({ open, handleClose, season, onSubmit, onCancel, back }) => {
                 {matchesMobile && <Box sx={{ display: "flex", marginTop: "2px", marginX: "2px" }}>
                 </Box>}
                 {<><Box sx={{ display: "flex", marginTop: "15px", marginX: "2px" }}>
-                    <NumberData containerStyle={{ flex: 1 }} value={"2000"} />
-                    <NumberData containerStyle={{ marginLeft: "2px", flex: 1 }} value={"3000"} />
-                    <NumberData containerStyle={{ marginLeft: "2px", flex: 1 }} value={"5000"} />
-                    <NumberData containerStyle={{ marginLeft: "2px", flex: 1 }} value={"10,000"} />
+                    <NumberData containerStyle={{ flex: 1 }} value={"2000"} setDefaultValue={setDefaultValue} />
+                    <NumberData containerStyle={{ marginLeft: "2px", flex: 1 }} value={"3000"}  setDefaultValue={setDefaultValue} />
+                    <NumberData containerStyle={{ marginLeft: "2px", flex: 1 }} value={"5000"} setDefaultValue={setDefaultValue} />
+                    <NumberData containerStyle={{ marginLeft: "2px", flex: 1 }} value={"10,000"} setDefaultValue={setDefaultValue} />
                 </Box>
                     <Box sx={{ display: "flex", marginTop: "2px", marginX: "2px" }}>
-                        <NumberData containerStyle={{ flex: 1 }} value={"20,000"} />
-                        <NumberData containerStyle={{ marginLeft: "2px", flex: 1 }} value={"1,00,000"} />
-                        <NumberData containerStyle={{ marginLeft: "2px", flex: 1 }} value={"2,00,000"} />
-                        <NumberData containerStyle={{ marginLeft: "2px", flex: 1 }} value={"5,00,000"} />
+                        <NumberData containerStyle={{ flex: 1 }} value={"20,000"} setDefaultValue={setDefaultValue} />
+                        <NumberData containerStyle={{ marginLeft: "2px", flex: 1 }} value={"1,00,000"} setDefaultValue={setDefaultValue} />
+                        <NumberData containerStyle={{ marginLeft: "2px", flex: 1 }} value={"2,00,000"}  setDefaultValue={setDefaultValue}/>
+                        <NumberData containerStyle={{ marginLeft: "2px", flex: 1 }} value={"5,00,000"} setDefaultValue={setDefaultValue} />
                     </Box></>}
 
                 <Box sx={{ display: 'flex', flex: 1, paddingY: '2vh', justifyContent: 'space-evenly' }}>
                     <CustomButton onClick={() => { handleClose(); onCancel(); }} title={'Reset'} color={'#FF4949'} />
-                    <CustomButton onClick={() => { handleClose(); onSubmit(); }} title={'Submit'} color={'#262626'} />
+                    <CustomButton onClick={() => {
+                        if(defaultValue==""){
+                            return
+                        }
+                        handleClose(); onSubmit(); }} title={'Submit'} color={'#262626'} />
                 </Box>
             </Box>
         </Box>
@@ -150,5 +146,13 @@ const PlaceBet = ({ open, handleClose, season, onSubmit, onCancel, back }) => {
 }
 
 
-
+const NumberData = ({ value, containerStyle ,setDefaultValue}) => {
+    return (
+        <Box onClick={() => {
+            setDefaultValue(value)
+        }} sx={[{ display: "flex", borderRadius: "3px", justifyContent: "center", alignItems: "center", height: "35px", minWidth: "18%", background: "#0B4F26" }, containerStyle]}>
+            <Typography sx={{ color: "white", fontSize: "13px", fontWeight: "500", fontWeight: '600' }}>{value}</Typography>
+        </Box>
+    )
+}
 export default PlaceBet;
