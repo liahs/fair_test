@@ -91,10 +91,10 @@ const PlaceBet = ({ open, handleClose, season, onSubmit, onCancel, back }) => {
             </Box>
         )
     }
- 
+
     return (
 
-        <Box sx={[{ display: 'flex', flexDirection: 'column', border: "1px solid white", borderRadius: "5px",marginLeft:season?"40px":0, overflow: "hidden", width: { mobile: "90vw", laptop: '30vw' }},matchesMobile?{position:"absolute" ,right:back?"-16.5vw":"0vw"}:{}]} >
+        <Box sx={[{ display: 'flex', flexDirection: 'column', border: "1px solid white", borderRadius: "5px", marginLeft: season ? "40px" : 0, overflow: "hidden", width: { mobile: "90vw", laptop: '30vw' } }, matchesMobile ? { position: "absolute", right: back ? "-16.5vw" : "0vw" } : {}]} >
             <Box sx={{ background: "white", width: "100%", 'overflow': "hidden" }} >
                 <Box sx={[{ height: "38px", display: "flex", justifyContent: "space-between", alignItems: "center", px: "10px" }, (theme) => ({
                     backgroundImage: `${theme.palette.primary.headerGradient}`
@@ -120,24 +120,25 @@ const PlaceBet = ({ open, handleClose, season, onSubmit, onCancel, back }) => {
                 </Box>}
                 {<><Box sx={{ display: "flex", marginTop: "15px", marginX: "2px" }}>
                     <NumberData containerStyle={{ flex: 1 }} value={"2000"} setDefaultValue={setDefaultValue} />
-                    <NumberData containerStyle={{ marginLeft: "2px", flex: 1 }} value={"3000"}  setDefaultValue={setDefaultValue} />
+                    <NumberData containerStyle={{ marginLeft: "2px", flex: 1 }} value={"3000"} setDefaultValue={setDefaultValue} />
                     <NumberData containerStyle={{ marginLeft: "2px", flex: 1 }} value={"5000"} setDefaultValue={setDefaultValue} />
                     <NumberData containerStyle={{ marginLeft: "2px", flex: 1 }} value={"10,000"} setDefaultValue={setDefaultValue} />
                 </Box>
                     <Box sx={{ display: "flex", marginTop: "2px", marginX: "2px" }}>
                         <NumberData containerStyle={{ flex: 1 }} value={"20,000"} setDefaultValue={setDefaultValue} />
                         <NumberData containerStyle={{ marginLeft: "2px", flex: 1 }} value={"1,00,000"} setDefaultValue={setDefaultValue} />
-                        <NumberData containerStyle={{ marginLeft: "2px", flex: 1 }} value={"2,00,000"}  setDefaultValue={setDefaultValue}/>
+                        <NumberData containerStyle={{ marginLeft: "2px", flex: 1 }} value={"2,00,000"} setDefaultValue={setDefaultValue} />
                         <NumberData containerStyle={{ marginLeft: "2px", flex: 1 }} value={"5,00,000"} setDefaultValue={setDefaultValue} />
                     </Box></>}
 
                 <Box sx={{ display: 'flex', flex: 1, paddingY: '2vh', justifyContent: 'space-evenly' }}>
                     <CustomButton onClick={() => { handleClose(); onCancel(); }} title={'Reset'} color={'#FF4949'} />
                     <CustomButton onClick={() => {
-                        if(defaultValue==""){
+                        if (defaultValue == "") {
                             return
                         }
-                        handleClose(); onSubmit(); }} title={'Submit'} color={'#262626'} />
+                        handleClose(); onSubmit();
+                    }} title={'Submit'} color={'#262626'} />
                 </Box>
             </Box>
         </Box>
@@ -146,7 +147,7 @@ const PlaceBet = ({ open, handleClose, season, onSubmit, onCancel, back }) => {
 }
 
 
-const NumberData = ({ value, containerStyle ,setDefaultValue}) => {
+const NumberData = ({ value, containerStyle, setDefaultValue }) => {
     return (
         <Box onClick={() => {
             setDefaultValue(value)

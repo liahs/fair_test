@@ -22,7 +22,7 @@ const data = [
 ]
 const AllRateOdds = () => {
     return (
-        <Box sx={{ width: { mobile: "98%", laptop: '100%' }, marginY: { mobile: '.4vh', laptop: '1vh' }, padding: .2, background: 'white' }}>
+        <Box sx={{ width: { mobile: "98%", laptop: '100%' }, marginY: { mobile: '.2vh', laptop: '1vh' }, padding: .2, background: 'white' }}>
             <Box sx={[{ width: '100%', height: "42px", justifyContent: 'space-between', alignItems: 'center', paddingLeft: '10px', paddingRight: '4px', marginBottom: '.1vh', display: 'flex', }, (theme) => ({
                 backgroundImage: `${theme.palette.primary.headerGradient}`
             })]} >

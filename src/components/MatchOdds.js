@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useCallback, useEffect } from "react"
 import { useTheme } from "@emotion/react"
 import { Typography, useMediaQuery, Box, Menu, MenuItem } from "@mui/material"
 import { BallStart, Header, INDIA, Info, Lock, Logout, PAKISTAN, TIME, UD } from "../assets"
@@ -21,14 +21,18 @@ const SeperateBox = ({ color, empty, value, value2, lock, session, back }) => {
     const [isPopoverOpen, setIsPopoverOpen] = React.useState(false)
     const [visible, setVisible] = React.useState(false)
     const [canceled, setCanceled] = React.useState(false)
+    useEffect(() => {
+        console.log('chnaged', isPopoverOpen)
+    }, [isPopoverOpen])
     return (
         <>
-            <Popover
+            {/* <Popover
+
                 isOpen={isPopoverOpen}
                 align={matchesMobile ? "end" : "center"}
                 positions={['bottom']} // preferred positions by priority
                 onClickOutside={() => setIsPopoverOpen(false)}
-                content={<PlaceBet onSubmit={() => {
+                content={() => <PlaceBet onSubmit={() => {
                     setVisible(true)
                     setCanceled(false)
                 }}
@@ -43,31 +47,77 @@ const SeperateBox = ({ color, empty, value, value2, lock, session, back }) => {
                     season={session}
                     back={back}
                 />}
-            >
-                <Box onClick={e => {
-                    if (lock || color == "white") {
-                        return null
-                    }
-                    setIsPopoverOpen(!isPopoverOpen)
-                    dispatch(setColorValue(color))
-                }} sx={{ background: lock ? "#FDF21A" : color, border: color != 'white' ? '1px solid #2626264D' : '0px solid white', width: { mobile: '30%', laptop: '20%' }, height: '94%', display: 'flex', justifyContent: 'center', alignItems: 'center', flexDirection: 'column' }} >
-                    {!empty && !lock && <Box sx={{ alignItems: 'center', justifyContent: 'space-around' }} >
-                        <Typography sx={{ fontSize: '13px', color: color == 'white' ? 'white' : 'black', fontWeight: '700', textAlign: 'center' }} >{value}</Typography>
-                        <Typography sx={{ fontSize: '12px', marginTop: -.4, color: color == 'white' ? 'white' : 'black', textAlign: 'center' }} >{value2}</Typography>
-                    </Box>}
-                    {lock &&
-                        <img
-                            src={Lock}
-                            style={{ width: '10px', height: '15px' }}
-                        />
+            > */}
+            <Box onClick={e => {
+                if (lock || color == "white") {
+                    return null
+                }
+                setIsPopoverOpen(true)
+                dispatch(setColorValue(color))
+            }}
+                style={{ position: 'relative' }}
+                sx={{ background: lock ? "#FDF21A" : color, border: color != 'white' ? '1px solid #2626264D' : '0px solid white', width: { mobile: '30%', laptop: '20%' }, height: '94%', display: 'flex', justifyContent: 'center', alignItems: 'center', flexDirection: 'column' }} >
+                {!empty && !lock && <Box sx={{ alignItems: 'center', justifyContent: 'space-around' }} >
+                    <Typography sx={{ fontSize: '13px', color: color == 'white' ? 'white' : 'black', fontWeight: '700', textAlign: 'center' }} >{value}</Typography>
+                    <Typography sx={{ fontSize: '12px', marginTop: -.4, color: color == 'white' ? 'white' : 'black', textAlign: 'center' }} >{value2}</Typography>
+                </Box>}
+                {lock &&
+                    <img
+                        src={Lock}
+                        style={{ width: '10px', height: '15px' }}
+                    />
 
-                    }
-                </Box>
-            </Popover>
-            <BetPlaced not={canceled} visible={visible} setVisible={setVisible} />
+                }
+                {isPopoverOpen && <Box sx={{ zIndex: 110, position: 'absolute', right: 0, top: '37px' }}>
+                    <PlaceBet onSubmit={() => {
+
+                        setIsPopoverOpen(false)
+                        setVisible(true)
+                        setCanceled(false)
+
+                    }}
+                        onCancel={() => {
+                            setVisible(true)
+                            setCanceled(true)
+                            setIsPopoverOpen(false)
+
+                        }}
+
+                        handleClose={() => {
+                            console.log('i')
+                            setIsPopoverOpen(false)
+
+                        }}
+                        season={session}
+                        back={back}
+                    /></Box>}
+            </Box>
+            <BetPlaced not={canceled} visible={visible} setVisible={(i) => {
+                setIsPopoverOpen(false)
+                setVisible(i)
+            }} />
+
+            {/* {isPopoverOpen && <Box sx={{ zIndex: 999, position: 'absolute' }}>
+                <PlaceBet onSubmit={() => {
+                    setVisible(true)
+                    setCanceled(false)
+                }}
+                    onCancel={() => {
+                        setVisible(true)
+                        setCanceled(true)
+                    }}
+
+                    handleClose={() => {
+                        setIsPopoverOpen(false)
+                    }}
+                    season={session}
+                    back={back}
+                /></Box>} */}
+            {/* </Popover> */}
         </>
     )
 }
+
 const Divider = () => {
     return (
         <Box sx={{ width: '100%', background: 'rgba(211,211,211)', height: '1px' }} ></Box>
@@ -129,7 +179,7 @@ const MoneyBox = ({ color }) => {
     return (
         <Box sx={{
             width: '80px', border: "1px solid #2626264D",
-            borderRadius: "5px", justifyContent: 'center', position: matchesMobile ? 'absolute' : 'relative', right: matchesMobile ? '-90%' : '7px', alignItems: 'center', display: 'flex', height: '25px', background: '#F6F6F6', borderRadius: '7px'
+            borderRadius: "5px", justifyContent: 'center', position: matchesMobile ? 'absolute' : 'relative', right: matchesMobile ? '-90%' : '7px', alignItems: 'center', display: 'flex', height: '25px', background: '#F6F6F6', borderRadius: '7px', zIndex: 100,
         }}>
             <Typography sx={{ fontSize: '9px', fontWeight: 'bold', color: color }} >-10,00,000</Typography>
 
@@ -148,7 +198,7 @@ const Odds = ({ }) => {
     const theme = useTheme()
     const matchesMobile = useMediaQuery(theme.breakpoints.down("laptop"))
     return (
-        <Box key="odds" sx={{ display: 'flex', backgroundColor: 'white', padding: .2, flexDirection: 'column', marginY: { mobile: '.6vh', laptop: '1vh' }, width: { mobile: "98%", laptop: '97%' }, marginX: '1vw', alignSelf: { mobile: 'center', tablet: 'center', laptop: 'flex-start', } }}>
+        <Box key="odds" sx={{ display: 'flex', backgroundColor: 'white', padding: .2, flexDirection: 'column', marginY: { mobile: '.2vh', laptop: '1vh' }, width: { mobile: "98%", laptop: '97%' }, marginX: '1vw', alignSelf: { mobile: 'center', tablet: 'center', laptop: 'flex-start', } }}>
 
 
 
@@ -253,7 +303,7 @@ const PlaceBetComponent = () => {
     };
     return (
         <>
-            <Box onClick={e => handleClick(e)} sx={{ background: "#0B4F26", flexDirection: 'column', display: 'flex', alignItems: 'center', justifyContent: 'center', width: { laptop: "90px", mobile: '80px' }, borderRadius: '5px', height: '35px', left: '35px', position: 'absolute' }} >
+            <Box onClick={e => handleClick(e)} sx={{ background: "#0B4F26", flexDirection: 'column', display: 'flex', alignItems: 'center', justifyContent: 'center', width: { laptop: "90px", mobile: '80px' }, borderRadius: '5px', height: '35px', left: '35px', position: 'absolute', zIndex: 100 }} >
                 <Box sx={{ background: "#FDF21A", borderRadius: '3px', width: "90%", height: '45%', display: "flex", alignItems: 'center', justifyContent: 'center' }}>
                     <Typography sx={{ fontSize: { laptop: '10px', mobile: "8px" }, fontWeight: 'bold', color: "#FF4D4D" }}>Total Bet : <span style={{ color: "#0B4F26" }} >250</span></Typography>
                 </Box>
@@ -296,8 +346,6 @@ const PlaceBetComponentWeb = () => {
     )
 }
 
-
-
 const menutItems = [{ title: "Account Statement" }, { title: "Profile Loss Report" }, { title: "Bet History" }, { title: "Unsetteled Bet" }, { title: "Casino Report History" }, { title: "Set Button Values" }, { title: "Security Auth Verfication" }, { title: "Change Password" }]
 const DropdownMenu = ({ anchorEl, open, handleClose }) => {
     return (
@@ -307,13 +355,13 @@ const DropdownMenu = ({ anchorEl, open, handleClose }) => {
             open={open}
             onClose={handleClose}
             anchorOrigin={{
-                vertical:"bottom",
-                horizontal:"right"
+                vertical: "bottom",
+                horizontal: "right"
             }}
             transformOrigin={{
                 vertical: 'top',
                 horizontal: 'right',
-              }}
+            }}
             MenuListProps={{
                 'aria-labelledby': 'basic-button',
                 sx: {
@@ -394,7 +442,7 @@ const SessionMarket = ({ }) => {
     const theme = useTheme()
     const matchesMobile = useMediaQuery(theme.breakpoints.down("laptop"))
     return (
-        <Box sx={{ display: 'flex', background: 'white', padding: .3, flexDirection: 'column', marginY: { mobile: '.7vh', laptop: '1vh' }, width: { mobile: "98%", laptop: '97%' }, marginX: "1vw", alignSelf: { mobile: 'center', tablet: 'center', laptop: 'flex-start', } }}>
+        <Box sx={{ display: 'flex', background: 'white', padding: .3, flexDirection: 'column', marginY: { mobile: '.2vh', laptop: '1vh' }, width: { mobile: "98%", laptop: '97%' }, marginX: "1vw", alignSelf: { mobile: 'center', tablet: 'center', laptop: 'flex-start', } }}>
             <Box sx={{ display: 'flex', height: 38, flexDirection: 'row', width: '99.7%', alignSelf: 'center' }}>
                 <Box sx={{ flex: 1, background: '#f1c550', alignItems: 'center', display: 'flex', justifyContent: 'space-between' }}>
                     <Typography sx={{ fontSize: { laptop: '13px', tablet: '12px', mobile: "12px" }, fontWeight: 'bold', marginLeft: '7px' }} >Session Odds</Typography>
@@ -461,7 +509,7 @@ const BookMarketer = ({ }) => {
     const theme = useTheme()
     const matchesMobile = useMediaQuery(theme.breakpoints.down("laptop"))
     return (
-        <Box sx={{ display: 'flex', backgroundColor: 'white', padding: .2, flexDirection: 'column', marginY: { mobile: '.3vh', laptop: '1vh' }, width: { mobile: "98%", laptop: '97%' }, marginX: '1vw', alignSelf: { mobile: 'center', tablet: 'center', laptop: 'flex-start', } }}>
+        <Box sx={{ display: 'flex', backgroundColor: 'white', padding: .2, flexDirection: 'column', marginY: { mobile: '.2vh', laptop: '1vh' }, width: { mobile: "98%", laptop: '97%' }, marginX: '1vw', alignSelf: { mobile: 'center', tablet: 'center', laptop: 'flex-start', } }}>
             <Box sx={{ display: 'flex', height: 38, flexDirection: 'row', width: '99.7%', alignSelf: 'center' }}>
                 <Box sx={{ flex: 1, background: '#f1c550', alignItems: 'center', display: 'flex', justifyContent: 'space-between' }}>
                     <Typography sx={{ fontSize: { laptop: '13px', tablet: '12px', mobile: "12px" }, fontWeight: 'bold', marginLeft: '7px' }} >Bookmaker Market</Typography>
