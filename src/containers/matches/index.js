@@ -19,15 +19,11 @@ export default function Matches() {
     return (
         <div style={{ height: "100vh", display: 'flex', flexDirection: 'column' }} >
             <CustomHeader />
-            <Box flex={1} sx={[{ flex: 1, display: 'flex', height: '80%', }, (theme) => ({
+            <Box flex={1} sx={[{ flex: 1, display: 'flex', minHeight: matchesMobile?'100vh':"80%", }, (theme) => ({
                 backgroundImage: `${theme.palette.primary.homeBodyGradient}`
             })]} >
-
                 <SideBar />
-
-                <Box sx={{ display: 'flex', overflowX: "hidden", flexDirection: 'column', flex: 1, justifyContent: 'flex-start', overflowY: "auto", alignItems: 'flex-start' }}>
-
-
+                {!matchesMobile&&<Box sx={{ display: 'flex', overflowX: "hidden", flexDirection: 'column', flex: 1, justifyContent: 'flex-start', overflowY: "auto", alignItems: 'flex-start' }}>
                     <EventListing selected={selected} setSelected={setSelected} />
                     <div style={{ height: "1vh" }} />
                     {(selected == "CRICKET" || selected == "INPLAY") && <MatchesComponent onClick={() => navigate('/home')} />}
@@ -37,7 +33,18 @@ export default function Matches() {
                             <Typography sx={{ color: "text.white" }}>Coming Soon</Typography>
                         </Box>
                     }
-                </Box>
+                </Box>}
+                {matchesMobile&&<Box sx={{ overflowX: "hidden",minHeight:"100vh"}}>
+                    <EventListing selected={selected} setSelected={setSelected} />
+                    {/* <div style={{ height: "1vh" }} /> */}
+                    {(selected == "CRICKET" || selected == "INPLAY") && <MatchesComponent onClick={() => navigate('/home')} />}
+                    {(selected != "CRICKET" && selected != "INPLAY") &&
+                        <Box style={{ display: "flex", justifyContent: "center", width: "100%", flex: 1, alignItems: "center", flexDirection: "column" }}>
+                            <Lottie animationData={HourGlass} style={{ display: "flex", alignSelf: "center", width: "200px", height: "200px" }} />
+                            <Typography sx={{ color: "text.white" }}>Coming Soon</Typography>
+                        </Box>
+                    }
+                </Box>}
             </Box>
 
         </div>

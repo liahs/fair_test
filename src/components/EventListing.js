@@ -66,7 +66,6 @@ const EventListing = ({ selected, setSelected }) => {
     }
     return (
         <Box sx={[{ width: { mobile: "98%", laptop: '100%' }, msOverflowStyle: "none", overflowY: 'hidden', minHeight: { mobile: 80, laptop: 80 }, marginLeft: { mobile: '0', laptop: ".5vw" }, overflowX: 'auto', marginTop: '1vh', alignSelf: { mobile: 'center', laptop: 'flex-start' }, display: 'flex' }]}
-
         >
             {
                 data.map((i) => {

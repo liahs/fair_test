@@ -11,3 +11,5 @@ export { default as SearchInput } from './SearchInput'
 
 
 
+export { default as UserDetailModal } from './UserDetailModal'
+export { default as DepositModal } from './DepositModal'

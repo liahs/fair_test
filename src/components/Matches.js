@@ -31,7 +31,7 @@ const Odds = ({ upcoming, onClick, top, blur }) => {
     const theme = useTheme()
     const matchesMobile = useMediaQuery(theme.breakpoints.down("laptop"))
     return (
-        <Box sx={{ position: 'relative', width: '100%', marginY: { mobile: '.8vh', laptop: '1vh' }, marginTop: { mobile: top ? '1.6vh' : '.8vh', laptop: top ? "2vh" : '1vh' }, width: { mobile: "98%", laptop: '95%' }, marginX: '1vw', padding: .1, background: 'white' }}>
+        <Box sx={{ position: 'relative', width: '100%', marginY: { mobile: '.8vh', laptop: '1vh' }, marginTop: { mobile: top ? '1vh' : '1.2vh', laptop: top ? "2vh" : '1vh' }, width: { mobile: "98%", laptop: '95%' }, marginX: '1vw', padding: .1, background: 'white' }}>
             {upcoming && <Box sx={{ position: 'absolute', zIndex: 2, background: 'rgba(0,0,0,0.5)', width: '100%', right: 0, height: '162px' }} ></Box>}
 
             {upcoming && <Box sx={{ width: '70px', zIndex: 3, border: '1px solid white', height: { mobile: '20px', laptop: '13px' }, justifyContent: 'center', display: 'flex', alignItems: 'center', background: '#129FFE', position: 'absolute', marginTop: -1, borderRadius: '3px', marginLeft: 1 }} >
@@ -46,13 +46,11 @@ const Odds = ({ upcoming, onClick, top, blur }) => {
                     <Box sx={{ flex: 1.2, background: '#f1c550', alignItems: { laptop: 'center', mobile: 'flex-end' }, display: 'flex', }}>
                         <Typography noWrap={true} sx={{ marginBottom: '2px', fontSize: { laptop: '14px', mobile: "10px" }, fontWeight: 'bold', marginLeft: '7px' }} >Team A vs Team B <span style={{ fontWeight: '500' }} >Today at 9:30 PM</span></Typography>
                     </Box>
-
                     <Box sx={{
                         flex: .1, background: '#262626'
                         // '#262626' 
                     }}>
                         <div class="slanted"></div>
-
                     </Box>
                     <Box sx={{
                         flex: 1, background: '#262626',
@@ -163,9 +161,9 @@ const MatchesComponent = ({ onClick }) => {
     return (
         <>
             <Odds onClick={onClick} top={true} />
-            <Odds onClick={onClick} top={false} />
+            <Odds onClick={onClick} top={false} /> 
             <Odds onClick={onClick} top={false} blur={true} upcoming={true} />
-            <Odds onClick={onClick} top={false} blur={true} upcoming={true} />
+            <Odds onClick={onClick} top={false} blur={true} upcoming={true} /> 
         </>
     )
 }
