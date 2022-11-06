@@ -5,19 +5,19 @@ const initialState={
     isModalOpen:false
 }
 
-const userDetailSlice=createSlice({
-    name:"userDetail",
+const depositModalSlice=createSlice({
+    name:"depositModal",
     initialState:initialState,
     reducers:{
-        setUserDet:(state,action)=>{
+        setModalDet:(state,action)=>{
             state.details=action.payload
         },
-        setModalOpen:(state,action)=>{
+        setDepoModalOpen:(state,action)=>{
             state.isModalOpen=action.payload
         }
     }
 })
 
-export const {setUserDet,setModalOpen}=userDetailSlice.actions
+export const {setModalDet,setDepoModalOpen}=depositModalSlice.actions
 
-export default userDetailSlice.reducer
+export default depositModalSlice.reducer
