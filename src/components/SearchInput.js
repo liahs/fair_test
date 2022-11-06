@@ -9,7 +9,9 @@ const SearchInput = ({ placeholder, inputContainerStyle }) => {
 
     return (
         <Box sx={[{ backgroundColor: { mobile: "transparent", laptop: "white" }, minWidth: { laptop: "20vw", mobile: '0vw' }, display: "flex", alignItems: "center", boxShadow: "0px 3px 10px #B7B7B726", height: { laptop: "35px", mobile: "35px" }, overflow: "hidden", paddingX: "5px", borderRadius: "35px" }, inputContainerStyle]}>
-            {!matchesMobile && <TextField variant="standard"
+            {!matchesMobile && <TextField
+
+                variant="standard"
                 placeholder={placeholder}
                 InputProps={{
                     disableUnderline: true,
