@@ -10,7 +10,7 @@ const BetPlaced = ({ visible, setVisible, not, time }) => {
         if (visible && !not && time) {
             setTimeout(() => {
                 setFlag(true)
-            }, 5000);
+            }, !time ? 1000 : 5000);
         }
         else {
             setFlag(false)
@@ -18,7 +18,7 @@ const BetPlaced = ({ visible, setVisible, not, time }) => {
         if (visible && !flag) {
             setTimeout(() => {
                 setVisible(false)
-            }, not ? 2000 : 7000);
+            }, (not || !time) ? 1000 : 6200);
         }
     }, [visible])
     if (!flag && visible && !not && time) {

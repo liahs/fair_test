@@ -306,23 +306,23 @@ const PlaceBetComponent = () => {
     const innerRef = useOuterClick(ev => {
         setShow(false)
     });
-   
+
 
     return (
-      <Box sx={{marginTop:"-8.4vw"}}>
+        <Box sx={{ marginTop: "-8.4vw" }}>
             <Box ref={innerRef} onClick={e => {
                 setShow(!show)
-            }} sx={{ background: "#0B4F26",position:"relative", flexDirection: 'column', display: 'flex', alignItems: 'center', justifyContent: 'center', width: { laptop: "90px", mobile: '80px' }, borderRadius: '5px', height: '35px', left: '35px', position: 'absolute',zIndex:100 }} >
-                <Box sx={{ background: "#FDF21A", borderRadius: '3px', width: "90%", height: '45%',zIndex:40, display: "flex", alignItems: 'center', justifyContent: 'center' }}>
+            }} sx={{ background: "#0B4F26", position: "relative", flexDirection: 'column', display: 'flex', alignItems: 'center', justifyContent: 'center', width: { laptop: "90px", mobile: '80px' }, borderRadius: '5px', height: '35px', left: '35px', position: 'absolute', zIndex: 100 }} >
+                <Box sx={{ background: "#FDF21A", borderRadius: '3px', width: "90%", height: '45%', zIndex: 40, display: "flex", alignItems: 'center', justifyContent: 'center' }}>
                     <Typography sx={{ fontSize: { laptop: '10px', mobile: "8px" }, fontWeight: 'bold', color: "#FF4D4D" }}>Total Bet : <span style={{ color: "#0B4F26" }} >250</span></Typography>
                 </Box>
-                <Box sx={{zIndex:100}} >
+                <Box sx={{ zIndex: 100 }} >
                     <Typography sx={{ fontSize: { laptop: '10px', mobile: "8px" }, fontWeight: '500', color: "white" }}>Profit/Loss</Typography>
                 </Box>
             </Box >
-            {show && <DropdownMenu style={{zIbnex:10}} open={Boolean(anchorEl)} anchorEl={anchorEl} handleClose={handleClose} />}
+            {show && <DropdownMenu style={{ zIbnex: 10 }} open={Boolean(anchorEl)} anchorEl={anchorEl} handleClose={handleClose} />}
 
-            </Box>
+        </Box>
     )
 }
 const PlaceBetComponentWeb = () => {
@@ -351,7 +351,7 @@ const PlaceBetComponentWeb = () => {
                         style={{ width: '12px', height: '12px', marginLeft: '5px' }}
                     />
                 </Box>
-                {show&&<DropdownMenu open={Boolean(anchorEl)} anchorEl={anchorEl} handleClose={handleClose} />}
+                {show && <DropdownMenu open={Boolean(anchorEl)} anchorEl={anchorEl} handleClose={handleClose} />}
 
             </Box >
         </>
@@ -360,25 +360,25 @@ const PlaceBetComponentWeb = () => {
 function useOuterClick(callback) {
     const callbackRef = useRef(); // initialize mutable ref, which stores callback
     const innerRef = useRef(); // returned to client, who marks "border" element
-  
+
     // update cb on each render, so second useEffect has access to current value 
     useEffect(() => { callbackRef.current = callback; });
-    
+
     useEffect(() => {
-      document.addEventListener("click", handleClick);
-      return () => document.removeEventListener("click", handleClick);
-      function handleClick(e) {
-        if (innerRef.current && callbackRef.current && 
-          !innerRef.current.contains(e.target)
-        ) callbackRef.current(e);
-      }
+        document.addEventListener("click", handleClick);
+        return () => document.removeEventListener("click", handleClick);
+        function handleClick(e) {
+            if (innerRef.current && callbackRef.current &&
+                !innerRef.current.contains(e.target)
+            ) callbackRef.current(e);
+        }
     }, []); // no dependencies -> stable click listener
-        
+
     return innerRef; // convenience for client (doesn't need to init ref himself) 
-  }
+}
 const menutItems = [{ title: "Account Statement" }, { title: "Profile Loss Report" }, { title: "Bet History" }, { title: "Unsetteled Bet" }, { title: "Casino Report History" }, { title: "Set Button Values" }, { title: "Security Auth Verfication" }, { title: "Change Password" }]
 const DropdownMenu = ({ anchorEl, open, handleClose }) => {
-    const theme =useTheme()
+    const theme = useTheme()
     const matchesMobile = useMediaQuery(theme.breakpoints.down("laptop"))
 
     return (
@@ -386,11 +386,11 @@ const DropdownMenu = ({ anchorEl, open, handleClose }) => {
             sx={{
                 borderRadius: "5px",
                 border: "1px solid #306A47",
-                zIndex:1001,
-                overflow:"hidden",
-                top:"35px",
-                left:matchesMobile?"-15%":"0%",
-                position:"absolute"
+                zIndex: 1001,
+                overflow: "hidden",
+                top: "35px",
+                left: matchesMobile ? "-13%" : "0%",
+                position: "absolute"
             }}
         >
             <Box sx={{ minHeight: "100px", flexDirection: "column", backgroundColor: "white", display: "flex" }}>
