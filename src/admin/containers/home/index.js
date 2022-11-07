@@ -1,5 +1,5 @@
 
-import { Header, Background, HomeSlide ,Account,AccountList, UserDetailModal, DepositModal} from "../../components";
+import { Header, Background, HomeSlide ,Account,AccountList, UserDetailModal, DepositModal, SetCreditModal, WithDrawModal, SetExposureModal, ChangePasswordModal, DailogModal} from "../../components";
 
 export default function Home() {
     
@@ -11,6 +11,11 @@ export default function Home() {
             <AccountList />
             <UserDetailModal />
             <DepositModal />
+            <SetCreditModal />
+            <WithDrawModal />
+            <SetExposureModal />
+            <ChangePasswordModal />
+            <DailogModal />
         </Background>
     )
 }

@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect } from "react"
+import React, { useCallback, useEffect, useRef } from "react"
 import { useTheme } from "@emotion/react"
 import { Typography, useMediaQuery, Box, Menu, MenuItem } from "@mui/material"
 import { BallStart, Header, INDIA, Info, Lock, Logout, PAKISTAN, TIME, UD } from "../assets"
@@ -302,20 +302,27 @@ const PlaceBetComponent = () => {
     const handleClose = () => {
         setAnchorEl(0);
     };
+    const [show, setShow] = React.useState(false)
+    const innerRef = useOuterClick(ev => {
+        setShow(false)
+    });
+   
+
     return (
-        <>
-            <Box onClick={e => handleClick(e)} sx={{ background: "#0B4F26", flexDirection: 'column', display: 'flex', alignItems: 'center', justifyContent: 'center', width: { laptop: "90px", mobile: '80px' }, borderRadius: '5px', height: '35px', left: '35px', position: 'absolute', zIndex: 100 }} >
-                <Box sx={{ background: "#FDF21A", borderRadius: '3px', width: "90%", height: '45%', display: "flex", alignItems: 'center', justifyContent: 'center' }}>
+      <Box sx={{marginTop:"-8.4vw"}}>
+            <Box ref={innerRef} onClick={e => {
+                setShow(!show)
+            }} sx={{ background: "#0B4F26",position:"relative", flexDirection: 'column', display: 'flex', alignItems: 'center', justifyContent: 'center', width: { laptop: "90px", mobile: '80px' }, borderRadius: '5px', height: '35px', left: '35px', position: 'absolute',zIndex:100 }} >
+                <Box sx={{ background: "#FDF21A", borderRadius: '3px', width: "90%", height: '45%',zIndex:40, display: "flex", alignItems: 'center', justifyContent: 'center' }}>
                     <Typography sx={{ fontSize: { laptop: '10px', mobile: "8px" }, fontWeight: 'bold', color: "#FF4D4D" }}>Total Bet : <span style={{ color: "#0B4F26" }} >250</span></Typography>
                 </Box>
-                <Box >
+                <Box sx={{zIndex:100}} >
                     <Typography sx={{ fontSize: { laptop: '10px', mobile: "8px" }, fontWeight: '500', color: "white" }}>Profit/Loss</Typography>
-
                 </Box>
             </Box >
-            <DropdownMenu open={Boolean(anchorEl)} anchorEl={anchorEl} handleClose={handleClose} />
+            {show && <DropdownMenu style={{zIbnex:10}} open={Boolean(anchorEl)} anchorEl={anchorEl} handleClose={handleClose} />}
 
-        </>
+            </Box>
     )
 }
 const PlaceBetComponentWeb = () => {
@@ -326,9 +333,13 @@ const PlaceBetComponentWeb = () => {
     const handleClose = () => {
         setAnchorEl(null);
     };
+    const [show, setShow] = React.useState(false)
+    const innerRef = useOuterClick(ev => {
+        setShow(false)
+    });
     return (
         <>
-            <Box onClick={e => handleClick(e)} sx={{ background: "#0B4F26", flexDirection: 'row', display: 'flex', alignItems: 'center', paddingX: '.2vw', width: { laptop: "10vw" }, borderRadius: '5px', height: '32px', right: '8px', position: 'absolute' }} >
+            <Box onClick={e => setShow(!show)} sx={{ background: "#0B4F26", flexDirection: 'row', display: 'flex', alignItems: 'center', paddingX: '.2vw', width: { laptop: "10vw" }, borderRadius: '5px', height: '32px', right: '8px', position: 'absolute' }} >
                 <Box sx={{ background: "#FDF21A", borderRadius: '3px', width: "45%", height: '85%', display: "flex", alignItems: 'center', justifyContent: 'center', display: 'flex', flexDirection: 'column' }}>
                     <Typography sx={{ fontSize: { laptop: '.5vw', }, fontWeight: 'bold', color: "#FF4D4D" }}>Total Bet</Typography>
                     <Typography sx={{ fontSize: { laptop: '.5vw' }, fontWeight: 'bold', color: "#0B4F26" }}>250</Typography>
@@ -340,44 +351,47 @@ const PlaceBetComponentWeb = () => {
                         style={{ width: '12px', height: '12px', marginLeft: '5px' }}
                     />
                 </Box>
-            </Box >
-            <DropdownMenu open={Boolean(anchorEl)} anchorEl={anchorEl} handleClose={handleClose} />
+                {show&&<DropdownMenu open={Boolean(anchorEl)} anchorEl={anchorEl} handleClose={handleClose} />}
 
+            </Box >
         </>
     )
 }
-
+function useOuterClick(callback) {
+    const callbackRef = useRef(); // initialize mutable ref, which stores callback
+    const innerRef = useRef(); // returned to client, who marks "border" element
+  
+    // update cb on each render, so second useEffect has access to current value 
+    useEffect(() => { callbackRef.current = callback; });
+    
+    useEffect(() => {
+      document.addEventListener("click", handleClick);
+      return () => document.removeEventListener("click", handleClick);
+      function handleClick(e) {
+        if (innerRef.current && callbackRef.current && 
+          !innerRef.current.contains(e.target)
+        ) callbackRef.current(e);
+      }
+    }, []); // no dependencies -> stable click listener
+        
+    return innerRef; // convenience for client (doesn't need to init ref himself) 
+  }
 const menutItems = [{ title: "Account Statement" }, { title: "Profile Loss Report" }, { title: "Bet History" }, { title: "Unsetteled Bet" }, { title: "Casino Report History" }, { title: "Set Button Values" }, { title: "Security Auth Verfication" }, { title: "Change Password" }]
 const DropdownMenu = ({ anchorEl, open, handleClose }) => {
-    return (
-        <Menu
-            id="basic-menu"
-            anchorEl={anchorEl}
-            open={open}
-            onClose={handleClose}
-            anchorOrigin={{
-                vertical: "bottom",
-                horizontal: "right"
-            }}
-            transformOrigin={{
-                vertical: 'top',
-                horizontal: 'right',
-            }}
-            MenuListProps={{
-                'aria-labelledby': 'basic-button',
-                sx: {
-                    paddingY: "0px"
-                }
-            }}
-            PaperProps={
-                {
-                    sx: {
-                        borderRadius: "5px",
-                        border: "1px solid #306A47",
+    const theme =useTheme()
+    const matchesMobile = useMediaQuery(theme.breakpoints.down("laptop"))
 
-                    }
-                }
-            }
+    return (
+        <Box
+            sx={{
+                borderRadius: "5px",
+                border: "1px solid #306A47",
+                zIndex:1001,
+                overflow:"hidden",
+                top:"35px",
+                left:matchesMobile?"-15%":"0%",
+                position:"absolute"
+            }}
         >
             <Box sx={{ minHeight: "100px", flexDirection: "column", backgroundColor: "white", display: "flex" }}>
                 <Box sx={{ display: "flex", height: "25px" }}>
@@ -434,7 +448,7 @@ const DropdownMenu = ({ anchorEl, open, handleClose }) => {
                     </Box>
                 </Box>
             </Box>
-        </Menu>
+        </Box>
     )
 }
 

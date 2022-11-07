@@ -5,7 +5,7 @@ import StyledImage from "../../components/StyledImage";
 import { CancelDark } from "../../assets";
 import { EyeIcon, EyeSlash, LockIcon, UnLockIcon } from "../assets";
 import { useState } from "react";
-import { setCredModalOpen } from "../store/creditLimitModal";
+import { setExpoModalOpen } from "../store/exposureModal";
 const style = {
     position: 'absolute',
     top: '50%',
@@ -19,32 +19,32 @@ const style = {
     borderRadius: "10px",
 };
 
-export default function CreditModal({ }) {
-    const isModalOpen = useSelector(state => state.creditLimitModal)?.isModalOpen
+export default function SetExposureModal({ }) {
+    const isModalOpen = useSelector(state => state.exposureModal)?.isModalOpen
     const dispatch = useDispatch()
     const [showPass, setShowPass] = useState(false)
     return (
         <Modal
             open={isModalOpen}
-            onClose={() => dispatch(setCredModalOpen(false))}
+            onClose={() => dispatch(setExpoModalOpen(false))}
             aria-labelledby="modal-modal-title"
             aria-describedby="modal-modal-description"
             disableAutoFocus={true}
         >
             <Box sx={[style]}>
                 <Box sx={[{ height: "45px", display: "flex", justifyContent: "space-between", alignItems: "center", px: "10px", borderRadius: "10px" }, (theme) => ({ backgroundImage: theme.palette.primary.headerGradient })]}>
-                    <Typography sx={{ fontWeight: "bold", fontSize: "16px", color: "text.white" }}>Set Credit Limit</Typography>
+                    <Typography sx={{ fontWeight: "bold", fontSize: "16px", color: "text.white" }}>Set Exposure Limit</Typography>
                     <StyledImage alt="cross button" onClick={() => {
-                        dispatch(setCredModalOpen(false))
+                        dispatch(setExpoModalOpen(false))
                     }} src={CancelDark} sx={{ height: "22px", width: "22px" }} />
                 </Box>
                 <Box sx={{ background: "white", paddingX: "10px" }}>
                     <Box sx={{ display: "flex", alignItems: "center", marginTop: "10px" }}>
-                        <Typography sx={{ flex: 1, fontWeight: "600" }}>Old Credit</Typography>
+                        <Typography sx={{ flex: 1, fontWeight: "600" }}>Old Limit</Typography>
                         <LabelAndValue containerStyle={{ flex: 2.25 }} value={"1,00,000,000,0"} />
                     </Box>
                     <Box sx={{ display: "flex", alignItems: "center", marginTop: "15px" }}>
-                        <Typography sx={{ flex: 1, fontWeight: "600" }}>New Credit</Typography>
+                        <Typography sx={{ flex: 1, fontWeight: "600" }}>New Limit</Typography>
                         <Box sx={{ background: "#004A25", borderRadius: "px", flex: 2.25, height: "45px", borderRadius: "5px", paddingX: "10px" }}>
                             <TextField onChange={e => {
 
@@ -77,10 +77,10 @@ export default function CreditModal({ }) {
                     </Box>
                     <Box sx={{ display: "flex", justifyContent: "center", alignItems: "center", marginY: "30px" ,marginTop:"40px"}}>
                     <BoxButton onClick={()=>{
-                          dispatch(setCredModalOpen(false))
+                          dispatch(setExpoModalOpen(false))
                     }} title={"Reset"} containerStyle={{background:"#FF4949"}} />
                         <BoxButton onClick={()=>{
-                          dispatch(setCredModalOpen(false))
+                          dispatch(setExpoModalOpen(false))
                     }} title={"Submit"} containerStyle={{marginLeft:"20px"}} />
                     </Box>
                 </Box>
