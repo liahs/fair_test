@@ -3,11 +3,11 @@ import { useEffect, useState } from "react";
 import { BETPLACED, NOT } from "../assets";
 import CountDownTimer from "./CountDownTimer";
 
-const BetPlaced = ({ visible, setVisible, not }) => {
+const BetPlaced = ({ visible, setVisible, not, time }) => {
     const [flag, setFlag] = useState(false)
     const [timer, settimer] = useState(true)
     useEffect(() => {
-        if (visible && !not) {
+        if (visible && !not && time) {
             setTimeout(() => {
                 setFlag(true)
             }, 5000);
@@ -21,7 +21,7 @@ const BetPlaced = ({ visible, setVisible, not }) => {
             }, not ? 2000 : 7000);
         }
     }, [visible])
-    if (!flag && visible && !not) {
+    if (!flag && visible && !not && time) {
         return <CountDownTimer visible={true} setVisible={setFlag} />
     }
     return (

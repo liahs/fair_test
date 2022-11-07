@@ -12,7 +12,7 @@ import BetPlaced from "./BetPlaced"
 import { setAnchor } from "../store/betplace"
 import { Popover } from 'react-tiny-popover'
 
-const SeperateBox = ({ color, empty, value, value2, lock, session, back }) => {
+const SeperateBox = ({ color, empty, value, value2, lock, session, back, time }) => {
     const theme = useTheme()
     const matchesMobile = useMediaQuery(theme.breakpoints.down("laptop"))
     const dispatch = useDispatch()
@@ -93,10 +93,10 @@ const SeperateBox = ({ color, empty, value, value2, lock, session, back }) => {
                     season={session}
                     back={back}
                 /></Box>}
-            <BetPlaced not={canceled} visible={visible} setVisible={(i) => {
+            {<BetPlaced time={time} not={canceled} visible={visible} setVisible={(i) => {
                 setIsPopoverOpen(false)
                 setVisible(i)
-            }} />
+            }} />}
 
             {/* {isPopoverOpen && <Box sx={{ zIndex: 999, position: 'absolute' }}>
                 <PlaceBet onSubmit={() => {
@@ -124,7 +124,7 @@ const Divider = () => {
         <Box sx={{ width: '100%', background: 'rgba(211,211,211)', height: '1px' }} ></Box>
     )
 }
-const BoxComponent = ({ name, color, align }) => {
+const BoxComponent = ({ name, color, align, time }) => {
     const theme = useTheme()
     const matchesMobile = useMediaQuery(theme.breakpoints.down("laptop"))
     return (
@@ -142,17 +142,17 @@ const BoxComponent = ({ name, color, align }) => {
                 <MoneyBox color={color} />
             </Box>
             <Box sx={{ display: 'flex', background: 'white', height: '40px', width: { laptop: '60%', mobile: '80%' }, justifyContent: { mobile: 'flex-end', laptop: 'center' }, alignItems: 'center' }} >
-                {!matchesMobile && <SeperateBox align={align} value={"1.71"} value2={" 1cr+"} color={matchesMobile ? "white" : "#B3E0FF"} />}
+                {!matchesMobile && <SeperateBox time={time} align={align} value={"1.71"} value2={" 1cr+"} color={matchesMobile ? "white" : "#B3E0FF"} />}
                 <Box sx={{ width: '.45%', display: 'flex', background: 'pink' }} ></Box>
-                {!matchesMobile && <SeperateBox align={align} value={"1.71"} value2={" 1cr+"} color={matchesMobile ? "white" : "#FFB5B5"} />}
+                {!matchesMobile && <SeperateBox time={time} align={align} value={"1.71"} value2={" 1cr+"} color={matchesMobile ? "white" : "#FFB5B5"} />}
                 <Box sx={{ width: '.45%', display: 'flex', background: 'pink' }} ></Box>
-                <SeperateBox align={align} value={"1.71"} value2={" 1cr+"} color={matchesMobile ? "white" : "#B3E0FF"} />
+                <SeperateBox time={time} align={align} value={"1.71"} value2={" 1cr+"} color={matchesMobile ? "white" : "#B3E0FF"} />
                 <Box sx={{ width: '.45%', display: 'flex', background: 'pink' }} ></Box>
-                <SeperateBox align={align} value={"1.72"} value2={" 1cr+"} color={matchesMobile ? "white" : "#FFB5B5"} />
+                <SeperateBox time={time} align={align} value={"1.72"} value2={" 1cr+"} color={matchesMobile ? "white" : "#FFB5B5"} />
                 <Box sx={{ width: '.45%', display: 'flex', background: 'pink' }} ></Box>
-                <SeperateBox back={true} align={align} value={"1.72"} value2={" 1cr+"} color={"#B3E0FF"} />
+                <SeperateBox time={time} back={true} align={align} value={"1.72"} value2={" 1cr+"} color={"#B3E0FF"} />
                 <Box sx={{ width: '.45%', display: 'flex', background: 'pink' }} ></Box>
-                <SeperateBox align={align} value={"1.72"} value2={" 1cr+"} color={"#FFB5B5"} />
+                <SeperateBox time={time} align={align} value={"1.72"} value2={" 1cr+"} color={"#FFB5B5"} />
                 <Box sx={{ width: '.45%', display: 'flex', background: 'pink' }} ></Box>
             </Box>
         </Box>
@@ -248,11 +248,11 @@ const Odds = ({ }) => {
                     </Box>
                 </Box>
             }
-            <BoxComponent color={'#46e080'} name={'INDIA'} />
+            <BoxComponent time={true} color={'#46e080'} name={'INDIA'} />
             <Divider />
-            <BoxComponent color={'#FF4D4D'} name={'PAKISTAN'} />
+            <BoxComponent time={true} color={'#FF4D4D'} name={'PAKISTAN'} />
             <Divider />
-            <BoxComponent color={'#F8C851'} name={"DRAW"} />
+            <BoxComponent time={true} color={'#F8C851'} name={"DRAW"} />
 
         </Box >
 
