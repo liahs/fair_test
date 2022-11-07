@@ -3,9 +3,9 @@ import { useDispatch, useSelector } from "react-redux";
 import { setDepoModalOpen } from "../store/depositModal";
 import StyledImage from "../../components/StyledImage";
 import { CancelDark } from "../../assets";
-import { EyeIcon, EyeSlash, LockIcon, UnLockIcon } from "../assets";
+import { DeleteIcon, EyeIcon, EyeSlash, LockIcon, UnLockIcon } from "../assets";
 import { useState } from "react";
-import { setCredModalOpen } from "../store/creditLimitModal";
+import { setWithdrawModalDet, setWithdrawModalOpen } from "../store/withdrawModal";
 const style = {
     position: 'absolute',
     top: '50%',
@@ -19,32 +19,43 @@ const style = {
     borderRadius: "10px",
 };
 
-export default function CreditModal({ }) {
-    const isModalOpen = useSelector(state => state.creditLimitModal)?.isModalOpen
+export default function WithDrawModal({ }) {
+    const isModalOpen = useSelector(state => state.withdrawModal)?.isModalOpen
     const dispatch = useDispatch()
     const [showPass, setShowPass] = useState(false)
     return (
         <Modal
             open={isModalOpen}
-            onClose={() => dispatch(setCredModalOpen(false))}
+            onClose={() => dispatch(setWithdrawModalOpen(false))}
             aria-labelledby="modal-modal-title"
             aria-describedby="modal-modal-description"
             disableAutoFocus={true}
         >
             <Box sx={[style]}>
                 <Box sx={[{ height: "45px", display: "flex", justifyContent: "space-between", alignItems: "center", px: "10px", borderRadius: "10px" }, (theme) => ({ backgroundImage: theme.palette.primary.headerGradient })]}>
-                    <Typography sx={{ fontWeight: "bold", fontSize: "16px", color: "text.white" }}>Set Credit Limit</Typography>
+                    <Typography sx={{ fontWeight: "bold", fontSize: "16px", color: "text.white" }}>WithDraw</Typography>
                     <StyledImage alt="cross button" onClick={() => {
-                        dispatch(setCredModalOpen(false))
+                        dispatch(setWithdrawModalOpen(false))
                     }} src={CancelDark} sx={{ height: "22px", width: "22px" }} />
                 </Box>
                 <Box sx={{ background: "white", paddingX: "10px" }}>
                     <Box sx={{ display: "flex", alignItems: "center", marginTop: "10px" }}>
-                        <Typography sx={{ flex: 1, fontWeight: "600" }}>Old Credit</Typography>
-                        <LabelAndValue containerStyle={{ flex: 2.25 }} value={"1,00,000,000,0"} />
+                        <Typography sx={{ flex: 1, fontWeight: "600" }}>Betfair Expert</Typography>
+                        <LabelAndValue containerStyle={{ flex: 1 }} label={"Old Balance"} value={"1,00,000,000,0"} />
+                        <LabelAndValue containerStyle={{ flex: 1, marginLeft: "10px" }} label={"New Balance"} value={"1,00,000,000,0"} />
                     </Box>
                     <Box sx={{ display: "flex", alignItems: "center", marginTop: "15px" }}>
-                        <Typography sx={{ flex: 1, fontWeight: "600" }}>New Credit</Typography>
+                        <Typography sx={{ flex: 1, fontWeight: "600" }}>CHD91101012301</Typography>
+                        <LabelAndValue containerStyle={{ flex: 1 }} label={"Old Balance"} value={"1,00,000,000,0"} />
+                        <LabelAndValue containerStyle={{ flex: 1, marginLeft: "10px" }} label={"New Balance"} value={"1,00,000,000,0"} />
+                    </Box>
+                    <Box sx={{ display: "flex", alignItems: "center", marginTop: "15px" }}>
+                        <Typography sx={{ flex: 1, fontWeight: "600" }}>Profit/Loss</Typography>
+                        <LabelAndValue valueStyle={{ color: "white" }}  ticon={<StyledImage src={"https://fontawesomeicons.com/images/svg/trending-up-sharp.svg"} sx={{height:"20px",width:"20px",marginLeft:"5px",filter:"invert(.9) sepia(1) saturate(5) hue-rotate(175deg);"}} />} containerStyle={{ flex: 1, background: "#27AC1E" }} value={"4,02,350,000"} />
+                        <LabelAndValue valueStyle={{ color: "white" }} containerStyle={{ flex: 1, marginLeft: "10px", background: "#004A25" }} value={"1,00,000,000,0"} />
+                    </Box>
+                    <Box sx={{ display: "flex", alignItems: "center", marginTop: "15px" }}>
+                        <Typography sx={{ flex: 1, fontWeight: "600" }}>Amount</Typography>
                         <Box sx={{ background: "#004A25", borderRadius: "px", flex: 2.25, height: "45px", borderRadius: "5px", paddingX: "10px" }}>
                             <TextField onChange={e => {
 
@@ -55,7 +66,22 @@ export default function CreditModal({ }) {
                             }} />
                         </Box>
                     </Box>
-                    <Box sx={{ display: "flex", alignItems: "center", marginTop: "40px", "overflow": "hidden" }}>
+                    <Box sx={{ display: "flex", alignItems: "center", marginTop: "15px", "overflow": "hidden" }}>
+                        <Typography sx={{ flex: 1, fontWeight: "600" }}>Remark</Typography>
+                        <Box sx={{ borderRadius: "px", flex: 2.25, height: "45px", display: "flex", alignItems: "center", borderRadius: "5px", border: "2px solid #26262633", height: "80px", paddingX: "10px" }}>
+                            <TextField onChange={e => {
+
+                            }}
+                                rows={4}
+                                sx={{ width: "100%", height: "40px" }}
+                                multiline={true} variant="standard" InputProps={{
+                                    placeholder: "6 Over runs INDIA...",
+                                    disableUnderline: true,
+                                    style: { fontSize: "13px", height: "45px", fontWeight: "600" }
+                                }} />
+                        </Box>
+                    </Box>
+                    <Box sx={{ display: "flex", alignItems: "center", marginTop: "15px", "overflow": "hidden" }}>
                         <Typography sx={{ flex: 1, fontWeight: "600" }}>Transaction Password</Typography>
                         <Box sx={{ borderRadius: "px", flex: 2.25, height: "45px", display: "flex", alignItems: "center", borderRadius: "5px", border: "2px solid #26262633", paddingX: "10px" }}>
                             <TextField onChange={e => {
@@ -71,17 +97,14 @@ export default function CreditModal({ }) {
                             <Box onClick={() => {
                                 setShowPass(!showPass)
                             }}>
-                                <StyledImage src={showPass ? EyeIcon : EyeSlash} sx={{ height: "14px", width: "20px" }} />
+                                <StyledImage src={showPass ? EyeIcon : EyeSlash} sx={{height:"14px",width:"20px"}} />
                             </Box>
                         </Box>
                     </Box>
-                    <Box sx={{ display: "flex", justifyContent: "center", alignItems: "center", marginY: "30px" ,marginTop:"40px"}}>
-                    <BoxButton onClick={()=>{
-                          dispatch(setCredModalOpen(false))
-                    }} title={"Reset"} containerStyle={{background:"#FF4949"}} />
-                        <BoxButton onClick={()=>{
-                          dispatch(setCredModalOpen(false))
-                    }} title={"Submit"} containerStyle={{marginLeft:"20px"}} />
+                    <Box sx={{ display: "flex", justifyContent: "center", alignItems: "center", marginY: "30px" }}>
+                        <BoxButton onClick={() => {
+                        dispatch(setWithdrawModalOpen(false))
+                    }} title={"Submit"} />
                     </Box>
                 </Box>
             </Box>
