@@ -1,16 +1,18 @@
 
-import { Header, Background, HomeSlide ,Account,AccountList, UserDetailModal, DepositModal} from "../../components";
+import { Header, Background, HomeSlide, Account, AccountList, UserDetailModal, DepositModal } from "../../components";
+import SideBarAdmin from "../../components/SideBarAdmin";
 
 export default function Home() {
-    
+
     return (
         <Background>
-            <Header />
+            {/* <Header />
             <HomeSlide />
             <Account />
             <AccountList />
             <UserDetailModal />
-            <DepositModal />
+            <DepositModal /> */}
+            <SideBarAdmin />
         </Background>
     )
 }

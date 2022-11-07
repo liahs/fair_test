@@ -2,7 +2,7 @@ import { Box, FormControl, InputLabel, TextField, makeStyles, MenuItem, Select, 
 import { useState } from "react";
 import { ARROWDROPDOWN } from "../assets";
 const SearchInput = ({ handleChange, title, data }) => {
-    const [value, setValue] = useState(10)
+    const [value, setValue] = useState("All")
     const [open, setOpen] = useState(false)
     const [search, setSearch] = useState("")
 
@@ -46,7 +46,7 @@ const SearchInput = ({ handleChange, title, data }) => {
             </Box>
             {search && search.length > 0 && open && <Box
 
-                sx={{ display: 'flex', flexDirection: 'column', background: 'white', width: '18.7%', alignSelf: 'center', marginX: '5px', borderRadius: '2px', marginTop: '2px', position: 'absolute', borderRadius: '3px', border: '2px solid #DEDEDE', zIndex: 9999 }} >
+                sx={{ display: 'flex', flexDirection: 'column', background: 'white', width: '18.9%', alignSelf: 'center', borderRadius: '2px', marginTop: '2px', position: 'absolute', borderRadius: '3px', border: '2px solid #DEDEDE', zIndex: 9999 }} >
                 {data.filter(k => k.includes(search)).map((i) => {
                     return (
                         <Block i={i} />

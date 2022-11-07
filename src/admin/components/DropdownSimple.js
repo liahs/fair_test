@@ -3,7 +3,7 @@ import { useState } from "react";
 import { ARROWDROPDOWN } from "../assets";
 
 const DropDownSimple = ({ handleChange, title, data }) => {
-    const [value, setValue] = useState(10)
+    const [value, setValue] = useState(data[0])
     const [open, setOpen] = useState(false)
     const Divider = () => {
         return (
@@ -16,7 +16,7 @@ const DropDownSimple = ({ handleChange, title, data }) => {
                 <Typography onClick={() => {
                     setValue(item)
                     setOpen(false)
-                }} sx={{ paddingY: '4px', paddingLeft: '20px', fontSize: '10px', fontWeight: '500', color: 'black' }}>{item}</Typography>
+                }} sx={{ paddingY: '4px', paddingLeft: '7px', fontSize: '10px', fontWeight: '500', color: 'black' }}>{item}</Typography>
             </>
         )
     }
@@ -36,7 +36,7 @@ const DropDownSimple = ({ handleChange, title, data }) => {
                 <Typography sx={{ fontSize: '11px', fontWeight: '500' }} >{value}</Typography>
                 <img src={ARROWDROPDOWN} style={{ width: '11px', height: '6px', transform: open ? 'rotate(0deg)' : 'rotate(180deg)' }} />
             </Box>
-            {open && <Box sx={{ display: 'flex', flexDirection: 'column', background: 'white', width: '19.7%', alignSelf: 'center', marginX: '5px', borderRadius: '2px', marginTop: '2px', position: 'absolute', borderRadius: '3px', border: '2px solid #DEDEDE', zIndex: 9999 }} >
+            {open && <Box sx={{ display: 'flex', flexDirection: 'column', background: 'white', width: '18.7%', alignSelf: 'center', marginX: '5px', borderRadius: '2px', marginTop: '2px', position: 'absolute', borderRadius: '3px', border: '2px solid #DEDEDE', zIndex: 9999 }} >
 
                 {data.map((i) => {
                     return (

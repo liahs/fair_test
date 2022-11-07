@@ -67,7 +67,7 @@ const PlaceBet = ({ open, handleClose, season, onSubmit, onCancel, back }) => {
                             <Typography sx={{ color: 'white', fontSize: '14px', fontWeight: 'bold' }} >-</Typography>
                         </Box>}
                         <Box sx={{ width: '30px', justifyContent: 'center', alignItems: 'center', display: 'flex', borderRadius: '3px', height: '15px' }} >
-                            <Typography sx={{ color: 'black', fontSize: !season ? { mobile: '14px', laptop: '12px' } : { mobile: "18px", laptop: '16px' }, fontWeight: { mobile: '700', laptop: '600' } }} >{oddValue}</Typography>
+                            <Typography sx={{ color: 'black', fontSize: { mobile: "18px", laptop: '16px' }, fontWeight: { mobile: '700', laptop: '600' } }} >{oddValue}</Typography>
                         </Box>
                         {!season && <Box
                             onClick={() => {
