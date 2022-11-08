@@ -28,7 +28,9 @@ const CustomHeader = ({ }) => {
                     flexDirection: matchesMobile ? "column" : "row",
                     alignItems: !matchesMobile ? "center" : "flex-start",
                     justifyContent: "space-between",
-                    paddingX: { laptop: "10%", mobile: "2%" },
+                    paddingLeft: { laptop: "6.5%" },
+                    paddingRight: { laptop: "3%" },
+                    paddingX: { mobile: "2%" },
                     paddingY: matchesMobile ? "15px" : "0px",
                     paddingBottom: matchesMobile ? "10px" : "0px"
                 }, (theme) => ({
