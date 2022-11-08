@@ -21,11 +21,17 @@ const SeperateBox = ({ color, empty, value, value2, lock, session, back, time })
     const [isPopoverOpen, setIsPopoverOpen] = React.useState(false)
     const [visible, setVisible] = React.useState(false)
     const [canceled, setCanceled] = React.useState(false)
-    useEffect(() => {
-        console.log('chnaged', isPopoverOpen)
-    }, [isPopoverOpen])
+    const innerRef = useOuterClick(ev => {
+        // setIsPopoverOpen(false)
+        // alert('hi')
+        if (isPopoverOpen) {
+            // alert('hi')
+            setIsPopoverOpen(false)
+        }
+
+    });
     return (
-        < Box sx={{ width: { mobile: '30%', laptop: '20%' }, height: '94%', position: 'relative' }}>
+        < Box ref={innerRef} sx={{ width: { mobile: '30%', laptop: '20%' }, height: '94%', position: 'relative' }}>
             {/* <Popover
 
                 isOpen={isPopoverOpen}
@@ -70,14 +76,16 @@ const SeperateBox = ({ color, empty, value, value2, lock, session, back, time })
                 }
 
             </Box>
-            {isPopoverOpen && <Box sx={{ zIndex: 110, position: 'absolute', right: 0, left: { laptop: 0 }, transform: { laptop: 'translate( -230%)' }, top: '40px' }}>
-                <PlaceBet onSubmit={() => {
+            {isPopoverOpen && <Box sx={{ zIndex: 110, position: { mobile: 'absolute' }, right: 0, left: { laptop: 0 }, transform: { laptop: 'translate( -230%)' }, top: '40px' }}>
+                <PlaceBet
+                    // refs={innerRef}
+                    onSubmit={() => {
 
-                    setIsPopoverOpen(false)
-                    setVisible(true)
-                    setCanceled(false)
+                        setIsPopoverOpen(false)
+                        setVisible(true)
+                        setCanceled(false)
 
-                }}
+                    }}
                     onCancel={() => {
                         setVisible(true)
                         setCanceled(true)

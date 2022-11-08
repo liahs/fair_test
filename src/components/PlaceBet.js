@@ -5,7 +5,7 @@ import { ArrowDown, CANCEL, CancelDark } from "../assets";
 import '../components/index.css'
 import StyledImage from "./StyledImage";
 import { useSelector } from 'react-redux'
-const PlaceBet = ({ open, handleClose, season, onSubmit, onCancel, back }) => {
+const PlaceBet = ({ open, refs, handleClose, season, onSubmit, onCancel, back }) => {
     const [defaultValue, setDefaultValue] = useState("")
     const theme = useTheme()
     const selectedColorBox = useSelector(state => state.selectedColorBox)?.value
@@ -94,7 +94,7 @@ const PlaceBet = ({ open, handleClose, season, onSubmit, onCancel, back }) => {
 
     return (
 
-        <Box sx={[{ display: 'flex', flexDirection: 'column', border: "1px solid white", borderRadius: "5px", marginLeft: season ? "40px" : 0, overflow: "hidden", width: { mobile: "90vw", laptop: '30vw' } }, matchesMobile ? { position: "absolute", right: back ? "-16.5vw" : "0vw" } : {}]} >
+        <Box ref={refs} sx={[{ display: 'flex', flexDirection: 'column', border: "1px solid white", borderRadius: "5px", marginLeft: season ? "40px" : 0, overflow: "hidden", width: { mobile: "90vw", laptop: '30vw' } }, matchesMobile ? { position: "absolute", right: back ? "-16.5vw" : "0vw" } : {}]} >
             <Box sx={{ background: "white", width: "100%", 'overflow': "hidden" }} >
                 <Box sx={[{ height: "38px", display: "flex", justifyContent: "space-between", alignItems: "center", px: "10px" }, (theme) => ({
                     backgroundImage: `${theme.palette.primary.headerGradient}`
