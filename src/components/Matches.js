@@ -115,14 +115,14 @@ const Odds = ({ upcoming, onClick, top, blur }) => {
                         {!matchesMobile && <SeperateBox value={"1.71"} value2={" 1cr+"} color={matchesMobile ? "white" : "#B3E0FF"} />
                         }
                         <Box sx={{ width: '.25%', display: 'flex', background: 'pink' }} ></Box>
-                        {!matchesMobile && <SeperateBox value={"1.71"} value2={" 1cr+"} color={matchesMobile ? "white" : "#FFB5B5"} />}
+                        {!matchesMobile && <SeperateBox value={"1.71"} value2={" 1cr+"} color={matchesMobile ? "white" : "#B3E0FF"} />}
                         <Box sx={{ width: '.25%', display: 'flex', background: 'pink' }} ></Box>
 
                         <SeperateBox value={"1.71"} value2={" 1cr+"} color={matchesMobile ? "white" : "#B3E0FF"} />
                         <Box sx={{ width: '.25%', display: 'flex', background: 'pink' }} ></Box>
                         <SeperateBox value={"1.72"} value2={" 1cr+"} color={matchesMobile ? "white" : "#FFB5B5"} />
                         <Box sx={{ width: '.25%', display: 'flex', background: 'pink' }} ></Box>
-                        <SeperateBox value={"1.72"} value2={" 1cr+"} color={"#B3E0FF"} />
+                        <SeperateBox value={"1.72"} value2={" 1cr+"} color={"#FFB5B5"} />
                         <Box sx={{ width: '.25%', display: 'flex', background: 'pink' }} ></Box>
                         <SeperateBox value={"1.72"} value2={" 1cr+"} color={"#FFB5B5"} />
                         <Box sx={{ width: '.25%', display: 'flex', background: 'pink' }} ></Box>
@@ -139,16 +139,16 @@ const Odds = ({ upcoming, onClick, top, blur }) => {
                         {!matchesMobile && <SeperateBox value={"1.71"} value2={" 1cr+"} color={matchesMobile ? "white" : "#B3E0FF"} />}
 
                         <Box sx={{ width: '.25%', display: 'flex', background: 'pink' }} ></Box>
-                        {!matchesMobile && <SeperateBox value={"1.71"} value2={" 1cr+"} color={matchesMobile ? "white" : "#F6D0CB"} />}
+                        {!matchesMobile && <SeperateBox value={"1.71"} value2={" 1cr+"} color={matchesMobile ? "white" : "#B3E0FF"} />}
                         <Box sx={{ width: '.25%', display: 'flex', background: 'pink' }} ></Box>
 
                         <SeperateBox value={"1.71"} value2={" 1cr+"} color={matchesMobile ? "white" : "#B3E0FF"} />
                         <Box sx={{ width: '.25%', display: 'flex', background: 'pink' }} ></Box>
-                        <SeperateBox value={"1.72"} value2={" 1cr+"} color={matchesMobile ? "white" : "#F6D0CB"} />
+                        <SeperateBox value={"1.72"} value2={" 1cr+"} color={matchesMobile ? "white" : "#FFB5B5"} />
                         <Box sx={{ width: '.25%', display: 'flex', background: 'pink' }} ></Box>
-                        <SeperateBox value={"1.72"} value2={" 1cr+"} color={"#B3E0FF"} />
+                        <SeperateBox value={"1.72"} value2={" 1cr+"} color={"#FFB5B5"} />
                         <Box sx={{ width: '.25%', display: 'flex', background: 'pink' }} ></Box>
-                        <SeperateBox value={"1.72"} value2={" 1cr+"} color={"#F9E3E0"} />
+                        <SeperateBox value={"1.72"} value2={" 1cr+"} color={"#FFB5B5"} />
                         <Box sx={{ width: '.25%', display: 'flex', background: 'pink' }} ></Box>
 
                     </Box>

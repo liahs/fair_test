@@ -18,7 +18,7 @@ const LiveMarketComponent = ({ team, team_2 }) => {
             <Box sx={{ position: 'absolute', zIndex: 11, width: '60px', height: '15px', top: '-8px', left: '10px', background: '#46CF4D', display: 'flex', justifyContent: 'center', alignItems: 'center', border: '1px solid white' }}>
                 <Typography sx={{ fontSize: '10px', color: 'white', fontStyle: 'italic' }}>LIVE NOW</Typography>
             </Box>
-            <Box sx={{ background: '#F8C851', width: '39.9%', height: '100%', display: 'flex', alignItems: 'center', marginX: '2px', border: '1.5px solid white' }}>
+            <Box sx={{ background: '#F8C851', width: { mobile: "99%", laptop: '39.9%' }, height: '100%', display: 'flex', alignItems: 'center', marginX: '2px', border: '1.5px solid white' }}>
                 <Typography sx={{ fontSize: '25px', fontWeight: 'bold', marginLeft: '5px' }}>India Vs pakistan</Typography>
             </Box>
             <Box sx={{ background: '#27AC1E', width: '19.8%', height: '100%', border: '1.5px solid white' }}>
