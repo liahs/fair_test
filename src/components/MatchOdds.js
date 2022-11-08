@@ -32,34 +32,34 @@ const SeperateBox = ({ color, po, empty, value, value2, lock, session, back, tim
     });
     const getMargin = () => {
         if (po == 1 && session) {
-            return { right: { mobile: 0, laptop: 250 }, left: { mobile: 0, laptop: -175 } }
+            return { right: { mobile: 0, laptop: '-80%' }, left: { mobile: 0, laptop: '50%' } }
 
         }
         if (po == 2 && session) {
-            return { right: { mobile: 0, laptop: 250 }, left: { mobile: 0, laptop: -200 } }
+            return { right: { mobile: 0, laptop: '-124.3%' }, left: { mobile: 0, laptop: '50%' } }
 
         }
         if (po == 1) {
-            return { right: { mobile: 0, laptop: 130 }, left: { mobile: 0, laptop: 20 } }
+            return { right: { mobile: 0, laptop: 0 }, left: { mobile: 0, laptop: '78%' } }
         }
         if (po == 2) {
-            return { right: { mobile: 0, laptop: 200 }, left: { mobile: 0, laptop: -50 } }
+            return { right: { mobile: 0, laptop: 0 }, left: { mobile: 0, laptop: '46.7%' } }
 
         }
         if (po == 3) {
-            return { right: { mobile: 0, laptop: 200 }, left: { mobile: 0, laptop: -120 } }
+            return { right: { mobile: 0, laptop: 0 }, left: { mobile: 0, laptop: '15.838%' } }
 
         }
         if (po == 4) {
-            return { right: { mobile: 0, laptop: 250 }, left: { mobile: 0, laptop: -185 } }
+            return { right: { mobile: 0, laptop: '380%' }, left: { mobile: 0, laptop: '-280%' } }
 
         }
         if (po == 5) {
-            return { right: { laptop: 250, mobile: 0 }, left: { laptop: -205, mobile: 0 } }
+            return { right: { laptop: '427%', mobile: 0 }, left: { laptop: '-344%', mobile: 0 } }
 
         }
         if (po == 6) {
-            return { right: { laptop: 250, mobile: 0 }, left: { laptop: -227, mobile: 0 } }
+            return { right: { laptop: '427.55%', mobile: 0 }, left: { laptop: '-375%', mobile: 0 } }
 
         }
         return { right: 0 }

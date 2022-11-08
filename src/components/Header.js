@@ -29,7 +29,7 @@ const CustomHeader = ({ }) => {
                     alignItems: !matchesMobile ? "center" : "flex-start",
                     justifyContent: "space-between",
                     paddingLeft: { laptop: "6.5%" },
-                    paddingRight: { laptop: "3%" },
+                    paddingRight: { laptop: "1%" },
                     paddingX: { mobile: "2%" },
                     paddingY: matchesMobile ? "15px" : "0px",
                     paddingBottom: matchesMobile ? "10px" : "0px"
@@ -144,9 +144,9 @@ const BoxProfile = ({ image, value, containerStyle }) => {
 
 const menutItems = [{ title: "Account Statement" }, { title: "Profile Loss Report" }, { title: "Bet History" }, { title: "Unsetteled Bet" }, { title: "Casino Report History" }, { title: "Set Button Values" }, { title: "Security Auth Verfication" }, { title: "Change Password" }]
 const DropdownMenu = ({ anchorEl, open, handleClose }) => {
-    const theme =useTheme()
+    const theme = useTheme()
     const navigate = useNavigate()
-    const matchesMobile =useMediaQuery(theme.breakpoints.down("laptop"))
+    const matchesMobile = useMediaQuery(theme.breakpoints.down("laptop"))
     return (
         <Menu
             id="basic-menu"
@@ -157,14 +157,14 @@ const DropdownMenu = ({ anchorEl, open, handleClose }) => {
                 'aria-labelledby': 'basic-button',
             }}
             PaperProps={{
-                sx:{
-                    marginLeft:matchesMobile?"7px":"-30px"
+                sx: {
+                    marginLeft: matchesMobile ? "7px" : "2px"
                 }
             }}
             anchorOrigin={{
                 vertical: 'bottom',
                 horizontal: 'left',
-              }}
+            }}
         >
             {menutItems.map(x => <MenuItem dense={true} sx={{
 
