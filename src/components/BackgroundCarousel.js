@@ -11,16 +11,12 @@ function BackgroundCarousel() {
                 <Carousel.Item >
                     <Box style={{ height: "100vh", width: "100vw", backgroundImage: `url(${matchesMobile?MobileBackground:loginBackground})`, backgroundRepeat: "no-repeat", backgroundSize: "100vw 100vh" }} />
                 </Carousel.Item>
-                {/* <Carousel.Item >
-                    <Box style={{ height: "100vh", width: "100vw", backgroundImage: `url(${loginBackground1})`, backgroundRepeat: "no-repeat", backgroundSize: "100vw 100vh" }} />
-                </Carousel.Item>
-                <Carousel.Item>
-                    <Box style={{ height: "100vh", width: "100vw", backgroundImage: `url(${loginBackground2})`, backgroundRepeat: "no-repeat", backgroundSize: "100vw 100vh" }} />
-                </Carousel.Item> */}
             </Carousel>
         </Box>
     );
 }
+
+
 
 
 export default BackgroundCarousel

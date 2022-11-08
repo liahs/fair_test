@@ -1,9 +1,10 @@
 import { Box, FormControl, InputLabel, MenuItem, Select, SliderValueLabel, Typography, } from "@mui/material";
 import { useState } from "react";
+import StyledImage from "../../components/StyledImage";
 import { ARROWDROPDOWN } from "../assets";
 
-const DropDownSimple = ({ handleChange, title, data }) => {
-    const [value, setValue] = useState(data[0])
+const DropDownSimple = ({ valued, title, data ,containerStyle,titleStyle,valueContainerStyle,valueStyle,dropStyle,dropDownStyle,dropDownTextStyle}) => {
+    const [value, setValue] = useState(valued??data[0])
     const [open, setOpen] = useState(false)
     const Divider = () => {
         return (
@@ -16,7 +17,7 @@ const DropDownSimple = ({ handleChange, title, data }) => {
                 <Typography onClick={() => {
                     setValue(item)
                     setOpen(false)
-                }} sx={{ paddingY: '4px', paddingLeft: '7px', fontSize: '10px', fontWeight: '500', color: 'black' }}>{item}</Typography>
+                }} sx={[{ paddingY: '4px', paddingLeft: '7px', fontSize: '10px', fontWeight: '500', color: 'black' },dropDownTextStyle]}>{item}</Typography>
             </>
         )
     }
@@ -28,15 +29,15 @@ const DropDownSimple = ({ handleChange, title, data }) => {
 
     }
     return (
-        <Box sx={{ width: '19%' }} >
-            <Typography sx={{ fontSize: '14px', fontWeight: '600', marginLeft: '7px', marginY: '.3vh' }}>{title}</Typography>
+        <Box sx={[{ width: '19%' },containerStyle]} >
+            <Typography sx={[{ fontSize: '14px', fontWeight: '600', marginLeft: '7px', marginY: '.3vh' },titleStyle]}>{title}</Typography>
             <Box onClick={() => {
                 setOpen(!open)
-            }} sx={{ width: '100%', height: '35px', justifyContent: "space-between", alignItems: 'center', display: 'flex', background: 'white', borderRadius: '3px', border: '2px solid #DEDEDE', marginX: '5px', paddingX: '7px' }}>
-                <Typography sx={{ fontSize: '11px', fontWeight: '500' }} >{value}</Typography>
-                <img src={ARROWDROPDOWN} style={{ width: '11px', height: '6px', transform: open ? 'rotate(0deg)' : 'rotate(180deg)' }} />
+            }} sx={[{ width: '100%', height: '35px', justifyContent: "space-between", alignItems: 'center', display: 'flex', background: 'white', borderRadius: '3px', border: '2px solid #DEDEDE', marginX: '5px', paddingX: '7px' },valueContainerStyle]}>
+                <Typography sx={[{ fontSize: '11px', fontWeight: '500' },valueStyle]} >{value}</Typography>
+                <StyledImage src={ARROWDROPDOWN} sx={[{ width: '11px', height: '6px', transform: open ? 'rotate(0deg)' : 'rotate(180deg)' },dropStyle]} />
             </Box>
-            {open && <Box sx={{ display: 'flex', flexDirection: 'column', background: 'white', width: '18.7%', alignSelf: 'center', marginX: '5px', borderRadius: '2px', marginTop: '2px', position: 'absolute', borderRadius: '3px', border: '2px solid #DEDEDE', zIndex: 9999 }} >
+            {open && <Box sx={[{ display: 'flex', flexDirection: 'column', background: 'white', width: '18.7%', alignSelf: 'center', marginX: '5px', borderRadius: '2px', marginTop: '2px', position: 'absolute', borderRadius: '3px', border: '2px solid #DEDEDE', zIndex: 9999 },dropDownStyle]} >
 
                 {data.map((i) => {
                     return (

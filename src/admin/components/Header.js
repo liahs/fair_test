@@ -1,5 +1,5 @@
 import { Typography, Box, useMediaQuery, useTheme, Menu, MenuItem, Drawer, AppBar, Toolbar } from "@mui/material";
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { ArrowDown, Draw, logo, Logout, Money, MoneyBag } from "../../assets";
 import SearchInput from "../../components/SearchInput";
@@ -9,9 +9,9 @@ import StyledImage from "../../components/StyledImage";
 const CustomHeader = ({ }) => {
     const theme = useTheme()
     const matchesMobile = useMediaQuery(theme.breakpoints.down("laptop"))
-    const [currentSelected,setCurrentSelected]=useState(0)
+    const [currentSelected, setCurrentSelected] = useState(0)
     const [mobileOpen, setMobileOpen] = useState(false);
-
+    const [anchor, setAnchor] = React.useState(null)
     useEffect(() => {
         if (!matchesMobile) {
             setMobileOpen(false)
@@ -34,7 +34,7 @@ const CustomHeader = ({ }) => {
                     backgroundImage: `${theme.palette.primary.headerGradient}`
                 })]}>
                     <Box sx={{ display: "flex", alignItems: "center", width: "100%", flex: 1, }}>
-                        <Box sx={{ display: "flex", alignItems: "center",marginRight:"12px" }}>
+                        <Box sx={{ display: "flex", alignItems: "center", marginRight: "12px" }}>
                             <StyledImage onClick={() => {
                                 if (matchesMobile) {
                                     setMobileOpen(!mobileOpen)
@@ -42,65 +42,101 @@ const CustomHeader = ({ }) => {
                             }} src={Draw} sx={{ height: { laptop: "24px", mobile: "20px" }, width: "auto" }} />
                             <StyledImage src={logo} sx={{ height: { laptop: "45px", mobile: "40px" }, width: "auto", marginLeft: { laptop: "20px", mobile: "10px" } }} />
                         </Box>
-                        <ButtonHead  onClick={()=>{
+                        <ButtonHead onClick={() => {
                             setCurrentSelected(0)
-                        }} title={"LIST OF CLIENTS"} boxStyle={{backgroundColor:currentSelected==0?"white":"transparent",py:"5px",borderRadius:"5px",marginLeft:"15px"}} titleStyle={{color:currentSelected==0?"green":"white"}} />
-                        <LiveMarket onClick={()=>{
+                        }} title={"LIST OF CLIENTS"} boxStyle={{ backgroundColor: currentSelected == 0 ? "white" : "transparent", py: "5px", borderRadius: "5px", marginLeft: "15px" }} titleStyle={{ color: currentSelected == 0 ? "green" : "white" }} />
+                        <LiveMarket onClick={() => {
                             setCurrentSelected(1)
-                        }} title={"LIVE MARKET"} boxStyle={{backgroundColor:currentSelected==1?"white":"transparent",py:"5px",borderRadius:"5px",marginLeft:"15px"}}  />
-                        <ButtonHead onClick={()=>{
+                        }} title={"LIVE MARKET"} boxStyle={{ backgroundColor: currentSelected == 1 ? "white" : "transparent", py: "5px", borderRadius: "5px", marginLeft: "15px" }} />
+                        <ButtonHead onClick={(e) => {
                             setCurrentSelected(2)
-                        }} title={"REPORTS"}boxStyle={{backgroundColor:currentSelected==2?"white":"transparent",py:"5px",borderRadius:"5px",marginLeft:"15px"}} titleStyle={{color:currentSelected==2?"green":"white"}} />
-                        <ButtonHead onClick={()=>{
+                            setAnchor(e.currentTarget)
+                        }} title={"REPORTS"} boxStyle={{ backgroundColor: currentSelected == 2 ? "white" : "transparent", py: "5px", borderRadius: "5px", marginLeft: "15px" }} titleStyle={{ color: currentSelected == 2 ? "green" : "white" }} />
+                        <ButtonHead onClick={() => {
                             setCurrentSelected(3)
-                        }} title={"MARKET ANALYSIS"} boxStyle={{backgroundColor:currentSelected==3?"white":"transparent",py:"5px",borderRadius:"5px",marginLeft:"15px"}} titleStyle={{color:currentSelected==3?"green":"white"}} />
+                        }} title={"MARKET ANALYSIS"} boxStyle={{ backgroundColor: currentSelected == 3 ? "white" : "transparent", py: "5px", borderRadius: "5px", marginLeft: "15px" }} titleStyle={{ color: currentSelected == 3 ? "green" : "white" }} />
 
                     </Box>
-                     <Box sx={{ display: "flex", justifyContent: "space-between", minWidth: matchesMobile ? "100%" : "0px", alignItems: "center", marginTop: matchesMobile ? "15px" : "0px" }}>
-                      <SearchInput placeholder={"Search Clients..."} inputContainerStyle={{height:"30px",minWidth:"4vw",width:"4vw"}} />
-                      <BoxProfile containerStyle={matchesMobile ? { width: "52%" } : {}} image={"https://picsum.photos/200/300"} value={"Admin"} />
+                    <Box sx={{ display: "flex", justifyContent: "space-between", minWidth: matchesMobile ? "100%" : "0px", alignItems: "center", marginTop: matchesMobile ? "15px" : "0px" }}>
+                        <SearchInput placeholder={"Search Clients..."} inputContainerStyle={{ height: "30px", minWidth: "4vw", width: "4vw" }} />
+                        <BoxProfile containerStyle={matchesMobile ? { width: "52%" } : {}} image={"https://picsum.photos/200/300"} value={"Admin"} />
                     </Box>
                 </Box>
                 {matchesMobile && <MobileSideBar mobileOpen={mobileOpen} setMobileOpen={setMobileOpen} />}
             </AppBar>
-            <Box sx={{ minHeight: { laptop: 90 , mobile: 60 + 32 + 42 } }} />
+            <DropdownMenu1 open={Boolean(anchor)} anchorEl={anchor} handleClose={() => setAnchor(null)} />
+            <Box sx={{ minHeight: { laptop: 90, mobile: 60 + 32 + 42 } }} />
         </>
     )
 }
 
 
 
-const ButtonHead=({title,boxStyle,titleStyle,onClick})=>{
-    return(
-        <Box onClick={()=>onClick()} sx={[{paddingX:"12.5px"},boxStyle]}>
-            <Typography sx={[{fontSize:"11px",fontWeight:"bold",fontFamily:"Montserrat"},titleStyle]}>{title}</Typography>
+const ButtonHead = ({ title, boxStyle, titleStyle, onClick }) => {
+    return (
+        <Box onClick={(e) => onClick(e)} sx={[{ paddingX: "12.5px" }, boxStyle]}>
+            <Typography sx={[{ fontSize: "11px", fontWeight: "bold", fontFamily: "Montserrat" }, titleStyle]}>{title}</Typography>
         </Box>
     )
 }
+const menutItems1 = [{ title: "Account Statement" }, { title: "Current Bet" }, { title: "General Report" }, { title: "Game Report" }, { title: "Profit/Loss" }]
+const DropdownMenu1 = ({ anchorEl, open, handleClose }) => {
+    const navigate = useNavigate()
+    return (
+        <Menu
+            id="basic-menu"
+            anchorEl={anchorEl}
+            open={open}
+            onClose={handleClose}
+            MenuListProps={{
+                'aria-labelledby': 'basic-button',
+            }}
+        >
+            {menutItems1.map(x => <MenuItem dense={true} sx={{
 
-const LiveMarket=({title,boxStyle,titleStyle,onClick})=>{
-    const [currentIndex,setCurrentIndex]=useState(0)
-    const colors=["#ff0000","#ffa500","#ffff00","orange","#0000ff","#4b0082","#ee82ee"]
-    useEffect(()=>{
-        let i=setInterval(()=>{
-            setCurrentIndex(state=>{
-                if(state<6){
-                    return state+1
-                }else{
+                fontSize: { laptop: "12px", mobile: "10px" },
+                fontWeight: "500",
+                marginX: "5px",
+                width: { laptop: "170px", mobile: "170px" },
+                borderBottomWidth: 1,
+                borderColor: "#EAEFEC",
+                paddingY: "2px",
+                borderStyle: "solid",
+                "&:hover": {
+                    backgroundColor: "primary.main",
+                    color: "white",
+                    borderColor: "white",
+                    borderRadius: "5px",
+                    transform: "scale(1.02)"
+                }
+            }} onClick={handleClose}>{x.title}</MenuItem>)}
+        </Menu>
+    )
+}
+
+const LiveMarket = ({ title, boxStyle, titleStyle, onClick }) => {
+    const [currentIndex, setCurrentIndex] = useState(0)
+    const colors = ["#ff0000", "#ffa500", "#ffff00", "orange", "#0000ff", "#4b0082", "#ee82ee"]
+    useEffect(() => {
+        let i = setInterval(() => {
+            setCurrentIndex(state => {
+                if (state < 6) {
+                    return state + 1
+                } else {
                     return 0
                 }
-                })
-         
-        },1000)
-        return ()=>{
+            })
+
+        }, 1000)
+        return () => {
             clearInterval(i)
         }
-    },[])
-    return(
-        <Box onClick={e=>{
+    }, [])
+    return (
+        <Box onClick={e => {
             onClick()
-        }} sx={[{paddingX:"12.5px"},boxStyle]}>
-            <Typography sx={[{fontSize:"11px",fontWeight:"bold",color:colors[currentIndex],fontFamily:"Montserrat"},titleStyle]}>{title}</Typography>
+        }} sx={[{ paddingX: "12.5px" }, boxStyle]}>
+            <Typography sx={[{ fontSize: "11px", fontWeight: "bold", color: colors[currentIndex], fontFamily: "Montserrat" }, titleStyle]}>{title}</Typography>
         </Box>
     )
 }

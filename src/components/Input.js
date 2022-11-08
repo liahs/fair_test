@@ -2,7 +2,7 @@ import { TextField, Typography, useTheme, useMediaQuery } from "@mui/material"
 import { Box } from "@mui/system"
 import { useState } from "react";
 
-const Input = ({ title, containerStyle, placeholder, titleStyle, inputContainerStyle, img, inputProps }) => {
+const Input = ({ title, containerStyle, placeholder, titleStyle, inputStyle, inputContainerStyle, img, inputProps }) => {
     const theme = useTheme();
     const matches = useMediaQuery(theme.breakpoints.down('tablet'));
     const [showPass, setShowPass] = useState(true)
@@ -15,14 +15,16 @@ const Input = ({ title, containerStyle, placeholder, titleStyle, inputContainerS
                     placeholder={placeholder}
                     InputProps={{
                         disableUnderline: true,
-                        ...inputProps,
                         justifyContent: 'center',
-                        type: showPass && title == "Password" ? "password" : "text",
-                        sx: { fontSize: { laptop: '12px', mobile: '14px' } }
+                        ...inputProps,
+                        type: showPass && String(title).toLowerCase().includes("password") ? "password" : "text",
+
+                        sx: [{ fontSize: { laptop: '12px', mobile: '14px' } }, inputStyle],
+
                     }} sx={{ borderColor: "white", display: "flex", flex: 1, fontSize: { laptop: "1px", mobile: "5px" } }} />
-                <img src={img} onClick={() => {
+                {img && <img src={img} onClick={() => {
                     setShowPass(!showPass)
-                }} alt="side input" style={{ height: matches ? "0.5em" : "0.6rem", width: "auto", marginRight: ".5em" }} />
+                }} alt="side input" style={{ height: matches ? "0.5em" : "0.6rem", width: "auto", marginRight: ".5em" }} />}
             </Box>
         </Box>
     )
