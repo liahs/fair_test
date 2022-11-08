@@ -144,7 +144,9 @@ const BoxProfile = ({ image, value, containerStyle }) => {
 
 const menutItems = [{ title: "Account Statement" }, { title: "Profile Loss Report" }, { title: "Bet History" }, { title: "Unsetteled Bet" }, { title: "Casino Report History" }, { title: "Set Button Values" }, { title: "Security Auth Verfication" }, { title: "Change Password" }]
 const DropdownMenu = ({ anchorEl, open, handleClose }) => {
+    const theme =useTheme()
     const navigate = useNavigate()
+    const matchesMobile =useMediaQuery(theme.breakpoints.down("laptop"))
     return (
         <Menu
             id="basic-menu"
@@ -154,6 +156,15 @@ const DropdownMenu = ({ anchorEl, open, handleClose }) => {
             MenuListProps={{
                 'aria-labelledby': 'basic-button',
             }}
+            PaperProps={{
+                sx:{
+                    marginLeft:matchesMobile?"7px":"-30px"
+                }
+            }}
+            anchorOrigin={{
+                vertical: 'bottom',
+                horizontal: 'left',
+              }}
         >
             {menutItems.map(x => <MenuItem dense={true} sx={{
 
