@@ -12,7 +12,7 @@ import BetPlaced from "./BetPlaced"
 import { setAnchor } from "../store/betplace"
 import { Popover } from 'react-tiny-popover'
 
-const SeperateBox = ({ color, empty, value, value2, lock, session, back, time }) => {
+const SeperateBox = ({ color, po, empty, value, value2, lock, session, back, time }) => {
     const theme = useTheme()
     const matchesMobile = useMediaQuery(theme.breakpoints.down("laptop"))
     const dispatch = useDispatch()
@@ -30,6 +30,40 @@ const SeperateBox = ({ color, empty, value, value2, lock, session, back, time })
         }
 
     });
+    const getMargin = () => {
+        if (po == 1 && session) {
+            return { right: { mobile: 0, laptop: 250 }, left: { mobile: 0, laptop: -175 } }
+
+        }
+        if (po == 2 && session) {
+            return { right: { mobile: 0, laptop: 250 }, left: { mobile: 0, laptop: -200 } }
+
+        }
+        if (po == 1) {
+            return { right: { mobile: 0, laptop: 130 }, left: { mobile: 0, laptop: 20 } }
+        }
+        if (po == 2) {
+            return { right: { mobile: 0, laptop: 200 }, left: { mobile: 0, laptop: -50 } }
+
+        }
+        if (po == 3) {
+            return { right: { mobile: 0, laptop: 200 }, left: { mobile: 0, laptop: -120 } }
+
+        }
+        if (po == 4) {
+            return { right: { mobile: 0, laptop: 250 }, left: { mobile: 0, laptop: -185 } }
+
+        }
+        if (po == 5) {
+            return { right: { laptop: 250, mobile: 0 }, left: { laptop: -205, mobile: 0 } }
+
+        }
+        if (po == 6) {
+            return { right: { laptop: 250, mobile: 0 }, left: { laptop: -227, mobile: 0 } }
+
+        }
+        return { right: 0 }
+    }
     return (
         < Box ref={innerRef} sx={{ width: { mobile: '30%', laptop: '20%' }, height: '94%', position: 'relative' }}>
             {/* <Popover
@@ -76,7 +110,7 @@ const SeperateBox = ({ color, empty, value, value2, lock, session, back, time })
                 }
 
             </Box>
-            {isPopoverOpen && <Box sx={{ zIndex: 110, position: { mobile: 'absolute' }, right: 0, left: { laptop: 0 }, transform: { laptop: 'translate( -230%)' }, top: '40px' }}>
+            {isPopoverOpen && <Box sx={{ zIndex: 110, position: 'absolute', ...getMargin(), transform: { laptop: 'translate( -230%)' }, top: '40px' }}>
                 <PlaceBet
                     // refs={innerRef}
                     onSubmit={() => {
@@ -101,10 +135,12 @@ const SeperateBox = ({ color, empty, value, value2, lock, session, back, time })
                     season={session}
                     back={back}
                 /></Box>}
-            {<BetPlaced time={time} not={canceled} visible={visible} setVisible={(i) => {
-                setIsPopoverOpen(false)
-                setVisible(i)
-            }} />}
+            {
+                <BetPlaced time={time} not={canceled} visible={visible} setVisible={(i) => {
+                    setIsPopoverOpen(false)
+                    setVisible(i)
+                }} />
+            }
 
             {/* {isPopoverOpen && <Box sx={{ zIndex: 999, position: 'absolute' }}>
                 <PlaceBet onSubmit={() => {
@@ -123,7 +159,7 @@ const SeperateBox = ({ color, empty, value, value2, lock, session, back, time })
                     back={back}
                 /></Box>} */}
             {/* </Popover> */}
-        </Box>
+        </Box >
     )
 }
 
@@ -150,17 +186,17 @@ const BoxComponent = ({ name, color, align, time }) => {
                 <MoneyBox color={color} />
             </Box>
             <Box sx={{ display: 'flex', background: 'white', height: '40px', width: { laptop: '60%', mobile: '80%' }, justifyContent: { mobile: 'flex-end', laptop: 'center' }, alignItems: 'center' }} >
-                {!matchesMobile && <SeperateBox time={time} align={align} value={"1.71"} value2={" 1cr+"} color={matchesMobile ? "white" : "#B3E0FF"} />}
+                {!matchesMobile && <SeperateBox po={1} time={time} align={align} value={"1.71"} value2={" 1cr+"} color={matchesMobile ? "white" : "#B3E0FF"} />}
                 <Box sx={{ width: '.45%', display: 'flex', background: 'pink' }} ></Box>
-                {!matchesMobile && <SeperateBox time={time} align={align} value={"1.71"} value2={" 1cr+"} color={matchesMobile ? "white" : "#FFB5B5"} />}
+                {!matchesMobile && <SeperateBox po={2} time={time} align={align} value={"1.71"} value2={" 1cr+"} color={matchesMobile ? "white" : "#FFB5B5"} />}
                 <Box sx={{ width: '.45%', display: 'flex', background: 'pink' }} ></Box>
-                <SeperateBox time={time} align={align} value={"1.71"} value2={" 1cr+"} color={matchesMobile ? "white" : "#B3E0FF"} />
+                <SeperateBox po={3} time={time} align={align} value={"1.71"} value2={" 1cr+"} color={matchesMobile ? "white" : "#B3E0FF"} />
                 <Box sx={{ width: '.45%', display: 'flex', background: 'pink' }} ></Box>
-                <SeperateBox time={time} align={align} value={"1.72"} value2={" 1cr+"} color={matchesMobile ? "white" : "#FFB5B5"} />
+                <SeperateBox po={4} time={time} align={align} value={"1.72"} value2={" 1cr+"} color={matchesMobile ? "white" : "#FFB5B5"} />
                 <Box sx={{ width: '.45%', display: 'flex', background: 'pink' }} ></Box>
-                <SeperateBox time={time} back={true} align={align} value={"1.72"} value2={" 1cr+"} color={"#B3E0FF"} />
+                <SeperateBox po={5} time={time} back={true} align={align} value={"1.72"} value2={" 1cr+"} color={"#B3E0FF"} />
                 <Box sx={{ width: '.45%', display: 'flex', background: 'pink' }} ></Box>
-                <SeperateBox time={time} align={align} value={"1.72"} value2={" 1cr+"} color={"#FFB5B5"} />
+                <SeperateBox po={6} time={time} align={align} value={"1.72"} value2={" 1cr+"} color={"#FFB5B5"} />
                 <Box sx={{ width: '.45%', display: 'flex', background: 'pink' }} ></Box>
             </Box>
         </Box>
@@ -275,20 +311,20 @@ const SeasonMarketBox = ({ index }) => {
                 <Typography sx={{ color: 'black', fontSize: { laptop: '11px', tablet: '10px', mobile: "8px" }, marginLeft: '7px', fontWeight: '600' }} >6 Over runs INDIA W (INDIA vs PAKISTAN) Adv 0</Typography>
             </Box>
             <Box sx={{ display: 'flex', position: 'relative', background: 'white', height: '38px', width: { laptop: '60%', mobile: '80%' }, justifyContent: 'center', alignItems: 'center' }} >
-                <SeperateBox color={"white"} />
+                <SeperateBox po={1} color={"white"} />
                 {matchesMobile && <PlaceBetComponent />}
                 {false && <>
                     <Box sx={{ width: '.45%', display: 'flex', background: 'pink' }} ></Box>
-                    <SeperateBox color={"white"} />
+                    <SeperateBox po={2} color={"white"} />
                     <Box sx={{ width: '.45%', display: 'flex', background: 'pink' }} ></Box>
                     <Box sx={{ width: '.45%', display: 'flex', background: 'pink' }} ></Box>
-                    <SeperateBox color={"white"} /></>}
+                    <SeperateBox po={3} color={"white"} /></>}
                 <Box sx={{ width: '.45%', display: 'flex', background: 'pink' }} ></Box>
-                <SeperateBox color={"white"} />
-                <SeperateBox session={true} back={true} value={"37"} value2={"100"} lock={index == 2} color={"#F6D0CB"} />
+                <SeperateBox po={6} color={"white"} />
+                <SeperateBox po={1} session={true} back={true} value={"37"} value2={"100"} lock={index == 2} color={"#F6D0CB"} />
 
                 <Box sx={{ width: '.45%', display: 'flex', background: 'pink' }} ></Box>
-                <SeperateBox session={true} value={"39"} value2={"100"} lock={index == 2} color={"#B3E0FF"} />
+                <SeperateBox po={2} session={true} value={"39"} value2={"100"} lock={index == 2} color={"#B3E0FF"} />
 
                 <Box sx={{ width: '.45%', display: 'flex', background: 'pink' }} ></Box>
                 {!matchesMobile && <>
