@@ -47,7 +47,7 @@ const SeperateBox = ({ color, po, empty, value, value2, lock, session, back, tim
 
         }
         if (po == 3) {
-            return { right: { mobile: 0, laptop: 0 }, left: { mobile: 0, laptop: '15.838%' } }
+            return { right: { mobile: 0, laptop: 0 }, left: { mobile: 0, laptop: '15.8395%' } }
 
         }
         if (po == 4) {
