@@ -186,17 +186,17 @@ const BoxComponent = ({ name, color, align, time }) => {
                 <MoneyBox color={color} />
             </Box>
             <Box sx={{ display: 'flex', background: 'white', height: '40px', width: { laptop: '60%', mobile: '80%' }, justifyContent: { mobile: 'flex-end', laptop: 'center' }, alignItems: 'center' }} >
-                {!matchesMobile && <SeperateBox po={1} time={time} align={align} value={"1.71"} value2={" 1cr+"} color={matchesMobile ? "white" : "#B3E0FF"} />}
+                {!matchesMobile && <SeperateBox po={1} time={time} align={align} value={"1.71"} value2={" 1cr+"} color={matchesMobile ? "white" : "#CEEBFF"} />}
                 <Box sx={{ width: '.45%', display: 'flex', background: 'pink' }} ></Box>
-                {!matchesMobile && <SeperateBox po={2} time={time} align={align} value={"1.71"} value2={" 1cr+"} color={matchesMobile ? "white" : "#B3E0FF"} />}
+                {!matchesMobile && <SeperateBox po={2} time={time} align={align} value={"1.71"} value2={" 1cr+"} color={matchesMobile ? "white" : "#C2E6FF"} />}
                 <Box sx={{ width: '.45%', display: 'flex', background: 'pink' }} ></Box>
-                <SeperateBox po={3} time={time} align={align} value={"1.71"} value2={" 1cr+"} color={matchesMobile ? "white" : "#B3E0FF"} />
+                <SeperateBox po={3} time={time} align={align} value={"1.71"} value2={" 1cr+"} color={matchesMobile ? "white" : "#A7DCFF"} />
                 <Box sx={{ width: '.45%', display: 'flex', background: 'pink' }} ></Box>
                 <SeperateBox po={4} time={time} align={align} value={"1.72"} value2={" 1cr+"} color={matchesMobile ? "white" : "#FFB5B5"} />
                 <Box sx={{ width: '.45%', display: 'flex', background: 'pink' }} ></Box>
-                <SeperateBox po={5} time={time} back={true} align={align} value={"1.72"} value2={" 1cr+"} color={"#FFB5B5"} />
+                <SeperateBox po={5} time={time} back={true} align={align} value={"1.72"} value2={" 1cr+"} color={"#F2CBCB"} />
                 <Box sx={{ width: '.45%', display: 'flex', background: 'pink' }} ></Box>
-                <SeperateBox po={6} time={time} align={align} value={"1.72"} value2={" 1cr+"} color={"#FFB5B5"} />
+                <SeperateBox po={6} time={time} align={align} value={"1.72"} value2={" 1cr+"} color={"#ECD6D6"} />
                 <Box sx={{ width: '.45%', display: 'flex', background: 'pink' }} ></Box>
             </Box>
         </Box>

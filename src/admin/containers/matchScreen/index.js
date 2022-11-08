@@ -95,17 +95,17 @@ const MatchScreen = ({ }) => {
                     <MoneyBox color={color} />
                 </Box>
                 <Box sx={{ display: 'flex', background: 'white', height: '40px', width: { laptop: '60%', mobile: '80%' }, justifyContent: { mobile: 'flex-end', laptop: 'center' }, alignItems: 'center' }} >
-                    {!matchesMobile && <SeperateBox align={align} value={"1.71"} value2={" $23000"} color={matchesMobile ? "white" : "#B3E0FF"} />}
+                    {!matchesMobile && <SeperateBox align={align} value={"1.71"} value2={" $23000"} color={matchesMobile ? "white" : "#CEEBFF"} />}
                     <Box sx={{ width: '.45%', display: 'flex', background: 'pink' }} ></Box>
-                    {!matchesMobile && <SeperateBox align={align} value={"1.71"} value2={" $23000"} color={matchesMobile ? "white" : "#B3E0FF"} />}
+                    {!matchesMobile && <SeperateBox align={align} value={"1.71"} value2={" $23000"} color={matchesMobile ? "white" : "#C2E6FF"} />}
                     <Box sx={{ width: '.45%', display: 'flex', background: 'pink' }} ></Box>
-                    <SeperateBox align={align} value={"1.71"} value2={" $23000"} color={matchesMobile ? "white" : "#B3E0FF"} />
+                    <SeperateBox align={align} value={"1.71"} value2={" $23000"} color={matchesMobile ? "white" : "#A7DCFF"} />
                     <Box sx={{ width: '.45%', display: 'flex', background: 'pink' }} ></Box>
                     <SeperateBox align={align} value={"1.72"} value2={" $23000"} color={matchesMobile ? "white" : "#FFB5B5"} />
                     <Box sx={{ width: '.45%', display: 'flex', background: 'pink' }} ></Box>
-                    <SeperateBox back={true} align={align} value={"1.72"} value2={" $23000"} color={"#FFB5B5"} />
+                    <SeperateBox back={true} align={align} value={"1.72"} value2={" $23000"} color={"#F2CBCB"} />
                     <Box sx={{ width: '.45%', display: 'flex', background: 'pink' }} ></Box>
-                    <SeperateBox align={align} value={"1.72"} value2={" $23000"} color={"#FFB5B5"} />
+                    <SeperateBox align={align} value={"1.72"} value2={" $23000"} color={"#ECD6D6"} />
                     <Box sx={{ width: '.45%', display: 'flex', background: 'pink' }} ></Box>
                 </Box>
             </Box>

@@ -112,19 +112,19 @@ const Odds = ({ upcoming, onClick, top, blur }) => {
                         <Typography sx={{ color: 'black', fontSize: { laptop: '11px', tablet: '10px', mobile: "10px" }, marginLeft: '7px', fontWeight: '600' }} >Team A</Typography>
                     </Box>
                     <Box sx={{ display: 'flex', background: 'white', height: '40px', width: { laptop: '60%', mobile: '80%' }, justifyContent: { mobile: 'flex-end', laptop: 'center' }, alignItems: 'center' }} >
-                        {!matchesMobile && <SeperateBox value={"1.71"} value2={" 1cr+"} color={matchesMobile ? "white" : "#B3E0FF"} />
+                        {!matchesMobile && <SeperateBox value={"1.71"} value2={" 1cr+"} color={matchesMobile ? "white" : "#CEEBFF"} />
                         }
                         <Box sx={{ width: '.25%', display: 'flex', background: 'pink' }} ></Box>
-                        {!matchesMobile && <SeperateBox value={"1.71"} value2={" 1cr+"} color={matchesMobile ? "white" : "#B3E0FF"} />}
+                        {!matchesMobile && <SeperateBox value={"1.71"} value2={" 1cr+"} color={matchesMobile ? "white" : "#C2E6FF"} />}
                         <Box sx={{ width: '.25%', display: 'flex', background: 'pink' }} ></Box>
 
-                        <SeperateBox value={"1.71"} value2={" 1cr+"} color={matchesMobile ? "white" : "#B3E0FF"} />
+                        <SeperateBox value={"1.71"} value2={" 1cr+"} color={matchesMobile ? "white" : "#A7DCFF"} />
                         <Box sx={{ width: '.25%', display: 'flex', background: 'pink' }} ></Box>
                         <SeperateBox value={"1.72"} value2={" 1cr+"} color={matchesMobile ? "white" : "#FFB5B5"} />
                         <Box sx={{ width: '.25%', display: 'flex', background: 'pink' }} ></Box>
-                        <SeperateBox value={"1.72"} value2={" 1cr+"} color={"#FFB5B5"} />
+                        <SeperateBox value={"1.72"} value2={" 1cr+"} color={"#F2CBCB"} />
                         <Box sx={{ width: '.25%', display: 'flex', background: 'pink' }} ></Box>
-                        <SeperateBox value={"1.72"} value2={" 1cr+"} color={"#FFB5B5"} />
+                        <SeperateBox value={"1.72"} value2={" 1cr+"} color={"#ECD6D6"} />
                         <Box sx={{ width: '.25%', display: 'flex', background: 'pink' }} ></Box>
 
                     </Box>
@@ -136,19 +136,19 @@ const Odds = ({ upcoming, onClick, top, blur }) => {
                         <Typography sx={{ color: 'black', fontSize: { laptop: '12px', mobile: "11px" }, marginLeft: '7px', fontWeight: '600' }} >Team B</Typography>
                     </Box>
                     <Box sx={{ display: 'flex', background: 'white', height: '40px', width: { laptop: '60%', mobile: '80%' }, justifyContent: 'center', alignItems: 'center' }} >
-                        {!matchesMobile && <SeperateBox value={"1.71"} value2={" 1cr+"} color={matchesMobile ? "white" : "#B3E0FF"} />}
+                        {!matchesMobile && <SeperateBox value={"1.71"} value2={" 1cr+"} color={matchesMobile ? "white" : "#CEEBFF"} />}
 
                         <Box sx={{ width: '.25%', display: 'flex', background: 'pink' }} ></Box>
-                        {!matchesMobile && <SeperateBox value={"1.71"} value2={" 1cr+"} color={matchesMobile ? "white" : "#B3E0FF"} />}
+                        {!matchesMobile && <SeperateBox value={"1.71"} value2={" 1cr+"} color={matchesMobile ? "white" : "#C2E6FF"} />}
                         <Box sx={{ width: '.25%', display: 'flex', background: 'pink' }} ></Box>
 
-                        <SeperateBox value={"1.71"} value2={" 1cr+"} color={matchesMobile ? "white" : "#B3E0FF"} />
+                        <SeperateBox value={"1.71"} value2={" 1cr+"} color={matchesMobile ? "white" : "#A7DCFF"} />
                         <Box sx={{ width: '.25%', display: 'flex', background: 'pink' }} ></Box>
                         <SeperateBox value={"1.72"} value2={" 1cr+"} color={matchesMobile ? "white" : "#FFB5B5"} />
                         <Box sx={{ width: '.25%', display: 'flex', background: 'pink' }} ></Box>
-                        <SeperateBox value={"1.72"} value2={" 1cr+"} color={"#FFB5B5"} />
+                        <SeperateBox value={"1.72"} value2={" 1cr+"} color={"#F2CBCB"} />
                         <Box sx={{ width: '.25%', display: 'flex', background: 'pink' }} ></Box>
-                        <SeperateBox value={"1.72"} value2={" 1cr+"} color={"#FFB5B5"} />
+                        <SeperateBox value={"1.72"} value2={" 1cr+"} color={"#ECD6D6"} />
                         <Box sx={{ width: '.25%', display: 'flex', background: 'pink' }} ></Box>
 
                     </Box>
