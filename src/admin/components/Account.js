@@ -1,4 +1,6 @@
+import { isWidthUp } from "@material-ui/core"
 import { Box,Typography } from "@mui/material"
+import { defineLocale } from "moment/moment"
 
 const Account=()=>{
     return(
@@ -12,3 +14,4 @@ const Account=()=>{
 }
 
 export default Account
+
