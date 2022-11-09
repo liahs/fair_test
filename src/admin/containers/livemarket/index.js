@@ -1,9 +1,11 @@
 import { Background, Header } from "../../components";
 
-export default function MarketAnaylsisContainer() {
+function LiveMarketContainer() {
     return (
         <Background>
             <Header />
         </Background>
     )
 }
+
+export default LiveMarketContainer
