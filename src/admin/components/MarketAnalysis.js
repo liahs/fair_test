@@ -36,7 +36,7 @@ const LiveMarketComponent = ({ team, team_2 }) => {
         </Box >
     )
 }
-const LiveMarket = () => {
+const MarketAnalysis = () => {
     return (
         <Box sx={{ display: 'flex',width: '100vw', flexDirection: 'column'}} >
             <Typography sx={{ fontSize: '20px', color: 'white', marginLeft: '10px', fontWeight: '600', marginY: '10px' }} >MARKET ANALYSIS</Typography>
@@ -48,4 +48,4 @@ const LiveMarket = () => {
         </Box>
     )
 }
-export default LiveMarket;
+export default MarketAnalysis;
