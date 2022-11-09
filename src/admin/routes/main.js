@@ -7,7 +7,7 @@ import MarketAnaylsisContainer from "../containers/marketAnalysis"
 import MatchScreen from "../containers/matchScreen"
 import ProfitLoss from "../containers/profitLoss/index.js"
 import CurrentBets from "../containers/currentBets/index.js"
-// import LiveMarket from "../containers/liveMarket"
+import LiveMarket from "../containers/marketlive"
 import Reports from "../containers/reports/index.js"
 
 const AdminRoutes = () => {
@@ -15,7 +15,7 @@ const AdminRoutes = () => {
         <Routes>
             <Route path="/list_of_clients" element={<Home />} />
             <Route exact path="/market_analysis" element={<MarketAnaylsisContainer />} />
-            {/* <Route exact path="/live_market" element={<LiveMarket />} /> */}
+            <Route exact path="/live_market" element={<LiveMarket />} />
             <Route exact path="/match" element={<MatchScreen />} />
             <Route exact path="/account_statement" element={<AccountStatement />} />
             <Route exact path="/general_report" element={<GeneralReport />} />
