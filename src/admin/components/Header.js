@@ -1,6 +1,6 @@
 import { Typography, Box, useMediaQuery, useTheme, Menu, MenuItem, Drawer, AppBar, Toolbar } from "@mui/material";
 import React, { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { ArrowDown, Draw, logo, Logout, Money, MoneyBag, } from "../../assets";
 import SearchInput from "../../components/SearchInput";
 import SideBar from "../../components/SideBar";
@@ -15,6 +15,18 @@ const CustomHeader = ({ }) => {
     const [currentSelected, setCurrentSelected] = useState(0)
     const [mobileOpen, setMobileOpen] = useState(false);
     const [anchor, setAnchor] = React.useState(null)
+    const location = useLocation();
+    React.useEffect(() => {
+        if (location.pathname.includes("market_analysis")) {
+            setCurrentSelected(3)
+        } else if (location.pathname.includes("list_of_clients")) {
+            setCurrentSelected(0)
+        } else if (location.pathname.includes("live_market")) {
+            setCurrentSelected(1)
+        } else if (location.pathname.includes("reports") || location.pathname.includes("account_statement") || location.pathname.includes("current_bet") || location.pathname.includes("general_report") || location.pathname.includes("game_report") || location.pathname.includes("profit_loss")) {
+            setCurrentSelected(2)
+        }
+    }, [location])
     useEffect(() => {
         if (!matchesMobile) {
             setMobileOpen(false)
@@ -38,25 +50,27 @@ const CustomHeader = ({ }) => {
                     <Box sx={{ display: "flex", alignItems: "center", width: "100%", flex: 1, }}>
                         <Box sx={{ display: "flex", alignItems: "center", marginRight: "12px" }}>
                             <StyledImage onClick={() => {
-
                                 setMobileOpen(!mobileOpen)
-
                             }} src={Draw} sx={{ height: { laptop: "24px", mobile: "20px" }, width: "auto" }} />
                             <StyledImage src={logo} sx={{ height: { laptop: "45px", mobile: "40px" }, width: "auto", marginLeft: { laptop: "20px", mobile: "10px" } }} />
                         </Box>
                         <ButtonHead onClick={() => {
                             setCurrentSelected(0)
+                            navigate('/admin/list_of_clients')
                         }} title={"LIST OF CLIENTS"} boxStyle={{ backgroundColor: currentSelected == 0 ? "white" : "transparent", py: "5px", borderRadius: "5px", marginLeft: "15px" }} titleStyle={{ color: currentSelected == 0 ? "green" : "white" }} />
                         <LiveMarket onClick={() => {
                             setCurrentSelected(1)
+                            navigate('/admin/live_market')
                         }} title={"LIVE MARKET"} boxStyle={{ backgroundColor: currentSelected == 1 ? "white" : "transparent", py: "5px", borderRadius: "5px", marginLeft: "15px" }} />
                         <ButtonHead selected={currentSelected == 2} report={true} onClick={(e) => {
+                            // setCurrentSelected(2)
                             setCurrentSelected(2)
+                            // navigate('/admin/reports')
                             setAnchor(e.currentTarget)
                         }} title={"REPORTS"} boxStyle={{ backgroundColor: currentSelected == 2 ? "white" : "transparent", py: "5px", borderRadius: "5px", marginLeft: "15px" }} titleStyle={{ color: currentSelected == 2 ? "green" : "white" }} />
                         <ButtonHead onClick={() => {
                             setCurrentSelected(3)
-                            // navigate('live')
+                            navigate('/admin/market_analysis')
                         }} title={"MARKET ANALYSIS"} boxStyle={{ backgroundColor: currentSelected == 3 ? "white" : "transparent", py: "5px", borderRadius: "5px", marginLeft: "15px" }} titleStyle={{ color: currentSelected == 3 ? "green" : "white" }} />
 
                     </Box>
@@ -83,7 +97,7 @@ const ButtonHead = ({ title, boxStyle, titleStyle, onClick, report, selected }) 
         </Box>
     )
 }
-const menutItems1 = [{ title: "Account Statement" }, { title: "Current Bet" }, { title: "General Report" }, { title: "Game Report" }, { title: "Profit/Loss" }]
+const menutItems1 = [{ title: "Account Statement", link: "/admin/account_statement" }, { title: "Current Bet", link: "/admin/current_bet" }, { title: "General Report", link: "/admin/general_report" }, { title: "Game Report", link: "/admin/game_report" }, { title: "Profit/Loss", link: "/admin/profit_loss" }]
 const DropdownMenu1 = ({ anchorEl, open, handleClose }) => {
     const navigate = useNavigate()
     return (
@@ -98,7 +112,6 @@ const DropdownMenu1 = ({ anchorEl, open, handleClose }) => {
             }}
         >
             {menutItems1.map(x => <MenuItem dense={true} sx={{
-
                 fontSize: { laptop: "12px", mobile: "10px" },
                 fontWeight: "500",
                 marginX: "0px",
@@ -114,7 +127,10 @@ const DropdownMenu1 = ({ anchorEl, open, handleClose }) => {
                     borderRadius: "5px",
                     transform: "scale(1.02)"
                 }
-            }} onClick={handleClose}>{x.title}</MenuItem>)}
+            }} onClick={() => {
+                navigate(x.link)
+                handleClose()
+            }}>{x.title}</MenuItem>)}
         </Menu>
     )
 }
@@ -161,7 +177,7 @@ const BoxProfile = ({ image, value, containerStyle }) => {
     };
     return (
         <Box sx={{ display: 'flex', justifyContent: 'space-between', minWidth: { laptop: "120px", } }}>
-            <Box onClick={(event) => handleClick(event)} sx={[{ backgroundColor: "primary.main", minWidth: { laptop: "120px", mobile: "90px" }, marginLeft: "1vw", display: "flex", alignItems: "center", boxShadow: "0px 3px 10px #B7B7B726", justifyContent: "space-between", height: { laptop: "40px", mobile: "35px" }, overflow: "hidden", paddingX: "2px", borderRadius: "35px" }, containerStyle]}>
+            <Box onClick={(event) => {}} sx={[{ backgroundColor: "primary.main", minWidth: { laptop: "120px", mobile: "90px" }, marginLeft: "1vw", display: "flex", alignItems: "center", boxShadow: "0px 3px 10px #B7B7B726", justifyContent: "space-between", height: { laptop: "40px", mobile: "35px" }, overflow: "hidden", paddingX: "2px", borderRadius: "35px" }, containerStyle]}>
                 <StyledImage src={image} sx={{ height: { laptop: "33px", mobile: '27px' }, width: { laptop: "33px", mobile: '27px' }, borderRadius: "150px" }} />
                 <Box style={{}}>
                     <Typography sx={{ fontSize: { laptop: '11px', mobile: "8px" }, color: "text.white", fontWeight: "600" }}>{value}</Typography>
@@ -185,6 +201,7 @@ const DropdownMenu = ({ anchorEl, open, handleClose }) => {
             MenuListProps={{
                 'aria-labelledby': 'basic-button',
             }}
+            PaperProps={{ marginRight: "-15px" }}
         >
             {menutItems.map(x => <MenuItem dense={true} sx={{
 

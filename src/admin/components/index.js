@@ -1,5 +1,5 @@
 export { default as Header } from './Header'
-export { default as LiveMarket } from './LiveMarket.js'
+export { default as MarketAnalysis } from './MarketAnalysis.js'
 export { default as Background } from './Background'
 export { default as HomeSlide } from "./HomeSlide"
 

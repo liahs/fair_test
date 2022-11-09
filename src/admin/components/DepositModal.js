@@ -5,6 +5,8 @@ import StyledImage from "../../components/StyledImage";
 import { CancelDark } from "../../assets";
 import { DeleteIcon, EyeIcon, EyeSlash, LockIcon, UnLockIcon } from "../assets";
 import { useState } from "react";
+import { setModalOpen } from "../store/userdetail";
+import { setDailogData } from "../store/dailogModal";
 const style = {
     position: 'absolute',
     top: '50%',
@@ -51,7 +53,12 @@ export default function DepositModal({ }) {
                     <Box sx={{ display: "flex", alignItems: "center", marginTop: "15px" }}>
                         <Typography sx={{ flex: 1, fontWeight: "600" }}>Profit/Loss</Typography>
                         <LabelAndValue valueStyle={{ color: "white" }} containerStyle={{ flex: 1, background: "#E32A2A" }} value={"-4,02,350,000"} />
-                        <LabelAndValue valueStyle={{ color: "white" }} containerStyle={{ flex: 1, marginLeft: "10px", background: "#004A25" }} value={"1,00,000,000,0"} />
+                        <LabelAndValue onClick={()=>{
+                             dispatch(setDepoModalOpen(false))
+                             setTimeout(() => {
+                                 dispatch(setDailogData({isModalOpen:true,showRight:false,bodyText:"Add Deposit Amount To Continue"}))
+                             }, 500)
+                        }} valueStyle={{ color: "white" }} containerStyle={{ flex: 1, marginLeft: "10px", background: "#004A25" }} value={"1,00,000,000,0"} />
                     </Box>
                     <Box sx={{ display: "flex", alignItems: "center", marginTop: "15px" }}>
                         <Typography sx={{ flex: 1, fontWeight: "600" }}>Amount</Typography>
@@ -101,7 +108,12 @@ export default function DepositModal({ }) {
                         </Box>
                     </Box>
                     <Box sx={{ display: "flex", justifyContent: "center", alignItems: "center", marginY: "30px" }}>
-                        <BoxButton title={"Submit"} />
+                        <BoxButton onClick={(e)=>{
+                              dispatch(setDepoModalOpen(false))
+                              setTimeout(() => {
+                                  dispatch(setDailogData({isModalOpen:true,showRight:true,bodyText:"Deposited Successfully"}))
+                              }, 500)
+                        }} title={"Submit"} />
                     </Box>
                 </Box>
             </Box>
@@ -109,9 +121,9 @@ export default function DepositModal({ }) {
     )
 }
 
-const LabelAndValue = ({ label, value, containerStyle, icon, ticon, labelStyle, valueStyle }) => {
+const LabelAndValue = ({ label, value, containerStyle, icon, ticon, labelStyle, valueStyle,onClick }) => {
     return (
-        <Box display={"flex"} sx={[{ background: "#F8C851", height: "45px", border: "2px solid #0B4F2626", px: "10px", borderRadius: "5px", alignItems: "center", justifyContent: "space-between" }, containerStyle]}>
+        <Box onClick={onClick} display={"flex"} sx={[{ background: "#F8C851", height: "45px", border: "2px solid #0B4F2626", px: "10px", borderRadius: "5px", alignItems: "center", justifyContent: "space-between" }, containerStyle]}>
             <Box sx={{ flexDirection: "column" }}>
                 {Boolean(label) && <Typography sx={[{ fontSize: "10px", color: "#303030" }, labelStyle]}>{label}</Typography>}
                 <Typography sx={[{ fontWeight: "600", fontSize: "15px" }, valueStyle]}>{value}{ticon}</Typography>

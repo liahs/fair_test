@@ -120,11 +120,11 @@ const Row = ({ containerStyle, fContainerStyle, fTextStyle, profit }) => {
     const dispatch = useDispatch()
     return (
         <Box sx={[{ display: "flex", height: "45px", background: "#0B4F26", alignItems: "center", overflow: "hidden", borderBottom: "2px solid white" }, containerStyle]}>
-            <Box sx={[{ width: "11%", display: "flex", paddingX: "10px", justifyContent: "space-between", alignItems: "center", height: "45px", borderRight: "2px solid white" }, fContainerStyle]}>
-                <Typography sx={[{ fontSize: "12px", fontWeight: "600" }, fTextStyle]}>CHD9101012301</Typography>
-                <StyledImage onClick={() => {
+            <Box onClick={() => {
                     dispatch(setModalOpen(true))
-                }} src={profit ? DownIcon : DownGIcon} style={{ height: "10px", width: "15px" }} />
+                }} sx={[{ width: "11%", display: "flex", paddingX: "10px", justifyContent: "space-between", alignItems: "center", height: "45px", borderRight: "2px solid white" }, fContainerStyle]}>
+                <Typography sx={[{ fontSize: "12px", fontWeight: "600" }, fTextStyle]}>CHD9101012301</Typography>
+                <StyledImage  src={profit ? DownIcon : DownGIcon} style={{ height: "10px", width: "15px" }} />
             </Box>
             <Box sx={{ width: "10%", display: "flex", paddingLeft: "10px", alignItems: "center", height: "45px", borderRight: "2px solid white" }}>
                 <Typography sx={{ fontSize: "12px", fontWeight: "600" }}>1,00,000,000,0</Typography>

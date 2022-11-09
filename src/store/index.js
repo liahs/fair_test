@@ -8,6 +8,7 @@ import withdrawModal from '../admin/store/withdrawModal'
 import exposureModal from '../admin/store/exposureModal'
 import changePasswordModal from '../admin/store/changePasswordModal'
 import dailogModal from '../admin/store/dailogModal'
+import currentSelected from '../admin/store/current_selected'
 const store=configureStore({
     reducer:{
         selectedColorBox,
@@ -18,7 +19,8 @@ const store=configureStore({
         withdrawModal,
         exposureModal,
         changePasswordModal,
-        dailogModal
+        dailogModal,
+        currentSelected
     }
 })
 

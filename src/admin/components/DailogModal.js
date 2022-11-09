@@ -13,7 +13,7 @@ const DailogModal = ({ }) => {
             open={dailogModal?.isModalOpen}
             disableAutoFocus={true}
         >
-            <Box sx={{ minWidth: '200px',minHeight:"280px", borderRadius: "6px", flexDirection: 'column', justifyContent: 'center', alignItems: 'center', background: 'white', alignSelf: 'center', display: 'flex', position: 'absolute', top: '35%', zIndex: 999 }}>
+            <Box sx={{ width: '300px',minHeight:"260px", borderRadius: "6px", flexDirection: 'column', justifyContent: 'center', alignItems: 'center', background: 'white', alignSelf: 'center', display: 'flex', position: 'absolute', top: '35%', zIndex: 999 }}>
                 {!dailogModal?.showRight ? <img src={NOT} style={{ width: '60px', height: '60px', marginTop: '3px' }} /> : <img src={BETPLACED} style={{ width: '65px', height: '60px', marginTop: '3px' }} />}
                  <Typography sx={{ fontSize: '20px', fontWeight: '500', marginY: '3vh', width: '80%', alignSelf: 'center', textAlign: 'center' }}>{dailogModal?.bodyText}</Typography>
                 <BoxButton onClick={()=>{

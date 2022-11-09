@@ -10,6 +10,7 @@ import { setCredModalOpen } from "../store/creditLimitModal";
 import { setWithdrawModalOpen } from "../store/withdrawModal";
 import { setExpoModalOpen } from "../store/exposureModal";
 import { setCmModalOpen } from "../store/changePasswordModal";
+import { setDailogData } from "../store/dailogModal";
 
 const style = {
     position: 'absolute',
@@ -99,7 +100,12 @@ export default function UserDetailModal({ }) {
                         }} title={"Set Exposure Limit"} labelStyle={{}} />
                     </Box>
                     <Box sx={{ marginTop: "3px", display: "flex", justifyContent: "center", marginBottom: "20px" }}>
-                        <BoxButton title={"Delete User"} icon={<StyledImage src={DeleteIcon} sx={{ height: "18px", width: "17px", marginLeft: "5px" }} />} containerStyle={{ background: "#E32A2A" }} />
+                        <BoxButton onClick={e=>{
+                             dispatch(setModalOpen(false))
+                             setTimeout(() => {
+                                 dispatch(setDailogData({isModalOpen:true,showRight:false,bodyText:"First Settle Account to Delete The User"}))
+                             }, 500)
+                        }} title={"Delete User"} icon={<StyledImage src={DeleteIcon} sx={{ height: "18px", width: "17px", marginLeft: "5px" }} />} containerStyle={{ background: "#E32A2A" }} />
                     </Box>
                 </Box>
             </Box>

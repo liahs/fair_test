@@ -607,7 +607,7 @@ const MatchScreen = ({ }) => {
     return (
         <Background>
             <CHeader />
-            <Box sx={{ display: 'flex', flexDirection: 'row', backgroundImage: `url(${BACKIMAGE})`, width: '100%', height: '100%' }}>
+            <Box sx={{ display: 'flex', flexDirection: 'row',width: '100%', height: '100%' ,marginTop:"2px"}}>
                 <Box sx={{ width: '60%', flexDirection: 'column', display: 'flex' }}>
                     <Odds />
                     <BookMarketer />

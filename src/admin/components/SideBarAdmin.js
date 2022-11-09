@@ -77,8 +77,8 @@ const MainBox = ({ title, width, color, under, selected, sub }) => {
     return (
         <Box sx={{ display: 'flex', width: width + "%", height: '40px', paddingX: "3%", background: color, borderRadius: "3px", justifyContent: "space-between", alignItems: "center", marginTop: '1px', alignSelf: "flex-end", marginRight: '3px' }} >
             <Box sx={{ display: 'flex', width: '100%', alignItems: 'center' }}>
-                <Typography sx={{ fontSize: '10px', color: 'black', fontWeight: '500', marginLeft: '3%' }} >{title}</Typography>
-                <Typography sx={{ fontSize: '6px', color: 'black', fontWeight: '400', marginLeft: '2%' }} >{sub}</Typography>
+                <Typography sx={{ fontSize: '12px', color: 'black', fontWeight: '600', marginLeft: '3%' }} >{title}</Typography>
+                <Typography sx={{ fontSize: '8px', color: 'black', fontWeight: '400', marginLeft: '2%' }} >{sub}</Typography>
             </Box>
 
             {selected && under && <MinusBox />}
@@ -132,7 +132,7 @@ const RenderBets = ({ i }) => {
     const navigate = useNavigate()
     return (
         <Box onClick={(event) => {
-            navigate('match')
+            navigate('/admin/match')
             event.stopPropagation();
         }} sx={{ width: '100%', display: 'flex', alignSelf: 'flex-end', flexDirection: 'column' }} >
             <MainBox sub={i?.sub} under={false} color={colors[4]} width={70} title={i.title} />
