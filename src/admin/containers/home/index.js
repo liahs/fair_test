@@ -4,7 +4,6 @@ import { Header, Background, HomeSlide, Account, AccountList, UserDetailModal, D
 import SideBarAdmin from "../../components/SideBarAdmin";
 
 export default function Home() {
-
     return (
         <Background>
             <Header />

@@ -3,19 +3,16 @@ import { useState } from "react";
 import { CustomHeader, MatchOdds, SideBar } from "../../components";
 import EventListing from "../../components/EventListing";
 import MatchesComponent from "../../components/Matches";
-
 import { useMediaQuery, useTheme } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import { HourGlass } from "../../assets";
 import Lottie from "lottie-react";
-
 export default function Matches() {
     const [drawer, setDrawer] = useState(false)
     const theme = useTheme()
     const navigate = useNavigate()
     const matchesMobile = useMediaQuery(theme.breakpoints.down("laptop"))
     const [selected, setSelected] = useState("CRICKET")
-
     return (
         <div style={{ height: "100vh", display: 'flex', flexDirection: 'column' }} >
             <CustomHeader />

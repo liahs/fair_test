@@ -14,6 +14,8 @@ export { default as DownIcon } from './Account/down.png'
 export { default as DownGIcon } from './Account/downg.png'
 export { default as ARROWDROPDOWN } from './arrowDropDown.png'
 export { default as CalendarImage } from './calendar.png'
+export { default as Down } from './down.png'
+
 
 export { default as DeleteIcon } from './Account/delete.png'
 export { default as EyeIcon } from './depo/eye.svg'

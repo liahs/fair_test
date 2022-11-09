@@ -6,6 +6,7 @@ import Home from "../containers/home"
 import LiveMarketContainer from "../containers/livemarket"
 import MatchScreen from "../containers/matchScreen"
 import ProfitLoss from "../containers/profitLoss/index.js"
+import CurrentBets from "../containers/currentBets/index.js"
 
 
 const AdminRoutes = () => {
@@ -18,6 +19,8 @@ const AdminRoutes = () => {
             <Route exact path="/generalReport" element={<GeneralReport />} />
             <Route exact path="/profitLoss" element={<ProfitLoss />} />
             <Route exact path="/addAccount" element={<AddAccount />} />
+            <Route exact path="/bets" element={<CurrentBets />} />
+
 
         </Routes>
     )

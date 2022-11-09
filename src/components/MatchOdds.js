@@ -547,6 +547,8 @@ const SessionMarket = ({ }) => {
                 </Box>}
 
                 <SeasonMarketBox index={1} />
+                <Divider />
+
                 <SeasonMarketBox />
                 <Divider />
                 <SeasonMarketBox />

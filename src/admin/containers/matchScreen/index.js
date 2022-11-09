@@ -213,19 +213,7 @@ const MatchScreen = ({ }) => {
         const matchesMobile = useMediaQuery(theme.breakpoints.down("laptop"))
         return (
             <div>
-                <Box onClick={() => {
-                    if (data.includes(index)) {
-                        let x = [...data]
-                        x.splice(x.indexOf(index), 1)
-                        setData([...x])
-                    }
-                    else {
-                        if (data.length < 4) {
-                            let x = [...data]
-                            setData([...x, index])
-                        }
-                    }
-                }} sx={{ display: 'flex', background: 'white', height: '38px', width: '100%' }} >
+                <Box sx={{ display: 'flex', background: 'white', height: '38px', width: '100%' }} >
                     <Box sx={{ display: 'flex', background: 'white', height: '38px', width: '40%', alignItems: 'center' }} >
                         <Typography sx={{ color: 'black', fontSize: { laptop: '11px', tablet: '10px', mobile: "8px" }, marginLeft: '7px', fontWeight: '600' }} >6 Over runs INDIA W (INDIA vs PAKISTAN) Adv 0</Typography>
                     </Box>
@@ -263,7 +251,20 @@ const MatchScreen = ({ }) => {
                                 <img src={BallStart} style={{ width: '60px', height: '17px' }} />
                             </Box>
                         }
-                        {<PlaceBetComponentWeb />}
+                        {<PlaceBetComponentWeb onClick={() => {
+
+                            if (data.includes(index)) {
+                                let x = [...data]
+                                x.splice(x.indexOf(index), 1)
+                                setData([...x])
+                            }
+                            else {
+                                if (data.length < 4) {
+                                    let x = [...data]
+                                    setData([...x, index])
+                                }
+                            }
+                        }} />}
                     </Box>
 
                 </Box>
@@ -295,7 +296,7 @@ const MatchScreen = ({ }) => {
             </>
         )
     }
-    const PlaceBetComponentWeb = () => {
+    const PlaceBetComponentWeb = ({ onClick }) => {
         const [anchorEl, setAnchorEl] = useState(null);
         const handleClick = (event) => {
             setAnchorEl(event.currentTarget);
@@ -306,7 +307,7 @@ const MatchScreen = ({ }) => {
         return (
             <>
                 <Box
-                    // onClick={e => handleClick(e)}
+                    onClick={onClick}
                     sx={{ background: "#0B4F26", flexDirection: 'row', display: 'flex', alignItems: 'center', paddingX: '.2vw', width: "10vw", borderRadius: '5px', height: '32px', right: '8px', position: 'absolute' }} >
                     <Box sx={{ background: "#FDF21A", borderRadius: '3px', width: "45%", height: '85%', display: "flex", alignItems: 'center', justifyContent: 'center', display: 'flex', flexDirection: 'column' }}>
                         <Typography sx={{ fontSize: '.5vw', fontWeight: 'bold', color: "#FF4D4D" }}>Total Bet</Typography>
@@ -325,9 +326,6 @@ const MatchScreen = ({ }) => {
             </>
         )
     }
-
-
-
     const menutItems = [{ title: "Account Statement" }, { title: "Profile Loss Report" }, { title: "Bet History" }, { title: "Unsetteled Bet" }, { title: "Casino Report History" }, { title: "Set Button Values" }, { title: "Security Auth Verfication" }, { title: "Change Password" }]
     const DropdownMenu = ({ anchorEl, open, handleClose }) => {
         return (
@@ -410,8 +408,6 @@ const MatchScreen = ({ }) => {
             </Menu>
         )
     }
-
-
     const SessionMarket = ({ }) => {
         const theme = useTheme()
         const matchesMobile = useMediaQuery(theme.breakpoints.down("laptop"))
@@ -465,7 +461,6 @@ const MatchScreen = ({ }) => {
                     <Box sx={{ display: 'flex', flexDirection: 'column', overflowY: 'auto', height: '200px', width: '100%' }}>
                         <SeasonMarketBox index={1} />
                         <Divider />
-
                         <SeasonMarketBox index={2} />
                         <Divider />
                         <SeasonMarketBox index={3} />
@@ -613,13 +608,11 @@ const MatchScreen = ({ }) => {
         <Background>
             <CHeader />
             <Box sx={{ display: 'flex', flexDirection: 'row', backgroundImage: `url(${BACKIMAGE})`, width: '100%', height: '100%' }}>
-
                 <Box sx={{ width: '60%', flexDirection: 'column', display: 'flex' }}>
                     <Odds />
                     <BookMarketer />
                     <SessionMarket />
-
-                    <Box sx={{ display: 'flex', flexDirection: 'row', justifyContent: "space-around", marginTop: '.25vw' }}>
+                    <Box sx={{ display: 'flex', flexDirection: 'row', marginTop: '.25vw' }}>
                         {
                             data.map(() => {
                                 return <RunsBox />

@@ -1,5 +1,6 @@
 import { Box, Typography } from "@mui/material";
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 const colors = ["#F8C851", "#FFDA7D", "#FFE7AD", "#FFF1CF", "#FFF8E6"]
 const datas = [
     {
@@ -128,11 +129,11 @@ const RenderValues = ({ i }) => {
     )
 }
 const RenderBets = ({ i }) => {
+    const navigate = useNavigate()
     return (
         <Box onClick={(event) => {
+            navigate('match')
             event.stopPropagation();
-
-
         }} sx={{ width: '100%', display: 'flex', alignSelf: 'flex-end', flexDirection: 'column' }} >
             <MainBox sub={i?.sub} under={false} color={colors[4]} width={70} title={i.title} />
 
@@ -197,7 +198,6 @@ const SideBarAdmin = () => {
             })]}>
                 <Typography sx={{ fontSize: '14px', color: 'white', fontWeight: '600', marginLeft: '1.5%' }} >All Sports</Typography>
                 <MinusBox />
-
             </Box>
             {
                 datas.map((i, k) => {
