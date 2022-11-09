@@ -1,6 +1,6 @@
 import { Box, Typography } from "@mui/material"
 import { ARROWDOWN, ARROWUP } from "../../assets";
-import { Background } from "../../components";
+import { Background, Header } from "../../components";
 import GeneralReportList from "../../components/GeneralReportList";
 import ProfitLossList from "../../components/ProfitLossList";
 import YellowHeaderProfitLoss from "../../components/YellowHeaderProfitLoss";
@@ -32,7 +32,7 @@ const ProfitLoss = () => {
     }
     return (
         <Background>
-
+            <Header />
             <YellowHeaderProfitLoss />
 
             <ExtraHeader />

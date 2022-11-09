@@ -45,7 +45,7 @@ const ListHeaderT = () => {
             <Box sx={{ width: "33%", display: "flex", paddingLeft: "10px", alignItems: "center", height: "35px", borderRight: "2px solid white" }}>
                 <Typography sx={{ color: "white", fontSize: "12px" }}>Game Type</Typography>
             </Box>
-            <Box sx={{ width: "34%", display: "flex", paddingLeft: "10px", alignItems: "center", height: "35px", borderRight: "2px solid white" }}>
+            <Box sx={{ width: "34%", display: "flex", paddingLeft: "10px", alignItems: "center", height: "35px", borderRight: "0px solid white" }}>
                 <Typography sx={{ color: "white", fontSize: "12px" }}>Profit & Loss</Typography>
             </Box>
 
@@ -66,7 +66,7 @@ const Row = ({ containerStyle, fContainerStyle, fTextStyle, profit, index }) => 
             <Box sx={{ width: "33%", display: "flex", paddingLeft: "10px", alignItems: "center", height: "45px", borderRight: "2px solid white" }}>
                 <Typography sx={{ fontSize: "12px", fontWeight: "600" }}>{index % 2 == 0 ? "Session" : "Match"}</Typography>
             </Box>
-            <Box sx={{ width: "34%", display: "flex", paddingLeft: "10px", background: index % 2 == 0 ? "#27AC1E" : "#E32A2A", alignItems: "center", height: "45px", borderRight: "2px solid white" }}>
+            <Box sx={{ width: "34%", display: "flex", paddingLeft: "10px", background: index % 2 == 0 ? "#27AC1E" : "#E32A2A", alignItems: "center", height: "45px", borderRight: "0px solid white" }}>
                 <Typography sx={{ fontSize: "12px", fontWeight: "600", color: "white" }}>4,02,000,000,0</Typography>
                 {index % 2 == 0 ? <img src={ARROWUP} style={{ marginLeft: '5px', width: '20px', height: '10px' }} /> :
                     <img src={ARROWDOWN} style={{ marginLeft: '5px', width: '20px', height: '10px' }} />

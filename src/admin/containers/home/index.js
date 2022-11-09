@@ -7,7 +7,7 @@ export default function Home() {
 
     return (
         <Background>
-            {/* <Header />
+            <Header />
             <HomeSlide />
             <Account />
             <AccountList />
@@ -17,8 +17,7 @@ export default function Home() {
             <WithDrawModal />
             <SetExposureModal />
             <ChangePasswordModal />
-            <DailogModal /> */}
-            <SideBarAdmin />
+            <DailogModal />
         </Background>
     )
 }

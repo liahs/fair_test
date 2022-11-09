@@ -11,7 +11,7 @@ const Calendar = ({ title }) => {
     const [open, setOpen] = useState(false)
     return (
         <Box sx={{
-            zIndex: 9999, width: '19%',
+            zIndex: 100, width: '19%',
             position: 'relative',
         }} onClick={() => {
             setOpen(!open)

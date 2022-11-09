@@ -5,6 +5,7 @@ import { ArrowDown, Draw, logo, Logout, Money, MoneyBag } from "../../assets";
 import SearchInput from "../../components/SearchInput";
 import SideBar from "../../components/SideBar";
 import StyledImage from "../../components/StyledImage";
+import SideBarAdmin from "./SideBarAdmin";
 
 const CustomHeader = ({ }) => {
     const theme = useTheme()
@@ -36,9 +37,9 @@ const CustomHeader = ({ }) => {
                     <Box sx={{ display: "flex", alignItems: "center", width: "100%", flex: 1, }}>
                         <Box sx={{ display: "flex", alignItems: "center", marginRight: "12px" }}>
                             <StyledImage onClick={() => {
-                                if (matchesMobile) {
-                                    setMobileOpen(!mobileOpen)
-                                }
+
+                                setMobileOpen(!mobileOpen)
+
                             }} src={Draw} sx={{ height: { laptop: "24px", mobile: "20px" }, width: "auto" }} />
                             <StyledImage src={logo} sx={{ height: { laptop: "45px", mobile: "40px" }, width: "auto", marginLeft: { laptop: "20px", mobile: "10px" } }} />
                         </Box>
@@ -61,7 +62,7 @@ const CustomHeader = ({ }) => {
                         <BoxProfile containerStyle={matchesMobile ? { width: "52%" } : {}} image={"https://picsum.photos/200/300"} value={"Admin"} />
                     </Box>
                 </Box>
-                {matchesMobile && <MobileSideBar mobileOpen={mobileOpen} setMobileOpen={setMobileOpen} />}
+                {<MobileSideBar mobileOpen={mobileOpen} setMobileOpen={setMobileOpen} />}
             </AppBar>
             <Box sx={{ minHeight: { laptop: 90, mobile: 60 + 32 + 42 } }} />
         </>
@@ -195,13 +196,13 @@ const MobileSideBar = ({ mobileOpen, setMobileOpen }) => {
 
             sx={{
                 display: { xs: 'block', sm: 'none' },
-                '& .MuiDrawer-paper': { boxSizing: 'border-box', width: "190px" },
+                '& .MuiDrawer-paper': { boxSizing: 'border-box', width: "300px" },
 
             }}
         >
-            <Box sx={{ minHeight: { laptop: 90 + 32 + 40, mobile: 60 + 32 + 40 } }} />
+            <Box sx={{ minHeight: { laptop: 90, mobile: 60 + 32 } }} />
             <Box sx={{ height: "100vh" }}>
-                <SideBar mobileShow={true} />
+                <SideBarAdmin mobileShow={true} />
             </Box>
         </Drawer>
     )

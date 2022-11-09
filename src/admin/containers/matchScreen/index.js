@@ -12,7 +12,7 @@ import { BACKIMAGE, LOCKED, LOCKOPEN } from "../../assets"
 import LiveMatchComponent from "../../components/LiveMatchComponent"
 import LiveMatchAdmin from "../../components/LiveMatchAdmin"
 import AllBets from "../../components/AllBets"
-
+import { Background, Header as CHeader } from '../../components/index'
 const SeperateBox = ({ color, empty, value, value2, lock, session, back }) => {
     const theme = useTheme()
     const matchesMobile = useMediaQuery(theme.breakpoints.down("laptop"))
@@ -610,27 +610,31 @@ const MatchScreen = ({ }) => {
         )
     }
     return (
-        <Box sx={{ display: 'flex', flexDirection: 'row', backgroundImage: `url(${BACKIMAGE})`, width: '100%', height: '100%' }}>
-            <Box sx={{ width: '60%', flexDirection: 'column', display: 'flex' }}>
-                <Odds />
-                <BookMarketer />
-                <SessionMarket />
+        <Background>
+            <CHeader />
+            <Box sx={{ display: 'flex', flexDirection: 'row', backgroundImage: `url(${BACKIMAGE})`, width: '100%', height: '100%' }}>
 
-                <Box sx={{ display: 'flex', flexDirection: 'row', justifyContent: "space-around", marginTop: '.25vw' }}>
-                    {
-                        data.map(() => {
-                            return <RunsBox />
+                <Box sx={{ width: '60%', flexDirection: 'column', display: 'flex' }}>
+                    <Odds />
+                    <BookMarketer />
+                    <SessionMarket />
 
-                        })
-                    }
+                    <Box sx={{ display: 'flex', flexDirection: 'row', justifyContent: "space-around", marginTop: '.25vw' }}>
+                        {
+                            data.map(() => {
+                                return <RunsBox />
+
+                            })
+                        }
+                    </Box>
+                </Box>
+                <Box sx={{ width: '39.5%', flexDirection: 'column', display: 'flex' }}>
+                    <LiveMatchComponent />
+                    <LiveMatchAdmin />
+                    <AllBets />
                 </Box>
             </Box>
-            <Box sx={{ width: '39.5%', flexDirection: 'column', display: 'flex' }}>
-                <LiveMatchComponent />
-                <LiveMatchAdmin />
-                <AllBets />
-            </Box>
-        </Box>
+        </Background>
     )
 }
 

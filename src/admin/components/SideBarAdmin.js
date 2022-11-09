@@ -129,7 +129,11 @@ const RenderValues = ({ i }) => {
 }
 const RenderBets = ({ i }) => {
     return (
-        <Box sx={{ width: '100%', display: 'flex', alignSelf: 'flex-end', flexDirection: 'column' }} >
+        <Box onClick={(event) => {
+            event.stopPropagation();
+
+
+        }} sx={{ width: '100%', display: 'flex', alignSelf: 'flex-end', flexDirection: 'column' }} >
             <MainBox sub={i?.sub} under={false} color={colors[4]} width={70} title={i.title} />
 
         </Box>
@@ -182,7 +186,7 @@ const SideBarAdmin = () => {
 
 
     return (
-        <Box sx={[{ minHeight: "100vh", width: '20%', display: 'flex', flexDirection: 'column', alignItems: 'center' },
+        <Box sx={[{ minHeight: "100vh", width: '100%', display: 'flex', flexDirection: 'column', alignItems: 'center' },
         (theme) => ({
             backgroundImage: `${theme.palette.primary.mainGradient}`
         })]}
@@ -191,7 +195,7 @@ const SideBarAdmin = () => {
             <Box sx={[{ width: '98%', marginTop: '3px', paddingX: '3%', display: 'flex', justifyContent: "space-between", alignItems: 'center', alignSelf: 'center', height: '40px', borderRadius: '2px' }, (theme) => ({
                 backgroundImage: `${theme.palette.primary.headerGradientAdmin}`
             })]}>
-                <Typography sx={{ fontSize: '14px', color: 'white', fontWeight: '600', marginLeft: '3%' }} >All Sports</Typography>
+                <Typography sx={{ fontSize: '14px', color: 'white', fontWeight: '600', marginLeft: '1.5%' }} >All Sports</Typography>
                 <MinusBox />
 
             </Box>
